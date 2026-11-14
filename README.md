@@ -10,6 +10,12 @@ npm install
 npm run dev
 ```
 
+## Vercel
+
+Import this repository with **Root Directory `.`** (the repository root). The committed `vercel.json` installs and builds `barakah-ui/`, serves `barakah-ui/dist/`, and falls back to `index.html` for frontend paths. No environment variables are needed.
+
+Use `feat/barakah-frontend` as the Production Branch for this frontend deployment. Leave Build & Output overrides disabled; the repository configuration supplies them. Redeploy after changing project settings. If you instead select `barakah-ui` as the project Root Directory, use Vercel's Vite preset with output `dist` and default npm install/build commands.
+
 - [Frontend guide and acceptance checklist](barakah-ui/README.md)
 - [Draft backend integration contract](barakah-ui/API_CONTRACT.md)
 - [Local validation record](barakah-ui/QA.md)
