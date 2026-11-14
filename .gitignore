@@ -1,0 +1,14 @@
+**/node_modules
+**/dist/
+**/.vite/
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+coverage/
+.impeccable/review/
+.impeccable/mocks/
+.impeccable/questions/
+.impeccable/config.local.json
+.pi/

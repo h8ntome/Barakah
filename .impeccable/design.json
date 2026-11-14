@@ -1,0 +1,218 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-14T18:34:04.096654Z",
+  "title": "Design System: Barakah",
+  "extensions": {
+    "colorMeta": {
+      "emerald-950": {
+        "role": "primary",
+        "displayName": "Deep Emerald Ground"
+      },
+      "emerald-900": {
+        "role": "primary",
+        "displayName": "Dark Emerald"
+      },
+      "emerald-700": {
+        "role": "primary",
+        "displayName": "Action Emerald"
+      },
+      "emerald-600": {
+        "role": "primary",
+        "displayName": "Icon Emerald"
+      },
+      "mint": {
+        "role": "primary",
+        "displayName": "Supporting Mint"
+      },
+      "sage": {
+        "role": "primary",
+        "displayName": "Supporting Sage"
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Offwhite Canvas"
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "White Surface"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Deep Green Ink"
+      },
+      "secondary": {
+        "role": "neutral",
+        "displayName": "Muted Green Text"
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Soft Green Border"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Desktop Editorial",
+        "purpose": "System-serif desktop heading; compact-height override is documented in Layout."
+      },
+      "body": {
+        "displayName": "Interface",
+        "purpose": "Locally bundled DM Sans; component-specific sizes, no universal body scale."
+      },
+      "financial": {
+        "displayName": "Financial Total",
+        "purpose": "Locally bundled Manrope with tabular numerals, weight 800; dashboard total."
+      },
+      "brand": {
+        "displayName": "Serif Wordmark",
+        "purpose": "Georgia, Times New Roman, generic serif; platform-dependent, not a bundled brand font."
+      }
+    },
+    "shadows": [
+      {
+        "name": "overview-card",
+        "value": "0 7px 18px #092B1410",
+        "purpose": "Subtle dashboard-card lift."
+      },
+      {
+        "name": "desktop-device",
+        "value": "0 30px 65px #001A1399,0 0 0 4px #203F30",
+        "purpose": "Desktop device grounding and outer ring; removed at max-width 600px."
+      },
+      {
+        "name": "modal",
+        "value": "0 24px 70px #001A1444",
+        "purpose": "Native dialog elevation; backdrop #03271FC7, no blur."
+      }
+    ],
+    "motion": [
+      {
+        "name": "control-transition",
+        "value": "background-color .16s ease,border-color .16s ease",
+        "purpose": "Buttons and inputs; no added transforms or screen transitions."
+      },
+      {
+        "name": "spinner",
+        "value": "spin 1s linear infinite",
+        "purpose": "Loading indicator; spin keyframe ends at transform:rotate(360deg)."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}",
+        "purpose": "Exact source override; status text remains visible."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-desktop-height",
+        "value": "(min-width:981px) and (max-height:850px)"
+      },
+      {
+        "name": "hide-editorial-panel",
+        "value": "(max-width:980px)"
+      },
+      {
+        "name": "edge-to-edge",
+        "value": "(max-width:600px)"
+      },
+      {
+        "name": "narrow-phone",
+        "value": "(max-width:365px)"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Full-width committed action; enabled hover and keyboard focus match PrimaryButton.",
+      "html": "<button type=\"button\" class=\"ds-primary\">Save assets</button>",
+      "css": ".ds-primary{font-family:var(--font-body,'DM Sans',sans-serif);width:100%;min-height:48px;padding:12px 15px;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--emerald-700,#08603E);border:1px solid var(--emerald-700,#08603E);border-radius:var(--radius-sm,12px);color:#FFF;font-weight:600;font-size:14px;line-height:1.4;margin-top:19px;cursor:pointer;transition:background-color .16s ease,border-color .16s ease;}.ds-primary:hover:not(:disabled){background:var(--emerald-900,#073B2C)}.ds-primary:focus-visible{outline:3px solid #2B8A62;outline-offset:3px;}.ds-primary:disabled{opacity:.55;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.ds-primary{transition:none!important;animation:none!important;scroll-behavior:auto!important}}"
+    },
+    {
+      "name": "Mint Button",
+      "kind": "button",
+      "refersTo": "button-mint",
+      "description": "Inline secondary action, observed on the Zakat estimate and empty-state recovery.",
+      "html": "<button type=\"button\" class=\"ds-mint\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z\"/><path d=\"m15 5 4 4\"/></svg>Edit assets</button>",
+      "css": ".ds-mint{font-family:var(--font-body,'DM Sans',sans-serif);min-height:44px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #D0E9D2;border-radius:24px;background:var(--mint,#DFF3E3);padding:10px 22px;font-size:13px;font-weight:700;color:var(--emerald-700,#08603E);cursor:pointer;transition:background-color .16s ease,border-color .16s ease;}.ds-mint svg{flex-shrink:0}.ds-mint:hover{background:#CDEBD2}.ds-mint:focus-visible{outline:3px solid #2B8A62;outline-offset:3px;}.ds-mint:disabled{opacity:.55;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.ds-mint{transition:none!important;animation:none!important;scroll-behavior:auto!important}}"
+    },
+    {
+      "name": "Money Input",
+      "kind": "input",
+      "refersTo": "money-input",
+      "description": "Editable sample USD amount with wrapper-level focus; source AssetModal field.",
+      "html": "<label class=\"ds-asset\"><span>Cash &amp; bank balances</span><span class=\"ds-money\"><span>$</span><input type=\"number\" inputmode=\"decimal\" min=\"0\" max=\"999999999.99\" step=\"0.01\" required value=\"12000\" aria-label=\"Cash &amp; bank balances\" /></span></label>",
+      "css": ".ds-asset{font-family:var(--font-body,'DM Sans',sans-serif);display:flex;align-items:center;justify-content:space-between;gap:12px;margin:16px 0;font-size:12px;line-height:1.5;font-weight:500;color:var(--ink,#10241D)}.ds-money{display:flex;align-items:center;background:white;border:1px solid #CCD9C6;border-radius:10px;min-height:45px;padding-left:11px;color:#617C5A;width:143px;flex-shrink:0;font-variant-numeric:tabular-nums}.ds-money:focus-within{outline:2px solid #2B8A62;outline-offset:2px}.ds-money input{font-family:var(--font-body,'DM Sans',sans-serif);border:0;border-radius:10px;background:none;padding:11px 7px;width:100%;font-size:13px;outline:none;min-width:0;color:var(--ink,#10241D);caret-color:var(--emerald-600,#0B7750);transition:background-color .16s ease,border-color .16s ease;}.ds-money input::placeholder{color:var(--secondary,#5D7065);opacity:1}.ds-money input:focus-visible{outline:none}@media(max-width:365px){.ds-asset{font-size:11px;gap:8px}.ds-money{width:123px}}@media(prefers-reduced-motion:reduce){.ds-money input{transition:none!important;animation:none!important;scroll-behavior:auto!important}}"
+    },
+    {
+      "name": "Bottom Navigation",
+      "kind": "nav",
+      "refersTo": "bottom-tabs",
+      "description": "Persistent five-destination navigation; preview displays Home selected without simulating routing.",
+      "html": "<nav class=\"ds-bottom\" aria-label=\"Main navigation\"><button type=\"button\" class=\"ds-selected\" aria-current=\"page\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"21\" height=\"21\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8\"/><path d=\"M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z\"/></svg><span>Home</span></button><button type=\"button\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"21\" height=\"21\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><line x1=\"18\" x2=\"18\" y1=\"20\" y2=\"10\"/><line x1=\"12\" x2=\"12\" y1=\"20\" y2=\"4\"/><line x1=\"6\" x2=\"6\" y1=\"20\" y2=\"14\"/></svg><span>Invest</span></button><button type=\"button\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"21\" height=\"21\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"8\" cy=\"8\" r=\"6\"/><path d=\"M18.09 10.37A6 6 0 1 1 10.34 18\"/><path d=\"M7 6h1v4\"/><path d=\"m16.71 13.88.7.71-2.82 2.82\"/></svg><span>Zakat</span></button><button type=\"button\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"21\" height=\"21\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7.9 20A9 9 0 1 0 4 16.1L2 22Z\"/></svg><span>AI Chat</span></button><button type=\"button\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"21\" height=\"21\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z\"/></svg><span>Give</span></button></nav>",
+      "css": ".ds-bottom{font-family:var(--font-body,'DM Sans',sans-serif);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));min-height:70px;align-items:center;gap:3px;padding:7px 8px max(8px,env(safe-area-inset-bottom));background:var(--canvas,#FCFBF7);border-top:1px solid var(--border,#E4EAE2)}.ds-bottom button{font-family:var(--font-body,'DM Sans',sans-serif);min-height:48px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;background:transparent;border:0;border-radius:var(--radius-sm,12px);font-size:11px;font-weight:500;color:var(--secondary,#5D7065);cursor:pointer;transition:background-color .16s ease,border-color .16s ease;}.ds-bottom svg{flex-shrink:0}.ds-bottom button.ds-selected{background:#E7F1E5;color:var(--emerald-700,#08603E);font-weight:700}.ds-bottom button:hover{background:#EAF3E7}.ds-bottom button:focus-visible{outline:3px solid #2B8A62;outline-offset:3px;}@media(prefers-reduced-motion:reduce){.ds-bottom button{transition:none!important;animation:none!important;scroll-behavior:auto!important}}"
+    },
+    {
+      "name": "Demo Tag",
+      "kind": "chip",
+      "refersTo": "demo-tag",
+      "description": "Noninteractive sample disclosure, not a verification or certification badge.",
+      "html": "<span class=\"ds-tag\">Sample data</span>",
+      "css": ".ds-tag{font-family:var(--font-body,'DM Sans',sans-serif);font-size:10px;font-weight:600;color:#3C684A;background:#EAF2E6;padding:4px 6px;border-radius:5px;display:inline-block;white-space:nowrap;vertical-align:middle;line-height:1.3}"
+    },
+    {
+      "name": "Financial Overview Card",
+      "kind": "card",
+      "refersTo": "overview-card",
+      "description": "White dashboard card with Manrope total, actual sample trend and explicit sample context.",
+      "html": "<section class=\"ds-overview\" aria-label=\"Your Financial Overview\"><div class=\"ds-overview-heading\"><h3>Your Financial Overview</h3><span class=\"ds-overview-tag\">Sample data</span></div><p class=\"ds-secondary\">Total net worth</p><div class=\"ds-overview-figure\"><strong class=\"ds-amount\">$24,750</strong><svg class=\"ds-spark\" viewBox=\"0 0 140 66\" role=\"img\" aria-label=\"Illustrative trend, not live market data\"><defs><linearGradient id=\"ds-overview-gradient\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop stop-color=\"#10965A\" stop-opacity=\".18\"/><stop offset=\"1\" stop-color=\"#10965A\" stop-opacity=\"0\"/></linearGradient></defs><polygon points=\"4,66 4.000,56.000 18.667,49.733 33.333,50.778 48.000,38.244 62.667,42.422 77.333,28.844 92.000,33.022 106.667,20.489 121.333,22.578 136.000,9.000 136,66\" fill=\"url(#ds-overview-gradient)\"/><polyline points=\"4.000,56.000 18.667,49.733 33.333,50.778 48.000,38.244 62.667,42.422 77.333,28.844 92.000,33.022 106.667,20.489 121.333,22.578 136.000,9.000\" fill=\"none\" stroke=\"#0B7750\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></div><p class=\"ds-growth\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg>+4.2% <span>(30d sample)</span></p></section>",
+      "css": ".ds-overview{font-family:var(--font-body,'DM Sans',sans-serif);position:relative;background:var(--surface,#FFF);color:var(--ink,#10241D);border:1px solid #E3E9DF;border-radius:var(--radius,16px);padding:16px 16px 14px;box-shadow:0 7px 18px #092B1410}.ds-overview-heading{display:flex;align-items:center;justify-content:space-between;gap:5px;margin-bottom:15px}.ds-overview-heading h3{margin:0;font-size:12px;font-weight:700;letter-spacing:-.02em;text-wrap:balance}.ds-overview-tag{font-size:9px;font-weight:600;color:#3C684A;background:#EAF2E6;padding:4px 6px;border-radius:5px;display:inline-block;white-space:nowrap;vertical-align:middle;line-height:1.3}.ds-secondary{margin:0;color:var(--secondary,#5D7065);font-size:12px}.ds-overview-figure{display:flex;align-items:center;justify-content:space-between;gap:3px}.ds-amount{font-family:var(--font-number,Manrope,sans-serif);font-variant-numeric:tabular-nums;font-weight:800;letter-spacing:-.035em;overflow-wrap:anywhere;font-size:32px;line-height:1.6;min-width:0}.ds-spark{margin-bottom:-8px;width:106px;height:51px;flex-shrink:0}.ds-growth{margin:0;display:flex;align-items:center;gap:3px;font-size:12px;line-height:1.5;font-weight:700;color:var(--positive,#087547)}.ds-growth svg{flex-shrink:0}.ds-growth span{color:var(--secondary,#5D7065);font-weight:400;font-size:10.5px;margin-left:3px}@media(max-width:600px){.ds-overview-heading h3{font-size:13px}}@media(max-width:365px){.ds-overview{padding:15px 13px}.ds-overview-heading h3{font-size:11px}.ds-overview-tag{font-size:8px}.ds-amount{font-size:29px}.ds-spark{width:84px}}"
+    },
+    {
+      "name": "Segmented Control",
+      "kind": "custom",
+      "refersTo": "segmented-control",
+      "description": "Two-option investing switch; selected and unselected states rendered without application logic.",
+      "html": "<div class=\"ds-segments\" role=\"group\" aria-label=\"Investment view\"><button type=\"button\" class=\"ds-selected\" aria-pressed=\"true\">My portfolio</button><button type=\"button\" aria-pressed=\"false\">Explore</button></div>",
+      "css": ".ds-segments{font-family:var(--font-body,'DM Sans',sans-serif);display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#EDF0E8;border-radius:26px;padding:4px;margin-top:8px}.ds-segments button{font-family:var(--font-body,'DM Sans',sans-serif);min-height:42px;border:0;border-radius:22px;background:transparent;font-size:13px;color:var(--secondary,#5D7065);font-weight:500;cursor:pointer;transition:background-color .16s ease,border-color .16s ease;}.ds-segments button.ds-selected{background:var(--emerald-700,#08603E);color:#FFF}.ds-segments button:not(.ds-selected):hover{background:#E0E8D9}.ds-segments button:focus-visible{outline:3px solid #2B8A62;outline-offset:3px;}@media(prefers-reduced-motion:reduce){.ds-segments button{transition:none!important;animation:none!important;scroll-behavior:auto!important}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Calm, trustworthy, respectful Islamic finance",
+    "overview": "Barakah pairs a deep emerald editorial setting with a mint-and-offwhite financial interface. Serif brand and editorial moments provide warmth; compact sans-serif controls and emphatic financial numerals provide clarity. Thin borders, rounded surfaces and diffused shadows keep the interface quiet rather than ornamental.\n\nThe desktop is a showcase for one interactive phone, with an editorial panel on the left. On small screens the same app becomes edge-to-edge, retaining its five bottom destinations. This is strictly a frontend-only educational prototype: sample financial information, illustrative portfolios, local guide replies and demo giving intentions must remain visibly distinguishable from real services.",
+    "keyCharacteristics": [
+      "Deep emerald hierarchy with mint support and an offwhite canvas.",
+      "DM Sans interface, Manrope financial totals, system-serif brand and editorial text.",
+      "Rounded, thin-bordered surfaces with restrained, diffused elevation.",
+      "One interactive app, persistent bottom navigation, responsive device framing.",
+      "Visible demo context, keyboard focus and reduced-motion support."
+    ],
+    "rules": [
+      {
+        "name": "The Type Roles Rule",
+        "body": "Use DM Sans for controls, Manrope for prominent financial totals, and the existing system-serif stack for brand/editorial moments; do not describe Georgia as a shipped custom face.",
+        "section": "typography"
+      },
+      {
+        "name": "The Single App Rule",
+        "body": "Keep one interactive phone on desktop and the same edge-to-edge app at small widths; do not turn the editorial panel into another financial dashboard.",
+        "section": "layout"
+      }
+    ],
+    "dos": [
+      "**Do** keep the extracted emerald hierarchy, mint supporting fills and offwhite canvas.",
+      "**Do** preserve the distinct UI, financial-number and system-serif type roles.",
+      "**Do** keep persistent bottom tabs, scrollable content, visible keyboard focus and mobile safe areas.",
+      "**Do** honor reduced motion and retain legible loading/retry/empty states.",
+      "**Do** retain sample-data, educational-estimate and demo-intention disclosures alongside financial content."
+    ],
+    "donts": [
+      "**Don't** add a second interactive desktop phone or stretch the financial app into the left editorial panel.",
+      "**Don't** invent a new accent palette, universal 18px radius, tonal ramp or shadow-heavy card system.",
+      "**Don't** call the fallback serif a bundled brand font or assume a universal body-size scale.",
+      "**Don't** imply connected backends, real payments, live model replies, live market feeds, certified securities or guaranteed returns.",
+      "**Don't** add hover lifts, spring transitions, blurred backdrops or new active/error-field styles absent from the implementation."
+    ]
+  }
+}
