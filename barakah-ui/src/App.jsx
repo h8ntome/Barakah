@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BottomTabs, DesktopPanel, RequestState, StatusBar } from './components/ui.jsx';
+import { BottomTabs, DesktopPanel, RequestState } from './components/ui.jsx';
 import Home from './screens/Home.jsx';
 import Zakat, { AssetModal } from './screens/Zakat.jsx';
 import Invest from './screens/Invest.jsx';
@@ -38,7 +38,7 @@ export default function App() {
   }
   return <div className="app-shell"><DesktopPanel activeTab={activeTab} navigate={navigate} />
     <main className="phone-region" aria-label="Barakah interactive demo">
-      <div className="phone-frame"><div className="phone-screen"><StatusBar />
+      <div className="phone-frame"><div className="phone-screen">
         <RequestState resource={dashboard} label="your overview"><RequestState resource={profile} label="your assets">{dashboard.data && profile.data && <Workspace dashboard={dashboard.data} initialProfile={profile.data} activeTab={activeTab} navigate={navigate} />}</RequestState></RequestState>
         <BottomTabs activeTab={activeTab} navigate={navigate} />
       </div></div>

@@ -33,6 +33,7 @@ This is the shared handoff file for AI agents working on this repository. Read i
 ## Current frontend behavior
 
 - Five working destinations: Home, Invest, Zakat, AI Chat, Give.
+- **User preference, 2026-11-14:** no simulated phone status bar (time, signal, Wi-Fi or battery) on any screen. Removed the shared component and unused icons/CSS; retain real-device safe-area padding and actual screen headers.
 - Home and Zakat derive their totals from one editable React profile. Default sample net worth is USD 24,750; illustrative estimated zakat is USD 618.75.
 - Zakat uses `max(0, assets − liabilities) × 0.025`, rounded to cents. This does **not** establish nisab eligibility, haul, asset qualification, or an authoritative religious ruling.
 - **No AI model is connected.** `sendAdvisorMessage()` selects predefined keyword-based examples in the mock adapter. No OpenAI/Claude/model inference or external chat requests occur.
@@ -69,4 +70,4 @@ Use a Node version supported by Vite 7 (20.19+ on Node 20, or 22.12+). No enviro
 
 ## Latest handoff
 
-**2026-11-14 · coding assistant:** Created this shared notes file at the user’s request. Keep it maintained during subsequent project work, especially when the Vercel blocker is resolved, the API contract is approved, or the mock advisor is replaced by a real backend service.
+**2026-11-14 · coding assistant:** Removed the simulated device status bar globally at the user’s request. Production build and all 16 tests passed; Chromium checks confirmed no status bar/icons, intact bottom navigation and screen headers, and no horizontal overflow at 320px. Visually checked 390px mobile and 1440px desktop; browser errors and the UI detector were empty. No backend or service behavior changed. Keep the Vercel blocker above open until the public UI is actually verified.

@@ -1,8 +1,8 @@
 import { useEffect, useId, useRef } from 'react';
 import {
-  ArrowLeft, ArrowRight, ArrowUpRight, BarChart3, BatteryFull, BookOpen,
+  ArrowLeft, ArrowRight, ArrowUpRight, BarChart3, BookOpen,
   ChevronRight, Coins, Droplets, Heart, Home, Info, Landmark, LoaderCircle,
-  MessageCircle, RefreshCw, ShieldCheck, Signal, Sparkles, Star, Wifi, X,
+  MessageCircle, RefreshCw, ShieldCheck, Sparkles, Star, X,
 } from 'lucide-react';
 import { money } from '../utils/finance.js';
 
@@ -38,9 +38,6 @@ export function DesktopPanel({ activeTab, navigate }) {
   </aside>;
 }
 
-export function StatusBar() {
-  return <div className="status-bar" aria-hidden="true"><span>9:41</span><div><Signal size={14} /><Wifi size={14} /><BatteryFull size={20} /></div></div>;
-}
 export function BottomTabs({ activeTab, navigate }) {
   return <nav className="bottom-nav" aria-label="Main navigation">{destinations.map(({ id, icon: Icon, label }) =>
     <button key={id} className={activeTab === id ? 'selected' : ''} aria-current={activeTab === id ? 'page' : undefined} onClick={() => navigate(id)}>
