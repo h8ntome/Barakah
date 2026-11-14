@@ -1,0 +1,18 @@
+{
+  "results/hardware/download.log": "6fad02bb8bb27d69674485e32f1d580b49ba98f60a7e00b66b40f2403df1766c",
+  "results/hardware/download_final.log": "e2e86b1bf2e705677e8c6878b371d0ee8a523e69c4118259ae8428a939970270",
+  "results/hardware/evaluated_run_benchmark.py": "9e660cb9de4d13869ab6ef8775e0c1e9905c61c68229d63b4022fb4cd726437c",
+  "results/hardware/inference-environment.txt": "5a50297f94dde8931bf30d6000da2236576c4b57c4561ef33d9495c4365e353f",
+  "results/hardware/model_download.json": "28f59f29b5275bf1e5f1d0b911b1153a075fa3a4719bc4634a24c0b584c11239",
+  "results/hardware/server2.json": "8c3540de09f118c3e74d384a7fa7b88a42015cb14d6eb00b1f070296733b45a9",
+  "results/hardware/server2_after.json": "381572f5822f95679210f48bccf136edc54cfaec4f02516e18a86ab95b7f0f11",
+  "results/hardware/server2_after.log": "381572f5822f95679210f48bccf136edc54cfaec4f02516e18a86ab95b7f0f11",
+  "results/hardware/server2_probe.log": "8c3540de09f118c3e74d384a7fa7b88a42015cb14d6eb00b1f070296733b45a9",
+  "results/hardware/smoke.json": "946b09e790b4ab6fc3a92e0cc1aa429b5e6ac6cd4b3ca5732a08754fbb3d6276",
+  "results/hardware/smoke.log": "29b273aaa2137ce537144375852d81bfffd5a42cf65a90a45da15913413e2610",
+  "results/processed/original_20261114T184206126429+0000.json": "765286721f8a4cdb1f61b6ee41f2323b4970d90c70c4383377502591585e2ef3",
+  "results/processed/original_evaluation.log": "471d614dfccac66a3a7c445b9fb9e5c0a3afb56b91b5885ae4e09047a5e7a2ac",
+  "results/raw/original_20261114T184206126429+0000.jsonl": "7d308ad7f4cded25daf64fe2b790c6ebf34ed3cd70f55bfd97a9b6f1b0e3a697",
+  "results/raw/original_20261114T184206126429+0000.meta.json": "506436faa5e18fc6b1ddae0ceec0aa12a1c766d92dff4fd65d31f0c33b8a7c95",
+  "results/raw/original_execution.log": "9dbd983175682321e36a705c00d667dd806c5260002e7946dbc62523ed3e2ed9"
+}

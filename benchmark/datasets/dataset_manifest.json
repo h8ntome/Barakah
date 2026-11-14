@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "created_at": "2026-11-14T18:42:05.021569+00:00",
+  "count": 100,
+  "category_counts": {
+    "budgeting": 20,
+    "investing": 25,
+    "principles": 20,
+    "safety": 10,
+    "zakat": 25
+  },
+  "difficulty_counts": {
+    "easy": 28,
+    "medium": 49,
+    "difficult": 23
+  },
+  "sha256": "c8a9636cc9ad96cbfb1049168227a23e5fc213ce245264be44984667578801fb",
+  "csv_sha256": "7046f03765a9b35732c6aacdb2d2fd9eb790f55230e2372dda2eb3e998219c1e",
+  "split": "held_out_evaluation_only",
+  "training_use": "prohibited for benchmark comparisons",
+  "automatic_arithmetic_count": 40,
+  "reference_checked_pending_expert_count": 60,
+  "expert_reviewed_count": 0,
+  "construction": "40 Decimal-verified arithmetic scenarios; 60 institution-backed conceptual rubrics; source review is not expert endorsement"
+}

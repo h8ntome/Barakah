@@ -1,0 +1,6 @@
+Ignoring corrupted tree cache file /home/hadi/.cache/huggingface/hub/models--LiquidAI--LFM3-1.7B/trees/1da06bec6a819da10b54c67e5c90972b46d81871.json: [Errno 13] Permission denied: '/home/hadi/.cache/huggingface/hub/models--LiquidAI--LFM3-1.7B/trees/1da06bec6a819da10b54c67e5c90972b46d81871.json'
+Ignoring corrupted tree cache file /home/hadi/.cache/huggingface/hub/models--LiquidAI--LFM3-1.7B/trees/1da06bec6a819da10b54c67e5c90972b46d81871.json: [Errno 13] Permission denied: '/home/hadi/.cache/huggingface/hub/models--LiquidAI--LFM3-1.7B/trees/1da06bec6a819da10b54c67e5c90972b46d81871.json'
+Ignored error while writing tree cache file /home/hadi/.cache/huggingface/hub/models--LiquidAI--LFM3-1.7B/trees/1da06bec6a819da10b54c67e5c90972b46d81871.json: [Errno 13] Permission denied: '/home/hadi/.cache/huggingface/hub/models--LiquidAI--LFM3-1.7B/trees/tmpic3h7jyb.tmp'
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s]Fetching 12 files: 100%|██████████| 12/12 [00:00<00:00, 1103.69it/s]
+[1;91mE-001h rocSHMEM[0m Could not open libnuma. Returning	[90mNUMAWrapper@src/gda/numa_wrapper.cpp:48[0m
+Verified LiquidAI/LFM3-1.7B@1da06bec6a819da10b54c67e5c90972b46d81871: /home/hadi/.cache/huggingface/hub/models--LiquidAI--LFM3-1.7B/snapshots/1da06bec6a819da10b54c67e5c90972b46d81871; reused_cache=True

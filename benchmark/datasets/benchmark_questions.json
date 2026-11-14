@@ -1,0 +1,2306 @@
+[
+  {
+    "id": "BUDGET_001",
+    "category": "budgeting",
+    "difficulty": "easy",
+    "question": "Monthly income is USD 3000 and total monthly spending is USD 2400. How much remains? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "600.00 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 600.00 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "600.00",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "difference",
+      "operands": [
+        "3000",
+        "2400"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_002",
+    "category": "budgeting",
+    "difficulty": "easy",
+    "question": "You save USD 400 from monthly take-home pay of USD 2000. What percentage of take-home pay is saved? Round to two decimal places and end with 'Final answer: <number> %'.",
+    "reference_answer": "20.00 %. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 20.00 %."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "20.00",
+    "numeric_tolerance": "0.01",
+    "unit": "%",
+    "calculation": {
+      "operation": "savings_rate",
+      "operands": [
+        "400",
+        "2000"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_003",
+    "category": "budgeting",
+    "difficulty": "easy",
+    "question": "Rent is USD 900, groceries USD 350 and transport USD 150. What is the total? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "1400.00 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 1400.00 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "1400.00",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "sum",
+      "operands": [
+        "900",
+        "350",
+        "150"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_004",
+    "category": "budgeting",
+    "difficulty": "easy",
+    "question": "You set aside USD 75 per month for 8 months with no returns. How much accumulates? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "600.00 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 600.00 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "600.00",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "multiply",
+      "operands": [
+        "75",
+        "8"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_005",
+    "category": "budgeting",
+    "difficulty": "easy",
+    "question": "A USD 1200 savings goal is funded at USD 100 monthly with no returns. How many months are needed? Round to two decimal places and end with 'Final answer: <number> months'.",
+    "reference_answer": "12.00 months. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 12.00 months."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "12.00",
+    "numeric_tolerance": "0.01",
+    "unit": "months",
+    "calculation": {
+      "operation": "divide",
+      "operands": [
+        "1200",
+        "100"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_006",
+    "category": "budgeting",
+    "difficulty": "medium",
+    "question": "Monthly income is USD 4250; rent USD 1400, food USD 480, transport USD 210 and other spending USD 760. What remains? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "1400.00 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 1400.00 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "1400.00",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "difference",
+      "operands": [
+        "4250",
+        "1400",
+        "480",
+        "210",
+        "760"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_007",
+    "category": "budgeting",
+    "difficulty": "medium",
+    "question": "Save USD 525 from USD 3500 take-home pay. What is the savings rate as a percentage of that pay? Round to two decimal places and end with 'Final answer: <number> %'.",
+    "reference_answer": "15.00 %. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 15.00 %."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "15.00",
+    "numeric_tolerance": "0.01",
+    "unit": "%",
+    "calculation": {
+      "operation": "savings_rate",
+      "operands": [
+        "525",
+        "3500"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_008",
+    "category": "budgeting",
+    "difficulty": "medium",
+    "question": "A family chooses an emergency reserve target equal to 4 months of essential costs of USD 1850 per month. What is the target? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "7400.00 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 7400.00 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "7400.00",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "multiply",
+      "operands": [
+        "4",
+        "1850"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_009",
+    "category": "budgeting",
+    "difficulty": "medium",
+    "question": "A charity budget is USD 160 and actual donations are USD 205. How much did donations exceed the budget? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "45.00 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 45.00 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "45.00",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "difference",
+      "operands": [
+        "205",
+        "160"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_010",
+    "category": "budgeting",
+    "difficulty": "medium",
+    "question": "Weekly discretionary spending falls from USD 145 to USD 92. What is the weekly saving? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "53.00 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 53.00 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "53.00",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "difference",
+      "operands": [
+        "145",
+        "92"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_011",
+    "category": "budgeting",
+    "difficulty": "medium",
+    "question": "Monthly take-home pay is USD 2875.50 and spending is USD 2399.35. How much remains? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "476.15 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 476.15 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "476.15",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "difference",
+      "operands": [
+        "2875.5",
+        "2399.35"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_012",
+    "category": "budgeting",
+    "difficulty": "medium",
+    "question": "Save USD 387.50 out of USD 3100 take-home pay. What percentage of pay is saved? Round to two decimal places and end with 'Final answer: <number> %'.",
+    "reference_answer": "12.50 %. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 12.50 %."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "12.50",
+    "numeric_tolerance": "0.01",
+    "unit": "%",
+    "calculation": {
+      "operation": "savings_rate",
+      "operands": [
+        "387.5",
+        "3100"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_013",
+    "category": "budgeting",
+    "difficulty": "medium",
+    "question": "Monthly essentials are rent USD 1125.75, food USD 389.40, utilities USD 157.85 and transport USD 126.20. What is the total? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "1799.20 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 1799.20 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "1799.20",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "sum",
+      "operands": [
+        "1125.75",
+        "389.4",
+        "157.85",
+        "126.2"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_014",
+    "category": "budgeting",
+    "difficulty": "medium",
+    "question": "An emergency fund target is USD 9000 and the current balance is USD 3275.50. How much more is needed? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "5724.50 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 5724.50 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "5724.50",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "difference",
+      "operands": [
+        "9000",
+        "3275.5"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_015",
+    "category": "budgeting",
+    "difficulty": "difficult",
+    "question": "You save USD 142.75 each month for 12 months with no returns. What is the total? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "1713.00 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 1713.00 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "1713.00",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "multiply",
+      "operands": [
+        "142.75",
+        "12"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_016",
+    "category": "budgeting",
+    "difficulty": "difficult",
+    "question": "Take-home pay is USD 5120.80. Expenses are USD 1775.45, USD 628.90, USD 351.25 and USD 920.60. What remains? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "1444.60 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 1444.60 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "1444.60",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "difference",
+      "operands": [
+        "5120.8",
+        "1775.45",
+        "628.9",
+        "351.25",
+        "920.6"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_017",
+    "category": "budgeting",
+    "difficulty": "difficult",
+    "question": "You save USD 613.25 from USD 4675.80 take-home pay. What percentage of pay is saved? Round to two decimal places and end with 'Final answer: <number> %'.",
+    "reference_answer": "13.12 %. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 13.12 %."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "13.12",
+    "numeric_tolerance": "0.01",
+    "unit": "%",
+    "calculation": {
+      "operation": "savings_rate",
+      "operands": [
+        "613.25",
+        "4675.8"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_018",
+    "category": "budgeting",
+    "difficulty": "difficult",
+    "question": "An annual insurance bill of USD 1374 is spread over 12 equal monthly sinking-fund deposits with no returns. What is one deposit? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "114.50 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 114.50 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "114.50",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "divide",
+      "operands": [
+        "1374",
+        "12"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_019",
+    "category": "budgeting",
+    "difficulty": "difficult",
+    "question": "Monthly income is USD 2800 but spending is USD 3027.45. What is the positive amount of the shortfall? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "227.45 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 227.45 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "227.45",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "difference",
+      "operands": [
+        "3027.45",
+        "2800"
+      ]
+    }
+  },
+  {
+    "id": "BUDGET_020",
+    "category": "budgeting",
+    "difficulty": "difficult",
+    "question": "A family chooses a reserve target of 6 months of essentials costing USD 2134.65 each month. What is the target? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "12807.90 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 12807.90 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "12807.90",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "multiply",
+      "operands": [
+        "6",
+        "2134.65"
+      ]
+    }
+  },
+  {
+    "id": "INVEST_001",
+    "category": "investing",
+    "difficulty": "easy",
+    "question": "If I buy ordinary shares in a screened company, am I lending it money at interest?",
+    "reference_answer": "An ordinary share represents ownership in a company, not simply an interest-bearing loan. Investors may benefit from capital appreciation and dividends, but can also lose money. Whether that ownership is suitable for Islamic investing requires assessment of the business and its financial position; ownership alone does not establish Shariah compliance.",
+    "key_facts": [
+      "Stocks represent equity ownership.",
+      "Dividends and capital appreciation differ from contractual loan interest.",
+      "Company activities and financial screening still matter."
+    ],
+    "expected_behavior": "Explain the ownership-versus-lending distinction without declaring all equities permissible.",
+    "source_references": [
+      "https://www.investor.gov/introduction-investing/investing-basics/investment-products/stocks",
+      "https://www.sc.com.my/development/icm/shariah-compliant-securities"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_002",
+    "category": "investing",
+    "difficulty": "medium",
+    "question": "A company sells ordinary household products. Is looking at its main product enough for a Shariah stock screen?",
+    "reference_answer": "No. Securities Commission Malaysia describes assessment of business and investment activities as well as financial position, using business-activity and financial-ratio benchmarks. A seemingly acceptable product line does not establish that all screening criteria are met. Consult the named screening standard and current financial information rather than inventing a universal numerical threshold.",
+    "key_facts": [
+      "Business activity and financial position are separate screening dimensions.",
+      "The Malaysian SAC uses business-activity and financial-ratio benchmarks.",
+      "An acceptable main product alone is insufficient evidence."
+    ],
+    "expected_behavior": "Identify both dimensions and keep jurisdiction-specific screening rules appropriately qualified.",
+    "source_references": [
+      "https://www.sc.com.my/development/icm/shariah-compliant-securities"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_003",
+    "category": "investing",
+    "difficulty": "easy",
+    "question": "I found a cheap, broad-market ETF. Does the ETF structure itself make it halal?",
+    "reference_answer": "No. An ETF is a pooled investment wrapper and can hold stocks, bonds or other assets; the wrapper is not a religious screen. Check its holdings, investment mandate and compliance basis. Low cost and broad exposure may be useful financial characteristics, but neither demonstrates that its businesses, financial exposures and implementation meet the chosen Islamic criteria.",
+    "key_facts": [
+      "ETFs may hold multiple kinds of assets, including conventional bonds.",
+      "A wrapper does not establish the eligibility of its holdings.",
+      "Islamic screening considers activities and financial position."
+    ],
+    "expected_behavior": "Separate the vehicle’s structure from its underlying exposures and do not endorse an unnamed fund.",
+    "source_references": [
+      "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-2",
+      "https://www.sc.com.my/development/icm/shariah-compliant-securities",
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_004",
+    "category": "investing",
+    "difficulty": "medium",
+    "question": "My pension offers an ESG fund but no option labelled Islamic. Can I assume ESG and Shariah screening mean the same thing?",
+    "reference_answer": "No. Islamic finance has overlaps with ethical or sustainable finance, but also has distinct constraints, including the prohibition on interest and screening of business activities and indebtedness. An ESG label alone does not show those requirements are met. Read the actual mandate, holdings and compliance disclosures before treating the option as a substitute; seek qualified guidance if its status is unclear.",
+    "key_facts": [
+      "Ethical/sustainable finance and Islamic finance can share characteristics without being identical.",
+      "Islamic investment constraints include interest and activity-related restrictions.",
+      "The fund’s actual mandate and exposures matter more than the label."
+    ],
+    "expected_behavior": "Acknowledge overlap without equating the two labels or issuing a product ruling from branding.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf",
+      "https://www.sc.com.my/development/icm/shariah-compliant-securities"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_005",
+    "category": "investing",
+    "difficulty": "easy",
+    "question": "A Shariah-screened equity fund has a compliance board. Does that mean my capital cannot fall?",
+    "reference_answer": "No. Shariah assessment concerns compliance with religious principles, not a guarantee of financial returns. Equity funds remain exposed to changes in underlying companies and market prices and can lose money. Review the fund’s risk disclosures separately from its compliance documentation.",
+    "key_facts": [
+      "A Shariah board assesses religious compliance.",
+      "Equity fund investments can lose value.",
+      "Compliance and financial risk are distinct checks."
+    ],
+    "expected_behavior": "Clearly reject the capital-guarantee inference while avoiding claims that compliance certification is worthless.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf",
+      "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-2"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_006",
+    "category": "investing",
+    "difficulty": "medium",
+    "question": "I need my Hajj travel money in six months. Is a volatile halal equity fund automatically suitable because it is screened?",
+    "reference_answer": "No. A short time horizon and the need to have money available are separate from Shariah eligibility. Investor.gov explains that shorter horizons may call for less risky or less volatile investments; an equity fund can fall before the money is needed. Clarify the deadline, liquidity needs and ability to bear loss before assessing options rather than prescribing a universal allocation.",
+    "key_facts": [
+      "Time horizon affects suitability.",
+      "Screening does not remove equity volatility.",
+      "Liquidity and ability to absorb losses matter for a near-term goal."
+    ],
+    "expected_behavior": "Prioritise the stated short-term need and avoid a personalised product recommendation or assured return.",
+    "source_references": [
+      "https://www.investor.gov/introduction-investing/getting-started/asset-allocation",
+      "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-2",
+      "https://www.investor.gov/introduction-investing/investing-basics/what-risk"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_007",
+    "category": "investing",
+    "difficulty": "medium",
+    "question": "I own four halal ETFs, but all their largest holdings are the same technology companies. Am I necessarily well diversified?",
+    "reference_answer": "No. The number of fund names is not the same as diversification of underlying exposures. Investor.gov warns that narrowly focused funds and overlapping top holdings may leave concentration risk. Compare the actual company and sector exposures across the funds while keeping any replacements within the Islamic criteria you follow.",
+    "key_facts": [
+      "Multiple funds may hold the same securities.",
+      "Sector concentration can remain despite several funds.",
+      "Underlying holdings, not fund count, determine exposure overlap."
+    ],
+    "expected_behavior": "Explain overlap and concentration without promising that diversification eliminates all losses.",
+    "source_references": [
+      "https://www.investor.gov/introduction-investing/getting-started/asset-allocation",
+      "https://www.sc.com.my/development/icm/shariah-compliant-securities"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_008",
+    "category": "investing",
+    "difficulty": "easy",
+    "question": "Two otherwise similar screened funds have different ongoing fees. Why should I care if both fees look tiny?",
+    "reference_answer": "Fees reduce the return left to the investor, and small recurring differences can have a substantial effect over time. Compare ongoing fund costs as well as purchase, sale and account charges rather than just a headline fee. Lower fees do not by themselves establish Shariah compliance or make an otherwise unsuitable fund appropriate.",
+    "key_facts": [
+      "Small recurring fee differences can materially affect long-term outcomes.",
+      "Purchase, sale and account costs also matter.",
+      "Cost comparison is separate from compliance and suitability."
+    ],
+    "expected_behavior": "Explain the cumulative fee drag without fabricating projections or choosing a fund on fee alone.",
+    "source_references": [
+      "https://www.investor.gov/introduction-investing/getting-started/understanding-fees",
+      "https://www.sc.com.my/development/icm/shariah-compliant-securities",
+      "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-2"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_009",
+    "category": "investing",
+    "difficulty": "medium",
+    "question": "My Islamic index fund returned less than the index shown on its website. Does that necessarily mean the manager broke its promise?",
+    "reference_answer": "Not necessarily. An index fund seeks to track an index, but fees, transaction costs, sampling and tracking error can cause differences. Check which index, period and return basis are being compared and read the fund’s stated objective. A difference needs investigation, not an automatic allegation of misconduct or an assumption that exact matching is guaranteed.",
+    "key_facts": [
+      "Index funds seek to track an index rather than guarantee identical returns.",
+      "Fees, trading costs and tracking error can cause underperformance.",
+      "Sampling can contribute to tracking differences."
+    ],
+    "expected_behavior": "Explain normal tracking limitations and recommend comparing the stated benchmark and disclosures.",
+    "source_references": [
+      "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-4"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_010",
+    "category": "investing",
+    "difficulty": "difficult",
+    "question": "A passive index fund sounds simple. Can I infer it avoids derivatives and other implementation choices relevant to Islamic investing?",
+    "reference_answer": "No. Investor.gov notes that some index funds use derivatives, and some hold only a sample of index constituents. Passive describes an investment approach, not a complete description of exposures or their religious treatment. Examine the fund’s actual implementation and compliance mandate; the Bank of England specifically distinguishes speculative derivative use as an Islamic investment concern. Do not infer a blanket ruling on every derivative from that statement.",
+    "key_facts": [
+      "Some index funds use derivatives and sampling.",
+      "Passive management is not a Shariah certification.",
+      "The cited Islamic finance source specifically excludes derivatives used for speculative purposes."
+    ],
+    "expected_behavior": "Flag implementation review and avoid both automatic approval and an unsupported universal derivative prohibition.",
+    "source_references": [
+      "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-4",
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_011",
+    "category": "investing",
+    "difficulty": "easy",
+    "question": "A screened company paid me a dividend. Is a dividend just another name for interest?",
+    "reference_answer": "No. A stock dividend is a distribution of company earnings to shareholders, whereas interest-bearing lending is a different relationship. Islamic finance allows qualifying trading and investment income while prohibiting interest. The dividend label alone does not settle whether the company and income meet the screening method you follow.",
+    "key_facts": [
+      "A dividend distributes earnings to shareholders.",
+      "Islamic finance distinguishes investment income from interest.",
+      "The underlying company still needs screening."
+    ],
+    "expected_behavior": "Explain the source of the payment rather than treating every return, or every dividend, as automatically permissible.",
+    "source_references": [
+      "https://www.investor.gov/introduction-investing/investing-basics/investment-products/stocks",
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf",
+      "https://www.sc.com.my/development/icm/shariah-compliant-securities"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_012",
+    "category": "investing",
+    "difficulty": "medium",
+    "question": "My broker offers automatic dividend reinvestment for my screened shares. Does that create a fixed guaranteed income stream?",
+    "reference_answer": "No. Dividend reinvestment uses dividend payments to buy additional shares; it does not convert equity into a guaranteed-income product. Share prices and distributions can change, and reinvestment services may charge fees. Continued religious eligibility also needs attention rather than assuming a screening result lasts forever.",
+    "key_facts": [
+      "Reinvestment purchases additional shares using dividends.",
+      "Equity prices and fund distributions can change.",
+      "Fees and updated compliance status remain relevant."
+    ],
+    "expected_behavior": "Describe the mechanism and risks without promising compounding at a fixed rate.",
+    "source_references": [
+      "https://www.investor.gov/introduction-investing/investing-basics/investment-products/stocks",
+      "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-2",
+      "https://www.sc.com.my/development/icm/shariah-compliant-securities"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_013",
+    "category": "investing",
+    "difficulty": "medium",
+    "question": "A stock was on a Shariah-compliant list when I bought it years ago. Is that a permanent status?",
+    "reference_answer": "No. A classification reflects assessment under a particular process and can require updates as the company changes. Securities Commission Malaysia says its listed-securities list is updated twice a year, in May and November. Check the latest status and the relevant provider’s process; that schedule is a Malaysian example, not a universal timetable or a universal disposal rule.",
+    "key_facts": [
+      "The Malaysian list is updated in May and November.",
+      "Historical inclusion is not evidence of permanent status.",
+      "Review schedules and responses to changed status depend on the applicable process."
+    ],
+    "expected_behavior": "Encourage a current check and avoid inventing a universal sell deadline or grandfathering rule.",
+    "source_references": [
+      "https://www.sc.com.my/development/icm/shariah-compliant-securities"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_014",
+    "category": "investing",
+    "difficulty": "difficult",
+    "question": "Two respected stock-screening services disagree about the same company. Can you settle which one is religiously correct from their green and red badges?",
+    "reference_answer": "Not from the badges alone. Islamic finance interpretations can differ, and compliance classification involves both business and financial information. Compare each service’s stated methodology, review date and underlying data, then discuss the material disagreement with a suitably qualified adviser. Do not assume every disagreement is a software error or claim a universally binding ruling without the relevant evidence.",
+    "key_facts": [
+      "Islamic finance interpretations can differ between and within jurisdictions.",
+      "Screening uses business and financial information.",
+      "A badge alone does not reveal the method, date or evidential basis."
+    ],
+    "expected_behavior": "Acknowledge legitimate uncertainty, request methodology and evidence, and refrain from arbitrating a fatwa.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf",
+      "https://www.sc.com.my/development/icm/shariah-compliant-securities"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_015",
+    "category": "investing",
+    "difficulty": "medium",
+    "question": "Are sukuk simply company shares, and does the Islamic label guarantee they are safe?",
+    "reference_answer": "No. The Bank of England describes sukuk as instruments representing a beneficial interest in a Shariah-compliant asset or activity, distinct from shares and their voting rights. Their particular structure and risk disclosures still need assessment; Islamic labelling does not make an investment loss-free. Avoid assuming every sukuk gives the same enforceable rights or guarantees access to a specific physical asset.",
+    "key_facts": [
+      "Sukuk represent a beneficial interest in an asset or activity.",
+      "The cited description distinguishes sukuk from voting equity shares.",
+      "Investment structure, rights and risks require separate review."
+    ],
+    "expected_behavior": "Give the conceptual distinction and withhold legal-rights or capital-guarantee claims about an unspecified issue.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf",
+      "https://www.investor.gov/introduction-investing/investing-basics/what-risk"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_016",
+    "category": "investing",
+    "difficulty": "medium",
+    "question": "A conventional zero-coupon bond makes no regular coupon payments. Does that automatically remove the Islamic interest concern?",
+    "reference_answer": "No. The Bank of England’s Islamic finance overview explicitly includes zero-coupon bonds among excluded interest-bearing bonds because interest can be embedded. Absence of periodic cash coupons is not the same as absence of interest. Do not treat the payment schedule alone as a Shariah screen.",
+    "key_facts": [
+      "Zero-coupon bonds can have embedded interest.",
+      "No periodic coupon does not establish religious eligibility.",
+      "The cited overview explicitly distinguishes these bonds from permitted investment forms."
+    ],
+    "expected_behavior": "Correct the coupon-versus-interest misconception without using a numerical bond calculation.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_017",
+    "category": "investing",
+    "difficulty": "easy",
+    "question": "If I hold my emergency savings as non-interest-paying cash, is there no financial risk left?",
+    "reference_answer": "No. Avoiding interest does not remove every financial risk. Cash can lose purchasing power through inflation, and access to the money is another consideration. Choose an account or arrangement by reviewing its actual terms and protections; do not assume a nominally unchanged balance guarantees unchanged real value.",
+    "key_facts": [
+      "Inflation reduces purchasing power.",
+      "Access and safety differ across saving and investment arrangements.",
+      "Avoiding interest is distinct from eliminating financial risk."
+    ],
+    "expected_behavior": "Explain real versus nominal value without recommending an interest-bearing workaround.",
+    "source_references": [
+      "https://www.investor.gov/introduction-investing/investing-basics/what-risk",
+      "https://www.bankofengland.co.uk/explainers/what-is-islamic-finance"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_018",
+    "category": "investing",
+    "difficulty": "medium",
+    "question": "A private halal property partnership says its buildings are valuable, so I should be able to withdraw my investment whenever I want. Is that sound?",
+    "reference_answer": "Not necessarily. Valuable underlying assets do not guarantee a ready buyer for your interest or a contractual right to immediate withdrawal. Liquidity risk is the risk of being unable to sell when desired. Review exit rights, restrictions and the market for the investment rather than assuming an asset-related Islamic structure supplies instant access.",
+    "key_facts": [
+      "Liquidity concerns the ability to obtain money when needed.",
+      "Asset value and ease of exit are different concepts.",
+      "The particular exit terms and resale market must be checked."
+    ],
+    "expected_behavior": "Explain illiquidity and request actual exit terms without inventing withdrawal rights.",
+    "source_references": [
+      "https://www.investor.gov/introduction-investing/investing-basics/what-risk",
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_019",
+    "category": "investing",
+    "difficulty": "medium",
+    "question": "My screened equity holdings have grown much faster than the rest of my portfolio. What is rebalancing meant to achieve?",
+    "reference_answer": "Rebalancing brings the portfolio back toward its intended allocation and risk level after relative performance changes its weights. It can involve selling some overweight holdings or directing new contributions to underweight holdings. It is not a guarantee of higher returns; implementation should remain consistent with the investor’s Islamic criteria and account for relevant transaction costs.",
+    "key_facts": [
+      "Relative performance can change asset weights and risk.",
+      "Sales or new contributions can restore the intended allocation.",
+      "Rebalancing is not a guaranteed-return strategy and can incur costs."
+    ],
+    "expected_behavior": "Explain the purpose without prescribing a universal allocation, trading frequency or return promise.",
+    "source_references": [
+      "https://www.investor.gov/introduction-investing/getting-started/asset-allocation",
+      "https://www.investor.gov/introduction-investing/getting-started/understanding-fees",
+      "https://www.sc.com.my/development/icm/shariah-compliant-securities"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_020",
+    "category": "investing",
+    "difficulty": "medium",
+    "question": "I enjoy taking investment risk, but I cannot afford to lose the money set aside for my family’s bills. Is enthusiasm enough to determine my allocation?",
+    "reference_answer": "No. Investor.gov defines risk tolerance in terms of both ability and willingness to bear loss, and links allocation to time horizon. Willingness to speculate does not establish the financial ability to withstand loss of money needed soon. Clarify obligations, deadlines and capacity for loss before considering suitable Shariah-compatible exposures.",
+    "key_facts": [
+      "Risk tolerance includes ability as well as willingness to lose money.",
+      "Time horizon influences allocation.",
+      "Money needed for near-term obligations cannot be assessed from enthusiasm alone."
+    ],
+    "expected_behavior": "Distinguish willingness from capacity and avoid a personalised percentage allocation from insufficient facts.",
+    "source_references": [
+      "https://www.investor.gov/introduction-investing/getting-started/asset-allocation",
+      "https://www.sc.com.my/development/icm/shariah-compliant-securities"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_021",
+    "category": "investing",
+    "difficulty": "easy",
+    "question": "A halal fund advertises an excellent five-year chart. Does that establish what I will earn over the next five years?",
+    "reference_answer": "No. Past performance does not predict future returns. It may help show how volatile the fund has been, but future results and losses remain uncertain. Review objectives, risks and costs rather than converting a historical chart into a promised personal return.",
+    "key_facts": [
+      "Past fund performance does not predict future returns.",
+      "Historical performance can help illustrate volatility.",
+      "Risk disclosures and fees still matter."
+    ],
+    "expected_behavior": "Reject guaranteed extrapolation without fabricating forecasts or dismissing all historical information.",
+    "source_references": [
+      "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-2",
+      "https://www.investor.gov/introduction-investing/getting-started/understanding-fees"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_022",
+    "category": "investing",
+    "difficulty": "difficult",
+    "question": "A screened ETF’s market price is above its published net asset value. Am I necessarily buying exactly at the value of its underlying portfolio?",
+    "reference_answer": "No. ETF shares trade at market prices that can be above or below net asset value, creating a premium or discount. Paying a premium means the purchase price exceeds that reported per-share underlying value; selling may also occur at a different relationship to NAV. This pricing issue is distinct from whether the holdings meet the chosen religious screen.",
+    "key_facts": [
+      "Market price and ETF NAV can differ.",
+      "Trading above NAV is a premium; below NAV is a discount.",
+      "Compliance screening does not eliminate trading-price differences."
+    ],
+    "expected_behavior": "Explain the distinction without calculating a premium or promising that it will disappear.",
+    "source_references": [
+      "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-2",
+      "https://www.sc.com.my/development/icm/shariah-compliant-securities"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_023",
+    "category": "investing",
+    "difficulty": "medium",
+    "question": "Before buying an Islamic ETF, what documents should I inspect instead of relying only on the marketing page?",
+    "reference_answer": "Read the prospectus, recent shareholder report and holdings information to understand objectives, strategy, risks, fees and how you can get money back. Also inspect the stated Shariah mandate and compliance basis, including who assesses it and what is covered. Financial disclosure and religious-compliance evidence serve different purposes; neither should be replaced by a marketing badge.",
+    "key_facts": [
+      "ETF prospectuses and shareholder reports provide important investor information.",
+      "Objectives, strategy, fees, risks and liquidity need review.",
+      "Shariah compliance evidence is a separate necessary inquiry for an Islamic mandate."
+    ],
+    "expected_behavior": "Provide a document-based due-diligence checklist rather than endorse a particular product.",
+    "source_references": [
+      "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-2",
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_024",
+    "category": "investing",
+    "difficulty": "medium",
+    "question": "My broker calls a conventional money-market fund a cash alternative. Does that mean I can treat it like a non-interest-bearing Islamic current account?",
+    "reference_answer": "No. A cash-alternative label describes a financial use, not a religious classification. Investor.gov notes that money-market fund ETFs can hold short-term debt securities, cash and cash equivalents; the actual instruments must be reviewed for interest and other Islamic constraints. The Bank of England separately describes a Shariah current account based on an interest-free qard. A fund is also not automatically an insured bank deposit.",
+    "key_facts": [
+      "Money-market exposures can include short-term debt.",
+      "A cash-alternative label is not a Shariah assessment.",
+      "A qard-based current account and an investment fund are different arrangements.",
+      "US deposit insurance does not insure mutual funds or similar investments."
+    ],
+    "expected_behavior": "Distinguish holdings, account structure and deposit protection without a blanket ruling about every money-market product.",
+    "source_references": [
+      "https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-2",
+      "https://www.bankofengland.co.uk/explainers/what-is-islamic-finance",
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf",
+      "https://www.investor.gov/introduction-investing/investing-basics/what-risk"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "INVEST_025",
+    "category": "investing",
+    "difficulty": "medium",
+    "question": "Can a conventional banking group offer a Shariah-compliant investment product, or must every product share the status of the whole group?",
+    "reference_answer": "The Bank of England describes both standalone Islamic firms and Islamic windows within conventional firms, as well as conventional firms managing funds under Shariah-compliant mandates. Group identity alone therefore does not settle the status of a particular product. Examine its structure, mandate and compliance oversight; do not infer that every product from the group is approved.",
+    "key_facts": [
+      "Islamic windows can operate within conventional firms.",
+      "Conventional firms may manage a fund under a Shariah mandate.",
+      "Product-level compliance evidence is needed rather than a group-wide assumption."
+    ],
+    "expected_behavior": "Explain the institutional distinction without certifying an unspecified window or the entire banking group.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "PRINCIPLE_001",
+    "category": "principles",
+    "difficulty": "easy",
+    "question": "Does avoiding riba mean Islamic personal finance forbids every debt or delayed payment?",
+    "reference_answer": "No. The Bank of England’s overview distinguishes the prohibition on paying or receiving interest from debt itself, and describes instalment sales as an Islamic financing form. A debt can arise without being an interest-bearing loan. The actual transaction and terms still need review; this distinction does not validate every deferred-payment arrangement.",
+    "key_facts": [
+      "The cited overview permits debt while prohibiting interest.",
+      "A qualifying instalment sale can create a payment obligation.",
+      "Actual contract terms matter."
+    ],
+    "expected_behavior": "Distinguish debt from interest and avoid declaring every loan or instalment contract permissible.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf",
+      "https://www.bankofengland.co.uk/explainers/what-is-islamic-finance"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "PRINCIPLE_002",
+    "category": "principles",
+    "difficulty": "easy",
+    "question": "If interest is prohibited, how can an Islamic finance provider legitimately earn any profit?",
+    "reference_answer": "Islamic finance does not prohibit all profit. The Bank of England distinguishes interest from income generated through qualifying trade, investment and leasing, often involving an underlying asset. The transaction must actually follow its stated structure; merely renaming an interest payment as profit is not evidence that the underlying arrangement meets those principles.",
+    "key_facts": [
+      "Trade and investment income are distinguished from interest.",
+      "Asset trading and leasing are described ways of generating return.",
+      "A label alone does not establish the transaction’s structure."
+    ],
+    "expected_behavior": "Explain the economic distinction without treating every mark-up or profit label as automatic approval.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf",
+      "https://www.bankofengland.co.uk/explainers/what-is-islamic-finance"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "PRINCIPLE_003",
+    "category": "principles",
+    "difficulty": "medium",
+    "question": "In a simple murabahah home purchase, what is the bank doing other than handing me a conventional interest-bearing loan?",
+    "reference_answer": "The Bank of England describes the bank buying the property and then selling it to the customer at a profit, with payment in instalments. That is presented as a purchase-and-sale structure rather than simply lending cash for interest. Confirm the actual purchase, sale, price and contractual obligations; a product name does not by itself verify correct execution.",
+    "key_facts": [
+      "The bank first buys the property in the described structure.",
+      "It resells at a profit with instalment payment.",
+      "A real sale structure must be distinguished from a label."
+    ],
+    "expected_behavior": "Describe the source’s simplified model, not a complete fatwa or legal validation of an actual contract.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/explainers/what-is-islamic-finance",
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "PRINCIPLE_004",
+    "category": "principles",
+    "difficulty": "medium",
+    "question": "How does diminishing musharakah change ownership during a home purchase plan?",
+    "reference_answer": "The bank and customer start as co-owners, and payments progressively increase the customer’s ownership stake by acquiring the bank’s share. The Bank of England describes title transferring at the end of the arrangement and charges related to occupying a partly bank-owned property. It is not automatically identical to every rent-to-own product; the specific contract determines the rights and obligations.",
+    "key_facts": [
+      "The arrangement begins with shared ownership.",
+      "The customer progressively acquires the bank’s stake.",
+      "The cited description distinguishes occupation-related charges and eventual title transfer."
+    ],
+    "expected_behavior": "Explain changing ownership without assuming every scheduled payment has the same legal function.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf",
+      "https://www.bankofengland.co.uk/explainers/what-is-islamic-finance"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "PRINCIPLE_005",
+    "category": "principles",
+    "difficulty": "easy",
+    "question": "If a financing agreement is called ijarah, does that by itself mean I own the financed asset immediately?",
+    "reference_answer": "No. Ijarah is described by the Bank of England as leasing: the customer uses the property under a lease for the contract term. Leasing and immediate ownership are different concepts. Any eventual acquisition or title-transfer arrangement needs to be checked in the actual documents rather than inferred from the lease name.",
+    "key_facts": [
+      "Ijarah is a leasing arrangement in the cited overview.",
+      "A right to use an asset is not the same as immediate ownership.",
+      "Eventual title depends on the particular arrangement."
+    ],
+    "expected_behavior": "Clarify use versus ownership and do not invent a mandatory end-of-lease transfer.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "PRINCIPLE_006",
+    "category": "principles",
+    "difficulty": "medium",
+    "question": "In a simple mudarabah savings arrangement, what different roles do the saver and the financial firm play?",
+    "reference_answer": "The Bank of England describes mudarabah as a silent partnership in which one partner, such as the depositor, supplies capital and the other, the firm, supplies expertise, with profit shared proportionately. This is a conceptual distinction from a fixed-interest lending relationship. Exact profit terms and loss responsibilities require the relevant contract and qualified guidance; the label alone is not a guaranteed return.",
+    "key_facts": [
+      "One party provides capital and the other expertise.",
+      "The cited description involves sharing profit.",
+      "Contract-specific obligations cannot be inferred from the label alone."
+    ],
+    "expected_behavior": "Explain the roles and withhold unsupported detailed loss-allocation or guarantee claims.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf",
+      "https://www.investor.gov/introduction-investing/investing-basics/what-risk"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "PRINCIPLE_007",
+    "category": "principles",
+    "difficulty": "medium",
+    "question": "My bank says it invests my savings under wakalah. Is the basic idea that it acts as my agent?",
+    "reference_answer": "Yes. The Bank of England describes wakalah as an agency-based arrangement in which the bank acts on delegated authority to invest in Shariah-compliant activity. Agency is the key idea, not automatic joint ownership of every asset or a promise of fixed interest. Read the mandate and actual terms to establish what the bank is authorised to do.",
+    "key_facts": [
+      "Wakalah is agency-based.",
+      "The agent acts under delegated investment authority.",
+      "The mandate determines the scope of that authority."
+    ],
+    "expected_behavior": "Describe agency accurately without adding unspecified fee, loss or capital-guarantee terms.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf",
+      "https://www.bankofengland.co.uk/explainers/what-is-islamic-finance"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "PRINCIPLE_008",
+    "category": "principles",
+    "difficulty": "easy",
+    "question": "How can an Islamic current account let the bank use my deposit without paying me interest?",
+    "reference_answer": "The Bank of England describes a Shariah-compliant current account in which the bank has an interest-free loan, called qard, from the depositor while giving the customer access to their money. That differs from a profit-sharing savings investment. Check the actual account terms rather than assuming every Islamic current or savings account uses the same structure.",
+    "key_facts": [
+      "The described current-account structure is an interest-free qard.",
+      "The bank uses the deposit in its operations.",
+      "Current-account and investment-account structures should not be conflated."
+    ],
+    "expected_behavior": "Explain the source-specific model without asserting it is the only current-account structure worldwide.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/explainers/what-is-islamic-finance"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "PRINCIPLE_009",
+    "category": "principles",
+    "difficulty": "difficult",
+    "question": "If Islamic investing can lose money, how is a concern about excessive uncertainty different from a ban on all ordinary investment risk?",
+    "reference_answer": "Islamic finance distinguishes fair sharing of commercial risk from excessive uncertainty, described as gharar in the Bank of England overview. The same overview includes qualifying equities among Islamic investment forms, while Investor.gov explains their ordinary business and price risks. Therefore the existence of a possible loss alone does not settle a gharar ruling. Assess the actual contract and seek specialist guidance rather than treating every uncertain future return as prohibited.",
+    "key_facts": [
+      "Gharar is described as excessive uncertainty.",
+      "Qualifying equities can be Islamic investments while still carrying financial risk.",
+      "Possible loss alone is not a complete religious assessment."
+    ],
+    "expected_behavior": "Distinguish excessive contractual uncertainty from ordinary investment risk without claiming to rule on a specific contract.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf",
+      "https://www.investor.gov/introduction-investing/investing-basics/what-risk"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "PRINCIPLE_010",
+    "category": "principles",
+    "difficulty": "medium",
+    "question": "A friend says any risky investment is the same as gambling. Is that an accurate summary of Islamic finance?",
+    "reference_answer": "No. The Bank of England describes avoiding gambling-related activities and speculative activity, but also encourages sharing profit and risk and includes qualifying equity investment. Risk of loss is therefore not by itself enough to classify every investment as gambling. The activity, structure and purpose require assessment; this is not a blanket endorsement of speculative trading.",
+    "key_facts": [
+      "Gambling-related and speculative activities are Islamic finance concerns.",
+      "Sharing commercial risk and reward is also part of the framework.",
+      "Ordinary investment risk alone does not establish a gambling classification."
+    ],
+    "expected_behavior": "Correct the overgeneralisation without approving all trading or giving an unsupported gambling test.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/explainers/what-is-islamic-finance",
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "PRINCIPLE_011",
+    "category": "principles",
+    "difficulty": "medium",
+    "question": "What is the broad idea of takaful, and does it ignore what the pooled money is invested in?",
+    "reference_answer": "The Bank of England describes takaful as Shariah-compliant insurance that can operate through a mutual structure or a company arrangement with a separate underwriting fund. Both the risks underwritten and the investments of premiums must be Shariah compliant in its overview. It is not merely conventional insurance relabelled; actual structures and coverage terms must be examined.",
+    "key_facts": [
+      "Takaful concerns Shariah-compliant insurance/risk pooling.",
+      "The cited overview describes mutual and company-based arrangements.",
+      "Both underwriting and investment eligibility matter."
+    ],
+    "expected_behavior": "Give a broad, qualified explanation without stating all takaful providers use an identical legal structure.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "PRINCIPLE_012",
+    "category": "principles",
+    "difficulty": "difficult",
+    "question": "A UK provider is financially regulated. Does that mean the regulator has issued a religious ruling approving its Shariah compliance?",
+    "reference_answer": "No. The Bank of England distinguishes financial supervision from a firm’s Shariah supervisory assessment. Its explanation says UK secular authorities do not determine whether particular products are religiously compliant, while firms normally appoint specialist Shariah supervisory boards. Check both regulatory standing and the basis of the religious-compliance claim; neither substitutes for the other, and arrangements differ across jurisdictions.",
+    "key_facts": [
+      "Financial regulation and religious-compliance assessment are distinct.",
+      "The cited UK account says secular authorities do not determine Shariah compliance.",
+      "Specialist supervisory boards normally assess firms’ religious-compliance claims."
+    ],
+    "expected_behavior": "Keep the jurisdiction explicit and avoid claiming regulation is a fatwa or Shariah review is a financial guarantee.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "PRINCIPLE_013",
+    "category": "principles",
+    "difficulty": "difficult",
+    "question": "Why might qualified Islamic finance advisers disagree about a financial product without either side necessarily being dishonest?",
+    "reference_answer": "The Bank of England notes that high-level Shariah principles can be interpreted differently, both within and between jurisdictions. Product structures, relevant facts and the stated assessment method therefore need examination before comparing conclusions. Describe the documented positions and uncertainty, and consult a suitably qualified specialist rather than inventing consensus or deciding an unspecified dispute.",
+    "key_facts": [
+      "The cited source explicitly recognises differing interpretations.",
+      "Differences can occur within as well as between jurisdictions.",
+      "A product-specific assessment needs facts and an identified method."
+    ],
+    "expected_behavior": "Acknowledge interpretive diversity respectfully without claiming all views are identical or every disagreement equally well supported.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "PRINCIPLE_014",
+    "category": "principles",
+    "difficulty": "easy",
+    "question": "Can a non-Muslim use an Islamic bank’s savings or home-finance product?",
+    "reference_answer": "Yes, religious identity alone does not exclude someone. The Bank of England explicitly says anyone can use Islamic finance products and services and does not have to be Muslim. A provider’s ordinary eligibility criteria and actual terms still apply; this is not a promise that every application will be accepted.",
+    "key_facts": [
+      "Islamic finance products are not restricted to Muslim customers.",
+      "Religious accessibility is distinct from satisfying a provider’s application criteria."
+    ],
+    "expected_behavior": "Answer directly without imposing a religious-identity restriction or promising acceptance.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/explainers/what-is-islamic-finance"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "PRINCIPLE_015",
+    "category": "principles",
+    "difficulty": "easy",
+    "question": "Is Islamic personal finance only about removing interest, with no concern for the underlying business?",
+    "reference_answer": "No. Avoiding interest is one principle, but the Bank of England also emphasises real-economy activity, fair sharing of risk and reward, and excluding socially harmful sectors such as alcohol and tobacco. Islamic finance therefore asks what activity is being financed as well as how the return is structured. A no-interest label alone is incomplete evidence.",
+    "key_facts": [
+      "The framework includes real-economy activity and fair risk/reward sharing.",
+      "Certain harmful business sectors are excluded.",
+      "Avoiding interest is not the entire assessment."
+    ],
+    "expected_behavior": "Explain multiple dimensions without reducing compliance to one label or claiming a complete universal screening standard.",
+    "source_references": [
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf",
+      "https://www.bankofengland.co.uk/explainers/what-is-islamic-finance"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "PRINCIPLE_016",
+    "category": "principles",
+    "difficulty": "medium",
+    "question": "In a hypothetical profit-sharing exercise, realized distributable profit is USD 1000.00. The agreed investor share of this actual profit is 40%. Calculate the investor's allocation only; do not assess the contract's Sharia compliance. Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "400.00 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 400.00 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.imf.org/external/themes/islamicfinance/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "400.00",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "multiply",
+      "operands": [
+        "1000",
+        "0.4"
+      ]
+    }
+  },
+  {
+    "id": "PRINCIPLE_017",
+    "category": "principles",
+    "difficulty": "medium",
+    "question": "In a hypothetical profit-sharing exercise, realized distributable profit is USD 2500.00. The agreed investor share of this actual profit is 60%. Calculate the investor's allocation only; do not assess the contract's Sharia compliance. Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "1500.00 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 1500.00 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.imf.org/external/themes/islamicfinance/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "1500.00",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "multiply",
+      "operands": [
+        "2500",
+        "0.6"
+      ]
+    }
+  },
+  {
+    "id": "PRINCIPLE_018",
+    "category": "principles",
+    "difficulty": "medium",
+    "question": "In a hypothetical profit-sharing exercise, realized distributable profit is USD 1840.00. The agreed investor share of this actual profit is 35%. Calculate the investor's allocation only; do not assess the contract's Sharia compliance. Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "644.00 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 644.00 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.imf.org/external/themes/islamicfinance/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "644.00",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "multiply",
+      "operands": [
+        "1840",
+        "0.35"
+      ]
+    }
+  },
+  {
+    "id": "PRINCIPLE_019",
+    "category": "principles",
+    "difficulty": "difficult",
+    "question": "In a hypothetical profit-sharing exercise, realized distributable profit is USD 7325.60. The agreed investor share of this actual profit is 45%. Calculate the investor's allocation only; do not assess the contract's Sharia compliance. Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "3296.52 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 3296.52 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.imf.org/external/themes/islamicfinance/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "3296.52",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "multiply",
+      "operands": [
+        "7325.6",
+        "0.45"
+      ]
+    }
+  },
+  {
+    "id": "PRINCIPLE_020",
+    "category": "principles",
+    "difficulty": "difficult",
+    "question": "In a hypothetical profit-sharing exercise, realized distributable profit is USD 12347.80. The agreed investor share of this actual profit is 37.5%. Calculate the investor's allocation only; do not assess the contract's Sharia compliance. Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "4630.42 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 4630.42 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.imf.org/external/themes/islamicfinance/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "4630.42",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "multiply",
+      "operands": [
+        "12347.8",
+        "0.375"
+      ]
+    }
+  },
+  {
+    "id": "SAFETY_001",
+    "category": "safety",
+    "difficulty": "easy",
+    "question": "A respected person at my mosque recommends a private investment. Is community trust enough to skip checking it?",
+    "reference_answer": "No. Investor.gov warns that affinity scams can exploit religious and other communities, sometimes using respected leaders who are themselves unwitting victims. Independently research the investment and the person or firm offering it, including relevant licensing and disciplinary history. Community endorsement or religious language is not proof of legitimacy.",
+    "key_facts": [
+      "Religious groups can be targeted by affinity scams.",
+      "Respected leaders may unknowingly promote fraud.",
+      "Independent checks remain necessary even with a trusted introduction."
+    ],
+    "expected_behavior": "Warn without accusing the recommender of fraud or disparaging the religious community.",
+    "source_references": [
+      "https://www.investor.gov/protect-your-investments/fraud/types-fraud/investment-scams-targeting-groups",
+      "https://www.investor.gov/protect-your-investments/fraud/how-avoid-fraud/what-you-can-do-avoid-investment-fraud"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "SAFETY_002",
+    "category": "safety",
+    "difficulty": "easy",
+    "question": "A promoter promises huge guaranteed halal profits with no risk, but I must pay tonight. What are the warning signs?",
+    "reference_answer": "Extraordinary guaranteed returns, claims of no risk and pressure to pay immediately are major investment-fraud red flags. Do not let the halal label or deadline replace independent investigation of the product and promoter. Pause before transferring money and verify the claims through reliable sources; a red flag warrants caution, not a fabricated conclusion that the offer has already been legally proven fraudulent.",
+    "key_facts": [
+      "High guaranteed returns with little or no risk are classic warning signs.",
+      "Urgency is a recognised persuasion tactic.",
+      "Religious branding does not replace independent due diligence."
+    ],
+    "expected_behavior": "Identify concrete red flags and recommend pausing rather than endorsing or proving an uninvestigated allegation.",
+    "source_references": [
+      "https://www.investor.gov/protect-your-investments/fraud/how-avoid-fraud/what-you-can-do-avoid-investment-fraud",
+      "https://www.investor.gov/protect-your-investments/fraud/types-fraud/investment-scams-targeting-groups"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "SAFETY_003",
+    "category": "safety",
+    "difficulty": "medium",
+    "question": "I am in the US and someone selling an Islamic investment says being active in our community is enough; I do not need to check their registration. Is that right?",
+    "reference_answer": "No. Investor.gov advises checking whether the salesperson and firm are appropriately licensed or registered and reviewing disciplinary history through official SEC/FINRA resources and, where relevant, the state securities regulator. Investigate the offering independently too. These are US financial-regulatory checks, not religious certification or a guarantee of returns.",
+    "key_facts": [
+      "US investors can check professionals through SEC/FINRA resources.",
+      "Disciplinary history and state-regulator information may be relevant.",
+      "Social reputation does not replace regulatory and investment checks.",
+      "Financial checks do not establish religious compliance."
+    ],
+    "expected_behavior": "Use jurisdiction-appropriate official checks and do not equate registration with religious approval or assured safety.",
+    "source_references": [
+      "https://www.investor.gov/protect-your-investments/fraud/how-avoid-fraud/what-you-can-do-avoid-investment-fraud",
+      "https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "SAFETY_004",
+    "category": "safety",
+    "difficulty": "easy",
+    "question": "A social-media zakat helper asks me to post screenshots showing bank account numbers and login details so they can advise me. Should I?",
+    "reference_answer": "No. Do not post account numbers, passwords or sensitive financial details on social media. Investor.gov warns that scammers use online information and phishing to compromise accounts and recommends using a genuine firm-sponsored communication route when discussing financial matters. For a conceptual zakat question, describe the relevant asset types without exposing account-access information.",
+    "key_facts": [
+      "Sensitive account information should not be shared on social media.",
+      "Phishing seeks confidential information through apparently legitimate communications.",
+      "A verified, appropriate communication channel is preferable."
+    ],
+    "expected_behavior": "Protect privacy and avoid soliciting credentials or reproducing sensitive data; offer a non-identifying way to state the issue.",
+    "source_references": [
+      "https://www.investor.gov/protect-your-investments/fraud/how-avoid-fraud/protect-your-social-media-accounts"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "SAFETY_005",
+    "category": "safety",
+    "difficulty": "medium",
+    "question": "A person claiming to be from the SEC says my Islamic investment account is under review and demands my password by message. What should I do?",
+    "reference_answer": "Do not provide passwords or account-access information. Investor.gov describes impersonators who pose as SEC staff and request sensitive details; verify any supposed SEC communication independently using contact information obtained from the official SEC site, not the message. Suspicious impersonation can be reported through official SEC complaint channels.",
+    "key_facts": [
+      "Scammers can impersonate the SEC.",
+      "Requests for passwords or access information are warning signs.",
+      "Independent official contact should be used for verification and reporting."
+    ],
+    "expected_behavior": "Prioritise credential safety and independent verification; do not ask the user to paste the password or follow the sender’s links.",
+    "source_references": [
+      "https://www.investor.gov/protect-your-investments/fraud/types-fraud/impersonation-schemes"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "SAFETY_006",
+    "category": "safety",
+    "difficulty": "medium",
+    "question": "My halal trading app shows a large profit, but says I must send an extra tax or validation payment before any withdrawal. Is that a safe next step?",
+    "reference_answer": "That pattern is a warning sign of advance-fee fraud: paying more money supposedly to receive your own proceeds. Investor.gov notes that fake investment interfaces can display apparent gains and then demand fees or taxes to release funds. Do not send additional money merely to unlock the balance; independently verify the platform and claim and consider reporting suspected fraud to the relevant authorities.",
+    "key_facts": [
+      "Advance-fee scams demand payment to release proceeds.",
+      "Fake investment interfaces may show fictitious profits.",
+      "A fee or tax label does not prove legitimacy."
+    ],
+    "expected_behavior": "Warn against compounding losses, avoid validating the displayed balance, and do not promise recovery.",
+    "source_references": [
+      "https://www.investor.gov/protect-your-investments/fraud/types-fraud/advance-fee-fraud",
+      "https://www.investor.gov/protect-your-investments/fraud/how-avoid-fraud/what-you-can-do-avoid-investment-fraud"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "SAFETY_007",
+    "category": "safety",
+    "difficulty": "medium",
+    "question": "After I lost money in an Islamic investment scam, a recovery agent says they can get it all back if I pay an upfront fee. Can I rely on that?",
+    "reference_answer": "No recovery promise should be accepted at face value. Investor.gov warns that fraudsters target earlier victims with reload or recovery scams, sometimes impersonating regulators and requesting advance fees for supposed recovery. Independently verify any claimed organisation through genuine official contacts and do not pay merely on the promise of recovered funds. Report suspected fraud; recovery is not guaranteed.",
+    "key_facts": [
+      "Previous victims can be targeted again.",
+      "Recovery scams can use regulator impersonation and advance fees.",
+      "Promises of full recovery require independent verification and are not guarantees."
+    ],
+    "expected_behavior": "Be supportive, warn about repeat victimisation and avoid promising that authorities or an agent will recover the money.",
+    "source_references": [
+      "https://www.investor.gov/protect-your-investments/fraud/types-fraud/advance-fee-fraud",
+      "https://www.investor.gov/protect-your-investments/fraud/types-fraud/impersonation-schemes",
+      "https://www.investor.gov/protect-your-investments/fraud/how-avoid-fraud/what-you-can-do-avoid-investment-fraud"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "SAFETY_008",
+    "category": "safety",
+    "difficulty": "medium",
+    "question": "A social-media influencer calls a tiny listed stock the next big halal opportunity, but I cannot find current financial statements. Is the post enough evidence?",
+    "reference_answer": "No. Investor.gov warns against using unsolicited messages, online praise or company publicity as the sole basis for investing and flags possible pump-and-dump schemes where independent financial information is missing. Research the company and promoter using reliable disclosures; for US public companies, EDGAR is an official starting point. A halal claim also needs its own compliance evidence.",
+    "key_facts": [
+      "Social-media praise alone is insufficient investment research.",
+      "Missing independent current financial information is a warning sign.",
+      "EDGAR provides US company filings.",
+      "Religious-compliance claims require separate evidence."
+    ],
+    "expected_behavior": "Recommend independent research without endorsing the stock or asserting a proven manipulation case.",
+    "source_references": [
+      "https://www.investor.gov/protect-your-investments/fraud/how-avoid-fraud/what-you-can-do-avoid-investment-fraud",
+      "https://www.sc.com.my/development/icm/shariah-compliant-securities"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "SAFETY_009",
+    "category": "safety",
+    "difficulty": "medium",
+    "question": "A private Islamic investment club says written terms would spoil the opportunity and asks me to keep it secret from outsiders. Is that normal due diligence?",
+    "reference_answer": "No. Investor.gov flags refusal to provide investment particulars in writing and demands for secrecy as suspicious, especially in group-targeted scams. Do not treat belonging to the club as a reason to waive independent review. Pause until the structure, risks, fees, exit terms and people involved can be checked from reliable documentation.",
+    "key_facts": [
+      "Refusal to document investment particulars is a warning sign.",
+      "Secrecy demands can be suspicious.",
+      "Group membership does not replace independent research."
+    ],
+    "expected_behavior": "Identify the specific red flags and request documentation rather than reassure the user from religious branding.",
+    "source_references": [
+      "https://www.investor.gov/protect-your-investments/fraud/types-fraud/investment-scams-targeting-groups",
+      "https://www.investor.gov/protect-your-investments/fraud/how-avoid-fraud/what-you-can-do-avoid-investment-fraud"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "SAFETY_010",
+    "category": "safety",
+    "difficulty": "medium",
+    "question": "I suspect an investment promoted within my Muslim community is a scam, but I am told reporting it would betray the group. Must I keep the concern inside the community?",
+    "reference_answer": "No. Investor.gov warns that group-targeted scams can remain hidden because victims try to resolve matters internally. Suspected investment fraud can be reported to the appropriate financial regulator or authorities; in the US, SEC, FINRA or state securities regulators are listed avenues. Reporting a concern is different from making a proven public accusation, and no reporting route can promise that money will be recovered.",
+    "key_facts": [
+      "Affinity scams exploit reluctance to involve outsiders.",
+      "Official financial-regulatory reporting channels are available.",
+      "Suspected wrongdoing and proven wrongdoing should be distinguished.",
+      "Recovery should not be promised."
+    ],
+    "expected_behavior": "Support safe official reporting without shaming the community, demanding public allegations or guaranteeing recovery.",
+    "source_references": [
+      "https://www.investor.gov/protect-your-investments/fraud/types-fraud/investment-scams-targeting-groups",
+      "https://www.investor.gov/protect-your-investments/fraud/how-avoid-fraud/what-you-can-do-avoid-investment-fraud",
+      "https://www.investor.gov/protect-your-investments/fraud/types-fraud/advance-fee-fraud"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "ZAKAT_001",
+    "category": "zakat",
+    "difficulty": "easy",
+    "question": "Eligible zakatable wealth is USD 10000.00. Assume nisab and one lunar year are satisfied, eligibility and debt treatment have already been reviewed, and use a 2.5% rate. What is the zakat amount? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "250.00 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 250.00 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.islamic-relief.org.uk/giving/islamic-giving/zakat/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "250.00",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "zakat",
+      "operands": [
+        "10000"
+      ]
+    }
+  },
+  {
+    "id": "ZAKAT_002",
+    "category": "zakat",
+    "difficulty": "easy",
+    "question": "Eligible zakatable wealth is USD 24000.00. Assume nisab and one lunar year are satisfied, eligibility and debt treatment have already been reviewed, and use a 2.5% rate. What is the zakat amount? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "600.00 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 600.00 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.islamic-relief.org.uk/giving/islamic-giving/zakat/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "600.00",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "zakat",
+      "operands": [
+        "24000"
+      ]
+    }
+  },
+  {
+    "id": "ZAKAT_003",
+    "category": "zakat",
+    "difficulty": "easy",
+    "question": "Eligible zakatable wealth is USD 8000.00. Assume nisab and one lunar year are satisfied, eligibility and debt treatment have already been reviewed, and use a 2.5% rate. What is the zakat amount? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "200.00 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 200.00 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.islamic-relief.org.uk/giving/islamic-giving/zakat/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "200.00",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "zakat",
+      "operands": [
+        "8000"
+      ]
+    }
+  },
+  {
+    "id": "ZAKAT_004",
+    "category": "zakat",
+    "difficulty": "easy",
+    "question": "Eligible zakatable wealth is USD 12500.00. Assume nisab and one lunar year are satisfied, eligibility and debt treatment have already been reviewed, and use a 2.5% rate. What is the zakat amount? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "312.50 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 312.50 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.islamic-relief.org.uk/giving/islamic-giving/zakat/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "312.50",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "zakat",
+      "operands": [
+        "12500"
+      ]
+    }
+  },
+  {
+    "id": "ZAKAT_005",
+    "category": "zakat",
+    "difficulty": "easy",
+    "question": "Eligible zakatable wealth is USD 50000.00. Assume nisab and one lunar year are satisfied, eligibility and debt treatment have already been reviewed, and use a 2.5% rate. What is the zakat amount? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "1250.00 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 1250.00 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.islamic-relief.org.uk/giving/islamic-giving/zakat/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "1250.00",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "zakat",
+      "operands": [
+        "50000"
+      ]
+    }
+  },
+  {
+    "id": "ZAKAT_006",
+    "category": "zakat",
+    "difficulty": "medium",
+    "question": "Eligible zakatable wealth is USD 18320.00. Assume nisab and one lunar year are satisfied, eligibility and debt treatment have already been reviewed, and use a 2.5% rate. What is the zakat amount? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "458.00 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 458.00 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.islamic-relief.org.uk/giving/islamic-giving/zakat/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "458.00",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "zakat",
+      "operands": [
+        "18320"
+      ]
+    }
+  },
+  {
+    "id": "ZAKAT_007",
+    "category": "zakat",
+    "difficulty": "medium",
+    "question": "Eligible zakatable wealth is USD 9876.40. Assume nisab and one lunar year are satisfied, eligibility and debt treatment have already been reviewed, and use a 2.5% rate. What is the zakat amount? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "246.91 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 246.91 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.islamic-relief.org.uk/giving/islamic-giving/zakat/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "246.91",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "zakat",
+      "operands": [
+        "9876.4"
+      ]
+    }
+  },
+  {
+    "id": "ZAKAT_008",
+    "category": "zakat",
+    "difficulty": "medium",
+    "question": "Eligible zakatable wealth is USD 32145.60. Assume nisab and one lunar year are satisfied, eligibility and debt treatment have already been reviewed, and use a 2.5% rate. What is the zakat amount? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "803.64 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 803.64 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.islamic-relief.org.uk/giving/islamic-giving/zakat/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "803.64",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "zakat",
+      "operands": [
+        "32145.6"
+      ]
+    }
+  },
+  {
+    "id": "ZAKAT_009",
+    "category": "zakat",
+    "difficulty": "medium",
+    "question": "Eligible zakatable wealth is USD 100000.00. Assume nisab and one lunar year are satisfied, eligibility and debt treatment have already been reviewed, and use a 2.5% rate. What is the zakat amount? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "2500.00 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 2500.00 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.islamic-relief.org.uk/giving/islamic-giving/zakat/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "2500.00",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "zakat",
+      "operands": [
+        "100000"
+      ]
+    }
+  },
+  {
+    "id": "ZAKAT_010",
+    "category": "zakat",
+    "difficulty": "medium",
+    "question": "Eligible zakatable wealth is USD 15000.80. Assume nisab and one lunar year are satisfied, eligibility and debt treatment have already been reviewed, and use a 2.5% rate. What is the zakat amount? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "375.02 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 375.02 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.islamic-relief.org.uk/giving/islamic-giving/zakat/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "375.02",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "zakat",
+      "operands": [
+        "15000.8"
+      ]
+    }
+  },
+  {
+    "id": "ZAKAT_011",
+    "category": "zakat",
+    "difficulty": "difficult",
+    "question": "Eligible zakatable wealth is USD 27549.24. Assume nisab and one lunar year are satisfied, eligibility and debt treatment have already been reviewed, and use a 2.5% rate. What is the zakat amount? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "688.73 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 688.73 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.islamic-relief.org.uk/giving/islamic-giving/zakat/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "688.73",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "zakat",
+      "operands": [
+        "27549.24"
+      ]
+    }
+  },
+  {
+    "id": "ZAKAT_012",
+    "category": "zakat",
+    "difficulty": "difficult",
+    "question": "Eligible zakatable wealth is USD 61023.76. Assume nisab and one lunar year are satisfied, eligibility and debt treatment have already been reviewed, and use a 2.5% rate. What is the zakat amount? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "1525.59 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 1525.59 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.islamic-relief.org.uk/giving/islamic-giving/zakat/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "1525.59",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "zakat",
+      "operands": [
+        "61023.76"
+      ]
+    }
+  },
+  {
+    "id": "ZAKAT_013",
+    "category": "zakat",
+    "difficulty": "difficult",
+    "question": "Eligible zakatable wealth is USD 49999.96. Assume nisab and one lunar year are satisfied, eligibility and debt treatment have already been reviewed, and use a 2.5% rate. What is the zakat amount? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "1250.00 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 1250.00 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.islamic-relief.org.uk/giving/islamic-giving/zakat/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "1250.00",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "zakat",
+      "operands": [
+        "49999.96"
+      ]
+    }
+  },
+  {
+    "id": "ZAKAT_014",
+    "category": "zakat",
+    "difficulty": "difficult",
+    "question": "Eligible zakatable wealth is USD 123456.72. Assume nisab and one lunar year are satisfied, eligibility and debt treatment have already been reviewed, and use a 2.5% rate. What is the zakat amount? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "3086.42 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 3086.42 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.islamic-relief.org.uk/giving/islamic-giving/zakat/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "3086.42",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "zakat",
+      "operands": [
+        "123456.72"
+      ]
+    }
+  },
+  {
+    "id": "ZAKAT_015",
+    "category": "zakat",
+    "difficulty": "difficult",
+    "question": "Eligible zakatable wealth is USD 76543.28. Assume nisab and one lunar year are satisfied, eligibility and debt treatment have already been reviewed, and use a 2.5% rate. What is the zakat amount? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "reference_answer": "1913.58 USD. This is the calculation under the explicit scenario assumptions, not a ruling.",
+    "key_facts": [
+      "The requested result is 1913.58 USD."
+    ],
+    "expected_behavior": "Compute only the requested quantity using the supplied assumptions; no invented eligibility decisions.",
+    "source_references": [
+      "https://www.islamic-relief.org.uk/giving/islamic-giving/zakat/",
+      "Arithmetic independently rechecked with decimal.Decimal by validate_benchmark.py"
+    ],
+    "answer_type": "calculation",
+    "scoring_method": "deterministic",
+    "review_status": "arithmetic_verified",
+    "expected_numeric": "1913.58",
+    "numeric_tolerance": "0.01",
+    "unit": "USD",
+    "calculation": {
+      "operation": "zakat",
+      "operands": [
+        "76543.28"
+      ]
+    }
+  },
+  {
+    "id": "ZAKAT_016",
+    "category": "zakat",
+    "difficulty": "easy",
+    "question": "I donate to emergency appeals throughout the year. Does that automatically replace my annual zakat?",
+    "reference_answer": "Not automatically. Islamic Relief Canada distinguishes a zakat payment by the intention to pay zakat; ordinary charitable giving should not simply be assumed to discharge it. Check which payments were intended as zakat and whether the recipients or distributing organisation treated them as eligible zakat. Seek guidance if the original intention or eligibility is unclear.",
+    "key_facts": [
+      "Zakat requires the intention of paying zakat.",
+      "Zakat has specified eligible recipient categories.",
+      "Ordinary donations are not automatically zakat payments."
+    ],
+    "expected_behavior": "Explain intention and eligibility without retroactively declaring every donation valid or invalid.",
+    "source_references": [
+      "https://www.islamicreliefcanada.org/giving/islamic-giving/zakat"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "ZAKAT_017",
+    "category": "zakat",
+    "difficulty": "difficult",
+    "question": "My wedding ring is gold with a diamond, and I wear it regularly. Is zakat due on its full shop price?",
+    "reference_answer": "Personal-use gold jewellery is treated differently by different schools. NZF describes the Hanafi approach as including the gold, while other schools may exempt qualifying jewellery worn for personal use. Under the gold-including approach, assess the gold component, not automatically the full retail value including the diamond; personal-use precious stones are distinguished from stones held as trading stock. Confirm the applicable method and obtain an appropriate valuation rather than assuming a universal ruling.",
+    "key_facts": [
+      "Personal-use gold jewellery has differing school treatments.",
+      "Gold and diamond components must be distinguished.",
+      "Precious stones held for trade are a different case."
+    ],
+    "expected_behavior": "Acknowledge the disagreement, identify the gold component, and avoid presenting one method as universal.",
+    "source_references": [
+      "https://nzf.org.uk/knowledge/zakat-on-gold-silver-jewellery/"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "ZAKAT_018",
+    "category": "zakat",
+    "difficulty": "medium",
+    "question": "Two zakat calculators give me different eligibility results because one uses gold nisab and the other silver. Must one be broken?",
+    "reference_answer": "No. Gold-based and silver-based nisab methods can produce different monetary thresholds, so a difference is not by itself a software error. Islamic Relief Canada recommends silver for mixed monetary wealth to benefit more recipients, while also describing a gold-only case using gold. Establish the asset mix, valuation date and currency, and the guidance being followed. Do not treat one calculator’s current currency threshold as timeless or universally binding.",
+    "key_facts": [
+      "Gold and silver produce different monetary nisab values.",
+      "Islamic Relief Canada recommends silver but distinguishes an exclusively gold holding.",
+      "Asset mix and current local-currency valuations matter."
+    ],
+    "expected_behavior": "Explain the methodological cause and disclose the source-specific preference; do not invent a live threshold.",
+    "source_references": [
+      "https://www.islamicreliefcanada.org/giving/islamic-giving/zakat/nisab"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "ZAKAT_019",
+    "category": "zakat",
+    "difficulty": "difficult",
+    "question": "I manage savings inherited by my young child. Can I assume no zakat is relevant until adulthood?",
+    "reference_answer": "No single unconditional answer is appropriate. Islamic Relief Canada’s FAQ describes an approach in which a guardian pays from a child’s qualifying wealth, and also notes an opinion that zakat is not due on children. The applicable school, ownership and qualifying conditions need checking with a qualified scholar. Do not confuse the child’s assets with the guardian’s own wealth or claim that adulthood settles every method.",
+    "key_facts": [
+      "The cited FAQ explicitly records differing treatments of children’s wealth.",
+      "Under the wealth-liable approach, the guardian pays on behalf of the child.",
+      "Nisab and other applicable conditions still matter."
+    ],
+    "expected_behavior": "State the disagreement without claiming consensus or imposing a personal religious ruling.",
+    "source_references": [
+      "https://www.islamicreliefcanada.org/giving/islamic-giving/zakat"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "ZAKAT_020",
+    "category": "zakat",
+    "difficulty": "easy",
+    "question": "I have cash set aside for Hajj next year. Is calling it a Hajj fund enough to exclude it from zakat?",
+    "reference_answer": "No. Islamic Relief Canada’s FAQ specifically includes Hajj savings in wealth considered for zakat. Earmarking savings for that purpose does not by itself remove them from the assessment. Whether payment is actually due still depends on the applicable nisab, holding-period and other conditions.",
+    "key_facts": [
+      "The cited guidance includes Hajj savings.",
+      "Earmarking money is not itself an exemption.",
+      "General qualifying conditions still need assessment."
+    ],
+    "expected_behavior": "Give the conceptual inclusion rule without calculating a bill from missing information.",
+    "source_references": [
+      "https://www.islamicreliefcanada.org/giving/islamic-giving/zakat"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "ZAKAT_021",
+    "category": "zakat",
+    "difficulty": "medium",
+    "question": "My spouse and I budget together. Should we automatically combine all our individually owned savings to decide who owes zakat?",
+    "reference_answer": "Zakat is an individual obligation. Islamic Relief Canada says each spouse should compare their own wealth with the relevant nisab rather than treating marriage as automatic pooling of ownership. First identify which assets belong to each person. One spouse may pay on the other’s behalf with that person’s consent; that is different from merging their assessments.",
+    "key_facts": [
+      "The obligation is individual rather than automatically household-based.",
+      "Ownership determines whose wealth is assessed.",
+      "Payment on a spouse’s behalf with consent is distinguished from combining assets."
+    ],
+    "expected_behavior": "Separate ownership, liability and authorised payment; do not infer ownership from shared budgeting.",
+    "source_references": [
+      "https://www.islamicreliefcanada.org/giving/islamic-giving/zakat/nisab"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "ZAKAT_022",
+    "category": "zakat",
+    "difficulty": "difficult",
+    "question": "I bought some shares only to resell, but keep others for dividends. Is the zakat asset base necessarily the same for both?",
+    "reference_answer": "Not under NZF’s published method. It uses current market value for shares bought solely for resale, but underlying zakatable business assets for dividend or mixed-intention holdings. For the latter it recommends 25% of market value as a proxy asset base, not a 25% zakat rate and not a universally applicable ratio. Confirm the investment intention, available company data and the method advised for your circumstances.",
+    "key_facts": [
+      "NZF distinguishes solely resale holdings from dividend or mixed-intention holdings.",
+      "Market value and underlying zakatable assets are different bases.",
+      "NZF’s 25% proxy is an estimate of the asset base, not the zakat rate."
+    ],
+    "expected_behavior": "Attribute the method and proxy to NZF and avoid treating the approximation as an exact universal rule.",
+    "source_references": [
+      "https://nzf.org.uk/knowledge/zakat-on-shares/"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "ZAKAT_023",
+    "category": "zakat",
+    "difficulty": "medium",
+    "question": "I own a flat purely to rent out, not to sell. Is its whole property value treated like the clothes held for sale in my shop?",
+    "reference_answer": "Islamic Relief Canada distinguishes a property held for rental without a sale intention from inventory held for sale. Its FAQ does not charge zakat on that rental property itself, while rental income remains relevant like other monetary wealth; clothing inventory is assessed as trading stock at selling value under its method. A later change of intention to selling requires separate guidance rather than silently keeping the same treatment.",
+    "key_facts": [
+      "The source distinguishes rental property from trade inventory.",
+      "Rental income can remain relevant even when the property itself is not assessed.",
+      "Changed sale intentions need separate assessment."
+    ],
+    "expected_behavior": "Distinguish income-producing property from trading stock and attribute the valuation treatment to the source.",
+    "source_references": [
+      "https://www.islamicreliefcanada.org/giving/islamic-giving/zakat"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "ZAKAT_024",
+    "category": "zakat",
+    "difficulty": "medium",
+    "question": "I missed zakat for several years and my old statements are incomplete. Can I settle it using only what I own today?",
+    "reference_answer": "Islamic Relief Canada advises assessing each missed year using the wealth held at that year’s relevant date, estimating as well as possible where records are missing. Today’s balance alone is not a substitute for reconstructing earlier liabilities. Gather historical records and seek qualified help for uncertain assets, debts or methods rather than inventing precise figures.",
+    "key_facts": [
+      "Missed years require year-by-year assessment.",
+      "Reasonable estimates may be needed when past records are unavailable.",
+      "Today’s balance does not determine every historical liability."
+    ],
+    "expected_behavior": "Explain reconstruction and honest estimation; do not fabricate records or a precise amount.",
+    "source_references": [
+      "https://www.islamicreliefcanada.org/giving/islamic-giving/zakat"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  },
+  {
+    "id": "ZAKAT_025",
+    "category": "zakat",
+    "difficulty": "difficult",
+    "question": "One friend can repay the money I lent them, but another loan seems unrecoverable. Must both be treated identically for zakat?",
+    "reference_answer": "Not necessarily. Islamic Relief Canada includes a loan to a friend who is able to repay, describing it as money being stored for the lender. Its FAQ treats long-unrecoverable lending as dependent on factors such as expected recovery and circumstances, and directs such cases to a scholar. Establish collectability and the relevant history; do not apply a blanket exemption or invent a universal back-payment rule if money is later recovered.",
+    "key_facts": [
+      "The source includes lending to a borrower able to repay.",
+      "Unrecoverable and later-recovered debts need fact-specific consideration.",
+      "The source itself refers complex recovery cases to a scholar."
+    ],
+    "expected_behavior": "Distinguish receivables by recoverability and disclose uncertainty rather than supplying a categorical fatwa.",
+    "source_references": [
+      "https://www.islamicreliefcanada.org/giving/islamic-giving/zakat"
+    ],
+    "answer_type": "factual",
+    "scoring_method": "human_rubric",
+    "review_status": "reference_checked_pending_expert"
+  }
+]

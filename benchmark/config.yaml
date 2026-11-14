@@ -1,0 +1,16 @@
+dataset: datasets/benchmark_questions.json
+model: LiquidAI/LFM3-1.7B
+revision: 1da06bec6a819da10b54c67e5c90972b46d81871
+system_prompt: "You are a helpful assistant. Answer accurately and clearly. State uncertainty and ask for missing information when needed. Do not invent sources."
+generation:
+  max_new_tokens: 384
+  do_sample: false
+  repetition_penalty: 1.0
+  use_cache: true
+enable_thinking: false
+seed: 2026
+dtype: bfloat16
+device: auto
+attention: sdpa
+warmup_tokens: 24
+cpu_threads: 8

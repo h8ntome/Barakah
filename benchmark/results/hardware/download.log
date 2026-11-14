@@ -1,0 +1,3 @@
+Ignoring corrupted tree cache file /home/hadi/.cache/huggingface/hub/models--LiquidAI--LFM3-1.7B/trees/1da06bec6a819da10b54c67e5c90972b46d81871.json: [Errno 13] Permission denied: '/home/hadi/.cache/huggingface/hub/models--LiquidAI--LFM3-1.7B/trees/1da06bec6a819da10b54c67e5c90972b46d81871.json'
+[1;91mE-001h rocSHMEM[0m Could not open libnuma. Returning	[90mNUMAWrapper@src/gda/numa_wrapper.cpp:48[0m
+Verified LiquidAI/LFM3-1.7B@1da06bec6a819da10b54c67e5c90972b46d81871: /home/hadi/.cache/huggingface/hub/models--LiquidAI--LFM3-1.7B/snapshots/1da06bec6a819da10b54c67e5c90972b46d81871; reused_cache=True
