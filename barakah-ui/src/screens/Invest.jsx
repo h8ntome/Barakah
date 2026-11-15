@@ -22,6 +22,8 @@ import {
   ScreeningForm,
   PortfolioManager,
   ScreeningHistory,
+  HoldingMetadataForm,
+  TradeEditor,
 } from "./PortfolioForms.jsx";
 import SponsoredAd from "../components/SponsoredAd.jsx";
 import { useResource } from "../services/useResource.js";
@@ -30,12 +32,13 @@ import { money } from "../utils/finance.js";
 function HoldingEditor({ holding, onSaved }) {
   const [showHistory, setShowHistory] = useState(false);
   const [quote, setQuote] = useState({
-    price: holding.quote_price || "",
+    price: holding.quote_price ?? "",
     as_of: holding.quote_date || today(),
     source: holding.quote_source || "",
   });
   return (
     <>
+      <HoldingMetadataForm holding={holding} onSaved={onSaved} />
       <details>
         <summary>Update manual valuation for {holding.symbol}</summary>
         <ActionForm
@@ -47,6 +50,7 @@ function HoldingEditor({ holding, onSaved }) {
         >
           <AmountField
             label="Quoted price per unit"
+            allowZero
             value={quote.price}
             onChange={(price) => setQuote({ ...quote, price })}
             precision={6}
@@ -87,7 +91,7 @@ export default function Invest({ navigate, onChanged }) {
   const portfolios = useResource(api.getPortfolioChoices);
   const education = useResource(api.getInvestmentEducation);
   const [offset, setOffset] = useState(0);
-  const trades = useResource(api.getTrades, { offset, limit: 50 });
+  const trades = useResource(api.getTrades, { offset, limit: 50, portfolio_id: portfolioId });
   const [holding, setHolding] = useState({
     portfolio_id: "",
     symbol: "",
@@ -102,7 +106,8 @@ export default function Invest({ navigate, onChanged }) {
     fees: "0.00",
     traded_on: today(),
   });
-  const refresh = () => {
+  const refresh = (deletedHoldingId) => {
+    if (deletedHoldingId === trade.holding_id) setTrade({ ...trade, holding_id: "" });
     portfolio.retry();
     portfolios.retry();
     trades.retry();
@@ -129,7 +134,11 @@ export default function Invest({ navigate, onChanged }) {
         <Field
           label="View portfolio"
           value={portfolioId}
-          onChange={setPortfolioId}
+          onChange={(id) => {
+            setPortfolioId(id);
+            setOffset(0);
+            setTrade({ ...trade, holding_id: "" });
+          }}
           options={[
             { value: "", label: "All portfolios" },
             ...(portfolios.data || []).map((item) => ({
@@ -141,7 +150,10 @@ export default function Invest({ navigate, onChanged }) {
         <PortfolioManager
           portfolios={portfolios}
           onChanged={(deletedId) => {
-            if (deletedId === portfolioId) setPortfolioId("");
+            if (deletedId === portfolioId) {
+              setPortfolioId("");
+              setOffset(0);
+            }
             if (deletedId === holding.portfolio_id)
               setHolding({ ...holding, portfolio_id: "" });
             refresh();
@@ -222,7 +234,7 @@ export default function Invest({ navigate, onChanged }) {
                 </p>
                 {item.needs_reevaluation && (
                   <Notice>
-                    This screening needs re-evaluation. Its evidence is stale;
+                    This screening needs re-evaluation. Its evidence is stale or invalid;
                     review current information and run a new assessment before
                     relying on the result.
                   </Notice>
@@ -236,12 +248,12 @@ export default function Invest({ navigate, onChanged }) {
                     </p>
                     <p>
                       Missing inputs:{" "}
-                      {item.screening_assessment.missing_inputs.join(", ") ||
+                      {(Array.isArray(item.screening_assessment.missing_inputs) ? item.screening_assessment.missing_inputs : []).join(", ") ||
                         "None"}
                     </p>
                     <p>
                       Failed checks:{" "}
-                      {item.screening_assessment.failed_checks.join(", ") ||
+                      {(Array.isArray(item.screening_assessment.failed_checks) ? item.screening_assessment.failed_checks : []).join(", ") ||
                         "None"}
                     </p>
                     <p>{item.screening_assessment.disclaimer}</p>
@@ -358,6 +370,12 @@ export default function Invest({ navigate, onChanged }) {
         </details>
         <details className="details-section">
           <summary>Trade history</summary>
+          <Notice>
+            Only the latest recorded trade per holding can be corrected or removed.
+            Same-day trades follow recording order. Legacy trades have no safe
+            reversal snapshot and cannot be corrected here. Corrections change
+            tracked quantities and cost basis, never execute orders or move money.
+          </Notice>
           <RequestState resource={trades} label="trades">
             <RecordList items={trades.data} empty="No trades recorded.">
               {(item) => (
@@ -372,6 +390,7 @@ export default function Invest({ navigate, onChanged }) {
                     {item.quantity} units at {item.price} · Fees {item.fees}
                   </p>
                   <p>{item.traded_on}</p>
+                  <TradeEditor trade={item} onSaved={refresh} />
                 </>
               )}
             </RecordList>

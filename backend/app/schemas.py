@@ -198,8 +198,12 @@ class HoldingCreate(Input):
     currency: Currency
 
 
-class TradeCreate(Input):
-    holding_id: UUID
+class HoldingUpdate(Input):
+    symbol: Annotated[str, Field(pattern=r'^[A-Z0-9.\-]{1,20}$')]
+    name: Name
+
+
+class TradeUpdate(Input):
     side: Literal['buy', 'sell']
     quantity: Quantity
     price: Quantity
@@ -207,8 +211,12 @@ class TradeCreate(Input):
     traded_on: date
 
 
+class TradeCreate(TradeUpdate):
+    holding_id: UUID
+
+
 class QuoteUpdate(Input):
-    price: Quantity
+    price: Annotated[Decimal, Field(ge=0, le=Decimal('1000000000'), max_digits=16, decimal_places=6, allow_inf_nan=False)]
     as_of: date
     source: Annotated[str, Field(min_length=1, max_length=200)]
 
@@ -284,3 +292,10 @@ class ScreeningUpdate(Input):
     assessed_on: date
     max_age_days: Annotated[int, Field(ge=1, le=3660)] = 90
     notes: Annotated[str, Field(max_length=1000)] = ''
+
+    @field_validator('assessed_on')
+    @classmethod
+    def not_in_future(cls, value):
+        if value > date.today():
+            raise ValueError('Screening assessment date cannot be in the future')
+        return value

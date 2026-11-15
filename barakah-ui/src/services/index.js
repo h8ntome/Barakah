@@ -107,6 +107,13 @@ export const updatePortfolio = (portfolioId, body) =>
 export const deletePortfolio = (portfolioId) =>
   del(`/portfolios/${id(portfolioId)}`);
 export const createHolding = (body) => post("/portfolio/holdings", body);
+export const updateHolding = (holdingId, body) =>
+  patch(`/portfolio/holdings/${id(holdingId)}`, body);
+export const deleteHolding = (holdingId) =>
+  del(`/portfolio/holdings/${id(holdingId)}`);
+export const updateTrade = (tradeId, body) =>
+  patch(`/portfolio/trades/${id(tradeId)}`, body);
+export const deleteTrade = (tradeId) => del(`/portfolio/trades/${id(tradeId)}`);
 export const getTrades = (filters) => get("/portfolio/trades", filters);
 export const createTrade = (body) => post("/portfolio/trades", body);
 export const updateQuote = (holdingId, body) =>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ActionForm, Field, RecordList, today } from "../components/forms.jsx";
 import { Notice, RequestState } from "../components/ui.jsx";
-import { Pagination } from "../components/FinancialForms.jsx";
+import { AmountField, Pagination } from "../components/FinancialForms.jsx";
 import { useResource } from "../services/useResource.js";
 import * as api from "../services/index.js";
 export function ScreeningForm({ holding, onSaved }) {
@@ -115,6 +115,7 @@ export function ScreeningForm({ holding, onSaved }) {
         <Field
           label="Screening assessment date"
           type="date"
+          max={today()}
           value={draft.assessed_on}
           onChange={(value) => set("assessed_on", value)}
           required
@@ -241,11 +242,11 @@ export function ScreeningHistory({ holdingId }) {
             </p>
             <p>
               Missing inputs:{" "}
-              {record.assessment.missing_inputs.join(", ") || "None"}
+              {(Array.isArray(record.assessment.missing_inputs) ? record.assessment.missing_inputs : []).join(", ") || "None"}
             </p>
             <p>
               Failed checks:{" "}
-              {record.assessment.failed_checks.join(", ") || "None"}
+              {(Array.isArray(record.assessment.failed_checks) ? record.assessment.failed_checks : []).join(", ") || "None"}
             </p>
             <p>{record.assessment.notes}</p>
             <p>{record.assessment.disclaimer}</p>
@@ -258,5 +259,112 @@ export function ScreeningHistory({ holdingId }) {
         count={history.data?.length || 0}
       />
     </RequestState>
+  );
+}
+
+export function HoldingMetadataForm({ holding, onSaved }) {
+  const [draft, setDraft] = useState({ name: holding.name, symbol: holding.symbol });
+  const [confirmed, setConfirmed] = useState(false);
+  return (
+    <>
+      <details>
+        <summary>Edit holding details for {holding.symbol}</summary>
+        <ActionForm
+          label="Save holding details"
+          onSubmit={async () => {
+            await api.updateHolding(holding.id, draft);
+            onSaved();
+          }}
+        >
+          <Field
+            label="Updated holding name"
+            value={draft.name}
+            onChange={(name) => setDraft({ ...draft, name })}
+            required maxLength={80}
+          />
+          <Field
+            label="Updated holding symbol"
+            value={draft.symbol}
+            onChange={(symbol) => setDraft({ ...draft, symbol: symbol.toUpperCase() })}
+            pattern="[A-Z0-9.\-]{1,20}" required maxLength={20}
+            help="Symbol changes are only allowed before any trades, quotes or screening are recorded. Currency and portfolio stay unchanged."
+          />
+        </ActionForm>
+      </details>
+      <details>
+        <summary>Delete tracked holding {holding.symbol}</summary>
+        <ActionForm
+          label="Confirm delete tracked holding"
+          onSubmit={async () => {
+            if (!confirmed) throw new Error("Confirm removal of the holding and its history.");
+            await api.deleteHolding(holding.id);
+            onSaved(holding.id);
+          }}
+        >
+          <Notice>
+            Permanently removes {holding.symbol} and all its tracked holding,
+            trade and screening records. This cannot be undone. No investments
+            are sold and no money moves.
+          </Notice>
+          <label className="check-field">
+            <input type="checkbox" required checked={confirmed}
+              onChange={(event) => setConfirmed(event.target.checked)} />
+            <span>I confirm removal of this tracked holding and all its trade and screening records.</span>
+          </label>
+        </ActionForm>
+      </details>
+    </>
+  );
+}
+
+export function TradeEditor({ trade, onSaved }) {
+  const [draft, setDraft] = useState({
+    side: trade.side, quantity: trade.quantity, price: trade.price,
+    fees: trade.fees, traded_on: trade.traded_on,
+  });
+  const [confirmed, setConfirmed] = useState(false);
+  const set = (key, value) => setDraft({ ...draft, [key]: value });
+  if (!trade.can_correct) {
+    return <p className="secondary">{trade.correction_unavailable_reason === "legacy_trade"
+      ? "Legacy trade: correction and removal unavailable because its original accounting snapshot is unknown."
+      : "Only the latest recorded trade for this holding can be corrected or removed."}</p>;
+  }
+  return (
+    <>
+      <details>
+        <summary>Correct latest trade</summary>
+        <ActionForm label="Save trade correction" onSubmit={async () => {
+          await api.updateTrade(trade.id, draft);
+          onSaved();
+        }}>
+          <p>Cost basis and realized gains are recalculated from the corrected quantity, price and fees.</p>
+          <Field label="Corrected trade side" value={draft.side}
+            onChange={(value) => set("side", value)} options={["buy", "sell"]} />
+          <AmountField label="Corrected quantity" value={draft.quantity} precision={6}
+            onChange={(value) => set("quantity", value)} />
+          <AmountField label="Corrected price per unit" value={draft.price} precision={6}
+            onChange={(value) => set("price", value)} />
+          <AmountField label="Corrected fees" value={draft.fees} allowZero
+            onChange={(value) => set("fees", value)} />
+          <Field label="Corrected trade date" type="date" value={draft.traded_on}
+            onChange={(value) => set("traded_on", value)} required />
+        </ActionForm>
+      </details>
+      <details>
+        <summary>Remove latest tracked trade</summary>
+        <ActionForm label="Confirm remove tracked trade" onSubmit={async () => {
+          if (!confirmed) throw new Error("Confirm removal of this tracked trade.");
+          await api.deleteTrade(trade.id);
+          onSaved();
+        }}>
+          <p>Removes this trade record and restores the holding's quantity, cost basis and realized gains to their values before it. No order is cancelled or executed; no money moves.</p>
+          <label className="check-field">
+            <input type="checkbox" required checked={confirmed}
+              onChange={(event) => setConfirmed(event.target.checked)} />
+            <span>I confirm removal of this tracked trade.</span>
+          </label>
+        </ActionForm>
+      </details>
+    </>
   );
 }

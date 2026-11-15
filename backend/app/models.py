@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime, timezone
 from decimal import Decimal
-from sqlalchemy import String, Text, Boolean, DateTime, Date, ForeignKey, Numeric, JSON, UniqueConstraint, CheckConstraint
+from sqlalchemy import String, Text, Boolean, DateTime, Date, ForeignKey, Numeric, JSON, UniqueConstraint, CheckConstraint, Integer
 from sqlalchemy.orm import Mapped, mapped_column
 from .db import Base, ExactDecimal
 
@@ -176,6 +176,11 @@ class ScreeningRecord(Owned, Base):
 
 class Trade(Owned, Base):
     __tablename__ = 'trades'
+    # Null ordering/snapshots identify legacy trades, which cannot be safely reversed.
+    sequence: Mapped[int | None] = mapped_column(Integer)
+    before_quantity: Mapped[Decimal | None] = mapped_column(ExactDecimal())
+    before_cost_basis: Mapped[Decimal | None] = mapped_column(ExactDecimal())
+    before_realized_gain: Mapped[Decimal | None] = mapped_column(ExactDecimal())
     holding_id: Mapped[str] = mapped_column(ForeignKey('holdings.id', ondelete='CASCADE'))
     side: Mapped[str] = mapped_column(String(4))
     quantity: Mapped[Decimal] = mapped_column(ExactDecimal())

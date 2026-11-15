@@ -7,7 +7,7 @@ from sqlalchemy import select, func
 from . import models as m, schemas as s
 from .db import get_db
 from .security import current_user
-from .common import cents, six, fail, json_value, owned, pagination, public, rows
+from .common import cents, six, fail, owned, pagination, public, rows
 from .calculations import apply_trade, screen
 
 router = APIRouter(tags=['portfolio'])
@@ -16,7 +16,11 @@ router = APIRouter(tags=['portfolio'])
 def holding_view(holding):
     value = holding.quantity * holding.quote_price if holding.quote_price is not None else (Decimal(0) if not holding.quantity else None)
     snapshot = holding.screening_assessment
-    stale = bool(snapshot and holding.screening_date and (date.today() - holding.screening_date).days > snapshot.get('max_age_days', 90))
+    # Treat malformed, undated and future legacy evidence as uncertain, never approval.
+    age_limit = snapshot.get('max_age_days', 90) if isinstance(snapshot, dict) else None
+    has_evidence = snapshot is not None or holding.screening_status != 'unverified'
+    age = (date.today() - holding.screening_date).days if holding.screening_date else None
+    stale = has_evidence and (type(age_limit) is not int or not 1 <= age_limit <= 3660 or age is None or age < 0 or age > age_limit)
     return {**public(holding), 'needs_reevaluation': stale, 'screening_status': 'uncertain' if stale else holding.screening_status, 'average_cost': str(six(holding.cost_basis / holding.quantity)) if holding.quantity else '0.000000', 'market_value': str(cents(value)) if value is not None else None, 'unrealized_gain': str(cents(value - holding.cost_basis)) if value is not None else None}
 
 
@@ -107,33 +111,127 @@ def create_holding(data: s.HoldingCreate, user=Depends(current_user), db=Depends
     return holding_view(holding)
 
 
+@router.patch('/portfolio/holdings/{holding_id}')
+def update_holding(holding_id: UUID, data: s.HoldingUpdate, user=Depends(current_user), db=Depends(get_db)):
+    holding = owned(db, m.Holding, holding_id, user.id, lock=True)
+    if data.symbol != holding.symbol and (
+        holding.quantity or holding.cost_basis or holding.realized_gain
+        or holding.quote_price is not None or holding.quote_date or holding.quote_source
+        or holding.screening_assessment is not None
+        or holding.screening_status != 'unverified' or holding.screening_date or holding.screening_source or holding.screening_notes
+        or db.scalar(select(m.Trade.id).where(m.Trade.holding_id == holding.id).limit(1))
+        or db.scalar(select(m.ScreeningRecord.id).where(m.ScreeningRecord.holding_id == holding.id).limit(1))
+    ):
+        fail(409, 'symbol_has_history', 'Symbol cannot change after trades, quotes or screening are recorded; the name can still be edited')
+    holding.symbol, holding.name = data.symbol, data.name
+    db.flush()
+    return holding_view(holding)
+
+
+@router.delete('/portfolio/holdings/{holding_id}', status_code=204)
+def delete_holding(holding_id: UUID, user=Depends(current_user), db=Depends(get_db)):
+    holding = owned(db, m.Holding, holding_id, user.id, lock=True)
+    # Foreign-key cascades remove this holding's tracked trades and screenings only.
+    db.delete(holding)
+    db.flush()
+
+
+TRADE_SNAPSHOTS = ('before_quantity', 'before_cost_basis', 'before_realized_gain')
+
+
+def trade_view(trade, latest_sequence):
+    legacy = trade.sequence is None or any(getattr(trade, key) is None for key in TRADE_SNAPSHOTS)
+    reason = 'legacy_trade' if legacy else ('not_latest_trade' if trade.sequence != latest_sequence else None)
+    return {**public(trade, exclude=TRADE_SNAPSHOTS), 'can_correct': reason is None, 'correction_unavailable_reason': reason}
+
+
+def checked_trade(quantity, basis, realized_gain, data):
+    try:
+        quantity, basis, gain = apply_trade(quantity, basis, data.side, data.quantity, data.price, data.fees)
+    except ValueError as exc:
+        fail(409, 'invalid_trade', str(exc))
+    realized_gain = six(realized_gain + gain)
+    if quantity > Decimal('1000000000') or basis > Decimal('999999999999999999') or abs(realized_gain) > Decimal('999999999999999999'):
+        fail(409, 'holding_limit', 'Holding arithmetic limit exceeded')
+    return quantity, basis, realized_gain, gain
+
+
+def check_trade_date(db, holding_id, traded_on, excluding=None):
+    statement = select(func.max(m.Trade.traded_on)).where(m.Trade.holding_id == holding_id)
+    if excluding:
+        statement = statement.where(m.Trade.id != excluding)
+    latest = db.scalar(statement)
+    if latest and traded_on < latest:
+        fail(422, 'trade_order', 'Trade date cannot predate latest recorded trade')
+
+
 @router.post('/portfolio/trades', status_code=201)
 def create_trade(data: s.TradeCreate, user=Depends(current_user), db=Depends(get_db)):
     holding = owned(db, m.Holding, data.holding_id, user.id, lock=True)
-    latest = db.scalar(select(func.max(m.Trade.traded_on)).where(m.Trade.holding_id == holding.id))
-    if latest and data.traded_on < latest:
-        fail(422, 'trade_order', 'Trade date cannot predate latest recorded trade')
-    try:
-        quantity, basis, gain = apply_trade(holding.quantity, holding.cost_basis, data.side, data.quantity, data.price, data.fees)
-    except ValueError as exc:
-        fail(409, 'invalid_trade', str(exc))
-    if quantity > Decimal('1000000000') or basis > Decimal('999999999999999999') or abs(holding.realized_gain + gain) > Decimal('999999999999999999'):
-        fail(409, 'holding_limit', 'Holding arithmetic limit exceeded')
-    holding.quantity, holding.cost_basis = quantity, basis
-    holding.realized_gain = six(holding.realized_gain + gain)
-    trade = m.Trade(user_id=user.id, holding_id=holding.id, realized_gain=gain, **data.model_dump(exclude={'holding_id'}))
+    check_trade_date(db, holding.id, data.traded_on)
+    quantity, basis, realized_gain, gain = checked_trade(holding.quantity, holding.cost_basis, holding.realized_gain, data)
+    # Holding lock serializes same-day writes. Legacy trades precede every sequenced trade;
+    # no UUID/date tie-break is used to invent an accounting order for legacy history.
+    sequence = (db.scalar(select(func.max(m.Trade.sequence)).where(m.Trade.holding_id == holding.id)) or 0) + 1
+    trade = m.Trade(user_id=user.id, holding_id=holding.id, sequence=sequence,
+                    before_quantity=holding.quantity, before_cost_basis=holding.cost_basis,
+                    before_realized_gain=holding.realized_gain, realized_gain=gain,
+                    **data.model_dump(exclude={'holding_id'}))
+    holding.quantity, holding.cost_basis, holding.realized_gain = quantity, basis, realized_gain
     db.add(trade)
     db.flush()
-    return public(trade)
+    return trade_view(trade, sequence)
+
+
+def reversible_trade(db, trade_id, user_id):
+    # Read only the ID before acquiring the holding lock; load fresh trade state after it.
+    holding_id = db.scalar(select(m.Trade.holding_id).where(m.Trade.id == str(trade_id), m.Trade.user_id == user_id))
+    if holding_id is None:
+        fail(404, 'not_found', 'Resource not found')
+    holding = owned(db, m.Holding, holding_id, user_id, lock=True)
+    trade = owned(db, m.Trade, trade_id, user_id)
+    latest = db.scalar(select(func.max(m.Trade.sequence)).where(m.Trade.holding_id == holding.id))
+    reason = trade_view(trade, latest)['correction_unavailable_reason']
+    if reason:
+        fail(409, reason, 'Only the latest trade with a recorded accounting snapshot can be corrected or removed; legacy trades cannot be reversed safely')
+    return holding, trade
+
+
+@router.patch('/portfolio/trades/{trade_id}')
+def update_trade(trade_id: UUID, data: s.TradeUpdate, user=Depends(current_user), db=Depends(get_db)):
+    holding, trade = reversible_trade(db, trade_id, user.id)
+    check_trade_date(db, holding.id, data.traded_on, excluding=trade.id)
+    quantity, basis, realized_gain, gain = checked_trade(trade.before_quantity, trade.before_cost_basis, trade.before_realized_gain, data)
+    holding.quantity, holding.cost_basis, holding.realized_gain = quantity, basis, realized_gain
+    for key, value in data.model_dump().items():
+        setattr(trade, key, value)
+    trade.realized_gain = gain
+    db.flush()
+    return trade_view(trade, trade.sequence)
+
+
+@router.delete('/portfolio/trades/{trade_id}', status_code=204)
+def delete_trade(trade_id: UUID, user=Depends(current_user), db=Depends(get_db)):
+    holding, trade = reversible_trade(db, trade_id, user.id)
+    holding.quantity, holding.cost_basis, holding.realized_gain = (getattr(trade, key) for key in TRADE_SNAPSHOTS)
+    db.delete(trade)
+    db.flush()
 
 
 @router.get('/portfolio/trades')
-def trades(holding_id: UUID | None = None, page=Depends(pagination), user=Depends(current_user), db=Depends(get_db)):
-    conditions = []
+def trades(holding_id: UUID | None = None, portfolio_id: UUID | None = None, page=Depends(pagination), user=Depends(current_user), db=Depends(get_db)):
+    statement = select(m.Trade).join(m.Holding, m.Trade.holding_id == m.Holding.id).where(m.Trade.user_id == user.id, m.Holding.user_id == user.id)
     if holding_id:
         owned(db, m.Holding, holding_id, user.id)
-        conditions.append(m.Trade.holding_id == str(holding_id))
-    return [public(item) for item in rows(db, m.Trade, user.id, page, *conditions)]
+        statement = statement.where(m.Trade.holding_id == str(holding_id))
+    if portfolio_id:
+        owned(db, m.Portfolio, portfolio_id, user.id)
+        statement = statement.where(m.Holding.portfolio_id == str(portfolio_id))
+    # Across holdings use date/holding ID, then reverse accounting sequence. Legacy
+    # same-day UUID order is display-only; those records are never reversible.
+    items = db.scalars(statement.order_by(m.Trade.traded_on.desc(), m.Trade.holding_id, func.coalesce(m.Trade.sequence, 0).desc(), m.Trade.id).limit(page[0]).offset(page[1])).all()
+    latest = dict(db.execute(select(m.Trade.holding_id, func.max(m.Trade.sequence)).where(m.Trade.user_id == user.id, m.Trade.holding_id.in_([item.holding_id for item in items])).group_by(m.Trade.holding_id)).all())
+    return [trade_view(item, latest.get(item.holding_id)) for item in items]
 
 
 @router.put('/portfolio/holdings/{holding_id}/quote')
