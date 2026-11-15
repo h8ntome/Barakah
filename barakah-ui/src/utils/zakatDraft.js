@@ -18,6 +18,7 @@ export function createZakatDraft(initial, valuationDate) {
     gold_price_per_gram: "",
     silver_price_per_gram: "",
     price_source: "",
+    classification_notes: "",
     valuation_date: valuationDate,
     haul_start: "",
     haul_complete: false,
@@ -26,6 +27,7 @@ export function createZakatDraft(initial, valuationDate) {
   return initial
     ? {
         ...initial,
+        classification_notes: initial.classification_notes ?? "",
         gold_nisab_grams: initial.gold_nisab_grams ?? blank.gold_nisab_grams,
         silver_nisab_grams:
           initial.silver_nisab_grams ?? blank.silver_nisab_grams,

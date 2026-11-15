@@ -38,6 +38,7 @@ def test_payment_corrections_ownership_currency_and_summary(client, register, za
     a, _ = register()
     b, _ = register('b@example.com')
     zakat_profile['assets']['cash'] = '15000.00'
+    zakat_profile['classification_notes'] = 'Personal jewelry excluded; eligible cash only; no debt deductions.'
     assert client.put(BASE + '/zakat/profile', headers=a, json=zakat_profile).status_code == 200
     history = client.post(BASE + '/zakat/history', headers=a).json()
     body = {'amount': '100.00', 'currency': 'USD', 'paid_on': date.today().isoformat(), 'recipient': 'Synthetic', 'history_id': history['id']}

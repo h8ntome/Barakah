@@ -49,6 +49,7 @@ test("legacy zakat profiles gain independent savings/other and configurable nisa
   assert.equal(draft.assets.other, "0.00");
   assert.equal(draft.gold_nisab_grams, "85");
   assert.equal(draft.silver_nisab_grams, "595");
+  assert.equal(draft.classification_notes, "");
   draft.assets.savings = "100.00";
   assert.equal(draft.assets.cash, "123.45");
   assert.equal(initial.assets.savings, undefined);
@@ -64,6 +65,7 @@ test("saved savings/other and six-decimal methodology weights survive draft init
     },
     gold_nisab_grams: "87.480001",
     silver_nisab_grams: "612.360001",
+    classification_notes: "Jewelry excluded under my chosen interpretation",
   };
   assert.deepEqual(createZakatDraft(initial, "2026-01-15"), initial);
   const blank = createZakatDraft(null, "2026-01-15");

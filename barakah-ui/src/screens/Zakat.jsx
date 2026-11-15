@@ -68,8 +68,14 @@ function ProfileForm({ initial, onSaved }) {
         Enter all assets in this currency. Changing currency does not convert
         amounts. Enter each asset only once; move savings out of cash if
         previously included there. Account and portfolio values are not added
-        automatically.
+        automatically. Enter only amounts eligible under your chosen interpretation:
+        personal-use assets may be excluded; jewelry and investment treatment differ
+        between scholars. Enter zero for excluded assets and only the eligible portion
+        of holdings. Deduct only liabilities permitted by your chosen method.
       </p>
+      <Field label="Asset and liability treatment notes" value={draft.classification_notes}
+        onChange={(value) => set("classification_notes", value)} maxLength={1000}
+        help="Record your jewelry treatment, investment approach and eligible debt deductions. These notes do not automatically classify assets." />
       {Object.entries(assetLabels).map(([key, label]) => (
         <AmountField
           key={key}
@@ -172,7 +178,7 @@ function ProfileForm({ initial, onSaved }) {
           onChange={(event) => set("haul_complete", event.target.checked)}
         />
         <span>
-          I attest that the required holding period (haul) is complete. A start
+          I attest that the required lunar-year holding period (haul) is complete. A start
           date alone does not confirm eligibility.
         </span>
       </label>
@@ -389,6 +395,7 @@ export default function Zakat({ navigate, onChanged }) {
                   Haul {item.estimate.haul_complete ? "complete" : "incomplete"}
                 </p>
                 <p>{item.estimate.methodology}</p>
+                {item.profile.classification_notes && <p>Asset treatment: {item.profile.classification_notes}</p>}
                 <p>
                   Recorded paid{" "}
                   {money(item.paid_amount, item.estimate.currency)} · Remaining{" "}

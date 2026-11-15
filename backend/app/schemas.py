@@ -141,6 +141,7 @@ class ZakatProfileInput(Input):
     valuation_date: date
     haul_start: date | None = None
     haul_complete: bool = False
+    classification_notes: Annotated[str, Field(max_length=1000)] = ''
     rate: Annotated[Decimal, Field(gt=0, le=1, max_digits=7, decimal_places=6)] = Decimal('0.025')
 
     @model_validator(mode='after')
