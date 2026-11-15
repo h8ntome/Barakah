@@ -137,7 +137,9 @@ export const getMessages = async (conversationId) => {
   } while (page.length === 100);
   return messages;
 };
-export const sendMessage = (body) => post("/advisor/messages", body);
+export const sendMessage = (body) => client.request("/advisor/messages", {
+  method: "POST", body, retryAuth: false,
+});
 export const deleteConversation = (conversationId) =>
   del(`/advisor/conversations/${id(conversationId)}`);
 export const getAds = (context) => get("/ads", { context });

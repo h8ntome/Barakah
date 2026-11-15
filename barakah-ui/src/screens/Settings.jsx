@@ -86,9 +86,12 @@ export default function Settings({ user }) {
             onChange={(event) => setConsent(event.target.checked)}
           />
           <span>
-            Saved advisor consent preference (inactive). AI is unavailable;
-            this setting does not connect a model or enable replies. You can
-            check availability and review historical conversations without it.
+            I consent to sending my questions and recent conversation history to
+            the configured AI model. Save settings before sending. No financial
+            records are included automatically. Responses may be inaccurate and
+            are not authoritative. Uncheck and save to stop future sends; this
+            cannot recall text already sent. Consent does not connect a model:
+            when AI is unavailable, no text is sent or saved.
           </span>
         </label>
       </ActionForm>

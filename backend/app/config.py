@@ -1,5 +1,6 @@
 from functools import lru_cache
-from pydantic import field_validator, model_validator
+from pydantic import Field, SecretStr, field_validator, model_validator
+from urllib.parse import urlsplit
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from typing import Literal
 
@@ -12,7 +13,10 @@ class Settings(BaseSettings):
     allowed_origins: str = 'http://localhost:5173,http://127.0.0.1:5173'
     cookie_secure: bool = False
     frontend_dist: str | None = None
-    ai_mode: Literal['unavailable'] = 'unavailable'
+    ai_mode: Literal['unavailable', 'http'] = 'unavailable'
+    ai_url: str | None = None
+    ai_token: SecretStr | None = None
+    ai_timeout_seconds: float = Field(default=90, ge=1, le=300, allow_inf_nan=False)
     reset_outbox: str | None = None
     smtp_host: str | None = None
     smtp_port: int = 587
@@ -38,6 +42,15 @@ class Settings(BaseSettings):
 
     @model_validator(mode='after')
     def secure_config(self):
+        if self.ai_mode == 'http':
+            url = urlsplit(self.ai_url or '')
+            if (url.scheme != 'http' or url.hostname not in {'127.0.0.1', '::1'}
+                    or url.username or url.password or url.query or url.fragment
+                    or url.path != '/generate' or not url.port):
+                raise ValueError('AI_URL must be an explicit loopback HTTP /generate endpoint (use an SSH tunnel)')
+            token = self.ai_token.get_secret_value() if self.ai_token else ''
+            if len(token) < 32 or not token.isascii() or any(char.isspace() for char in token):
+                raise ValueError('HTTP AI requires a random URL-safe AI_TOKEN of at least 32 characters')
         if self.environment not in {'development', 'test', 'production'}:
             raise ValueError('Invalid environment')
         if self.environment == 'production':

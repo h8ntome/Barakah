@@ -13,6 +13,7 @@ import * as api from "../services/index.js";
 import { conversationOptions } from "../utils/conversationOptions.js";
 export default function Chat({ navigate, active }) {
   const context = useResource(api.getAdvisorContext);
+  const configured = context.data?.status === "configured";
   const [offset, setOffset] = useState(0);
   const conversations = useResource(api.getConversations, {
     offset,
@@ -130,18 +131,20 @@ export default function Chat({ navigate, active }) {
       </div>
       <div className="chat-scroll">
         <Notice>
-          AI assistant unavailable — no model is connected. You can try sending a
-          question to check availability; no advice is generated and no new
-          messages are saved. Your financial tools remain available.
+          {!context.data
+            ? "AI configuration not yet verified. Sending checks availability; your financial tools remain available."
+            : configured
+              ? "AI endpoint configured — availability is checked on send. Save consent in Settings first: your question and recent conversation history will be sent, never your financial records automatically. Responses may be inaccurate and are not authoritative."
+              : "AI assistant unavailable — no model is connected. You can try sending a question to check availability; no advice is generated and no new messages are saved. Your financial tools remain available."}
         </Notice>
-        {conversationId && (
+        {conversationId && context.data?.status === "unavailable" && (
           <Notice>
             Historical conversation only. These saved messages are not new advice
             or evidence of a connected AI. You can review or delete this history.
           </Notice>
         )}
         {!conversationId && (
-          <Empty>No messages yet. AI replies are unavailable; drafts are not saved to your account.</Empty>
+          <Empty>No messages yet. {configured ? "Messages are saved only after a successful AI reply." : "Drafts are not saved to your account."}</Empty>
         )}
         {!conversationId && (
           <RequestState resource={context} label="advisor context">
@@ -156,7 +159,7 @@ export default function Chat({ navigate, active }) {
                   </div>
                 </div>
                 <div className="suggestions">
-                  <p>Example questions · AI not connected</p>
+                  <p>{configured ? "Example questions · Not advice" : "Example questions · AI not connected"}</p>
                   {context.data.starter_questions.map((question) => (
                     <button
                       key={question}
@@ -186,7 +189,7 @@ export default function Chat({ navigate, active }) {
                   <p className="message-meta">
                     {message.is_demo
                       ? "Historical demonstration · Not AI advice"
-                      : "Historical model response · May be inaccurate"}
+                      : "Model response · May be inaccurate, not authoritative"}
                   </p>
                 )}
               </div>
@@ -195,7 +198,7 @@ export default function Chat({ navigate, active }) {
         </RequestState>
         {sending && (
           <p className="reply-pending" role="status">
-            Checking AI availability…
+            {configured ? "Generating a response…" : "Checking AI availability…"}
           </p>
         )}
         {error && (

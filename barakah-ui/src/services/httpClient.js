@@ -60,7 +60,7 @@ export function createHttpClient({
       const detail = data?.detail;
       const message =
         response.status >= 500
-          ? (["ai_unavailable", "reset_unavailable"].includes(data?.error?.code)
+          ? (["ai_unavailable", "ai_timeout", "ai_failed", "reset_unavailable"].includes(data?.error?.code)
               ? data.error.message
               : "Barakah is temporarily unavailable. Please try again.")
           : typeof detail === "string"
@@ -131,6 +131,7 @@ export function createHttpClient({
       if (
         error.status !== 401 ||
         options.public ||
+        options.retryAuth === false ||
         error.code === "invalid_credentials"
       )
         throw error;

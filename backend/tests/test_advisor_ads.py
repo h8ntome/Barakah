@@ -62,9 +62,10 @@ def test_advisor_endpoints_require_authentication(client, auth, historical_conve
         assert client.request(method, B + path, json=body).status_code == 401
 
 
-def test_advisor_openapi_documents_unavailable_result(client):
+def test_advisor_openapi_documents_dual_mode_result(client):
     responses = client.get('/openapi.json').json()['paths'][B + '/advisor/messages']['post']['responses']
-    assert '200' not in responses and '201' not in responses
+    assert responses['200']['content']['application/json']['schema']['$ref'].endswith('/AIResult')
+    assert '201' not in responses
     assert responses['503']['content']['application/json']['schema']['$ref'].endswith('/AIResult')
 
 

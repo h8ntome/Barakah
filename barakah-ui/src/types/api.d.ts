@@ -286,10 +286,19 @@ export interface Conversation {
 export interface AIResult {
   conversation_id: string | null;
   response: { role: 'assistant'; text: string } | null;
-  error: { code: 'ai_unavailable'; message: string } | null;
+  error: { code: 'ai_unavailable' | 'ai_timeout' | 'ai_failed'; message: string } | null;
+  metadata?: {
+    model: 'h8notme/barakah1';
+    revision: '912a5697cf9d85adf065ee512f509cfa236459d4';
+    prompt_sha256: string;
+    template_sha256: string;
+    input_tokens: number;
+    output_tokens: number;
+    generation_seconds: number;
+  };
 }
 export interface AdvisorContext {
-  status: 'unavailable';
+  status: 'unavailable' | 'configured';
   welcome_message: Pick<AdvisorMessage, "role" | "text" | "is_demo">;
   starter_questions: string[];
 }
