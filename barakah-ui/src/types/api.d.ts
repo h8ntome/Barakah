@@ -278,6 +278,7 @@ export interface AdvisorMessage {
   text: string;
   created_at: ISODateTime;
   is_demo: boolean;
+  generation_metadata: AIResult['metadata'] | null;
 }
 export interface Conversation {
   id: string;
@@ -286,7 +287,7 @@ export interface Conversation {
 export interface AIResult {
   conversation_id: string | null;
   response: { role: 'assistant'; text: string } | null;
-  error: { code: 'ai_unavailable' | 'ai_timeout' | 'ai_failed'; message: string } | null;
+  error: { code: 'ai_unavailable' | 'ai_timeout' | 'ai_failed' | 'ai_invalid_key' | 'ai_provider_limited' | 'ai_model_rejected'; message: string } | null;
   metadata?: {
     model: 'h8notme/barakah1';
     revision: '912a5697cf9d85adf065ee512f509cfa236459d4';
@@ -295,10 +296,37 @@ export interface AIResult {
     input_tokens: number;
     output_tokens: number;
     generation_seconds: number;
+  } | {
+    source: 'user_provider';
+    provider: 'openai' | 'custom';
+    model: string; // Provider-reported, not independently verified.
+    configured_model: string;
+    input_tokens: number | null;
+    output_tokens: number | null;
   };
+}
+export interface AIConnection {
+  mode: 'disabled' | 'local' | 'external';
+  provider: 'openai' | 'custom' | null;
+  base_url: string | null;
+  model_id: string | null;
+  revision: string | null;
+  has_key: boolean;
+  local_available: boolean;
+  external_available: boolean;
+  custom_enabled: boolean;
+  consent_saved: boolean;
+  test_status: 'untested' | 'success' | 'failed';
+  tested_at: ISODateTime | null;
+  test_error: string | null;
+  requests_per_minute: number;
+  requests_per_day: number;
 }
 export interface AdvisorContext {
   status: 'unavailable' | 'configured';
+  provider: 'unavailable' | 'http' | 'openai' | 'custom';
+  model: string | null;
+  connection_revision: string | null;
   welcome_message: Pick<AdvisorMessage, "role" | "text" | "is_demo">;
   starter_questions: string[];
 }

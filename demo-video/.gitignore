@@ -9,6 +9,7 @@ output/
 .runtime/
 assets/recordings/
 assets/audio/*.wav
+assets/audio/user-connections-review/*.wav
 reports/final-frames/
 reports/release-frames/
 reports/release-export-frames/

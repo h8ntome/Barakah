@@ -1,6 +1,6 @@
 # Public Vercel demo
 
-**Live: https://barakah-gamma.vercel.app — select Try Demo.** Production deployment and21 real-browser public checks passed on2026-11-15. The database is Neon `barakah-demo`, free plan `free_v3`, region `iad1`; no paid plan was selected.
+**Public demo: https://barakah-gamma.vercel.app — select Try Demo.** This alias serves an **older release**, not the newly reviewed local source. The historical 21 public checks below apply to that deployment only. New personal-account AI settings and encrypted provider connections are **pending deployment**, not publicly verified. The existing database uses Neon's free plan; confirm current provider limits before rollout.
 
 The repository now deploys **both** the Vite frontend and the existing FastAPI API on one Vercel domain. `api/index.py` exports the real application, `/api/*` routes to it before the SPA fallback, and Python3.13 installs the existing pinned backend dependencies. **A persistent hosted PostgreSQL database is still required.** There is no localStorage/mock-demo fallback and no shared demo password.
 
@@ -18,12 +18,23 @@ The repository now deploys **both** the Vite frontend and the existing FastAPI A
 | `ALLOWED_ORIGINS` | Exact public HTTPS origin, e.g. `https://barakah-gamma.vercel.app`; comma-separate only other domains you own and need |
 | `ENVIRONMENT` | `production` |
 | `COOKIE_SECURE` | `true` |
-| `AI_MODE` | `unavailable` |
+| `AI_MODE` | `unavailable` (private pinned runtime stays off) |
+| `USER_AI_ENABLED` | `false` unless deliberately enabling personal-account BYOK after secure setup below |
 | `RESET_URL` | Actual HTTPS origin followed by `/reset-password` |
 
-The entrypoint enforces production mode, secure cookies and unavailable AI even if configured incorrectly. A missing database/secret/origin **fails closed**, not into an insecure ephemeral demo. Leave `FRONTEND_DIST` and `RESET_OUTBOX` unset. The frontend build forces the same-origin `/api/v1` URL; no API URL secret belongs in the client.
+The entrypoint enforces production mode, secure cookies and `AI_MODE=unavailable` (no private pinned runtime). It does **not** override `USER_AI_ENABLED`; leave that false to keep external-provider AI unavailable too. A missing database/secret/origin **fails closed**, not into an insecure ephemeral demo. Leave `FRONTEND_DIST` and `RESET_OUTBOX` unset. The frontend build forces the same-origin `/api/v1` URL; no API URL secret belongs in the client.
 
 Preview deployments require their own scoped configuration and preferably a separate database. Add only the exact trusted preview origin if testing there. Do not expose production secrets to untrusted pull requests or allow `*.vercel.app` origins.
+
+## Optional personal-account AI rollout (pending deployment)
+
+Follow [the user-provider guide](user-ai.md) before enabling this feature. Public demo accounts can never save provider keys. Personal accounts can use OpenAI or an exact operator-approved HTTPS OpenAI-compatible destination, not native Anthropic/Gemini APIs.
+
+After backing up and applying the integrated migrations, supply `USER_AI_ENABLED=true` and a **dedicated base64-encoded 32-byte random `AI_CREDENTIAL_KEY`** privately through server-side secret management. It must not be `SECRET_KEY` or a browser-exposed `VITE_` variable. No actual secret is included in this guide. Optional `AI_ALLOWED_BASE_URLS` is a comma-separated exact HTTPS allowlist; keep empty if custom providers are unnecessary. Encryption-key rotation requires a planned migration or users replacing keys; removing a live key does not erase backups or provider data.
+
+Defaults: 6 attempts/minute and 30/day per account, one in-flight request/account and 8 globally through database-backed admission. Tests and failed provider attempts count. Users must save their connection and then consent; testing makes a real potentially billable request. No automatic financial-record sharing, financial writes, silent fallback or provider-key fallback. A provider's reported model identity is not independently proved.
+
+Verify migrations, setup gating, demo refusal, personal-account ownership, encryption, consent resets, removal, quotas and provider failures before announcing availability. This docs review made **no genuine external-key call and verified no successful external inference**. A live test requires separate authorization/budget. Keep the feature disabled until release verification is complete.
 
 ## Migrate, deploy, then verify
 
@@ -63,7 +74,7 @@ Ensure the **production** URL is publicly accessible without a Vercel login, acc
 3. Create/edit a financial record, reload and confirm persistence. After an idle interval verify session refresh still works.
 4. Open a second private browser; its demo must not contain the first browser's edits.
 5. In Home → Settings, reset the first demo and verify the second demo remains unchanged.
-6. Verify logout, registration/login and AI's explicit unavailable response. Test recovery only after configuring real SMTP; no provider is required for Try Demo.
+6. Verify logout and registration/login. With both AI modes disabled, verify AI's explicit unavailable response. If deliberately enabling personal-account BYOK, verify the optional rollout boundary above and demo refusal separately. Test recovery only after configuring real SMTP; no provider is required for Try Demo.
 
 Each demo is a unique non-admin owner with a24-hour expiry. Reset recreates only that demo; there are no shared credentials. No actual money moves.
 
@@ -73,7 +84,7 @@ Use Vercel's edge/firewall rate limiting for the public auth/demo endpoints as a
 
 `demo-video/`, benchmark/model files, local environments, databases, dumps and audit screenshots are excluded from uploads. None of those files are deleted locally.
 
-## Verification status for this change
+## Historical verification (older deployment, not new AI rollout)
 
 Local full suite: **121 SQLite tests passed** plus one PostgreSQL-only test skipped; **122 PostgreSQL tests passed**, including the actual Vercel ASGI entrypoint with production HTTPS-cookie settings, two isolated demos, persisted edits, refresh and reset. **64 frontend tests and the production build passed.** Test execution caught and fixed an import-path issue in Alembic revisions before commit.
 

@@ -51,12 +51,22 @@ class ProviderResponse(BaseModel):
     metadata: GenerationMetadata
 
 
+class ExternalGenerationMetadata(BaseModel):
+    model_config = ConfigDict(extra='forbid', strict=True)
+    source: Literal['user_provider'] = 'user_provider'
+    provider: Literal['openai', 'custom']
+    model: str = Field(min_length=1, max_length=160)
+    configured_model: str = Field(min_length=1, max_length=160)
+    input_tokens: int | None = Field(default=None, ge=0, le=100000)
+    output_tokens: int | None = Field(default=None, ge=0, le=384)
+
+
 @dataclass(frozen=True)
 class AIResult:
     conversation_id: str | None
     response: AIMessage | None = None
     error: AIError | None = field(default_factory=AIError)
-    metadata: GenerationMetadata | None = None
+    metadata: GenerationMetadata | ExternalGenerationMetadata | None = None
 
 
 def send_message(request: AIRequest) -> AIResult:

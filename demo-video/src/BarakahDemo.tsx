@@ -5,7 +5,7 @@ import {TransitionSeries, linearTiming} from '@remotion/transitions';
 import {fade} from '@remotion/transitions/fade';
 import {AIAssistant, Closing, Dashboard, Evaluation, Hook, Introduction, Portfolio, Zakat} from './scenes';
 import {BasicCaptions} from './basic-captions.element';
-import captions from '../assets/audio/captions.json';
+import captions from '../assets/audio/user-connections-review/captions.json';
 import './styles.css';
 
 export const BarakahDemo = () => {
@@ -30,7 +30,7 @@ export const BarakahDemo = () => {
    <TransitionSeries.Transition presentation={fade()} timing={linearTiming({durationInFrames:12})}/>
    <TransitionSeries.Sequence name="Closing" durationInFrames={8*fps}><Closing/></TransitionSeries.Sequence>
   </TransitionSeries>
-  <Audio name="Narration and original stereo score" src={staticFile('audio/final-mix.wav')} />
+  <Audio name="Narration and original stereo score" src={staticFile('audio/user-connections-review/final-mix.wav')} />
   <div className="film-captions" style={{position:'absolute',left:180,bottom:30,width:1560,height:105,pointerEvents:'none'}}>
    <BasicCaptions name="Phrase-aligned narration captions" width={2600} captions={captions} combineTokensWithinMilliseconds={0} style={{position:'absolute',bottom:0,left:0,scale:.6,transformOrigin:'left bottom'}}/>
   </div>

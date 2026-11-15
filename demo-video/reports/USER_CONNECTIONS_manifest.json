@@ -1,0 +1,151 @@
+{
+  "baseline": "22d455932100e9716648e16ee9d114e8f33a1046",
+  "changed_and_new_nonruntime_files": [
+    {
+      "path": "demo-video/.gitignore",
+      "bytes": 329,
+      "sha256": "ee7a6a71cb6b095662779846703bdfa0fcb2233b0869f4e2950e04a188eac259"
+    },
+    {
+      "path": "demo-video/assets/audio/user-connections-review/captions.json",
+      "bytes": 4159,
+      "sha256": "df13ead5cd44a7340a45ef193d33dc4d7d407d4d1299fef6f0b137875d2feb7b"
+    },
+    {
+      "path": "demo-video/reports/USER_CONNECTIONS_NARRATION.md",
+      "bytes": 2296,
+      "sha256": "7d97e3941d1640cb2e021db4b1e27306ced0f480781a7122861746a944c626d4"
+    },
+    {
+      "path": "demo-video/reports/USER_CONNECTIONS_V2_VALIDATION.json",
+      "bytes": 981,
+      "sha256": "75f476c8fdb46b1c1c822f9334d8b86b2e89275693b23bb4b5c44a65ee911b0a"
+    },
+    {
+      "path": "demo-video/reports/USER_CONNECTIONS_V2_VALIDATION.md",
+      "bytes": 905,
+      "sha256": "1c630d19264090287b18aa349a21b511a2a8f3dbf98dc2a6f1f3627e9e302db4"
+    },
+    {
+      "path": "demo-video/reports/USER_CONNECTIONS_V2_playback-check.json",
+      "bytes": 3038,
+      "sha256": "243f8337cf6e93fc5cf9e3e3fc9a19c03fbdcd0d968f77f134f20522fe2acbd8"
+    },
+    {
+      "path": "demo-video/reports/USER_CONNECTIONS_VALIDATION.json",
+      "bytes": 978,
+      "sha256": "5c16a47bdccf6a99ae6224753a6964c1f547d48b0d41e3d1f12e9b5bb93f43b0"
+    },
+    {
+      "path": "demo-video/reports/USER_CONNECTIONS_VALIDATION.md",
+      "bytes": 902,
+      "sha256": "495c96c07cf1ffef7746f408a0123c603f680b16c5db20458d1b79e0300616e6"
+    },
+    {
+      "path": "demo-video/reports/USER_CONNECTIONS_audio-generation.json",
+      "bytes": 2371,
+      "sha256": "608851a03ebb25710f859ad33fb46d34b7cfd1e954336539a676048334798a0f"
+    },
+    {
+      "path": "demo-video/reports/USER_CONNECTIONS_playback-check.json",
+      "bytes": 3039,
+      "sha256": "4923992497efb62c0768c13c1cec9cff70df38eb1c2d07bd9b2183f053db55d3"
+    },
+    {
+      "path": "demo-video/reports/USER_CONNECTIONS_preservation.json",
+      "bytes": 4547,
+      "sha256": "8d5bf8376d78fec9e558262436fad78c4a5221101f6c7122d44b356f349f8d89"
+    },
+    {
+      "path": "demo-video/scripts/check-source.mjs",
+      "bytes": 5838,
+      "sha256": "4eef0c5786bdb568ea42897d3400874d842ee451d9f53c283325627060b60b02"
+    },
+    {
+      "path": "demo-video/scripts/narration.json",
+      "bytes": 2586,
+      "sha256": "cea211e77f7d1db848c298efa1fb92484c50a07e7d7227874e2912a1ffc19c85"
+    },
+    {
+      "path": "demo-video/scripts/produce-audio.py",
+      "bytes": 4581,
+      "sha256": "ee6600c20816b826ba324eae2cb6236702828438005909750ec64bcd5bf2c754"
+    },
+    {
+      "path": "demo-video/scripts/render-user-connections.mjs",
+      "bytes": 1957,
+      "sha256": "8cb227ba01b9227de510d36416aa181a2a0e76baff68414315c3a4d7997c9f7d"
+    },
+    {
+      "path": "demo-video/src/BarakahDemo.tsx",
+      "bytes": 3225,
+      "sha256": "d4c1317e487a0489aeeffabf3bff20b02e128862d8ea6c5a967ed1205ead9fc9"
+    },
+    {
+      "path": "demo-video/src/scenes.tsx",
+      "bytes": 16389,
+      "sha256": "cf5ed4bfb75a4cd00626a85dce83929d6ba1b176206226f9107c5735a86d5da0"
+    }
+  ],
+  "new_audio": [
+    {
+      "path": "demo-video/assets/audio/user-connections-review/final-mix.wav",
+      "bytes": 22080078,
+      "sha256": "676f80930aa3f531c4578e4b400bdba680accdda57e25e4507ac68fe4b765e71"
+    },
+    {
+      "path": "demo-video/assets/audio/user-connections-review/narration.wav",
+      "bytes": 5520044,
+      "sha256": "ba164867142d71f628d6732eae52f2d01a9ee18a065e040eaaa6e468690f7d68"
+    },
+    {
+      "path": "demo-video/assets/audio/user-connections-review/original-score.wav",
+      "bytes": 16560044,
+      "sha256": "6d385e20e2f1d9d4ee3c4e7a2d8fbcf8469d4edd07039f23b527999418573634"
+    }
+  ],
+  "new_render_and_caption_outputs": [
+    {
+      "path": "demo-video/output/user-connections-review/barakah-demo-captions.srt",
+      "bytes": 2098,
+      "sha256": "1b94b7e488a045e5946e8a3cb222bad88cd1f15b0a640714b8a29f75c69025e7"
+    },
+    {
+      "path": "demo-video/output/user-connections-review/barakah-demo-user-connections-candidate-v2.mp4",
+      "bytes": 17246024,
+      "sha256": "9da37e9bcfed59d76afe23eb9a75fcdb6149e3966653319862a8381f928ceb59"
+    },
+    {
+      "path": "demo-video/output/user-connections-review/barakah-demo-user-connections-candidate.mp4",
+      "bytes": 17231421,
+      "sha256": "9555710f9a036319e9f88d0340976f21ad0c39b05c3b25fed2a25d69624816f8"
+    },
+    {
+      "path": "demo-video/output/user-connections-review/barakah-demo-user-connections-yuv420p-v2.mp4",
+      "bytes": 16043571,
+      "sha256": "3107c2e1673b2a0a75dd49896061cbd77b318ef48113ae5820494b9735a54fc9"
+    },
+    {
+      "path": "demo-video/output/user-connections-review/barakah-demo-user-connections-yuv420p.mp4",
+      "bytes": 16030274,
+      "sha256": "6ed6e32812e08f880e56aee957e5df245a29632e56acf7395793f5699b66ea03"
+    },
+    {
+      "path": "demo-video/output/user-connections-review/contact-sheet-v2.jpg",
+      "bytes": 664908,
+      "sha256": "91fac4308a16b57d1cc8d62c5a076dbdc9e3b8fdfb3248528f8ef801494dc9a3"
+    },
+    {
+      "path": "demo-video/output/user-connections-review/contact-sheet.jpg",
+      "bytes": 665285,
+      "sha256": "c92749ac29272cbbd1484c8aad6d379c48bba80d1be8be2327225d5105ba2d7e"
+    },
+    {
+      "path": "demo-video/output/user-connections-review/status-frame-alternate.png",
+      "bytes": 1096678,
+      "sha256": "1fd17cd4c033f3e490ce07eb391571122732f31c54fb85da338eaa4f4d9499cd"
+    }
+  ],
+  "selected_review_candidate": "demo-video/output/user-connections-review/barakah-demo-user-connections-yuv420p-v2.mp4",
+  "no_staged_files": true
+}

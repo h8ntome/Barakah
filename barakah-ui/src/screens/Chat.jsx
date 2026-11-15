@@ -12,7 +12,7 @@ import { useResource } from "../services/useResource.js";
 import * as api from "../services/index.js";
 import { conversationOptions } from "../utils/conversationOptions.js";
 export default function Chat({ navigate, active }) {
-  const context = useResource(api.getAdvisorContext);
+  const context = useResource(api.getAdvisorContext, active);
   const configured = context.data?.status === "configured";
   const [offset, setOffset] = useState(0);
   const conversations = useResource(api.getConversations, {
@@ -42,8 +42,10 @@ export default function Chat({ navigate, active }) {
     setSending(true);
     setError("");
     try {
+      if (!context.data) throw new Error("Wait for AI configuration to load before sending.");
       const reply = await api.sendMessage({
         text: text.trim(),
+        connection_revision: context.data.connection_revision,
         ...(conversationId ? { conversation_id: conversationId } : {}),
       });
       setText("");
@@ -71,6 +73,12 @@ export default function Chat({ navigate, active }) {
           </span>
         }
       />
+      <div className="chat-status">
+        <div className="ai-identity"><strong>Active model: </strong>{configured
+          ? `${context.data.provider === "http" ? "Barakah checkpoint" : context.data.provider === "openai" ? "Your OpenAI connection" : "Your custom provider"} · ${context.data.model}`
+          : context.data ? "Off" : "Checking…"}</div>
+        <button className="text-button" disabled={sending} onClick={context.retry}>Refresh AI status</button>
+      </div>
       <div className="chat-toolbar">
         <Field
           label="Conversation history"
@@ -137,6 +145,7 @@ export default function Chat({ navigate, active }) {
               ? "AI endpoint configured — availability is checked on send. Save consent in Settings first: your question and recent conversation history will be sent, never your financial records automatically. Responses may be inaccurate and are not authoritative."
               : "AI assistant unavailable — no model is connected. You can try sending a question to check availability; no advice is generated and no new messages are saved. Your financial tools remain available."}
         </Notice>
+        <p className="formula-note">Configure your model in Home → Settings → AI Model. External providers are not the Barakah checkpoint. Start a new conversation when changing provider or model.</p>
         {conversationId && context.data?.status === "unavailable" && (
           <Notice>
             Historical conversation only. These saved messages are not new advice
@@ -185,6 +194,11 @@ export default function Chat({ navigate, active }) {
             >
               <div className="message-bubble">
                 {message.text}
+                {message.generation_metadata && <p className="message-meta ai-identity">
+                  {message.generation_metadata.source === "user_provider"
+                    ? `Your ${message.generation_metadata.provider} provider · Requested: ${message.generation_metadata.configured_model} · Provider-reported: ${message.generation_metadata.model} (not independently verified)`
+                    : `Barakah checkpoint · ${message.generation_metadata.model} @ ${message.generation_metadata.revision}`}
+                </p>}
                 {message.role === "assistant" && (
                   <p className="message-meta">
                     {message.is_demo
@@ -210,7 +224,7 @@ export default function Chat({ navigate, active }) {
       </div>
       <p className="chat-disclaimer">
         Model suggestions are not Sharia-screened. Verify calculations independently.
-        Not a substitute for qualified scholarly or financial advice.
+        Not a substitute for qualified scholarly or financial advice. This project is a prototype and is not financial advice.
       </p>
       <form className="chat-composer" onSubmit={send}>
         <input

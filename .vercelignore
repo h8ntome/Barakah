@@ -15,6 +15,7 @@
 **/*.log
 benchmark
 demo-video
+submissions
 audit
 tests
 backend/tests

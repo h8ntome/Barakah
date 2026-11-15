@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   BarChart3,
   Coins,
@@ -17,8 +17,16 @@ import SponsoredAd from "../components/SponsoredAd.jsx";
 import { getDashboard } from "../services/index.js";
 import { useResource } from "../services/useResource.js";
 import { money } from "../utils/finance.js";
-export default function Home({ user, navigate, version, onChanged }) {
+export default function Home({ user, navigate, version, onChanged, active }) {
   const [section, setSection] = useState("overview");
+  const settingsPanel = useRef(null);
+  function selectSection(value) {
+    setSection(value);
+    if (value === "settings") requestAnimationFrame(() => {
+      settingsPanel.current?.focus({ preventScroll: true });
+      settingsPanel.current?.scrollIntoView({ block: "start", behavior: "instant" });
+    });
+  }
   const [month, setMonth] = useState(today().slice(0, 7));
   const dashboard = useResource(getDashboard, { month }, version);
   return (
@@ -40,7 +48,7 @@ export default function Home({ user, navigate, version, onChanged }) {
         <button
           className="profile-monogram"
           aria-label="Open settings"
-          onClick={() => setSection("settings")}
+          onClick={() => selectSection("settings")}
         >
           <SettingsIcon size={19} />
         </button>
@@ -169,7 +177,7 @@ export default function Home({ user, navigate, version, onChanged }) {
         <Tabs
           label="Home management"
           value={section}
-          onChange={setSection}
+          onChange={selectSection}
           options={[
             { id: "overview", label: "Overview" },
             { id: "accounts", label: "Accounts" },
@@ -219,8 +227,8 @@ export default function Home({ user, navigate, version, onChanged }) {
         <div hidden={section !== "goals"}>
           <Goals onChanged={onChanged} version={version} />
         </div>
-        <div hidden={section !== "settings"}>
-          <Settings user={user} />
+        <div hidden={section !== "settings"} ref={settingsPanel} tabIndex={-1} role="region" aria-label="Settings destination">
+          <Settings user={user} active={active && section === "settings"} />
         </div>
       </div>
     </div>

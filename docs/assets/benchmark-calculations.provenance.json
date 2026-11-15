@@ -1,0 +1,47 @@
+{
+  "description": "New presentation chart; scores read from existing processed rows, matched IDs checked, raw hashes verified. Historical comparison candidate_config not used. No inference rerun.",
+  "source_sha256": {
+    "benchmark/results/processed/rules-release_20261115T164650954399+0000.json": "857c0ab6dfca1e6d8fc998f2c6c350dd0ab0272bbbd1ceb15a3f136499b04e0a",
+    "benchmark/results/raw/rules-release_20261115T164650954399+0000.jsonl": "8392eb16b0d770c4d5f0229bcb3eb1d3331a2c0dbc60dd80d72f3e3f92ae6517",
+    "benchmark/results/raw/rules-release_20261115T164650954399+0000.meta.json": "b5a392ef1cf0cf05d773b84ce9048085fa397a21631a5354d15d2e5875acde1e",
+    "benchmark/results/processed/original-matched_20261115T153923318073+0000.json": "648e81ffec11f9ffff8e54c7dace0192826c381838566632d79cd4e018ec47b5",
+    "benchmark/results/raw/original-matched_20261115T153923318073+0000.jsonl": "fe6c4418505c7708852bd8d706f94a0f5d2ac821bb51fa5de3d05076202ee729",
+    "benchmark/results/raw/original-matched_20261115T153923318073+0000.meta.json": "2778e68a9d1dcbecfe5a9f6c420585c6c4aaeccbd0e2f02c821a56b90b0f7371",
+    "benchmark/results/processed/barakah-matched_20261115T154845353654+0000.json": "737d97e874ada30130ddd81a6dc10d8e476c00500e9397340d559bfd21a1abb9",
+    "benchmark/results/raw/barakah-matched_20261115T154845353654+0000.jsonl": "bc2299aed7e61dc3ec1f88f3f506ce565194f8e159e52b1a8615bc0d4b0c77c2",
+    "benchmark/results/raw/barakah-matched_20261115T154845353654+0000.meta.json": "fd5c5c1d9f77b8158f1c92a6f7fbadc715c31c29e2e924d33ffd5ad3b742f4b0",
+    "benchmark/datasets/benchmark_questions.json": "c8a9636cc9ad96cbfb1049168227a23e5fc213ce245264be44984667578801fb",
+    "benchmark/scripts/evaluate_responses.py": "f9567f5c81019472e5a7f5bcf1677b5c0e29ae0df187efbb494caf6e7e8ed16d",
+    "benchmark/results/hardware/barakah1_checkpoint.json": "4de6e7ba4482fe233c9899591a4195cc7138a604114c0f5cde3dcc8c4adfb1c1"
+  },
+  "matched_zakat_question_ids": [
+    "ZAKAT_001",
+    "ZAKAT_002",
+    "ZAKAT_003",
+    "ZAKAT_004",
+    "ZAKAT_005",
+    "ZAKAT_006",
+    "ZAKAT_007",
+    "ZAKAT_008",
+    "ZAKAT_009",
+    "ZAKAT_010",
+    "ZAKAT_011",
+    "ZAKAT_012",
+    "ZAKAT_013",
+    "ZAKAT_014",
+    "ZAKAT_015"
+  ],
+  "zakat_correct": {
+    "Deterministic rules": 15,
+    "Original LFM3": 12,
+    "Barakah candidate": 11
+  },
+  "full_numeric_correct": {
+    "original": 36,
+    "candidate": 32,
+    "denominator": 40
+  },
+  "absolute_tolerance": "0.01",
+  "conceptual_unreviewed_per_model": 60,
+  "asset_sha256": "69aabad64dddd3b8eed4d395b1a65bdb2a2654e4287af3bc34a4c9b0198559fb"
+}

@@ -1,0 +1,49 @@
+{
+  "captured_at_utc": "2026-11-15",
+  "origin": "http://127.0.0.1:8097",
+  "source_status": "Uncommitted integration source served locally; not public deployment. Selected source hashes recorded after capture, not a build attestation.",
+  "screenshots": [
+    {
+      "path": "docs/assets/demo-overview.png",
+      "session": "barakah-presentation-20261115-fresh",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "workflow": "Fresh isolated browser > Try Demo > Home; no edits to seeded financial data",
+      "transform": "None",
+      "sha256": "0ff33975dc5b0764fbf5decd3e2c8ca84cf5d096a97a3a2090be7e439585d22d"
+    },
+    {
+      "path": "docs/assets/demo-zakat.png",
+      "session": "barakah-presentation-20261115-fresh",
+      "viewport": [
+        390,
+        844
+      ],
+      "workflow": "Same fresh demo > Zakat; no edits to seeded financial data",
+      "transform": "None",
+      "sha256": "adb12a992075d1a6682a8a39af4ad368d250a47495607b2b8d34ee20a5cce585"
+    },
+    {
+      "path": "docs/assets/ai-model-settings.png",
+      "session": "barakah-presentation-personal-20261115-fresh",
+      "viewport": [
+        1280,
+        1500
+      ],
+      "workflow": "Separate fresh browser > register fictional personal account > Home settings > AI source: My API provider; empty key and model; no save, consent or test",
+      "transform": "Native .ai-settings element screenshot, then crop (left=0, top=0, right=358, bottom=610) to omit identity and offscreen content. No compositing or text changes.",
+      "source_element_sha256": "a07f0d68cacf4f298efe3da56a3652030dbc0778a07746cfbab1a1a0a2e85d86",
+      "sha256": "c29559ce8816effec36294047e43202a5b16823d52d082a919db2c79467a00ae"
+    }
+  ],
+  "selected_integration_source_sha256": {
+    "backend/app/ai_connections.py": "15860afe00944f07d0957e161e0cd6c84526ba3e928b460d7e601a8c2aea4654",
+    "backend/app/external_ai.py": "ed5a4a7620f8f6d67cf51e6f03a29b6d81d9db28cd1fafc3453b774823e2f2a2",
+    "backend/app/ai_limits.py": "02badc8e7c1fc5748d09f11a102a16f9ab6755a4bbfa77c2b021cd94a02e5204",
+    "backend/app/config.py": "bd6941f03b896652354ec343b9a9ecad7bc84f9b74291877646645ff87c9ac8b",
+    "backend/app/advisor.py": "d6aa15c5d5ff55f65972da98c816b5b799cc9f0ca79362751334a5b39b861fc4",
+    "barakah-ui/src/components/AIModelSettings.jsx": "4947e3e0aead9125ae3cf9919143f1a47823d8ea12e633a10e279eab6721e071"
+  }
+}

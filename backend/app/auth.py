@@ -56,6 +56,9 @@ def me(user=Depends(current_user)):
 
 @router.patch('/profile')
 def profile(data: s.ProfileUpdate, user=Depends(current_user), db=Depends(get_db)):
+    user = db.scalar(select(User).where(User.id == user.id).with_for_update().execution_options(populate_existing=True))
+    if data.ai_consent is not None and data.ai_consent != user.ai_consent:
+        user.ai_consent_version += 1
     for key, value in data.model_dump(exclude_none=True).items():
         setattr(user, key, value)
     db.flush()

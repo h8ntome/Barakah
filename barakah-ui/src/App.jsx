@@ -23,6 +23,7 @@ function Workspace({ user, activeTab, navigate }) {
         aria-label="Home"
       >
         <Home
+          active={activeTab === "home"}
           user={user}
           navigate={navigate}
           version={version}

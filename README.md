@@ -1,77 +1,103 @@
 # Barakah
 
-An authenticated Islamic personal-finance tracker: transactions, budgets, savings goals, zakat records, sadaqah and manually valued investments. React/Vite + FastAPI/SQLAlchemy/Alembic; SQLite locally, PostgreSQL supported.
+### Your money. Your values. A little more clarity.
 
-**Tracking, not money movement.** No bank sync, payment processing, brokerage execution, live prices or religious certification. **AI is unavailable by default and on the public demo.** An explicit [private local AI setup](docs/local-ai.md) connects the pinned Barakah checkpoint after saved consent. Real browser → backend → model → browser inference and follow-ups were observed; advice quality failed important checks. No fake answers or automatic financial-record sharing. Offline model evaluation is separate; no weights were changed during this release.
+Track everyday spending, plan a savings goal, estimate zakat and record giving — in one personal-finance workspace. Barakah keeps **manual financial records**, not your money: no bank sync, payments, brokerage execution or live prices.
 
-**Current release:** [audit, evidence and limitations](docs/RELEASE_AUDIT.md) · [credits](docs/CREDITS.md). This is not a production financial adviser or a claim of hackathon eligibility.
+![Barakah's real desktop interface showing a fictional demo's income, expenses and manually valued assets](docs/assets/demo-overview.png)
 
-**Evaluation and submission:** [Fine-Tuning Evaluation and Personal Finance Domain Adaptation](benchmark/rescue/REPORT.md) · [submission checklist](benchmark/rescue/SUBMISSION_CHECKLIST.md). The original numerical comparison is **36/40 LFM3 vs 32/40 Barakah**, with conceptual answers unreviewed. The separate exploratory personal-finance benchmark completed 50 questions/model: **5/23 LFM3 vs 9/23 Barakah** on strict numeric fields, with substantial formatting failures and no reviewed advice-quality scores. It does not replace the original benchmark. **This project is a prototype and is not financial advice.**
+*Real local app, fresh Try Demo workspace, entirely fictional data. [Screenshot and chart provenance](docs/assets/PROVENANCE.md).*
 
-## Start the complete app
+**[Try the public demo](https://barakah-gamma.vercel.app)** · **[Watch the demo](https://drive.google.com/file/d/1CirQfcmoW9D3MZjUdrb85dgt8V_h7S4r/view)** · **[Run locally](#run-locally)** · **[AI setup](docs/user-ai.md)** · **[Credits & licenses](docs/CREDITS.md)**
 
-The locked release setup uses Python **3.13** and Node **20.19+ / 22.13+ / 24+**. First install dependencies:
+> **Deployment boundary:** the public alias is an older release, not the source pictured here. New personal-account AI settings are **pending deployment**. AI is unavailable by default; public demo accounts cannot save provider keys. The finance tools need no AI service.
+
+**This project is a prototype and is not financial advice. Islamic finance is educational, not religious certification.**
+
+## Watch the 115-second demo
+
+[![Watch the Barakah demo: real fictional-finance workflows and an honest model evaluation](docs/assets/demo-film-thumbnail.png)](https://drive.google.com/file/d/1CirQfcmoW9D3MZjUdrb85dgt8V_h7S4r/view)
+
+Real synthetic-data workflows and genuine private-model failures. The linked film is the existing verified version; a revised candidate remains under review. **No successful external inference is claimed.** [Verified release folder](https://drive.google.com/drive/folders/1qcRacwBeBUfiOjNu5KPX-jCEcr-nmcQI).
+
+## From a monthly picture to a practical plan
+
+1. **See where you stand.** Accounts, transactions and budgets feed the overview. The fictional demo starts with $4,500 income, $2,850 expenses and $1,650 monthly surplus.
+2. **Make room for a goal.** Track earmarked savings, such as the demo's $5,000 Hajj goal with $1,250 contributed. Goals do not create extra assets or move funds.
+3. **Document zakat assumptions.** Enter eligible assets, deductible liabilities, a dated manual nisab and haul attestation. Save a calculation and record payments made elsewhere.
+4. **Keep giving and investments visible.** Record sadaqah, maintain holdings and trades, and enter dated valuations. Educational screening is not halal certification.
+
+<p align="center"><img src="docs/assets/demo-zakat.png" width="300" alt="Real mobile demo: $15,000 eligible wealth, fictional $5,000 nisab and completed haul yield a $375 zakat estimate"></p>
+
+*The demo's $375 estimate uses fictional inputs, not current market prices or a religious ruling.*
+
+Choose **Try Demo** on the login screen. Every browser gets its own editable, non-admin workspace; edits survive reload. **Home → Settings → Reset demo data** resets only that workspace. Demos expire after 24 hours. Never enter real information in a demo. [Full walkthrough](audit/DEMO_GUIDE.md).
+
+## AI is optional, explicit and separate
+
+| Mode | What it means |
+|---|---|
+| **Off (default)** | No inference or new chat messages. Finance tools continue to work. |
+| **My API provider** | Personal accounts only, after secure operator setup. OpenAI or an exact approved HTTPS OpenAI-compatible endpoint; not native Anthropic/Gemini APIs. Your provider, your costs — **not the Barakah checkpoint**. |
+| **Private Barakah checkpoint** | A separately configured loopback service pinned to `h8notme/barakah1@912a5697cf9d85adf065ee512f509cfa236459d4`. No external fallback. |
+
+[Personal-account setup and credential boundaries](docs/user-ai.md) · [Private pinned-model setup](docs/local-ai.md).
+
+Save the destination, then save consent before testing or sending. Only your question and bounded recent conversation history are sent; financial records are **never included automatically**. AI cannot change financial records. Changing destination/model requires a new conversation. Keys are masked, write-only and encrypted server-side; encryption is not a promise that an operator cannot access them.
+
+<p align="center"><img src="docs/assets/ai-model-settings.png" width="358" alt="Real personal-account provider settings with empty model and key fields; active AI is still Off"></p>
+
+*Actual local settings, cropped to omit identity. Unsaved selection, empty credentials; not a successful provider connection.*
+
+A private pinned-runtime browser check returned **17 + 8 = 25**, then **21** after subtracting 4; reload restored both pairs with pinned metadata. That demonstrates transport, inference and persistence — **not better financial advice**. No genuine external API key or successful external-provider verification was used for this presentation.
+
+## What the benchmark actually shows
+
+**Use a calculation engine for calculations, not model confidence.** On the same 15 numeric zakat tasks, the deterministic rules baseline scored **15/15**, original LFM3 **12/15**, and the Barakah candidate **11/15**. This is narrow calculation-engine evidence, **not fine-tuning superiority** or proof of religious correctness.
+
+![Matched zakat scores: rules 15/15, original 12/15, candidate 11/15. Full numeric benchmark: original 36/40 versus candidate 32/40; 60 conceptual responses per model remain unreviewed.](docs/assets/benchmark-calculations.svg)
+
+**Full 40-question numeric result: original 36/40 (90%) vs candidate 32/40 (80%), absolute tolerance 0.01.** The candidate regressed by 10 percentage points. **All 60 conceptual responses per model remain unreviewed.** The finance-superiority objective is unmet; the [FAQ in the official 22-page guide](https://drive.google.com/file/d/15tYD48XRmCgWbk1_lLDtc8lebi6qm-4-/view) sets no minimum accuracy, so these scores do not establish ineligibility.
+
+Known failures remain visible: interest-bearing advice despite restrictions, mishandled support obligations to parents, arithmetic errors, zakat described as interest, and unsupported rulings. Training/test independence, licensing and training lineage remain unresolved. Working inference does not resolve any of these limits.
+
+- [Matched evaluation report](benchmark/reports/20261115/BENCHMARK_REPORT.md) · [paired responses](benchmark/results/comparisons/20261115/questions.csv) · [observed live advice failures](docs/local-ai.md#observed-quality-failure).
+- **Provenance correction:** [corrected comparison v2](docs/evidence/benchmark-comparison-v2.json) and [correction note](docs/BENCHMARK_PROVENANCE_CORRECTION.md). Historical `comparison.json` copied baseline-template defaults into `candidate_config`; raw rows, run fingerprint and checkpoint manifest identify Barakah. Old artifacts are preserved; this chart reads the processed run scores, not that mislabeled config.
+- [Separate exploratory personal-finance evaluation](benchmark/rescue/REPORT.md): 50 questions/model, **5/23 → 9/23** on strict numeric fields, substantial formatting failures and unreviewed advice quality. It does **not** replace the matched benchmark or prove superiority.
+
+## Run locally
+
+React/Vite + FastAPI/SQLAlchemy/Alembic. SQLite locally; PostgreSQL supported. Use Python **3.13** and Node **20.19+ / 22.13+ / 24+**.
 
 ```sh
 python3.13 -m venv backend/.venv
 backend/.venv/bin/python -m pip install --require-hashes -r backend/requirements.lock
 npm ci --prefix barakah-ui
-```
-
-If using `uv`: `uv venv --python 3.13 backend/.venv`, then `uv pip install --python backend/.venv/bin/python --require-hashes -r backend/requirements.lock`. `requirements.txt` remains the pinned direct-dependency input for cloud deployment; `requirements.lock` includes transitive versions and hashes for the release setup. Do not recreate an existing environment while its server is running.
-
-From the repository root:
-
-```sh
 bash scripts/start-local.sh
-# Open http://127.0.0.1:8080
+# Open http://127.0.0.1:8080 and choose Try Demo
 ```
 
-This builds the frontend, applies additive migrations, and serves the real frontend and API together. The default database is `backend/barakah.db`; no external service is necessary. **Back up an existing database before upgrading.** See [migration/backup instructions](audit/DEMO_GUIDE.md).
+The launcher builds the UI, applies additive migrations and serves frontend/API together on loopback. Default database: `backend/barakah.db`. **Back up existing data before upgrading; do not recreate an environment or change databases while its server is running.** [Migration and backup guide](audit/DEMO_GUIDE.md).
 
-Use `PORT=8081 bash scripts/start-local.sh` for another port. `DATABASE_URL` can select a dedicated SQLite file or PostgreSQL database. The launcher configures exact localhost origins for the selected port; it does not disable CSRF or authentication. It is bound to loopback and is **not** a public-production server recipe.
+Use `PORT=8081 bash scripts/start-local.sh` for another port; `DATABASE_URL` selects a dedicated SQLite file or PostgreSQL database. For Vite development, apply `alembic upgrade head` and run Uvicorn in `backend/`, then `npm run dev --prefix barakah-ui`; set backend `ALLOWED_ORIGINS` to the exact frontend origin. The local launcher is not a production server recipe.
 
-For frontend development, separately run `alembic upgrade head` and Uvicorn in `backend/`, then `npm run dev --prefix barakah-ui` on port 5173. Configure the actual frontend origin in backend `ALLOWED_ORIGINS`; opening an unconfigured port correctly returns 403. SQLite defaults are infrastructure-free. Do not change databases while a server is running.
+Passwords use Argon2id; access tokens stay in memory and refresh tokens use HttpOnly cookies. Records are owner-checked server-side; accounting uses Decimal. Preferred currency does not convert existing records. Local recovery can use a private `RESET_OUTBOX`; production recovery needs SMTP. [Backend guide](backend/README.md).
 
-## Try Demo
-
-Choose **Try Demo** on the login screen. Each browser receives a unique, non-admin, editable workspace with fictional records:
-
-- Monthly income **$4,500**, expenses **$2,850**; savings balance **$12,000**.
-- Three fictional holdings valued manually at **$8,500**, not verified halal/live data.
-- Eligible wealth **$15,000**, fictional nisab threshold and attested haul → **$375** zakat.
-- Budgets, donations, transaction history and a **$5,000 Hajj goal with $1,250 contributed**.
-
-Reset using **Home → Settings → Reset demo data**. Only that demo is replaced. Changes survive refresh; separate demo browsers never share data. Demos expire after 24 hours and expired owners are cleaned in bounded batches when another demo starts. Never enter real information in demo mode. [Full demo guide](audit/DEMO_GUIDE.md).
-
-## Core workflows
-
-- **Home:** stored totals, category charts, recent transactions, budget/goal/zakat summaries; Accounts, Transactions, Budgets, Savings goals and Settings.
-- **Zakat:** manually classify eligible assets and deductible liabilities; document jewelry/investment assumptions, choose manual/gold/silver nisab, dated manual prices, rate and lunar-year attestation. Save immutable calculations; record/correct/remove payments made elsewhere.
-- **Give:** record/edit/delete sadaqah and inspect monthly/annual totals. Goals track earmarked progress only, not extra assets or donations.
-- **Invest:** portfolios, holding metadata, buys/sells, dated manual valuations including zero, configurable educational screening, allocation and gain/loss. Correct/remove the **latest post-migration trade** using exact snapshots; legacy trades cannot safely be individually reversed. Holding deletion explicitly removes its tracked history, not a real investment.
-- **AI Chat:** default/public mode truthfully reports unavailable and saves no failed sends. Opt-in local mode sends your question and bounded owned conversation history to the exact pinned checkpoint after consent; successful pairs persist atomically. Model text is not Sharia-screened and can give wrong or contradictory advice. Verify calculations independently; it never changes your financial records.
-- **Settings:** display name/preferences, logout/password change/deletion. Preferred currency never relabels or converts existing records.
-
-Passwords use Argon2id. Access tokens stay in memory; rotating refresh tokens use HttpOnly cookies. All financial records are owner-checked server-side. Amounts use Decimal, not binary floating-point accounting.
-
-For local password recovery, set `RESET_OUTBOX=/private/path` when launching; reset tokens are written to private files, **not emailed**. Production needs configured SMTP. Never expose or commit the outbox. [Backend guide](backend/README.md).
-
-## Verify
+## Verify and deploy deliberately
 
 ```sh
 (cd backend && .venv/bin/python -m pytest -q)
 (cd backend && TEST_DATABASE_URL='postgresql+psycopg:///YOUR_TEST_DB' .venv/bin/python -m pytest -q)
 npm test --prefix barakah-ui
 npm run build --prefix barakah-ui
-# With the single-origin app running against an isolated local database:
+# Against a running app with an isolated test database:
 BARAKAH_UI_URL=http://127.0.0.1:8080 python3 tests/e2e/journey.py
 ```
 
-Browser tests use installed `agent-browser`/Chromium and **actual backend/database requests**, not production mock APIs. [Current commands, executed evidence and unresolved failures](docs/RELEASE_AUDIT.md) · [feature matrix](audit/FEATURE_MATRIX.md) · [fixes](audit/FIXES.md) · [remaining issues](audit/REMAINING_ISSUES.md).
+`journey.py` uses agent-browser/Chromium and actual backend requests. The AI-settings browser suite labels its UI-only failure fixture separately; no fixture establishes provider inference. Test reports are dated evidence, not automatic verification of another build.
 
-## Deployment boundary
+[Vercel setup and pending AI rollout](docs/VERCEL.md) · [deployment/backups](docs/DEPLOYMENT.md) · [API contract](docs/backend-api.md) · [release audit](docs/RELEASE_AUDIT.md). Historical audit/test reports describe their own snapshots, not automatic verification of today's source or public deployment. Docker/Nginx files are supplied; Docker runtime remains unverified.
 
-The checked-in **Vercel configuration now includes the Python API** alongside the frontend. Connect persistent hosted PostgreSQL, configure server-side secrets/origins, apply migrations, then deploy and verify the public demo. Follow [the Vercel setup guide](docs/VERCEL.md). **Public demo: https://barakah-gamma.vercel.app — choose Try Demo.** The production frontend/API and free Neon PostgreSQL database are deployed; 21 real-browser public checks passed, including persistence, isolation, reset and registration/login. No Vercel account is needed to test it. Docker/Nginx deployment files are also supplied but Docker runtime was not tested.
+## Team Barakah
 
-[Deployment/backups](docs/DEPLOYMENT.md) · [API contract](docs/backend-api.md) · [opt-in pinned model boundary](docs/local-ai.md). Older `docs/testing/` and `audit/` reports are historical snapshots; [the release audit](docs/RELEASE_AUDIT.md) distinguishes local AI tests, public deployed behavior and offline benchmarks.
+**Hadi Allahwala · Shameer Mumtaz · Essa Tai**

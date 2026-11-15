@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AIModelSettings from "../components/AIModelSettings.jsx";
 import { CurrencyField } from "../components/FinancialForms.jsx";
 import { ActionForm, Field } from "../components/forms.jsx";
 import { Notice, SectionHeader } from "../components/ui.jsx";
@@ -9,7 +10,7 @@ import {
   logout,
   resetDemo,
 } from "../services/index.js";
-export default function Settings({ user }) {
+export default function Settings({ user, active }) {
   const [preferences, setPreferences] = useState({
     country: user.country || "",
     timezone: user.timezone || "UTC",
@@ -17,7 +18,6 @@ export default function Settings({ user }) {
     currency: user.currency || "USD",
   });
   const [name, setName] = useState(user.display_name);
-  const [consent, setConsent] = useState(user.ai_consent);
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [deletePassword, setDeletePassword] = useState("");
@@ -26,12 +26,13 @@ export default function Settings({ user }) {
     <section>
       <SectionHeader title="Your settings" />
       <p className="section-description">{user.email}</p>
+      <AIModelSettings user={user} active={active} />
+      <SectionHeader title="Profile and preferences" />
       <ActionForm
         label="Save settings"
         onSubmit={() =>
           updateProfile({
             display_name: name,
-            ai_consent: consent,
             ...preferences,
           })
         }
@@ -79,21 +80,6 @@ export default function Settings({ user }) {
           Preferences do not convert financial records. Record dates remain
           exactly as entered.
         </p>
-        <label className="check-field">
-          <input
-            type="checkbox"
-            checked={consent}
-            onChange={(event) => setConsent(event.target.checked)}
-          />
-          <span>
-            I consent to sending my questions and recent conversation history to
-            the configured AI model. Save settings before sending. No financial
-            records are included automatically. Responses may be inaccurate and
-            are not authoritative. Uncheck and save to stop future sends; this
-            cannot recall text already sent. Consent does not connect a model:
-            when AI is unavailable, no text is sent or saved.
-          </span>
-        </label>
       </ActionForm>
       {user.is_demo && <>
         <Notice>Private demo · fictional data only. Expires after 24 hours. Reset replaces only this demo workspace and its changes.</Notice>

@@ -1,0 +1,33 @@
+{
+  "file": "/private/tmp/barakah-media-review-20261115/demo-video/output/user-connections-review/barakah-demo-user-connections-yuv420p.mp4",
+  "sha256": "6ed6e32812e08f880e56aee957e5df245a29632e56acf7395793f5699b66ea03",
+  "duration_seconds": 115.008,
+  "video_duration_seconds": 115.0,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "fps": "30/1",
+  "frames_decoded": 3450,
+  "file_bytes": 16030274,
+  "video_codec": "h264",
+  "pixel_format": "yuv420p",
+  "audio_codec": "aac",
+  "audio_sample_rate": 48000,
+  "audio_channels": 2,
+  "audio_loudness": {
+    "input_i": "-16.11",
+    "input_tp": "-1.49",
+    "input_lra": "4.10",
+    "input_thresh": "-27.32",
+    "output_i": "-16.06",
+    "output_tp": "-1.50",
+    "output_lra": "3.80",
+    "output_thresh": "-27.25",
+    "normalization_type": "dynamic",
+    "target_offset": "0.06"
+  },
+  "complete_decode": "PASS",
+  "black_frames": "none detected at 99% black / 0.02 threshold",
+  "silence_longer_than_1s_below_minus60dB": []
+}

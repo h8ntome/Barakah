@@ -71,9 +71,9 @@ test("AI unavailable envelope rejects exactly once without changing the draft", 
 
 
 test("Settings explains saved opt-in consent without claiming a connection", async () => {
-  const settings = await readFile(new URL("../src/screens/Settings.jsx", import.meta.url), "utf8");
+  const settings = await readFile(new URL("../src/components/AIModelSettings.jsx", import.meta.url), "utf8");
   assert.match(settings, /I consent to sending my questions and recent conversation history/);
-  assert.match(settings, /Save settings before sending/);
+  assert.match(settings, /Save AI consent before sending/);
   assert.match(settings, /Consent does not connect a model/);
   assert.match(settings, /when AI is unavailable, no text is sent or saved/);
 });

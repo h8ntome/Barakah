@@ -1,5 +1,13 @@
 # Barakah — the demo film
 
+## Reviewed personal-provider update
+
+The selected v2 candidate is `output/user-connections-review/barakah-demo-user-connections-yuv420p-v2.mp4`, SHA-256 `3107c2e1673b2a0a75dd49896061cbd77b318ef48113ae5820494b9735a54fc9`: 115.008 seconds, 16,043,571 bytes. [Measured QC](reports/USER_CONNECTIONS_V2_VALIDATION.json), [playback](reports/USER_CONNECTIONS_V2_playback-check.json), [narration](reports/USER_CONNECTIONS_NARRATION.md), and [preservation manifest](reports/USER_CONNECTIONS_preservation.json). Independently decoded and visually reviewed; subjective listening was not performed. The older master below is preserved until separately promoted into the final package.
+
+Current source uses isolated candidate audio/captions. After restoring the real capture assets and local TTS runtime described below, run `python scripts/produce-audio.py --candidate` using that TTS environment, then `npm test`, `npm run lint`, and `node scripts/render-user-connections.mjs`. The candidate renderer refuses overwrites and never promotes a master. Generated WAVs, SRT and MP4 remain local/ignored; a fresh clone must regenerate them before media tests/rendering. The verified review used an explicitly approved installed Chrome executable through `REMOTION_BROWSER_EXECUTABLE` after bundled Chromium failed; this override is not needed for ordinary environments.
+
+The historical master/release evidence below is not a claim that personal-provider inference succeeded.
+
 **Finished master:** [`output/barakah-demo-final.mp4`](output/barakah-demo-final.mp4)
 
 **Quick preview:** [`output/barakah-demo-preview.mp4`](output/barakah-demo-preview.mp4)

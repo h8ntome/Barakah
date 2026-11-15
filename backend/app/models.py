@@ -31,6 +31,7 @@ class User(Identity, Base):
     password_hash: Mapped[str] = mapped_column(Text)
     display_name: Mapped[str] = mapped_column(String(80))
     ai_consent: Mapped[bool] = mapped_column(Boolean, default=False)
+    ai_consent_version: Mapped[int] = mapped_column(Integer, default=0, server_default='0')
     is_admin: Mapped[bool] = mapped_column(Boolean, default=False)
     is_demo: Mapped[bool] = mapped_column(Boolean, default=False, server_default='false')
     demo_expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), index=True)
@@ -190,8 +191,39 @@ class Trade(Owned, Base):
     traded_on: Mapped[datetime] = mapped_column(Date)
 
 
+class AIConnection(Base):
+    __tablename__ = 'ai_connections'
+    user_id: Mapped[str] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'), primary_key=True)
+    mode: Mapped[str] = mapped_column(String(16), default='disabled')
+    provider: Mapped[str | None] = mapped_column(String(24))
+    base_url: Mapped[str | None] = mapped_column(String(500))
+    model_id: Mapped[str | None] = mapped_column(String(160))
+    encrypted_key: Mapped[str | None] = mapped_column(Text)
+    revision: Mapped[str] = mapped_column(String(36), default=uid)
+    test_status: Mapped[str] = mapped_column(String(16), default='untested')
+    tested_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    test_error: Mapped[str | None] = mapped_column(String(48))
+
+
+class AIUsage(Base):
+    __tablename__ = 'ai_usage'
+    user_id: Mapped[str] = mapped_column(ForeignKey('users.id', ondelete='CASCADE'), primary_key=True)
+    minute_start: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    minute_count: Mapped[int] = mapped_column(Integer, default=0)
+    day_start: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    day_count: Mapped[int] = mapped_column(Integer, default=0)
+    lease_token: Mapped[str | None] = mapped_column(String(36))
+    lease_until: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), index=True)
+
+
+class AIGate(Base):
+    __tablename__ = 'ai_gate'
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+
+
 class Conversation(Owned, Base):
     __tablename__ = 'conversations'
+    connection_identity: Mapped[str | None] = mapped_column(String(64))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
 
 
@@ -201,6 +233,7 @@ class Message(Owned, Base):
     role: Mapped[str] = mapped_column(String(16))
     text: Mapped[str] = mapped_column(Text)
     is_demo: Mapped[bool] = mapped_column(Boolean)
+    generation_metadata: Mapped[dict | None] = mapped_column(JSON)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
 
 

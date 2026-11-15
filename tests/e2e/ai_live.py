@@ -31,7 +31,7 @@ def main():
     j.check('saved consent required before sending', 'Save AI consent in Settings')
     j.click('Home'); j.click('Settings')
     j.browser('check', j.ref('I consent to sending my questions and recent conversation history', 'checkbox'))
-    j.click('Save settings'); j.wait('Saved.')
+    j.click('Save AI consent'); j.wait('Saved.')
     j.click('AI Chat')
     j.browser('set', 'viewport', '440', '850', '2')
     observe()

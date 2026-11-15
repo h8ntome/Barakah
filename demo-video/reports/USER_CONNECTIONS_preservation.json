@@ -1,0 +1,117 @@
+{
+  "unchanged_real_assets": [
+    {
+      "path": "demo-video/assets/recordings/ai-live.mp4",
+      "sha256": "735f573e469f886f1cc4c41c9348c080ede1e535f996737643ef1e45af1970c1",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/recordings/giving.mp4",
+      "sha256": "bd34687071e5eb102d4f93cfc218f9973a986d6acf3233d3c39052bd8adea794",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/recordings/zakat.mp4",
+      "sha256": "dd048e53c25c9a390d5f7033fe9e83816ee61855732ecda5c058b8f4ed40c018",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/recordings/portfolio.mp4",
+      "sha256": "1e01474e1dbb677948d68b8169e1b2b6945e2b585cfe101d1b0cf4d644eb4bf6",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/recordings/dashboard.mp4",
+      "sha256": "c64eae5338c54ba7b085fbe9f5ceb63319b03e2cb0b1a23f910a454c437029d8",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/recordings/desktop.mp4",
+      "sha256": "3348e11cf363ee195398c6a43b7a130360d26236c6a7b20838f8b5a416eab71e",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/recordings/spending.mp4",
+      "sha256": "fe95472cf629b45d082278a9bcea6beccdad042903ca3ff42afa62efb4adcc34",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/screenshots/ai-unavailable.png",
+      "sha256": "156ae10fc6e0adecbb0d464bf6eca8a482fa880bb4770ca1b06910ece350a8ba",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/screenshots/giving-history.png",
+      "sha256": "03c296ea08efc494d1db659409270aba1c56bbe7333606eac4a20a3c15662232",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/screenshots/transactions.png",
+      "sha256": "d6850f8ef2471c20e5023a040558424218b58411252b6d813355b52da6d9171f",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/screenshots/dashboard.png",
+      "sha256": "ed00cbf0a6143ea05b9adfd48a930b96606c9aa98a302c2dc3231da92a4b1b85",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/screenshots/ai-before.png",
+      "sha256": "ed566b8d481e90e8268b9f165bed9ead8f678f9bffe6540c89eb1cf54b17b80f",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/screenshots/desktop.png",
+      "sha256": "f36b38a4eaa94bdb7627878ba2359818ba703b5404170bc541f1c51e9fe829c2",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/screenshots/spending.png",
+      "sha256": "830c2d3c5dc3282d22edcb166270e67c16fba022e79823945d9a862fa47b5567",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/screenshots/invest-learn.png",
+      "sha256": "a44b4a670b38dbae1e01596250c046aa6b27fac05fba0b8f8bbfe35309d5b4f1",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/screenshots/dashboard-detail.png",
+      "sha256": "9ac9c3b79c2a1159b40bfe0556eb4f35775fb1d6bebbdddf570f01b07fa9e982",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/screenshots/invest.png",
+      "sha256": "6d0bd0b9c4b970b34aff9a73a9ef149ec14fef3a9f5c387d8eda54389712001f",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/screenshots/holdings.png",
+      "sha256": "8700238ccc5cbb4b1405fd58d7bc7a38874764e8743179cec334e625806e0937",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/screenshots/ai-live.png",
+      "sha256": "d58b77bcf6027d77c9e766b25473af840b33985d481dc24e5ee91d52fc1e7b67",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/screenshots/giving.png",
+      "sha256": "9de4d39af57dba29c3a9d68b0e184f0b9bd1b2041d190ffbcc5ea7b3c4dc9656",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/screenshots/zakat-saved.png",
+      "sha256": "c421a37f6bd99b1b50359f124c4d6a27fa4551d61c1cc48547aa0486b82dfe5f",
+      "matches_supplied_main_asset": true
+    },
+    {
+      "path": "demo-video/assets/screenshots/zakat.png",
+      "sha256": "2d34d33faf1bcbaf7274ff084e2c2ab9af0906fdd2e7a66b110dc9f383021ae3",
+      "matches_supplied_main_asset": true
+    }
+  ],
+  "original_score_byte_identical": true,
+  "baseline": "22d455932100e9716648e16ee9d114e8f33a1046",
+  "staged_paths": []
+}

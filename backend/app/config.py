@@ -17,6 +17,13 @@ class Settings(BaseSettings):
     ai_url: str | None = None
     ai_token: SecretStr | None = None
     ai_timeout_seconds: float = Field(default=90, ge=1, le=300, allow_inf_nan=False)
+    user_ai_enabled: bool = False
+    ai_credential_key: SecretStr | None = None
+    ai_allowed_base_urls: str = ''
+    external_ai_timeout_seconds: float = Field(default=35, ge=1, le=40, allow_inf_nan=False)
+    ai_requests_per_minute: int = Field(default=6, ge=1, le=60)
+    ai_requests_per_day: int = Field(default=30, ge=1, le=1000)
+    ai_global_inflight_limit: int = Field(default=8, ge=1, le=100)
     reset_outbox: str | None = None
     smtp_host: str | None = None
     smtp_port: int = 587

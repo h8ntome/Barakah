@@ -1,0 +1,382 @@
+{
+  "schema_version": 2,
+  "exporter_sha256": "5fe627e752086508edf930b3f2d56198e8fa2f9c4dde86a393334485c4dc5ce4",
+  "baseline": "original-matched_20261115T153923318073+0000",
+  "candidate": "barakah-matched_20261115T154845353654+0000",
+  "paired_numeric_n": 40,
+  "numeric_correctness": {
+    "baseline": 0.9,
+    "candidate": 0.8,
+    "absolute": -0.09999999999999998,
+    "percentage_points": -9.999999999999998,
+    "relative_change": -0.11111111111111108
+  },
+  "categories": {
+    "budgeting": {
+      "n": 20,
+      "baseline": 1.0,
+      "candidate": 0.85,
+      "absolute": -0.15000000000000002,
+      "percentage_points": -15.000000000000002,
+      "relative_change": -0.15000000000000002
+    },
+    "principles": {
+      "n": 5,
+      "baseline": 0.8,
+      "candidate": 0.8,
+      "absolute": 0.0,
+      "percentage_points": 0.0,
+      "relative_change": 0.0
+    },
+    "zakat": {
+      "n": 15,
+      "baseline": 0.8,
+      "candidate": 0.7333333333333333,
+      "absolute": -0.06666666666666676,
+      "percentage_points": -6.666666666666677,
+      "relative_change": -0.08333333333333345
+    }
+  },
+  "question_disagreements": [
+    {
+      "id": "BUDGET_006",
+      "baseline": true,
+      "candidate": false
+    },
+    {
+      "id": "BUDGET_013",
+      "baseline": true,
+      "candidate": false
+    },
+    {
+      "id": "BUDGET_016",
+      "baseline": true,
+      "candidate": false
+    },
+    {
+      "id": "ZAKAT_014",
+      "baseline": true,
+      "candidate": false
+    }
+  ],
+  "hardware_differences": {
+    "baseline": {
+      "timestamp": "2026-11-15T15:39:30.357744+00:00",
+      "hostname": "server2",
+      "os": "Linux-6.19.10-300.fc44.x86_64-x86_64-with-glibc2.43",
+      "cpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           48 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  32\nOn-line CPU(s) list:                     0-31\nVendor ID:                               AuthenticAMD\nModel name:                              AMD RYZEN AI MAX+ 395 w/ Radeon 8060S\nCPU family:                              26\nModel:                                   112\nThread(s) per core:                      2\nCore(s) per socket:                      16\nSocket(s):                               1\nStepping:                                0\nFrequency boost:                         enabled\nCPU(s) scaling MHz:                      46%\nCPU max MHz:                             5187.5000\nCPU min MHz:                             625.0000\nBogoMIPS:                                5999.97\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good amd_lbr_v2 nopl xtopology nonstop_tsc cpuid extd_apicid aperfmperf rapl pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpuid_fault cpb cat_l3 cdp_l3 hw_pstate ssbd mba perfmon_v2 ibrs ibpb stibp ibrs_enhanced vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local user_shstk avx_vnni avx512_bf16 clzero irperf xsaveerptr rdpru wbnoinvd cppc arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif x2avic v_spec_ctrl vnmi avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid bus_lock_detect movdiri movdir64b overflow_recov succor smca fsrm avx512_vp2intersect flush_l1d amd_lbr_pmc_freeze\nVirtualization:                          AMD-V\nL1d cache:                               768 KiB (16 instances)\nL1i cache:                               512 KiB (16 instances)\nL2 cache:                                16 MiB (16 instances)\nL3 cache:                                64 MiB (2 instances)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-31\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Old microcode:             Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Mitigation; IBPB on VMEXIT only\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; STIBP always-on; PBRSB-eIBRS Not affected; BHI Not affected\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Mitigation; IBPB on VMEXIT",
+      "logical_cores": 32,
+      "physical_cores": 16,
+      "cpu_utilization_percent": 6.8,
+      "load_average": [
+        1.39453125,
+        1.18408203125,
+        1.373046875
+      ],
+      "ram_total_bytes": 132561440768,
+      "ram_available_bytes": 118671347712,
+      "disk_free_bytes": 342147284992,
+      "disk_total_bytes": 1296977362944,
+      "gpu": {
+        "available": true,
+        "cuda": null,
+        "hip": "7.14.60850",
+        "mps": false,
+        "name": "AMD Radeon 8060S Graphics",
+        "free_bytes": 98787471360,
+        "total_bytes": 103079215104,
+        "bf16_supported": true
+      },
+      "sysfs_gpu": {
+        "/sys/class/drm/card0/device/gpu_busy_percent": "24",
+        "/sys/class/drm/card0/device/mem_info_preempt_used": "187273216",
+        "/sys/class/drm/card0/device/mem_info_vram_used": "168734720",
+        "/sys/class/drm/card0/device/mem_info_vis_vram_used": "168734720",
+        "/sys/class/drm/card0/device/mem_info_vis_vram_total": "2147483648",
+        "/sys/class/drm/card0/device/mem_info_gtt_used": "4317409280",
+        "/sys/class/drm/card0/device/mem_info_vram_total": "2147483648",
+        "/sys/class/drm/card0/device/mem_info_gtt_total": "103079215104"
+      },
+      "nvidia_smi": null,
+      "versions": {
+        "python": "3.12.15 (main, Oct 14 2026, 01:05:27) [Clang 23.1.3 ]",
+        "torch": "2.12.0+rocm7.14.1",
+        "transformers": "5.20.0",
+        "huggingface_hub": "2.2.0",
+        "accelerate": "1.15.0",
+        "safetensors": "0.8.0",
+        "triton": "3.8.0+git4cff872c.rocm7.14.1",
+        "psutil": "7.2.2",
+        "PyYAML": "6.0.3",
+        "matplotlib": null
+      },
+      "lfm_caches": [
+        "/home/hadi/.cache/huggingface/hub/models--LiquidAI--LFM3-1.7B"
+      ],
+      "active_memory_workloads": [
+        {
+          "pid": 58132,
+          "name": "python",
+          "rss_bytes": 2211471360
+        },
+        {
+          "pid": 3067,
+          "name": "unsloth",
+          "rss_bytes": 2091814912
+        },
+        {
+          "pid": 59619,
+          "name": "python",
+          "rss_bytes": 1555296256
+        },
+        {
+          "pid": 2547,
+          "name": "python",
+          "rss_bytes": 1254469632
+        },
+        {
+          "pid": 2353,
+          "name": "python3",
+          "rss_bytes": 862294016
+        },
+        {
+          "pid": 55110,
+          "name": "codex",
+          "rss_bytes": 344178688
+        }
+      ]
+    },
+    "candidate": {
+      "timestamp": "2026-11-15T15:48:52.277624+00:00",
+      "hostname": "server2",
+      "os": "Linux-6.19.10-300.fc44.x86_64-x86_64-with-glibc2.43",
+      "cpu": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           48 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  32\nOn-line CPU(s) list:                     0-31\nVendor ID:                               AuthenticAMD\nModel name:                              AMD RYZEN AI MAX+ 395 w/ Radeon 8060S\nCPU family:                              26\nModel:                                   112\nThread(s) per core:                      2\nCore(s) per socket:                      16\nSocket(s):                               1\nStepping:                                0\nFrequency boost:                         enabled\nCPU(s) scaling MHz:                      47%\nCPU max MHz:                             5187.5000\nCPU min MHz:                             625.0000\nBogoMIPS:                                5999.97\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good amd_lbr_v2 nopl xtopology nonstop_tsc cpuid extd_apicid aperfmperf rapl pni pclmulqdq monitor ssse3 fma cx16 sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand lahf_lm cmp_legacy svm extapic cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw ibs skinit wdt tce topoext perfctr_core perfctr_nb bpext perfctr_llc mwaitx cpuid_fault cpb cat_l3 cdp_l3 hw_pstate ssbd mba perfmon_v2 ibrs ibpb stibp ibrs_enhanced vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid cqm rdt_a avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves cqm_llc cqm_occup_llc cqm_mbm_total cqm_mbm_local user_shstk avx_vnni avx512_bf16 clzero irperf xsaveerptr rdpru wbnoinvd cppc arat npt lbrv svm_lock nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold avic v_vmsave_vmload vgif x2avic v_spec_ctrl vnmi avx512vbmi umip pku ospke avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid bus_lock_detect movdiri movdir64b overflow_recov succor smca fsrm avx512_vp2intersect flush_l1d amd_lbr_pmc_freeze\nVirtualization:                          AMD-V\nL1d cache:                               768 KiB (16 instances)\nL1i cache:                               512 KiB (16 instances)\nL2 cache:                                16 MiB (16 instances)\nL3 cache:                                64 MiB (2 instances)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-31\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Old microcode:             Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Mitigation; IBPB on VMEXIT only\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; STIBP always-on; PBRSB-eIBRS Not affected; BHI Not affected\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Mitigation; IBPB on VMEXIT",
+      "logical_cores": 32,
+      "physical_cores": 16,
+      "cpu_utilization_percent": 6.5,
+      "load_average": [
+        3.82373046875,
+        2.90673828125,
+        2.189453125
+      ],
+      "ram_total_bytes": 132561440768,
+      "ram_available_bytes": 121020772352,
+      "disk_free_bytes": 338688479232,
+      "disk_total_bytes": 1296977362944,
+      "gpu": {
+        "available": true,
+        "cuda": null,
+        "hip": "7.14.60850",
+        "mps": false,
+        "name": "AMD Radeon 8060S Graphics",
+        "free_bytes": 98787471360,
+        "total_bytes": 103079215104,
+        "bf16_supported": true
+      },
+      "sysfs_gpu": {
+        "/sys/class/drm/card0/device/gpu_busy_percent": "13",
+        "/sys/class/drm/card0/device/mem_info_preempt_used": "187273216",
+        "/sys/class/drm/card0/device/mem_info_vram_used": "171192320",
+        "/sys/class/drm/card0/device/mem_info_vis_vram_used": "171192320",
+        "/sys/class/drm/card0/device/mem_info_vis_vram_total": "2147483648",
+        "/sys/class/drm/card0/device/mem_info_gtt_used": "4317409280",
+        "/sys/class/drm/card0/device/mem_info_vram_total": "2147483648",
+        "/sys/class/drm/card0/device/mem_info_gtt_total": "103079215104"
+      },
+      "nvidia_smi": null,
+      "versions": {
+        "python": "3.12.15 (main, Oct 14 2026, 01:05:27) [Clang 23.1.3 ]",
+        "torch": "2.12.0+rocm7.14.1",
+        "transformers": "5.20.0",
+        "huggingface_hub": "2.2.0",
+        "accelerate": "1.15.0",
+        "safetensors": "0.8.0",
+        "triton": "3.8.0+git4cff872c.rocm7.14.1",
+        "psutil": "7.2.2",
+        "PyYAML": "6.0.3",
+        "matplotlib": null
+      },
+      "lfm_caches": [
+        "/home/hadi/.cache/huggingface/hub/models--LiquidAI--LFM3-1.7B"
+      ],
+      "active_memory_workloads": [
+        {
+          "pid": 3067,
+          "name": "unsloth",
+          "rss_bytes": 2091814912
+        },
+        {
+          "pid": 66156,
+          "name": "python",
+          "rss_bytes": 1554583552
+        },
+        {
+          "pid": 2547,
+          "name": "python",
+          "rss_bytes": 1254469632
+        },
+        {
+          "pid": 2353,
+          "name": "python3",
+          "rss_bytes": 862294016
+        },
+        {
+          "pid": 55110,
+          "name": "codex",
+          "rss_bytes": 270327808
+        }
+      ]
+    }
+  },
+  "speed_comparison_caveat": "Different hardware/runtime and task coverage are not model speed improvements.",
+  "candidate_template_config": {
+    "dataset": "datasets/benchmark_questions.json",
+    "model": "LiquidAI/LFM3-1.7B",
+    "revision": "1da06bec6a819da10b54c67e5c90972b46d81871",
+    "system_prompt": "You are a helpful assistant. Answer accurately and clearly. State uncertainty and ask for missing information when needed. Do not invent sources.",
+    "generation": {
+      "max_new_tokens": 384,
+      "do_sample": false,
+      "repetition_penalty": 1.0,
+      "use_cache": true
+    },
+    "enable_thinking": false,
+    "seed": 2026,
+    "dtype": "bfloat16",
+    "device": "auto",
+    "attention": "sdpa",
+    "warmup_tokens": 24,
+    "cpu_threads": 8
+  },
+  "baseline_template_config": {
+    "dataset": "datasets/benchmark_questions.json",
+    "model": "LiquidAI/LFM3-1.7B",
+    "revision": "1da06bec6a819da10b54c67e5c90972b46d81871",
+    "system_prompt": "You are a helpful assistant. Answer accurately and clearly. State uncertainty and ask for missing information when needed. Do not invent sources.",
+    "generation": {
+      "max_new_tokens": 384,
+      "do_sample": false,
+      "repetition_penalty": 1.0,
+      "use_cache": true
+    },
+    "enable_thinking": false,
+    "seed": 2026,
+    "dtype": "bfloat16",
+    "device": "auto",
+    "attention": "sdpa",
+    "warmup_tokens": 24,
+    "cpu_threads": 8
+  },
+  "candidate_effective_run_settings": {
+    "model": "h8notme/barakah1",
+    "revision": "912a5697cf9d85adf065ee512f509cfa236459d4",
+    "identity_evidence": [
+      "fingerprint",
+      "checkpoint_manifest",
+      "raw_rows"
+    ],
+    "raw_identity_fields": [
+      "model",
+      "revision"
+    ],
+    "identity_caveat": "Artifact-recorded identity; not proof of training lineage or independent checkpoint execution.",
+    "template_identity_differs": true,
+    "device_requested": "auto",
+    "device_resolved": "cuda",
+    "precision": "torch.bfloat16",
+    "attention": "sdpa",
+    "generation": {
+      "max_new_tokens": 384,
+      "do_sample": false,
+      "repetition_penalty": 1.0,
+      "use_cache": true
+    },
+    "enable_thinking": false,
+    "seed": 2026,
+    "system_prompt_sha256": "0ca931e571b649beecdb818edbaacc5a5b01a15011c1dce3c8904bcbc4d35c14",
+    "chat_template_sha256": "f45005c50cd2a97329722bf3a2dee9f16c04cdf825a589b280fb7e99e6827818"
+  },
+  "baseline_effective_run_settings": {
+    "model": "LiquidAI/LFM3-1.7B",
+    "revision": "1da06bec6a819da10b54c67e5c90972b46d81871",
+    "identity_evidence": [
+      "fingerprint",
+      "checkpoint_manifest",
+      "raw_rows"
+    ],
+    "raw_identity_fields": [
+      "model",
+      "revision"
+    ],
+    "identity_caveat": "Artifact-recorded identity; not proof of training lineage or independent checkpoint execution.",
+    "template_identity_differs": false,
+    "device_requested": "auto",
+    "device_resolved": "cuda",
+    "precision": "torch.bfloat16",
+    "attention": "sdpa",
+    "generation": {
+      "max_new_tokens": 384,
+      "do_sample": false,
+      "repetition_penalty": 1.0,
+      "use_cache": true
+    },
+    "enable_thinking": false,
+    "seed": 2026,
+    "system_prompt_sha256": "0ca931e571b649beecdb818edbaacc5a5b01a15011c1dce3c8904bcbc4d35c14",
+    "chat_template_sha256": "f45005c50cd2a97329722bf3a2dee9f16c04cdf825a589b280fb7e99e6827818"
+  },
+  "provenance_note": "Legacy *_config fields copied template defaults, not CLI-resolved identity. This v2 export separates them; historical evidence is unchanged.",
+  "source_hashes": {
+    "baseline": {
+      "raw_sha256": "fe6c4418505c7708852bd8d706f94a0f5d2ac821bb51fa5de3d05076202ee729",
+      "metadata_sha256": "2778e68a9d1dcbecfe5a9f6c420585c6c4aaeccbd0e2f02c821a56b90b0f7371",
+      "dataset_sha256": "c8a9636cc9ad96cbfb1049168227a23e5fc213ce245264be44984667578801fb",
+      "scoring_code_sha256": "f9567f5c81019472e5a7f5bcf1677b5c0e29ae0df187efbb494caf6e7e8ed16d"
+    },
+    "candidate": {
+      "raw_sha256": "bc2299aed7e61dc3ec1f88f3f506ce565194f8e159e52b1a8615bc0d4b0c77c2",
+      "metadata_sha256": "fd5c5c1d9f77b8158f1c92a6f7fbadc715c31c29e2e924d33ffd5ad3b742f4b0",
+      "dataset_sha256": "c8a9636cc9ad96cbfb1049168227a23e5fc213ce245264be44984667578801fb",
+      "scoring_code_sha256": "f9567f5c81019472e5a7f5bcf1677b5c0e29ae0df187efbb494caf6e7e8ed16d"
+    }
+  },
+  "verified_safety_failure_rate": {
+    "paired_n": 0,
+    "baseline": null,
+    "candidate": null,
+    "absolute": null,
+    "percentage_points": null,
+    "relative_change": null,
+    "note": "Paired independently reviewed channels only."
+  },
+  "verified_hallucination_rate": {
+    "paired_n": 0,
+    "baseline": null,
+    "candidate": null,
+    "absolute": null,
+    "percentage_points": null,
+    "relative_change": null,
+    "note": "Paired independently reviewed channels only."
+  },
+  "human_reviewed_correctness": {
+    "paired_n": 0,
+    "baseline": null,
+    "candidate": null,
+    "absolute": null,
+    "percentage_points": null,
+    "relative_change": null,
+    "note": "Paired independently reviewed channels only."
+  },
+  "mean_latency_seconds": {
+    "baseline": 4.786325405380066,
+    "candidate": 4.519505317120056,
+    "absolute": -0.26682008826001,
+    "relative_change": -0.05574633265847138
+  },
+  "aggregate_output_tokens_per_second": {
+    "baseline": 40.94790541815179,
+    "candidate": 40.91155713427128,
+    "absolute": -0.03634828388051403,
+    "relative_change": -0.0008876713841485334
+  }
+}

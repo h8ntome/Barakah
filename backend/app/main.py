@@ -7,7 +7,7 @@ from fastapi.responses import JSONResponse
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from .config import get_settings
-from . import auth, demo, finance, giving, portfolio, advisor, ads, market
+from . import auth, demo, finance, giving, portfolio, advisor, ads, market, ai_connections
 
 config = get_settings()
 MIGRATION_HEADS = set(ScriptDirectory(str(Path(__file__).resolve().parents[1] / 'alembic')).get_heads())
@@ -49,6 +49,8 @@ async def http_error(request, exc):
 @app.exception_handler(RequestValidationError)
 async def validation_error(request, exc):
     # Do not echo request values (passwords, tokens, chat or financial records).
+    if request.url.path.startswith('/api/v1/ai/connection'):
+        return JSONResponse({'error': {'code': 'validation_error', 'message': 'Check the AI connection fields.'}}, status_code=422)
     fields = sorted({'.'.join(str(part) for part in error['loc'][1:]) or 'request' for error in exc.errors()})
     return JSONResponse({'error': {'code': 'validation_error', 'message': 'Check these fields: ' + ', '.join(fields)}}, status_code=422)
 
@@ -90,7 +92,7 @@ def readiness():
     return {'status': 'ready', 'database': 'available', 'external_services': 'check /api/v1/ai/health separately'}
 
 
-for router in (auth.router, demo.router, finance.router, giving.router, portfolio.router, advisor.router, ads.router, market.router):
+for router in (auth.router, demo.router, finance.router, giving.router, portfolio.router, advisor.router, ads.router, market.router, ai_connections.router):
     app.include_router(router, prefix='/api/v1')
 
 

@@ -2,7 +2,7 @@ from datetime import date
 from decimal import Decimal
 from typing import Annotated, Literal
 from uuid import UUID
-from pydantic import BaseModel, ConfigDict, Field, EmailStr, field_validator, model_validator
+from pydantic import BaseModel, ConfigDict, Field, EmailStr, SecretStr, field_validator, model_validator
 
 Money = Annotated[Decimal, Field(ge=0, le=Decimal('999999999.99'), max_digits=11, decimal_places=2, allow_inf_nan=False)]
 PositiveMoney = Annotated[Decimal, Field(gt=0, le=Decimal('999999999.99'), max_digits=11, decimal_places=2, allow_inf_nan=False)]
@@ -221,7 +221,29 @@ class QuoteUpdate(Input):
     source: Annotated[str, Field(min_length=1, max_length=200)]
 
 
+class AIConnectionVersion(Input):
+    expected_revision: UUID | None
+
+
+class AIConnectionUpdate(AIConnectionVersion):
+    mode: Literal['disabled', 'local', 'external']
+    provider: Literal['openai', 'custom'] | None = None
+    base_url: Annotated[str, Field(max_length=500)] | None = None
+    model_id: Annotated[str, Field(pattern=r'^[A-Za-z0-9][A-Za-z0-9._:/-]{0,159}$')] | None = None
+    api_key: SecretStr | None = None
+
+    @field_validator('api_key')
+    @classmethod
+    def bounded_key(cls, value):
+        if value is not None:
+            raw = value.get_secret_value()
+            if not 16 <= len(raw) <= 4096 or not raw.isascii() or any(c.isspace() or ord(c) < 33 or ord(c) > 126 for c in raw):
+                raise ValueError('Invalid API credential')
+        return value
+
+
 class AdvisorMessage(Input):
+    connection_revision: UUID | None = None
     include_financial_context: bool = False
     text: Annotated[str, Field(min_length=1, max_length=1000)]
     conversation_id: UUID | None = None

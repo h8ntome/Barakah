@@ -3,7 +3,7 @@ import {readFileSync,existsSync} from 'node:fs';
 import vm from 'node:vm';
 import {createHash} from 'node:crypto';
 import ts from 'typescript';
-const captions=JSON.parse(readFileSync('assets/audio/captions.json','utf8'));
+const captions=JSON.parse(readFileSync('assets/audio/user-connections-review/captions.json','utf8'));
 for(let i=0;i<captions.length;i++){
  assert(captions[i].startMs>=0&&captions[i].endMs<=115000);
  assert(captions[i].endMs>captions[i].startMs);
@@ -24,8 +24,19 @@ assert(live.responses[0].body.response.text.includes('With a monthly surplus of 
 assert(live.responses[1].body.response.text.includes('Since this is a personal transfer, it does not affect your own emergency fund strategy.'));
 assert.equal(3100-2275-200,625);
 assert(existsSync('assets/screenshots/ai-live.png'));
-for(const text of ['36/40','32/40','15/15','11/15','60 conceptual answers unreviewed','Neutral benchmark prompt differs from app prompt','Public AI unavailable','Advice unverified','durationInFrames={177}'])assert(scenes.includes(text),text);
-assert(!/No model connected|Integration pending|AI integration pending|12\/15/.test(scenes));
+for(const text of ['36/40','32/40','15/15','12/15','11/15','60 conceptual answers per model unreviewed','Neutral benchmark prompt differs from app prompt','Public DEMO accounts cannot save private keys.','PERSONAL accounts: own OpenAI or approved','OpenAI-compatible provider — if operator secure setup is enabled.','No successful external inference verified. AI defaults off.','Availability depends on server setup and your account.','PERSONAL PROVIDERS · SECURE SETUP REQUIRED','Separate from personal providers','Provider configuration is not evidence of better benchmark results.','This project is a prototype and is not financial advice.','Not religious certification','durationInFrames={177}'])assert(scenes.includes(text),text);
+assert(!/No model connected|Integration pending|AI integration pending|Public AI (?:remains )?unavailable/.test(scenes));
+assert(!narration.some(c=>/Public AI (?:remains )?unavailable/.test(c.text)));
+assert.equal(narration[13].text,'Personal providers require secure operator setup. External inference is unverified.');
+assert.equal(narration[18].text,'Barakah. Personal provider setup is a release capability, not verified external advice.');
+const historicalNarration=JSON.parse(readFileSync('assets/audio/captions.json','utf8'));
+for(let i=0;i<narration.length;i++)if(i!==13&&i!==18)assert.equal(narration[i].text,historicalNarration[i].text);
+const srt=readFileSync('output/user-connections-review/barakah-demo-captions.srt','utf8');
+const srtRows=srt.trim().split('\n\n');
+assert.equal(srtRows.length,captions.length);
+const stamp=ms=>new Date(ms).toISOString().slice(11,23).replace('.',',');
+for(const [i,caption] of captions.entries())assert.equal(srtRows[i],`${i+1}\n${stamp(caption.startMs)} --> ${stamp(caption.endMs)}\n${caption.text}`);
+assert(!/NOT YET DEPLOYED|older build|unreleased/.test(scenes));
 const comparisons=JSON.parse(readFileSync('reports/release-comparisons.json','utf8'));
 for(const [key,n,baseline,candidate] of [['numeric',40,36,32],['rules',15,15,11]]){
  const c=comparisons[key];assert.equal(c.paired_numeric_n,n);

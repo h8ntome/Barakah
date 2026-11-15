@@ -63,21 +63,26 @@ def auth_limit(request: Request):
     limiter.check(('auth', request.client.host if request.client else 'unknown'), get_settings().auth_rate_limit)
 
 
-def current_user(credentials: HTTPAuthorizationCredentials = Depends(bearer), db=Depends(get_db)):
+def access_session(credentials, db):
     if credentials is None:
         fail(401, 'unauthorized', 'Authentication required')
     try:
         payload = jwt.decode(credentials.credentials, get_settings().secret_key, algorithms=['HS256'], audience='barakah', issuer='barakah-api', options={'require': ['exp', 'iat', 'sub', 'sid', 'aud', 'iss']})
-        session = db.scalar(select(Session).where(Session.id == payload['sid'], Session.user_id == payload['sub']))
+        session = db.scalar(select(Session).where(Session.id == payload['sid'], Session.user_id == payload['sub']).execution_options(populate_existing=True))
         if not session or session.revoked or utc(session.expires_at) <= datetime.now(timezone.utc):
             fail(401, 'unauthorized', 'Session expired or revoked')
-        user = db.get(User, session.user_id)
-        if user is None:
-            fail(401, 'unauthorized', 'Authentication required')
-        check_demo_expiry(user)
-        return user
+        return session
     except jwt.InvalidTokenError:
         fail(401, 'unauthorized', 'Invalid or expired access token')
+
+
+def current_user(credentials: HTTPAuthorizationCredentials = Depends(bearer), db=Depends(get_db)):
+    session = access_session(credentials, db)
+    user = db.get(User, session.user_id)
+    if user is None:
+        fail(401, 'unauthorized', 'Authentication required')
+    check_demo_expiry(user)
+    return user
 
 
 def admin_user(user=Depends(current_user)):
@@ -118,13 +123,18 @@ def clear_cookies(response):
     response.delete_cookie('csrf_token', path='/', secure=get_settings().cookie_secure, samesite='lax')
 
 
-def refresh_session(request, db):
+def csrf_token(request):
     if request.headers.get('origin') not in get_settings().origins:
         fail(403, 'csrf_failed', 'Trusted Origin required')
     csrf = request.headers.get('x-csrf-token', '')
     cookie = request.cookies.get('csrf_token', '')
-    if not csrf or not cookie or not secrets.compare_digest(csrf, cookie):
+    if not csrf or not cookie or not csrf.isascii() or not cookie.isascii() or not secrets.compare_digest(csrf, cookie):
         fail(403, 'csrf_failed', 'CSRF token required')
+    return csrf
+
+
+def refresh_session(request, db):
+    csrf = csrf_token(request)
     refresh = request.cookies.get('refresh_token', '')
     session = db.scalar(select(Session).where(Session.token_hash == digest(refresh)))
     if session:

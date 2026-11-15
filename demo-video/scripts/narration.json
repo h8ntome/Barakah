@@ -67,7 +67,7 @@
   {
     "start": 71.2,
     "end": 76.5,
-    "text": "This is a real response from a private service. Public AI remains unavailable."
+    "text": "Personal providers require secure operator setup. External inference is unverified."
   },
   {
     "start": 77.1,
@@ -92,6 +92,6 @@
   {
     "start": 107.7,
     "end": 114.2,
-    "text": "Barakah. Local AI connected. Advice unverified. A clearer view of what matters."
+    "text": "Barakah. Personal provider setup is a release capability, not verified external advice."
   }
 ]

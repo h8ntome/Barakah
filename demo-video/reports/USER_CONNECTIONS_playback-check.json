@@ -1,0 +1,137 @@
+{
+  "mode": "uninterrupted real-time browser playback; no seek after start",
+  "wall_seconds": 123.4802337079891,
+  "states": [
+    {
+      "time": 0.051209,
+      "duration": 115.008,
+      "ended": false,
+      "paused": false,
+      "readyState": 4,
+      "error": null,
+      "totalVideoFrames": 19,
+      "droppedVideoFrames": 0
+    },
+    {
+      "time": 10.276885,
+      "duration": 115.008,
+      "ended": false,
+      "paused": false,
+      "readyState": 4,
+      "error": null,
+      "totalVideoFrames": 326,
+      "droppedVideoFrames": 0
+    },
+    {
+      "time": 20.497308,
+      "duration": 115.008,
+      "ended": false,
+      "paused": false,
+      "readyState": 4,
+      "error": null,
+      "totalVideoFrames": 632,
+      "droppedVideoFrames": 0
+    },
+    {
+      "time": 30.977049,
+      "duration": 115.008,
+      "ended": false,
+      "paused": false,
+      "readyState": 4,
+      "error": null,
+      "totalVideoFrames": 947,
+      "droppedVideoFrames": 0
+    },
+    {
+      "time": 41.194255,
+      "duration": 115.008,
+      "ended": false,
+      "paused": false,
+      "readyState": 4,
+      "error": null,
+      "totalVideoFrames": 1253,
+      "droppedVideoFrames": 0
+    },
+    {
+      "time": 51.41548,
+      "duration": 115.008,
+      "ended": false,
+      "paused": false,
+      "readyState": 4,
+      "error": null,
+      "totalVideoFrames": 1560,
+      "droppedVideoFrames": 0
+    },
+    {
+      "time": 61.66127,
+      "duration": 115.008,
+      "ended": false,
+      "paused": false,
+      "readyState": 4,
+      "error": null,
+      "totalVideoFrames": 1867,
+      "droppedVideoFrames": 0
+    },
+    {
+      "time": 71.883048,
+      "duration": 115.008,
+      "ended": false,
+      "paused": false,
+      "readyState": 4,
+      "error": null,
+      "totalVideoFrames": 2174,
+      "droppedVideoFrames": 0
+    },
+    {
+      "time": 82.125384,
+      "duration": 115.008,
+      "ended": false,
+      "paused": false,
+      "readyState": 4,
+      "error": null,
+      "totalVideoFrames": 2480,
+      "droppedVideoFrames": 0
+    },
+    {
+      "time": 92.514379,
+      "duration": 115.008,
+      "ended": false,
+      "paused": false,
+      "readyState": 4,
+      "error": null,
+      "totalVideoFrames": 2792,
+      "droppedVideoFrames": 0
+    },
+    {
+      "time": 102.758716,
+      "duration": 115.008,
+      "ended": false,
+      "paused": false,
+      "readyState": 4,
+      "error": null,
+      "totalVideoFrames": 3099,
+      "droppedVideoFrames": 0
+    },
+    {
+      "time": 113.004647,
+      "duration": 115.008,
+      "ended": false,
+      "paused": false,
+      "readyState": 4,
+      "error": null,
+      "totalVideoFrames": 3407,
+      "droppedVideoFrames": 0
+    },
+    {
+      "time": 115.008,
+      "duration": 115.008,
+      "ended": true,
+      "paused": true,
+      "readyState": 4,
+      "error": null,
+      "totalVideoFrames": 3462,
+      "droppedVideoFrames": 0
+    }
+  ],
+  "subjective_listening": "not claimed; use local ASR and measured audio checks alongside manual listening"
+}

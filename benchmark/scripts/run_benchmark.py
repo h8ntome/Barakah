@@ -8,6 +8,11 @@ import time
 from pathlib import Path
 from common import ROOT, append, config, dataset, digest, load_jsonl, now, save, validate_data, versions
 
+def resolved_config(template, model, revision, device, precision):
+    return {**template, 'model': model, 'revision': revision, 'device': device,
+            'dtype': precision.removeprefix('torch.')}
+
+
 def checkpoint_files(path):
     return {str(f.relative_to(path)): digest(f) for f in sorted(Path(path).rglob("*"))
             if f.is_file() and ".git" not in f.relative_to(path).parts}
@@ -171,7 +176,8 @@ def main():
         segment_info = dict(versions=versions(), hardware=inspect(), device=device, precision=str(dtype),
                     quantization=None, backend="transformers", attention=cfg["attention"],
                     checkpoint_revision=getattr(model.config,"_commit_hash",None) or revision,
-                    config=cfg, chat_template_sha256=hashlib.sha256(str(template).encode()).hexdigest(),
+                    config=cfg, effective_config=resolved_config(cfg, args.model, revision, device, str(dtype)),
+                    chat_template_sha256=hashlib.sha256(str(template).encode()).hexdigest(),
                     chat_template=template, warmup=warmup)
         if args.resume:
             validate_resume_environment(meta, segment_info)

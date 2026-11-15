@@ -1,10 +1,18 @@
 #!/usr/bin/env python3
 """Licensed stock TTS voice + original synthesized score; exact phrase-aligned captions."""
-import hashlib, json, pathlib, subprocess
+import argparse, hashlib, json, pathlib, subprocess
 import numpy as np
 import soundfile as sf
 from kokoro_onnx import Kokoro
 ROOT=pathlib.Path(__file__).resolve().parents[1]
+parser=argparse.ArgumentParser()
+parser.add_argument('--candidate', action='store_true', help='Write isolated user-connections review audio and captions')
+args=parser.parse_args()
+audio_dir=ROOT/('assets/audio/user-connections-review' if args.candidate else 'assets/audio')
+output_dir=ROOT/('output/user-connections-review' if args.candidate else 'output')
+report_prefix='USER_CONNECTIONS_' if args.candidate else ''
+audio_dir.mkdir(parents=True, exist_ok=True)
+output_dir.mkdir(parents=True, exist_ok=True)
 SR=24000
 segments=json.loads((ROOT/'scripts/narration.json').read_text())
 k=Kokoro(str(ROOT/'.runtime/tts/kokoro-v1.0.onnx'),str(ROOT/'.runtime/tts/voices-v1.0.bin'))
@@ -32,7 +40,7 @@ for i,seg in enumerate(segments):
     caption={'text':text,'startMs':round(seg['start']*1000),'endMs':round((seg['start']+duration)*1000),'timestampMs':None,'confidence':None,'pageBreakAfter':True}
     captions.append(caption);stats.append({'line':i,'duration':duration,'start':seg['start'],'peak':float(np.max(np.abs(a)))})
     print(i,round(duration,2),text,flush=True)
-sf.write(ROOT/'assets/audio/narration.wav',voice,SR)
+sf.write(audio_dir/'narration.wav',voice,SR)
 # An original, restrained harmonic bed. No samples, stock music, or borrowed melody.
 t=np.arange(SR*115,dtype=np.float64)/SR
 bed=np.zeros((len(t),2))
@@ -53,15 +61,15 @@ for start in [0.3,8,18,34,51,65,77,91,107]:
     bed[mask]+=chime[:,None]
 fade=np.clip(t/2,0,1)*np.clip((115-t)/2,0,1)
 bed*=fade[:,None]
-sf.write(ROOT/'assets/audio/original-score.wav',bed,SR,subtype='PCM_24')
+sf.write(audio_dir/'original-score.wav',bed,SR,subtype='PCM_24')
 mix=voice[:,None]*np.ones((1,2))*.83+bed
 assert np.max(np.abs(mix))<.99
 sf.write(ROOT/'.runtime/mix.wav',mix,SR,subtype='PCM_24')
-subprocess.run(['ffmpeg','-y','-v','error','-i',str(ROOT/'.runtime/mix.wav'),'-af','loudnorm=I=-16:TP=-1.5:LRA=9','-ar','48000','-ac','2',str(ROOT/'assets/audio/final-mix.wav')],check=True)
-(ROOT/'assets/audio/captions.json').write_text(json.dumps(captions,indent=2))
-(ROOT/'reports/audio-generation.json').write_text(json.dumps({'model':'Kokoro-82M v1.0 ONNX','voice':'af_heart','sample_rate':SR,'segments':stats},indent=2))
+subprocess.run(['ffmpeg','-y','-v','error','-i',str(ROOT/'.runtime/mix.wav'),'-af','loudnorm=I=-16:TP=-1.5:LRA=9','-ar','48000','-ac','2',str(audio_dir/'final-mix.wav')],check=True)
+(audio_dir/'captions.json').write_text(json.dumps(captions,indent=2))
+(ROOT/f'reports/{report_prefix}audio-generation.json').write_text(json.dumps({'model':'Kokoro-82M v1.0 ONNX','voice':'af_heart','sample_rate':SR,'segments':stats},indent=2))
 def stamp(ms):
     sec,ms=divmod(ms,1000);m,s=divmod(sec,60)
     return f'00:{m:02}:{s:02},{ms:03}'
-(ROOT/'output/barakah-demo-captions.srt').write_text('\n\n'.join(f'{i+1}\n{stamp(c["startMs"])} --> {stamp(c["endMs"])}\n{c["text"]}' for i,c in enumerate(captions))+'\n')
-(ROOT/'reports/NARRATION.md').write_text('# Final narration and captions\n\nStock synthetic voice: Kokoro v1.0 `af_heart`; no custom voice clone. Phrase timings derive from generated PCM, not guessed word timing.\n\n'+'\n\n'.join(f'**{stamp(c["startMs"])} – {stamp(c["endMs"])}**\n{c["text"]}' for c in captions)+'\n')
+(output_dir/'barakah-demo-captions.srt').write_text('\n\n'.join(f'{i+1}\n{stamp(c["startMs"])} --> {stamp(c["endMs"])}\n{c["text"]}' for i,c in enumerate(captions))+'\n')
+(ROOT/f'reports/{report_prefix}NARRATION.md').write_text('# Final narration and captions\n\nStock synthetic voice: Kokoro v1.0 `af_heart`; no custom voice clone. Phrase timings derive from generated PCM, not guessed word timing.\n\n'+'\n\n'.join(f'**{stamp(c["startMs"])} – {stamp(c["endMs"])}**\n{c["text"]}' for c in captions)+'\n')

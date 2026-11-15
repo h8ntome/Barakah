@@ -122,6 +122,19 @@ export const updateScreening = (holdingId, body) =>
   put(`/portfolio/holdings/${id(holdingId)}/screening`, body);
 export const getInvestmentEducation = () => get("/education/investing");
 export const getAdvisorContext = () => get("/advisor/context");
+export const getAIConnection = () => get("/ai/connection");
+async function changeAIConnection(method, body) {
+  const result = await client.request("/ai/connection", {
+    method, body, preflightAuth: true, retryAuth: false,
+  });
+  setSessionUser(result.user);
+  return result;
+}
+export const saveAIConnection = (body) => changeAIConnection("PUT", body);
+export const removeAIConnection = (revision) => changeAIConnection("DELETE", { expected_revision: revision });
+export const testAIConnection = (revision) => client.request("/ai/connection/test", {
+  method: "POST", body: { expected_revision: revision }, preflightAuth: true, retryAuth: false,
+});
 export const getConversations = (filters) =>
   get("/advisor/conversations", filters);
 export const getMessages = async (conversationId) => {

@@ -92,10 +92,14 @@ const AIStatus = () => {
    <Video name="Real local click to pinned-model response" src={staticFile('recordings/ai-live.mp4')} durationInFrames={177} muted style={{width:'100%',height:'100%'}}/>
    <Sequence name="Actual response screenshot reading hold" from={5.9*fps}><Img name="Actual local assistant response" src={staticFile('screenshots/ai-live.png')} style={{width:'100%',height:'100%'}}/></Sequence>
   </div>
-  <Heading style={{left:710,top:190,width:1040,fontSize:76}}>Local AI connected.<br/><span style={{color:'#B3DEC0'}}>Advice unverified.</span></Heading>
-  <Interactive.Div name="Real private inference path" style={{position:'absolute',left:715,top:425,width:1020,fontSize:32,lineHeight:1.65,color:'#DFF3E3'}}>Browser → backend → pinned model<br/>Private local service · Not hosted</Interactive.Div>
-  <Interactive.Div name="Pinned live model identity" style={{position:'absolute',left:715,top:565,width:1040,fontSize:25,lineHeight:1.7,color:'#B3DEC0'}}>h8notme/barakah1<br/>Revision 912a5697cf9d85adf065ee512f509cfa236459d4</Interactive.Div>
-  <Interactive.Div name="Public AI distinction" style={{position:'absolute',left:710,top:710,width:1000,padding:'24px 30px',border:'1px solid #B09068',borderRadius:18,background:'#294234',color:'#F1DCB7',fontSize:29,lineHeight:1.5}}>Public AI remains unavailable.<br/><span style={{fontSize:23}}>barakah-gamma.vercel.app</span></Interactive.Div>
+  <Heading style={{left:650,top:165,width:1170,fontSize:68}}>Separate AI paths.<br/><span style={{color:'#B3DEC0'}}>Same need for caution.</span></Heading>
+  <Interactive.Div name="Historical private checkpoint evidence" style={{position:'absolute',left:655,top:335,width:1160,fontSize:26,lineHeight:1.45,color:'#DFF3E3'}}>LEFT: Actual private pinned-model response · Separate from personal providers<br/><span style={{fontSize:21,color:'#B3DEC0'}}>h8notme/barakah1 · 912a5697cf9d85adf065ee512f509cfa236459d4</span></Interactive.Div>
+  <Interactive.Div name="Conditional personal provider release capability" style={{position:'absolute',left:650,top:450,width:1160,padding:'24px 30px',boxSizing:'border-box',border:'1px solid #B09068',borderRadius:18,background:'#294234',color:'#F1DCB7',fontSize:29,lineHeight:1.5}}>
+   <b>PERSONAL PROVIDERS · SECURE SETUP REQUIRED</b><br/>
+   Public DEMO accounts cannot save private keys.<br/>
+   PERSONAL accounts: own OpenAI or approved<br/>OpenAI-compatible provider — if operator secure setup is enabled.
+  </Interactive.Div>
+  <Interactive.Div name="External inference and deployment limits" style={{position:'absolute',left:655,top:720,width:1160,fontSize:27,lineHeight:1.5,color:'#DFF3E3'}}>No successful external inference verified. AI defaults off.<br/>Availability depends on server setup and your account.<br/><span style={{fontSize:23,color:'#B3DEC0'}}>Provider configuration is not evidence of better benchmark results.</span></Interactive.Div>
  </AbsoluteFill>;
 };
 
@@ -105,7 +109,7 @@ const LiveAdviceFailure = () => <AbsoluteFill><Backdrop light/><Topline chapter=
  <Interactive.Div name="Observed no-interest instruction failure" style={{position:'absolute',left:1060,top:275,width:740,fontSize:35,lineHeight:1.4,color:'#073B2C'}}>Surplus: $825 — correct.<br/><span style={{color:'#8B4137'}}>Still recommends high-yield savings,<br/>despite no-interest instructions.</span></Interactive.Div>
  <Interactive.Div name="Exact real follow-up excerpt" style={{position:'absolute',left:1060,top:480,width:740,fontSize:29,lineHeight:1.45,color:'#31533F'}}>FOLLOW-UP · $200 TO PARENTS<br/><span style={{fontFamily:'Georgia',fontSize:35}}>“Since this is a personal transfer, it does not affect your own emergency fund strategy.”</span></Interactive.Div>
  <Interactive.Div name="Corrected monthly surplus" style={{position:'absolute',left:1060,top:720,width:740,fontSize:33,lineHeight:1.5,color:'#8B4137'}}>Available monthly surplus should be<br/><b>$825 − $200 = $625.</b></Interactive.Div>
- <SourceNote light>Real local output · 15 Nov 2026 · Exact follow-up excerpt: reports/ai-live-evidence.json<br/>Observed advice failure, not improved safety · Public AI unavailable</SourceNote>
+ <SourceNote light>Real local output · 15 Nov 2026 · Exact follow-up excerpt: reports/ai-live-evidence.json<br/>Observed advice failure, not improved safety · Separate private pinned checkpoint</SourceNote>
 </AbsoluteFill>;
 
 export const AIAssistant = () => {
@@ -122,11 +126,12 @@ export const Evaluation = () => <AbsoluteFill><Backdrop/><Topline chapter="06 / 
  </div>
  <div style={{position:'absolute',left:1010,top:310,width:790,borderLeft:'1px solid #53775E',paddingLeft:55}}>
   <Interactive.Div name="Matched rules comparison scope" style={{fontSize:24,color:'#B3DEC0',letterSpacing:2}}>SAME 15-TASK ZAKAT SUBSET</Interactive.Div>
-  <Interactive.Div name="Simple rules zakat score" style={{fontSize:32,marginTop:42}}>Simple rules <span style={{float:'right',fontFamily:'Manrope',fontSize:58}}>15/15</span></Interactive.Div>
-  <Interactive.Div name="Candidate matched zakat score" style={{fontSize:32,marginTop:58}}>Barakah candidate <span style={{float:'right',fontFamily:'Manrope',fontSize:58}}>11/15</span></Interactive.Div>
+  <Interactive.Div name="Simple rules zakat score" style={{fontSize:32,marginTop:12,display:'flex',alignItems:'center',justifyContent:'space-between'}}>Simple rules <span style={{float:'right',fontFamily:'Manrope',fontSize:58}}>15/15</span></Interactive.Div>
+  <Interactive.Div name="Original matched zakat score" style={{fontSize:32,marginTop:12,display:'flex',alignItems:'center',justifyContent:'space-between'}}>Original LFM3-1.7B <span style={{float:'right',fontFamily:'Manrope',fontSize:58}}>12/15</span></Interactive.Div>
+  <Interactive.Div name="Candidate matched zakat score" style={{fontSize:32,marginTop:12,display:'flex',alignItems:'center',justifyContent:'space-between'}}>Barakah candidate <span style={{float:'right',fontFamily:'Manrope',fontSize:58}}>11/15</span></Interactive.Div>
  </div>
  <Interactive.Div name="No superiority conclusion" style={{position:'absolute',left:120,top:630,width:1680,borderTop:'1px solid #53775E',paddingTop:30,fontSize:33,color:'#E7CC9E'}}>No demonstrated advantage over the original model or simple rules.</Interactive.Div>
- <Interactive.Div name="Unreviewed conceptual answers" style={{position:'absolute',left:120,top:735,width:1680,fontSize:30,color:'#DFF3E3'}}>100 authored questions · 40 numeric checks · 60 conceptual answers unreviewed</Interactive.Div>
+ <Interactive.Div name="Unreviewed conceptual answers" style={{position:'absolute',left:120,top:735,width:1680,fontSize:30,color:'#DFF3E3'}}>100 authored questions · 40 numeric checks · 60 conceptual answers per model unreviewed</Interactive.Div>
  <SourceNote>Current matched runs · 15 Nov 2026 · Small, single-run evaluation.<br/>Neutral benchmark prompt differs from app prompt · No verified advice or safety gain.</SourceNote>
 </AbsoluteFill>;
 
@@ -135,8 +140,8 @@ export const Closing = () => {
  return <AbsoluteFill><Backdrop/>
   <div style={{position:'absolute',top:230,width:'100%',display:'flex',justifyContent:'center',opacity:interpolate(frame,[0,30],[0,1],ease),translate:interpolate(frame,[0,35],['0px 24px','0px 0px'],ease)}}><Brand large/></div>
   <Interactive.Div name="Final positioning" style={{position:'absolute',top:440,left:280,width:1360,textAlign:'center',fontFamily:'Georgia',fontSize:76,lineHeight:1.15,letterSpacing:-2}}>A clearer way to manage money<br/><span style={{color:'#B3DEC0'}}>around what matters.</span></Interactive.Div>
-  <Interactive.Div name="Honest prototype status" style={{position:'absolute',top:695,left:300,width:1320,textAlign:'center',fontSize:28,color:'#DFF3E3'}}>Local AI connected · Advice unverified · Public AI unavailable</Interactive.Div>
-  <Interactive.Div name="Finance disclaimer" style={{position:'absolute',top:774,left:300,width:1320,textAlign:'center',fontSize:23,color:'#B3CDBB'}}>This project is a prototype and is not financial advice.</Interactive.Div>
+  <Interactive.Div name="Honest prototype status" style={{position:'absolute',top:695,left:300,width:1320,textAlign:'center',fontSize:28,color:'#DFF3E3'}}>Personal providers: secure setup required · External inference unverified</Interactive.Div>
+  <Interactive.Div name="Finance disclaimer" style={{position:'absolute',top:774,left:300,width:1320,textAlign:'center',fontSize:23,color:'#B3CDBB'}}>This project is a prototype and is not financial advice.<br/>Educational Islamic finance · Not religious certification</Interactive.Div>
  </AbsoluteFill>;
 };
 

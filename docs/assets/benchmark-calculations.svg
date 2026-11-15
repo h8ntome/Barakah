@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" role="img" aria-labelledby="title desc">
+<title id="title">Calculations belong in a calculation engine</title>
+<desc id="desc">Same 15 numeric zakat tasks: deterministic rules 15 correct, original LFM3 12, Barakah candidate 11. Full numeric comparison: original 36 of 40, candidate 32 of 40. Absolute tolerance 0.01. Sixty conceptual responses per model are unreviewed. Not evidence of fine-tuning superiority.</desc>
+<rect width="960" height="620" rx="20" fill="#f7f7f0"/>
+<g font-family="system-ui, sans-serif" fill="#123d31">
+<text x="40" y="52" font-size="26" font-weight="700">Calculations belong in a calculation engine.</text>
+<text x="40" y="86" font-size="17">Same 15 numeric zakat tasks · correct answers · absolute tolerance 0.01</text>
+<text x="40" y="151" font-size="18">Deterministic rules</text><rect x="260" y="125" width="540" height="38" rx="5" fill="#e3e8de"/><rect x="260" y="125" width="540" height="38" rx="5" fill="#12664c"/><text x="824" y="151" font-size="22" font-weight="700">15/15</text>
+<text x="40" y="217" font-size="18">Original LFM3</text><rect x="260" y="191" width="540" height="38" rx="5" fill="#e3e8de"/><rect x="260" y="191" width="432" height="38" rx="5" fill="#698379"/><text x="824" y="217" font-size="22" font-weight="700">12/15</text>
+<text x="40" y="283" font-size="18">Barakah candidate</text><rect x="260" y="257" width="540" height="38" rx="5" fill="#e3e8de"/><rect x="260" y="257" width="396" height="38" rx="5" fill="#aa6942"/><text x="824" y="283" font-size="22" font-weight="700">11/15</text>
+<text x="260" y="335" font-size="14">0</text><text x="786" y="335" font-size="14">15</text>
+<rect x="30" y="363" width="900" height="158" rx="12" fill="#103c30"/>
+<g fill="#ffffff"><text x="52" y="399" font-size="19" font-weight="600">Full numeric benchmark — not just zakat</text>
+<text x="52" y="443" font-size="28" font-weight="700">Original 36/40 (90%) → Candidate 32/40 (80%)</text>
+<text x="52" y="482" font-size="18">60 conceptual responses per model remain unreviewed.</text></g>
+<text x="40" y="558" font-size="18" font-weight="600">Narrow rules evidence. No fine-tuning superiority demonstrated.</text>
+<text x="40" y="590" font-size="15">Source: preserved processed run scores · no inference rerun · docs/assets/PROVENANCE.md</text>
+</g></svg>
