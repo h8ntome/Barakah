@@ -1,0 +1,91 @@
+{
+  "run_id": "rules-release_20261115T164650954399+0000",
+  "run_name": "rules-release",
+  "started_at": "2026-11-15T16:46:50.972622+00:00",
+  "completed_at": "2026-11-15T16:46:50.974124+00:00",
+  "status": "completed",
+  "execution_host": "local",
+  "hardware": {
+    "timestamp": "2026-11-15T16:46:51.023165+00:00",
+    "hostname": "MacBook-Air.local",
+    "os": "macOS-27.0.1-arm64-arm-64bit",
+    "cpu": "Apple M4",
+    "logical_cores": 10,
+    "physical_cores": 10,
+    "cpu_utilization_percent": 34.1,
+    "load_average": [
+      6.9365234375,
+      5.71875,
+      4.05859375
+    ],
+    "ram_total_bytes": 17179869184,
+    "ram_available_bytes": 3169959936,
+    "disk_free_bytes": 10436837376,
+    "disk_total_bytes": 245075738624,
+    "gpu": {
+      "available": false,
+      "reason": "PyTorch import unavailable: No module named 'typing_extensions'"
+    },
+    "sysfs_gpu": {},
+    "nvidia_smi": null,
+    "versions": {
+      "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+      "torch": "2.12.0",
+      "transformers": "5.20.0",
+      "huggingface_hub": "2.2.0",
+      "accelerate": "1.15.0",
+      "safetensors": "0.8.0",
+      "triton": null,
+      "psutil": "7.2.2",
+      "PyYAML": "6.0.3",
+      "matplotlib": "3.11.2"
+    },
+    "lfm_caches": [],
+    "active_memory_workloads": [
+      {
+        "pid": 66217,
+        "name": "Codex (Aperitif Renderer)",
+        "rss_bytes": 1265041408
+      },
+      {
+        "pid": 66119,
+        "name": "ChatGPT",
+        "rss_bytes": 273383424
+      },
+      {
+        "pid": 75531,
+        "name": "node",
+        "rss_bytes": 236142592
+      },
+      {
+        "pid": 78857,
+        "name": "node",
+        "rss_bytes": 224034816
+      },
+      {
+        "pid": 79708,
+        "name": "Dia",
+        "rss_bytes": 218300416
+      }
+    ]
+  },
+  "total_execution_seconds": 1.099740333011141,
+  "versions": {
+    "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+    "torch": "2.12.0",
+    "transformers": "5.20.0",
+    "huggingface_hub": "2.2.0",
+    "accelerate": "1.15.0",
+    "safetensors": "0.8.0",
+    "triton": null,
+    "psutil": "7.2.2",
+    "PyYAML": "6.0.3",
+    "matplotlib": "3.11.2"
+  },
+  "fingerprint": {
+    "model": "deterministic-zakat-v1",
+    "revision": null,
+    "dataset_sha256": "c8a9636cc9ad96cbfb1049168227a23e5fc213ce245264be44984667578801fb"
+  },
+  "scope": "15 public question-text zakat calculations only; no reference answer access; not a religious eligibility engine"
+}

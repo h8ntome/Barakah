@@ -1,0 +1,85 @@
+Private demo · fictional data · reset in Settings
+
+Investments
+My portfolio
+Learn
+
+Manual portfolio tracking, not brokerage execution. Trades do not move account balances. Valuations and screening are user reported, not live or certified.
+
+View portfolio
+All portfolios
+My portfolio
+Create or manage portfolios
+
+Recorded value · USD
+
+$8,500.00
+
+Based on dated manual quotes
+
+Cost basis
+$8,500.00
+Realized gain / loss
+$0.00
+Unrealized gain / loss
+$0.00
+Holdings
+DEMO-A · Fictional screened equity example
+
+100.000000 units · USD · Cost $5,000.00
+
+Value: $5,000.00
+
+Allocation: 58.82% of valued USD holdings
+
+Quote: 2026-11-15 · Fictional manual valuation; NOT live
+
+Screening: unverified · Not dated
+
+Edit holding details for DEMO-A
+Delete tracked holding DEMO-A
+Update manual valuation for DEMO-A
+Screen DEMO-A
+Screening history for DEMO-A
+DEMO-B · Fictional sukuk example
+
+50.000000 units · USD · Cost $2,500.00
+
+Value: $2,500.00
+
+Allocation: 29.41% of valued USD holdings
+
+Quote: 2026-11-15 · Fictional manual valuation; NOT live
+
+Screening: unverified · Not dated
+
+Edit holding details for DEMO-B
+Delete tracked holding DEMO-B
+Update manual valuation for DEMO-B
+Screen DEMO-B
+Screening history for DEMO-B
+DEMO-C · Fictional gold example
+
+10.000000 units · USD · Cost $1,000.00
+
+Value: $1,000.00
+
+Allocation: 11.76% of valued USD holdings
+
+Quote: 2026-11-15 · Fictional manual valuation; NOT live
+
+Screening: unverified · Not dated
+
+Edit holding details for DEMO-C
+Delete tracked holding DEMO-C
+Update manual valuation for DEMO-C
+Screen DEMO-C
+Screening history for DEMO-C
+Add a holding
+Record a buy or sell
+Trade history
+Home
+Invest
+Zakat
+AI Chat
+Give

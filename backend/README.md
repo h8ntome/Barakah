@@ -6,9 +6,9 @@ FastAPI + SQLAlchemy 2 + Alembic, Python **3.11–3.13**. PostgreSQL recommended
 
 ```sh
 cd backend
-python3.11 -m venv .venv
+python3.13 -m venv .venv
 . .venv/bin/activate
-pip install -r requirements.txt
+pip install --require-hashes -r requirements.lock
 cp .env.example .env
 alembic upgrade head
 uvicorn app.main:app --host 127.0.0.1 --port 8000 --no-access-log
@@ -66,7 +66,7 @@ Clients cannot set admin status. Admin manually vets causes/ad destinations. Ad 
 
 ## AI availability and privacy
 
-`AI_MODE=unavailable` is the only supported setting. No local/external inference or generated advice exists. `POST /advisor/messages` returns 503 `ai_unavailable`, leaves the editable draft intact, and writes no conversation/messages. Historical owned conversations remain readable/deletable. The consent preference is inactive and cannot connect a model. See [the future LFM3-1.7B boundary](../audit/AI_INTEGRATION.md).
+`AI_MODE=unavailable` is the default: `POST /advisor/messages` returns 503 `ai_unavailable`, keeps the draft and writes no conversation/messages. Explicit `AI_MODE=http` uses an authenticated, loopback-only pinned model service with saved consent and bounded owned history. Financial records are never included automatically. Successful pairs persist atomically after revalidating session, consent and conversation state; provider errors/timeouts save nothing. See [exact setup and privacy limits](../docs/local-ai.md) and [real inference evidence](../docs/RELEASE_AUDIT.md). Model suggestions are not Sharia-screened; important advice failures remain.
 
 ## Validation
 
@@ -78,6 +78,6 @@ TEST_DATABASE_URL='postgresql+psycopg://user:password@localhost:5432/test_databa
 .venv/bin/alembic check
 ```
 
-Initial implementation: 54 tests passed on each database. Additional integration/review regressions were added afterward; current audit counts and commands are in `../audit/TEST_RESULTS.md` (older `docs/testing/` records are historical). Tests migrate actual databases (no create_all), verify migration downgrade/upgrade parity, credentials/mass assignment/token expiry/refresh CSRF and rotation/concurrent refresh/revocation/reset/deletion; foreign ownership, exact decimal boundaries/concurrent overdraft/transfers/reversal; zakat gates/rounding/history/payments; multiple portfolios/cost basis/screening/quotes; unavailable-only AI/no network/no writes and historical conversation isolation; approved campaign/admin behavior; SMTP TLS flow. PostgreSQL tests run against isolated schemas, not application tables. One upstream Starlette TestClient warning about a future httpx2 transition is currently emitted; production HTTP calls and tests still use the supported httpx compatibility path.
+Initial implementation: 54 tests passed on each database. Additional integration/review regressions were added afterward; current release counts and commands are in `../docs/RELEASE_AUDIT.md` (older `docs/testing/` records are historical). Tests migrate actual databases (no create_all), verify migration downgrade/upgrade parity, credentials/mass assignment/token expiry/refresh CSRF and rotation/concurrent refresh/revocation/reset/deletion; foreign ownership, exact decimal boundaries/concurrent overdraft/transfers/reversal; zakat gates/rounding/history/payments; multiple portfolios/cost basis/screening/quotes; default-unavailable AI/no network/no writes, opt-in transport/persistence and conversation isolation; approved campaign/admin behavior; SMTP TLS flow. PostgreSQL tests run against isolated schemas, not application tables. One upstream Starlette TestClient warning about a future httpx2 transition is currently emitted; production HTTP calls and tests still use the supported httpx compatibility path.
 
 Production penetration/load testing, real SMTP delivery, Docker runtime and external AI/provider deployment are **not** claimed validated.

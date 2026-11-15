@@ -1,0 +1,41 @@
+{
+  "captured_at": "2026-11-15T11:30:53.279331+00:00",
+  "steps": [
+    {
+      "clip": "login",
+      "duration": 4.666667
+    },
+    {
+      "clip": "dashboard",
+      "duration": 12.633333
+    },
+    {
+      "clip": "spending",
+      "duration": 9.333333
+    },
+    {
+      "clip": "zakat",
+      "duration": 11.133333
+    },
+    {
+      "clip": "giving",
+      "duration": 11.066667
+    },
+    {
+      "clip": "portfolio",
+      "duration": 12.033333
+    },
+    {
+      "clip": "ai-unavailable",
+      "duration": 12.4
+    },
+    {
+      "clip": "desktop",
+      "duration": 5.3
+    },
+    {
+      "persistence": "profile and seeded dashboard survive refresh",
+      "ai": "genuine 503 unavailable; no inference"
+    }
+  ]
+}

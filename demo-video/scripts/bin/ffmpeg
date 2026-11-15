@@ -1,0 +1,3 @@
+#!/bin/sh
+# agent-browser needs a full FFmpeg build (Remotion's bundled filters are limited).
+exec /opt/homebrew/bin/ffmpeg "$@"

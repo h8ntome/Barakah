@@ -1,5 +1,7 @@
 # Remaining issues and limits
 
+> Historical pre-opt-in snapshot. See [current release audit](../docs/RELEASE_AUDIT.md) and [local AI setup](../docs/local-ai.md). The public demo still has unavailable AI; local opt-in now has separate real inference evidence. Historical results below are preserved, not overwritten.
+
 ## Resolved — Public hosted demo verified
 
 The former404/static-only blocker is resolved at **https://barakah-gamma.vercel.app**. The real frontend and Python API are deployed to Vercel, with a newly provisioned free Neon PostgreSQL database (initially empty, then migrated). Homepage and API readiness return200. **21 real-browser public checks passed**: editable demo, reload persistence, two-tester isolation, owner-only reset, HTTPS cookies, registration/login/logout and mobile layout. See `artifacts/logs/public-demo.txt`, screenshots in `artifacts/public/`, and `docs/VERCEL.md`.

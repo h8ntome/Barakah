@@ -14,7 +14,7 @@ import urllib.parse
 
 URL = os.environ.get('BARAKAH_UI_URL', 'http://127.0.0.1:5173')
 SESSION = 'barakah-journey-' + secrets.token_hex(4)
-OUT = Path(__file__).resolve().parents[2] / 'audit' / 'artifacts'
+OUT = Path(os.environ.get('BARAKAH_E2E_OUTPUT', str(Path(__file__).resolve().parents[2] / 'audit' / 'artifacts')))
 checks = []
 
 
@@ -126,6 +126,10 @@ def main():
     check('zakat calculated server-side', '$250.00')
     click('Save calculation to history')
     check('calculation saved', 'Calculation snapshot saved.')
+    click('Home')
+    browser('eval', "Array.from(document.querySelectorAll('.home-screen button')).find(b => b.textContent === 'Overview').click()")
+    check('new zakat snapshot synchronizes Home without reload', 'Latest saved record outstanding: $250.00')
+    click('Zakat calculator')
     details('Record a zakat payment')
     fill('Recorded amount', '50.00')
     fill('Recipient', 'Fictional zakat recipient')

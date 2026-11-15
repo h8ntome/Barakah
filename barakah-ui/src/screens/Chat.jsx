@@ -209,6 +209,7 @@ export default function Chat({ navigate, active }) {
         <div ref={bottom} />
       </div>
       <p className="chat-disclaimer">
+        Model suggestions are not Sharia-screened. Verify calculations independently.
         Not a substitute for qualified scholarly or financial advice.
       </p>
       <form className="chat-composer" onSubmit={send}>

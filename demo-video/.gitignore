@@ -1,0 +1,16 @@
+node_modules
+dist
+.DS_Store
+.env
+
+# Generated media stays local; capture and narration scripts reproduce it.
+out
+output/
+.runtime/
+assets/recordings/
+assets/audio/*.wav
+reports/final-frames/
+reports/release-frames/
+reports/release-export-frames/
+reports/*contact-sheet.jpg
+__pycache__/

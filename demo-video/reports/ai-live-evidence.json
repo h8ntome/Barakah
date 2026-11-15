@@ -1,0 +1,58 @@
+{
+  "synthetic_inputs": [
+    "I earn USD 3100 monthly and spend USD 2275 on essentials. I want an emergency fund before a holiday. What should I consider? Please be brief.",
+    "I also send my parents USD 200 each month. How should I adjust the plan? Please be brief."
+  ],
+  "responses": [
+    {
+      "body": {
+        "conversation_id": "2267dabe-d162-4485-9080-7378ceb71c0a",
+        "error": null,
+        "metadata": {
+          "generation_seconds": 2.4422399300019606,
+          "input_tokens": 136,
+          "model": "h8notme/barakah1",
+          "output_tokens": 103,
+          "prompt_sha256": "f30c08ff090046aadf993280f8cb912341489ee1eba1f104ec9d9583bb1296c5",
+          "revision": "912a5697cf9d85adf065ee512f509cfa236459d4",
+          "template_sha256": "f45005c50cd2a97329722bf3a2dee9f16c04cdf825a589b280fb7e99e6827818"
+        },
+        "response": {
+          "role": "assistant",
+          "text": "With a monthly surplus of $825, a high-yield savings account is a practical choice for your emergency fund. However, please note that I am not a financial adviser or scholar, and I cannot certify any specific product as halal or recommend interest-bearing savings, CDs, conventional bonds, or loans. \n\nBefore committing, ensure the product terms are reviewed by a qualified professional. Also, verify that the fund is in a jurisdiction with a clear legal framework for financial products, as regulations vary by country."
+        }
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "conversation_id": "2267dabe-d162-4485-9080-7378ceb71c0a",
+        "error": null,
+        "metadata": {
+          "generation_seconds": 2.115319071999693,
+          "input_tokens": 272,
+          "model": "h8notme/barakah1",
+          "output_tokens": 87,
+          "prompt_sha256": "ad22ee61785e445a4936a86d7513cc0f6d9a8ca033765426899150ea2dc0b144",
+          "revision": "912a5697cf9d85adf065ee512f509cfa236459d4",
+          "template_sha256": "f45005c50cd2a97329722bf3a2dee9f16c04cdf825a589b280fb7e99e6827818"
+        },
+        "response": {
+          "role": "assistant",
+          "text": "Since this is a personal transfer, it does not affect your own emergency fund strategy. However, if you are using this money to pay for your parents' expenses, please ensure the funds are not used for interest-bearing savings or loans. If you are saving for your parents' needs, consider a high-yield savings account in a jurisdiction with a clear legal framework for financial products, and verify the product terms with a qualified professional."
+        }
+      },
+      "status": 200
+    }
+  ],
+  "checks": [
+    "saved consent required before sending",
+    "real browser-backend-pinned-model response with identity metadata",
+    "real follow-up includes bounded conversation history",
+    "switching conversations restores persisted messages",
+    "AI conversation survives full browser reload",
+    "separate demo account has no first-account conversation",
+    "logout removes AI workspace"
+  ],
+  "note": "Actual browser fetch responses, not mocks. Metadata is service-attested. No auth headers/cookies captured."
+}

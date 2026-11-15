@@ -12,7 +12,7 @@ The separate **Personal Finance Domain Adaptation Benchmark v1.0** completed all
 
 ![Separate model-only comparisons with denominators and limitations](visuals/png/01_separate_model_evaluations.png)
 
-The functioning web product uses deterministic Decimal calculations. **Its deployed chat is explicitly disconnected**; offline benchmark inference is not live application integration. The submission's core-AI eligibility therefore needs owner/organizer confirmation.
+The functioning web product uses deterministic Decimal calculations. **Its deployed chat is explicitly disconnected**; offline benchmark inference is not live application integration. A later opt-in private local integration has separate real browser/inference evidence in [the release audit](../../docs/RELEASE_AUDIT.md); it does not change these neutral-prompt scores. Public chat remains disconnected. The finance challenge's requested advantage over a simple rule is not established, and eligibility still needs truthful owner/organizer confirmation.
 
 ## Why this model and training objective?
 

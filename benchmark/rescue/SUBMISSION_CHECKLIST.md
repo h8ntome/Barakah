@@ -1,6 +1,6 @@
 # Submission readiness — 2026-11-15
 
-**This is a preparation checklist, not a submission receipt.** No form has been submitted by this evaluation mission.
+**This is a preparation checklist, not a submission receipt.** No form has been submitted. See [current release audit](../../docs/RELEASE_AUDIT.md). The final one-page PDF and current 115-second film are prepared in the ignored local `submissions/` handoff; the canonical write-up route is attaching that PDF to the live form. The current brief/form make video optional.
 
 ## Official requirements
 
@@ -28,13 +28,13 @@ The public instructions/form were inspected read-only on 2026-11-15 around 16:09
 | Separate personal-finance benchmark | https://github.com/h8ntome/Barakah/tree/audit/full-application-fix/personal_finance |
 | Historical video | Local `demo-video/output/barakah-demo-final.mp4`, 115.008 seconds; hosting not verified; it predates the new paired evaluation |
 
-New links become available only after the corresponding commit is pushed. Check anonymously before copying into the form. Do not use the historical video as evidence of the latest model results; it correctly shows disconnected chat but its evaluation coverage is older. The video is optional, so do not delay submission to re-render it.
+New links become available only after the corresponding commit is pushed. Check anonymously before copying into the form. Do not use the historical video as evidence of the latest model results; it correctly shows disconnected chat but its evaluation coverage is older. The later release film has now been updated; this table records the evaluation mission's earlier assets. Use the final handoff's named PDF/MP4, not a stale historical export.
 
 ## Owner decisions still required
 
 - [ ] Enter the exact team members, emails, schools and registration details. Never invent them.
 - [ ] Confirm high-school eligibility, contributions, permitted build window, and no disallowed pre-existing project extension.
-- [ ] Resolve the **core-AI requirement**: the app's accounting works, but its public chat is intentionally disconnected. Offline model inference/evaluation is real and reproducible; it is not live product integration. Do not certify that the deployed tracker alone demonstrates AI doing its main job.
+- [ ] Confirm the **core-AI/Finance requirements** truthfully: private local model integration now works, but public chat remains disconnected and the candidate does not beat the simple arithmetic rule. Do not certify baseline superiority or trusted advice. Follow the current audit's NOT READY assessment for unresolved substantive requirements.
 - [ ] Confirm actual fine-tuning dataset/revision/splits and license obligations. The team's description is personal-finance dialogue adaptation; a complete checkpoint-linked training manifest was not supplied.
 - [ ] Include all actual model, dataset, tutorial and AI-tool credits. Pi/AI coding assistance must not be represented as solely human-authored implementation.
 - [ ] Select one public write-up (the short judges summary links the full evidence), verify every submitted URL, and use the Finance disclaimer above.
@@ -42,7 +42,7 @@ New links become available only after the corresponding commit is pushed. Check 
 
 ## Honest pitch
 
-Barakah combines an Islamic personal-finance tracker with a reproducible study of a small language model adapted for financial conversations. We preserve the original benchmark, disclose numerical regressions, and add a separately frozen exploratory personal-finance evaluation. The application uses deterministic Decimal accounting instead of trusting a model with money. The deployed chat is not yet connected; advice quality and scholarly correctness still require independent review.
+Barakah combines an Islamic personal-finance tracker with a reproducible study of a small language model adapted for financial conversations. We preserve the original benchmark, disclose numerical regressions, and add a separately frozen exploratory personal-finance evaluation. The application uses deterministic Decimal accounting instead of trusting a model with money. Public chat is not connected; opt-in private local inference now works but exposes genuine advice failures. Advice quality and scholarly correctness still require independent review.
 
 ## Credits and provenance
 

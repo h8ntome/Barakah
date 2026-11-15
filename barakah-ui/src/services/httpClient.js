@@ -20,6 +20,7 @@ export function createHttpClient({
   onSession = () => {},
 } = {}) {
   let accessToken = null;
+  let userId = null;
   let refreshPromise = null;
   let generation = 0;
   const base = baseUrl.replace(/\/$/, "");
@@ -82,6 +83,9 @@ export function createHttpClient({
   function acceptSession(session) {
     if (!session?.access_token || !session?.user?.id)
       throw new ApiError("The server returned an invalid session. Please contact the operator.", 502);
+    // Shared cookies can change accounts in another tab; never replay the old owner's draft.
+    if (userId && userId !== session.user.id) generation += 1;
+    userId = session.user.id;
     accessToken = session.access_token;
     onSession(session.user);
     return session.user;
@@ -89,6 +93,7 @@ export function createHttpClient({
   function clearSession() {
     generation += 1;
     accessToken = null;
+    userId = null;
     onSession(null);
   }
   async function refresh() {
@@ -121,6 +126,10 @@ export function createHttpClient({
           { code: "session_changed" },
         );
     };
+    if (options.preflightAuth) {
+      await request("/auth/me");
+      assertCurrentSession();
+    }
     const sentToken = accessToken;
     try {
       const result = await transport(path, { ...options, token: sentToken });

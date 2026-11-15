@@ -1,5 +1,7 @@
 # Demonstration guide
 
+> Historical pre-opt-in snapshot. See [current release audit](../docs/RELEASE_AUDIT.md) and [local AI setup](../docs/local-ai.md). The public demo still has unavailable AI; local opt-in now has separate real inference evidence. Historical results below are preserved, not overwritten.
+
 ## Public demo — ready for remote testers
 
 Open **https://barakah-gamma.vercel.app** and choose **Try Demo**. No Vercel account or shared password is required. Each tester gets a private editable fictional workspace, persisted in hosted PostgreSQL. Reset through **Home → Settings → Reset demo data**; demos expire after24 hours. Public browser verification passed21 checks. AI is intentionally unavailable; no actual money moves.

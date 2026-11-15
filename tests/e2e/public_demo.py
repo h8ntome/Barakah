@@ -10,7 +10,7 @@ import tempfile
 import journey as j
 
 j.URL = 'https://barakah-gamma.vercel.app'
-j.OUT = Path(__file__).resolve().parents[2] / 'audit/artifacts/public'
+j.OUT = Path(os.environ.get('BARAKAH_E2E_OUTPUT', str(Path(__file__).resolve().parents[2] / 'audit/artifacts/public')))
 
 
 def main():

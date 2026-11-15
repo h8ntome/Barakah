@@ -241,6 +241,47 @@ test("wrong confirmation password does not rotate or clear a valid session", asy
   assert.deepEqual(sessions, []);
 });
 
+test("refresh cannot replay a private draft after cookies switch to another account", async () => {
+  const calls = [], sessions = [];
+  const client = createHttpClient({
+    onSession: user => sessions.push(user),
+    fetchImpl: async (url, options) => {
+      calls.push([url, options.headers.Authorization]);
+      if (url.endsWith("/login")) return response({ access_token: "A", user: { id: "A" } });
+      if (url.endsWith("/refresh")) return response({ access_token: "B", user: { id: "B" } });
+      return response({}, 401);
+    },
+  });
+  await client.authenticate("/auth/login", {});
+  await assert.rejects(client.request("/accounts", {
+    method: "POST", body: { name: "A private draft" },
+  }), { code: "session_changed" });
+  assert.deepEqual(calls.filter(([url]) => url.endsWith("/accounts")), [["/api/v1/accounts", "Bearer A"]]);
+  assert.equal(sessions.at(-1).id, "B");
+});
+
+for (const changedOwner of [false, true]) {
+  test(`AI preflight refreshes safely; changed owner=${changedOwner}`, async () => {
+    const calls = [];
+    const client = createHttpClient({ fetchImpl: async (url, options) => {
+      calls.push([url, options.headers.Authorization]);
+      if (url.endsWith("/login")) return response({ access_token: "expired", user: { id: "A" } });
+      if (url.endsWith("/refresh")) return response({ access_token: "fresh", user: { id: changedOwner ? "B" : "A" } });
+      if (url.endsWith("/me")) return options.headers.Authorization === "Bearer fresh" ? response({ id: "A" }) : response({}, 401);
+      return response({ response: "Real generation boundary" });
+    }});
+    await client.authenticate("/auth/login", {});
+    const pending = client.request("/advisor/messages", {
+      method: "POST", body: { text: "Private draft" }, preflightAuth: true, retryAuth: false,
+    });
+    if (changedOwner) await assert.rejects(pending, { code: "session_changed" });
+    else assert.equal((await pending).response, "Real generation boundary");
+    const generations = calls.filter(([url]) => url.endsWith("/advisor/messages"));
+    assert.equal(generations.length, changedOwner ? 0 : 1);
+    if (!changedOwner) assert.equal(generations[0][1], "Bearer fresh");
+  });
+}
+
 for (const status of [200, 401]) {
   test(`delayed ${status} from account A is rejected after signing into B without replay`, async () => {
     let release;

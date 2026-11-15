@@ -347,6 +347,7 @@ export default function Zakat({ navigate, onChanged }) {
                 await api.saveZakatHistory();
                 history.retry();
                 historyChoices.retry();
+                onChanged();
               }}
             />
           </>

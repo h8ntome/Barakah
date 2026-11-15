@@ -1,0 +1,431 @@
+{
+  "scope": "Local precommit checks. Transport unit tests are mocked; browser AI and explicit boundary probes used the actual pinned service. Paths sanitized. Final post-push/clone receipts live in ignored handoff.",
+  "receipts": [
+    {
+      "command": [
+        "uv",
+        "pip",
+        "install",
+        "--python",
+        "<locked-venv>/bin/python",
+        "--require-hashes",
+        "-r",
+        "backend/requirements.lock"
+      ],
+      "started_at": "2026-11-15T17:10:37.058236+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "a6c7b4b17dc031e403ea3b159bd5fd3b46e2b313b35e84d44efa328ac4e8fab2",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "locked-install.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T17:10:37.836105+00:00",
+      "seconds": 0.635,
+      "source_tree_sha256_after": "a6c7b4b17dc031e403ea3b159bd5fd3b46e2b313b35e84d44efa328ac4e8fab2",
+      "log_sha256": "1cd134f2e5e8bfadf8bb43145ae6a5de288906d9a00f797ee76f2ee1083e4288",
+      "receipt_name": "locked-install"
+    },
+    {
+      "command": [
+        "<locked-venv>/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "started_at": "2026-11-15T17:21:08.392180+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "625f6e6846959a99e357095ecfa8002222a761bfe7ccde2b45bdd1c3d3d88b44",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "locked-sqlite-final.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T17:21:28.618820+00:00",
+      "seconds": 20.166,
+      "source_tree_sha256_after": "625f6e6846959a99e357095ecfa8002222a761bfe7ccde2b45bdd1c3d3d88b44",
+      "log_sha256": "5ecbb608e23a9466872153dc4ce306b9534500a2c56da728e5e811901817c15c",
+      "receipt_name": "locked-sqlite-final"
+    },
+    {
+      "command": [
+        "<locked-venv>/bin/python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "started_at": "2026-11-15T17:21:28.697670+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "625f6e6846959a99e357095ecfa8002222a761bfe7ccde2b45bdd1c3d3d88b44",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "locked-postgres-final.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T17:21:47.201470+00:00",
+      "seconds": 18.451,
+      "source_tree_sha256_after": "625f6e6846959a99e357095ecfa8002222a761bfe7ccde2b45bdd1c3d3d88b44",
+      "log_sha256": "692a1a48bf0ad4192897e838d702953f989c3a0109a02a33052dfea03a588f15",
+      "receipt_name": "locked-postgres-final"
+    },
+    {
+      "command": [
+        "npm",
+        "test",
+        "--prefix",
+        "barakah-ui"
+      ],
+      "started_at": "2026-11-15T17:10:37.918358+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "a6c7b4b17dc031e403ea3b159bd5fd3b46e2b313b35e84d44efa328ac4e8fab2",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "frontend-final.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T17:10:38.672544+00:00",
+      "seconds": 0.697,
+      "source_tree_sha256_after": "a6c7b4b17dc031e403ea3b159bd5fd3b46e2b313b35e84d44efa328ac4e8fab2",
+      "log_sha256": "696f89f0d18b2d3fe2ca073ef308dcaee02513a9346601db22db0e23bab12032",
+      "receipt_name": "frontend-final"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "build",
+        "--prefix",
+        "barakah-ui"
+      ],
+      "started_at": "2026-11-15T17:10:38.756515+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "a6c7b4b17dc031e403ea3b159bd5fd3b46e2b313b35e84d44efa328ac4e8fab2",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "build-final.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T17:10:39.774038+00:00",
+      "seconds": 0.965,
+      "source_tree_sha256_after": "a6c7b4b17dc031e403ea3b159bd5fd3b46e2b313b35e84d44efa328ac4e8fab2",
+      "log_sha256": "5f97d1a3a265eadb6dfae6a4a92eaa84a4d9590cb0bd674be482de9ea4a5ff52",
+      "receipt_name": "build-final"
+    },
+    {
+      "command": [
+        "python3",
+        "tests/e2e/journey.py"
+      ],
+      "started_at": "2026-11-15T17:21:08.392218+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "625f6e6846959a99e357095ecfa8002222a761bfe7ccde2b45bdd1c3d3d88b44",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "browser-local-final.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T17:21:38.796427+00:00",
+      "seconds": 30.344,
+      "source_tree_sha256_after": "625f6e6846959a99e357095ecfa8002222a761bfe7ccde2b45bdd1c3d3d88b44",
+      "log_sha256": "07abfe30f640cf1d1227b0376c738efae3a98be54d4bf4b9d7866daee53961c9",
+      "receipt_name": "browser-local-final"
+    },
+    {
+      "command": [
+        "python3",
+        "tests/e2e/session_switch.py"
+      ],
+      "started_at": "2026-11-15T17:21:38.882896+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "625f6e6846959a99e357095ecfa8002222a761bfe7ccde2b45bdd1c3d3d88b44",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "browser-session-switch.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T17:21:44.937641+00:00",
+      "seconds": 6.004,
+      "source_tree_sha256_after": "625f6e6846959a99e357095ecfa8002222a761bfe7ccde2b45bdd1c3d3d88b44",
+      "log_sha256": "02b84ade38db557961a63efbc41ef253832236c7ba88c5f8c91b3e16e7333220",
+      "receipt_name": "browser-session-switch"
+    },
+    {
+      "command": [
+        "python3",
+        "tests/e2e/ai_live.py"
+      ],
+      "started_at": "2026-11-15T17:21:45.020541+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "625f6e6846959a99e357095ecfa8002222a761bfe7ccde2b45bdd1c3d3d88b44",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "browser-ai-final.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T17:22:01.939855+00:00",
+      "seconds": 16.87,
+      "source_tree_sha256_after": "625f6e6846959a99e357095ecfa8002222a761bfe7ccde2b45bdd1c3d3d88b44",
+      "log_sha256": "a84cc2a9e62312fcf7a9c10b79b82e9e1945623aab134cd180d19e9f6546823b",
+      "receipt_name": "browser-ai-final"
+    },
+    {
+      "command": [
+        "backend/.venv/bin/python",
+        "<private-runtime>/check_live_boundaries.py"
+      ],
+      "started_at": "2026-11-15T17:12:19.523872+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "d27166c33bf1376f41da40c6b66241ff802ec513db7a12c9f1f08976637e087a",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "ai-live-boundaries-verified.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T17:12:47.425463+00:00",
+      "seconds": 27.853,
+      "source_tree_sha256_after": "387841489cf4da0b3075ec4ee1c1aeb7c8f300bbb018480b745ac4f10445f210",
+      "log_sha256": "73a929a13e38e9a7f451b9c730d454822455ab72481710c41106743a4ac3902e",
+      "receipt_name": "ai-live-boundaries-verified"
+    },
+    {
+      "command": [
+        "python3",
+        "tests/e2e/public_demo.py"
+      ],
+      "started_at": "2026-11-15T16:51:12.398672+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "108ce2ddd75d0d163588d2bc6479c723487a4c0a7250a2f0cff6e5691bd226bb",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "public-browser-retry.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T16:51:57.312291+00:00",
+      "seconds": 44.808,
+      "source_tree_sha256_after": "108ce2ddd75d0d163588d2bc6479c723487a4c0a7250a2f0cff6e5691bd226bb",
+      "log_sha256": "476b7a5ca38a85439ba7a98acf2a1af095ef3df699c546f8c4071c85999dec06",
+      "receipt_name": "public-browser-retry"
+    },
+    {
+      "command": [
+        "<benchmark-venv>/bin/python",
+        "-m",
+        "pytest",
+        "benchmark/tests",
+        "-q"
+      ],
+      "started_at": "2026-11-15T17:21:08.392213+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "625f6e6846959a99e357095ecfa8002222a761bfe7ccde2b45bdd1c3d3d88b44",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "benchmark-final.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T17:21:13.369970+00:00",
+      "seconds": 4.917,
+      "source_tree_sha256_after": "625f6e6846959a99e357095ecfa8002222a761bfe7ccde2b45bdd1c3d3d88b44",
+      "log_sha256": "2bacb0d4895780f141eb5d084619ada94e775768262d1132e6940fc2c535a270",
+      "receipt_name": "benchmark-final"
+    },
+    {
+      "command": [
+        "<benchmark-venv>/bin/python",
+        "benchmark/scripts/audit_original.py",
+        "--baseline",
+        "original-matched_20261115T153923318073+0000",
+        "--candidate",
+        "barakah-matched_20261115T154845353654+0000",
+        "--output",
+        "submissions/LOCAL_AUDIT_ONLY/logs/original-numeric-audit.json"
+      ],
+      "started_at": "2026-11-15T17:21:13.453915+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "625f6e6846959a99e357095ecfa8002222a761bfe7ccde2b45bdd1c3d3d88b44",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "original-numeric-final.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T17:21:13.550694+00:00",
+      "seconds": 0.038,
+      "source_tree_sha256_after": "625f6e6846959a99e357095ecfa8002222a761bfe7ccde2b45bdd1c3d3d88b44",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "receipt_name": "original-numeric-final"
+    },
+    {
+      "command": [
+        "python3",
+        "<isolated-evaluation>/personal_finance/amendments/validate_completed_run.py"
+      ],
+      "started_at": "2026-11-15T17:20:48.056810+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "34351dba73fc1233b2cbb107e405d4aa62ae2dda9ef346af309989ee3655ee38",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "pf-final-integrity.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T17:20:48.135395+00:00",
+      "seconds": 0.033,
+      "source_tree_sha256_after": "34351dba73fc1233b2cbb107e405d4aa62ae2dda9ef346af309989ee3655ee38",
+      "log_sha256": "55dc2134b14fb2bee62136995b021cc87dd3ffe097273fafe7a5dd4804f78474",
+      "receipt_name": "pf-final-integrity"
+    },
+    {
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "started_at": "2026-11-15T17:21:13.627717+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "625f6e6846959a99e357095ecfa8002222a761bfe7ccde2b45bdd1c3d3d88b44",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "release-tools-final.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T17:21:14.069843+00:00",
+      "seconds": 0.388,
+      "source_tree_sha256_after": "625f6e6846959a99e357095ecfa8002222a761bfe7ccde2b45bdd1c3d3d88b44",
+      "log_sha256": "fab2dd61a3c71ea51fcd358a6aee9eff18914c2b72b57db2d1ca2c49789bc251",
+      "receipt_name": "release-tools-final"
+    },
+    {
+      "command": [
+        "npm",
+        "audit",
+        "--prefix",
+        "barakah-ui",
+        "--json"
+      ],
+      "started_at": "2026-11-15T16:38:02.419258+00:00",
+      "commit": "0d6305d7140c323ffd12ffcc76852d77a3dfd8e7",
+      "source_tree_sha256_before": "d9b1a94baee631b187ec7f1d27c08f612c17a29e7de49abb11e9173e365986f0",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "npm-audit.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T16:38:04.893914+00:00",
+      "seconds": 2.406,
+      "source_tree_sha256_after": "d9b1a94baee631b187ec7f1d27c08f612c17a29e7de49abb11e9173e365986f0",
+      "log_sha256": "905bf0c8f4c605f121a61fdc7a138f6c6616a1fd7bcaa8fa49572cc90baaa8dc",
+      "receipt_name": "npm-audit"
+    },
+    {
+      "command": [
+        "<tools>/venv/bin/python",
+        "-m",
+        "pip_audit",
+        "--no-deps",
+        "--disable-pip",
+        "-r",
+        "submissions/LOCAL_AUDIT_ONLY/logs/locked-installed.txt",
+        "--format",
+        "json"
+      ],
+      "started_at": "2026-11-15T17:22:53.821555+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "625f6e6846959a99e357095ecfa8002222a761bfe7ccde2b45bdd1c3d3d88b44",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "python-audit-locked.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T17:22:54.122683+00:00",
+      "seconds": 0.257,
+      "source_tree_sha256_after": "625f6e6846959a99e357095ecfa8002222a761bfe7ccde2b45bdd1c3d3d88b44",
+      "log_sha256": "660d0f17919e55818a10f90f19f705e560ca2f309d672041f2e9240357adb9cf",
+      "receipt_name": "python-audit-locked"
+    },
+    {
+      "command": [
+        "npm",
+        "audit",
+        "--prefix",
+        "demo-video",
+        "--json"
+      ],
+      "started_at": "2026-11-15T17:19:32.898408+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "34351dba73fc1233b2cbb107e405d4aa62ae2dda9ef346af309989ee3655ee38",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "video-audit-patched.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T17:19:33.525126+00:00",
+      "seconds": 0.577,
+      "source_tree_sha256_after": "34351dba73fc1233b2cbb107e405d4aa62ae2dda9ef346af309989ee3655ee38",
+      "log_sha256": "6d9733f759f3c85967201636d5bbe9473eb176b7e4ee2bfc07e79c74a27c529e",
+      "receipt_name": "video-audit-patched"
+    },
+    {
+      "command": [
+        "npm",
+        "test"
+      ],
+      "started_at": "2026-11-15T17:19:33.606034+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "34351dba73fc1233b2cbb107e405d4aa62ae2dda9ef346af309989ee3655ee38",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "video-source-final.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T17:19:34.017623+00:00",
+      "seconds": 0.363,
+      "source_tree_sha256_after": "34351dba73fc1233b2cbb107e405d4aa62ae2dda9ef346af309989ee3655ee38",
+      "log_sha256": "0d6bf5dcbc7eb76f797a967bc0b2197bccf8b40bbf0aeccbe9e523f190631b12",
+      "receipt_name": "video-source-final"
+    },
+    {
+      "command": [
+        "npx",
+        "eslint",
+        "src"
+      ],
+      "started_at": "2026-11-15T17:19:34.092494+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "34351dba73fc1233b2cbb107e405d4aa62ae2dda9ef346af309989ee3655ee38",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "video-lint-final.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T17:19:35.194101+00:00",
+      "seconds": 1.056,
+      "source_tree_sha256_after": "34351dba73fc1233b2cbb107e405d4aa62ae2dda9ef346af309989ee3655ee38",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "receipt_name": "video-lint-final"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "lint"
+      ],
+      "started_at": "2026-11-15T17:20:24.807098+00:00",
+      "commit": "54dce6e2d08799ef2ae53a2f6f86ff30efe2b678",
+      "source_tree_sha256_before": "34351dba73fc1233b2cbb107e405d4aa62ae2dda9ef346af309989ee3655ee38",
+      "environment": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+      "python": "3.15.1",
+      "log": "video-typecheck-final.log",
+      "exit_status": 0,
+      "outcome": "PASS",
+      "ended_at": "2026-11-15T17:20:25.831711+00:00",
+      "seconds": 0.975,
+      "source_tree_sha256_after": "34351dba73fc1233b2cbb107e405d4aa62ae2dda9ef346af309989ee3655ee38",
+      "log_sha256": "b717ec4f0f1834c626c428543c46c6b81dc95ef011f7fd610288fa8edf483374",
+      "receipt_name": "video-typecheck-final"
+    }
+  ]
+}

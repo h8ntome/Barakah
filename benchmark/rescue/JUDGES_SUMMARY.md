@@ -2,6 +2,8 @@
 
 **This project is a prototype and is not financial advice.**
 
+> Evaluation-mission summary, preserved with its original test counts below. See [current release audit](../../docs/RELEASE_AUDIT.md) for later local AI integration and the final test evidence. The locally prepared one-page PDF is the canonical final form attachment.
+
 ### Problem and product
 
 Barakah helps households organize spending, budgets, savings goals, giving and educational zakat estimates. Its authenticated React/FastAPI product uses stored records, owner isolation and Decimal arithmetic. It does not move money, trade securities, fetch live prices or issue religious rulings. [Try the public demo](https://barakah-gamma.vercel.app/).
@@ -26,6 +28,6 @@ Both models completed all 50 scenarios. **Barakah passed 9/23 strict numerical-f
 
 The application's money calculations are deterministic rather than delegated to the model. Fresh checks passed **127 backend tests** (one PostgreSQL-specific test skipped), **64 frontend tests**, the frontend build and **21 public browser checks**. Six additional calculation regressions exercise exact cents, zero income and observed model-error scenarios; these are debugging fixtures, not held-out model evidence.
 
-**Important limitation:** deployed chat is deliberately disconnected. Offline model inference is real, but this is not a working live AI advisor. The event's core-AI requirement and team eligibility need truthful owner/organizer confirmation. Next steps are verified training provenance, blinded qualified review, and safely integrating model explanations around deterministic accounting.
+**Important limitation:** deployed chat is deliberately disconnected. Offline model inference is real, but this is not a working live AI advisor. A later private opt-in integration is now verified separately; the public endpoint is still disconnected. The event's core-AI requirement, rule-baseline advantage and team eligibility need truthful owner/organizer confirmation. Next steps are verified training provenance, blinded qualified review, and safely integrating model explanations around deterministic accounting.
 
 [Full evaluation and limitations](REPORT.md) · [code](https://github.com/h8ntome/Barakah/tree/audit/full-application-fix) · [credits, requirements and submission checklist](SUBMISSION_CHECKLIST.md). Questions, code and protocol review were AI-assisted using Pi; no AI review is represented as expert human adjudication.

@@ -94,7 +94,7 @@ def test_success_followup_owner_history_and_no_financial_context(client, auth, r
     assert client.get(f'{B}/advisor/conversations/{cid}/messages', headers=other).status_code == 404
 
 
-@pytest.mark.parametrize('failure', ['timeout', 'connection', 'busy', 'model', 'revision', 'oversize', 'empty', 'metadata'])
+@pytest.mark.parametrize('failure', ['timeout', 'provider_timeout', 'connection', 'busy', 'model', 'revision', 'oversize', 'empty', 'metadata'])
 def test_failures_never_save_or_retry(client, auth, provider, db_setup, historical_conversation, failure, caplog):
     calls, state = provider
     consent(client, auth)
@@ -102,6 +102,8 @@ def test_failures_never_save_or_retry(client, auth, provider, db_setup, historic
     before = client.get(f'{B}/advisor/conversations/{cid}/messages', headers=auth).json()
     if failure == 'timeout':
         state['exception'] = httpx.ReadTimeout('PRIVATE transport diagnostic')
+    elif failure == 'provider_timeout':
+        state['status'] = 504
     elif failure == 'connection':
         state['exception'] = httpx.ConnectError('PRIVATE transport diagnostic')
     elif failure == 'busy':
@@ -115,7 +117,7 @@ def test_failures_never_save_or_retry(client, auth, provider, db_setup, historic
     for conversation in (None, cid):
         response = client.post(B + '/advisor/messages', headers=auth,
                                json={'text': 'PRIVATE prompt', 'conversation_id': conversation})
-        assert response.status_code == (504 if failure == 'timeout' else 503)
+        assert response.status_code == (504 if failure in {'timeout', 'provider_timeout'} else 503)
         assert response.json()['response'] is None
         assert 'PRIVATE' not in response.text + caplog.text
         assert counts(db_setup) == (1, 2)

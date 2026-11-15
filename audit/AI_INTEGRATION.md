@@ -1,5 +1,7 @@
 # AI integration: unavailable-only contract
 
+> Historical pre-opt-in snapshot. See [current release audit](../docs/RELEASE_AUDIT.md) and [local AI setup](../docs/local-ai.md). The public demo still has unavailable AI; local opt-in now has separate real inference evidence. Historical results below are preserved, not overwritten.
+
 ## Current behavior
 
 No AI is connected. No model is downloaded, loaded, trained or invoked, and no

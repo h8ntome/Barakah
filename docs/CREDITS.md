@@ -1,0 +1,48 @@
+# Credits, data and licensing — 15 November 2026
+
+This project is a prototype and is not financial advice. Source-checking and AI-agent reviews are not independent finance, security or religious certification. No team names, schools or individual contributions are invented here; the submitter must confirm those privately.
+
+## Models and datasets
+
+- **Liquid AI:** [LiquidAI/LFM3-1.7B](https://huggingface.co/LiquidAI/LFM3-1.7B), evaluated revision `1da06bec6a819da10b54c67e5c90972b46d81871`, LFM Open License v1.0. [Artifact/license inspection](../benchmark/reports/20261115/MODEL_PROVENANCE.md).
+- **Barakah checkpoint:** [h8notme/barakah1](https://huggingface.co/h8notme/barakah1), full checkpoint revision `912a5697cf9d85adf065ee512f509cfa236459d4`, not a separate adapter. Its card names LFM3 and credits [Unsloth](https://github.com/unslothai/unsloth) and [TRL](https://github.com/huggingface/trl). Those are upstream card claims, not independently recovered training logs. No retraining or weight modification occurred during release integration/evaluation.
+- **Unresolved model license:** the candidate card says Apache-2.0, while the base includes LFM Open License v1.0. No separate candidate LICENSE resolves that conflict. Do not treat the card as permission to remove upstream conditions or redistribute commercially. No weights are included in the repository or submission package.
+- **Candidate training corpus used for overlap screening:** [Azfarhashmi/adaption-personal-finance-advice-dialogues](https://huggingface.co/datasets/Azfarhashmi/adaption-personal-finance-advice-dialogues), revision `3dd7f33149d6cbf4ab9115f76242851506929b9d`, 27,981 public rows. Actual checkpoint training membership/splits are unavailable. The limited lexical overlap screen is not proof of independence; no corpus is redistributed in the package. [Provenance](../personal_finance/PROVENANCE.md).
+- **Original evaluation:** 100 AI-assisted authored synthetic English scenarios; 40 numeric references independently recalculated in code; 60 conceptual answers unreviewed. [Dataset card](../benchmark/datasets/DATASET_CARD.md), [reference evidence](../benchmark/datasets/SOURCE_EVIDENCE.md), [audit](../benchmark/rescue/evidence/original_numeric_audit.json).
+- **Exploratory personal-finance evaluation:** 50 AI-assisted authored synthetic scenarios, 23 strict numerical-field checks. Created after the original aggregate comparison; frozen before its own inference. All human advice-quality scores remain null. Rubric changes and canonical packet adoption are disclosed in [the report](../personal_finance/REPORT.md). It is not an independent confirmatory test.
+- **Live demo:** synthetic user questions and isolated fictional app data only; not anyone's real finances. Recorded assistant text is genuinely generated, including adverse answers. Prompt policy changes are development work, not evidence of an evaluated safety gain.
+
+## Reference institutions
+
+References support attributed educational context, not universal religious rulings or live prices. Exact passages, dates, hashes and per-item mappings are in the source-evidence ledger above.
+
+- [Islamic Relief Canada: zakat](https://www.islamicreliefcanada.org/giving/islamic-giving/zakat) and [nisab](https://www.islamicreliefcanada.org/giving/islamic-giving/zakat/nisab).
+- [Islamic Relief UK: zakat](https://www.islamic-relief.org.uk/giving/islamic-giving/zakat/).
+- [National Zakat Foundation: gold/silver](https://nzf.org.uk/knowledge/zakat-on-gold-silver-jewellery/) and [shares](https://nzf.org.uk/knowledge/zakat-on-shares/).
+- [Bank of England: Islamic finance](https://www.bankofengland.co.uk/explainers/what-is-islamic-finance) and [2017 central-banking paper](https://www.bankofengland.co.uk/-/media/boe/files/quarterly-bulletin/2017/islamic-banks-and-central-banking.pdf).
+- [Securities Commission Malaysia](https://www.sc.com.my/development/icm/shariah-compliant-securities).
+- [SEC Investor.gov](https://www.investor.gov/), [CFPB emergency-fund guide](https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/), [IMF Islamic finance overview](https://www.imf.org/external/themes/islamicfinance/).
+
+## Implementation, AI assistance and review
+
+- [Pi coding agent](https://github.com/badlogic/pi-mono), OpenAI **gpt-6-astra** through the `openai-codex` provider, including bounded coding/research/review agents: repository inspection, implementation, test authoring, reference research, evaluation automation, write-up and video production. These are AI-assisted artifacts, not solely human-authored work or qualified independent human reviews. Additional tools used outside the inspected history need owner confirmation.
+- [React](https://react.dev/), [Vite](https://vite.dev/), [Lucide](https://lucide.dev/), [FastAPI](https://fastapi.tiangolo.com/), [SQLAlchemy](https://www.sqlalchemy.org/), [Alembic](https://alembic.sqlalchemy.org/), [Pydantic](https://docs.pydantic.dev/), [HTTPX](https://www.python-httpx.org/), Python, SQLite and [PostgreSQL](https://www.postgresql.org/). Exact dependencies are in the app lockfiles; authentication also uses Argon2id and PyJWT.
+- [Transformers](https://github.com/huggingface/transformers), [PyTorch](https://pytorch.org/), [Hugging Face Hub](https://huggingface.co/docs/huggingface_hub/), Safetensors, [AMD ROCm](https://rocm.docs.amd.com/), NumPy and Matplotlib for evaluation/inference. Runtime versions and hashes are recorded separately; no model substitution is hidden.
+- [agent-browser](https://github.com/vercel-labs/agent-browser)/Chromium for actual browser testing; pytest and Node's test runner for automated tests. [Gitleaks](https://github.com/gitleaks/gitleaks), [pip-audit](https://github.com/pypa/pip-audit) and npm audit provide bounded scans, not proof that no vulnerabilities exist.
+- [ReportLab](https://www.reportlab.com/opensource/) and [PyMuPDF](https://pymupdf.readthedocs.io/) build/inspect the write-up; [uv](https://github.com/astral-sh/uv) resolves and installs locked Python dependencies.
+- The public deployment uses [Vercel](https://vercel.com/) and [Neon](https://neon.tech/). No paid infrastructure, financial transaction or publication-permission change was made by this release task.
+
+## Video, audio and visual assets
+
+- Existing Barakah logo, emerald/mint/off-white identity, React UI and fictional fixture were preserved. No stock footage, testimonial or real financial record is presented as ours.
+- [Remotion](https://www.remotion.dev/) 4.0.543, including its [Basic Captions element](https://www.remotion.dev/elements/captions/basic-captions/), Media and Transitions. [Remotion licensing](https://www.remotion.dev/license) must be checked for reuse; no blanket commercial-rights claim is made.
+- [Kokoro-82M v1.0](https://huggingface.co/hexgrad/Kokoro-82M), stock `af_heart` voice; Apache-2.0 per model card. [kokoro-onnx](https://github.com/thewh1teagle/kokoro-onnx) 0.6.1 (MIT), [v1.0 assets](https://github.com/thewh1teagle/kokoro-onnx/releases/tag/model-files-v1.0). No imitation of a named person's voice. Upstream acknowledgements include [Koniwa](https://github.com/koniwa/koniwa) (CC BY 3.0) and [SIWIS](https://datashare.ed.ac.uk/handle/10283/2353) (CC BY 4.0), not datasets directly used by Barakah.
+- Original procedural music/transition tones; no borrowed recordings or samples. [FFmpeg](https://ffmpeg.org/), ONNX Runtime, SoundFile, Pillow and NumPy support production. [faster-whisper](https://github.com/SYSTRAN/faster-whisper)/[Whisper](https://github.com/openai/whisper) are local ASR QA only, not product AI or proof of listening.
+- [DM Sans](https://fonts.google.com/specimen/DM+Sans) and [Manrope](https://fonts.google.com/specimen/Manrope), SIL OFL; bundled notices are retained. Georgia is the existing system editorial face; the PDF uses installed Arial with a standard-font fallback. No font licenses are overwritten.
+- [Full video credits](../demo-video/reports/CREDITS.md). The current video distinguishes private local inference from public AI unavailability and preserves model failures.
+
+## Rights and submission boundary
+
+The repository has no blanket project LICENSE; public visibility is not itself a new license grant. Third-party licenses remain applicable. Team/owner confirmation of original contribution, all-member participation, permitted build window and complete tool history is still required. Do not backdate or certify those from Git timestamps alone.
+
+Official sources: [Project Briefs/site](https://highschoolhackathon.org/briefs), [Project Briefs PDF](https://drive.google.com/file/d/15tYD48XRmCgWbk1_lLDtc8lebi6qm-4-/view), [Hacker Guide PDF](https://drive.google.com/file/d/1_XIisoApHfiuIzkPev6hKJ4SlViGH4pm/view), [live submission form](https://airtable.com/appypCyHN77hElIcS/shrXA5VBFdugmoXl6). These sources are linked, not uploaded as project deliverables. This is Veritas AI's event, not a Liquid AI competition.

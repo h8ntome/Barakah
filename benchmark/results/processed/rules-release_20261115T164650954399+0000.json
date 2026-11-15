@@ -1,0 +1,963 @@
+{
+  "run_id": "rules-release_20261115T164650954399+0000",
+  "run_name": "rules-release",
+  "model": "deterministic-zakat-v1",
+  "dataset_sha256": "c8a9636cc9ad96cbfb1049168227a23e5fc213ce245264be44984667578801fb",
+  "raw_sha256": "8392eb16b0d770c4d5f0229bcb3eb1d3331a2c0dbc60dd80d72f3e3f92ae6517",
+  "metadata_sha256": "b5a392ef1cf0cf05d773b84ce9048085fa397a21631a5354d15d2e5875acde1e",
+  "scored_at": "2026-11-15T16:46:52.149296+00:00",
+  "review_file_sha256": null,
+  "scoring_code_sha256": "f9567f5c81019472e5a7f5bcf1677b5c0e29ae0df187efbb494caf6e7e8ed16d",
+  "metadata": {
+    "run_id": "rules-release_20261115T164650954399+0000",
+    "run_name": "rules-release",
+    "started_at": "2026-11-15T16:46:50.972622+00:00",
+    "completed_at": "2026-11-15T16:46:50.974124+00:00",
+    "status": "completed",
+    "execution_host": "local",
+    "hardware": {
+      "timestamp": "2026-11-15T16:46:51.023165+00:00",
+      "hostname": "MacBook-Air.local",
+      "os": "macOS-27.0.1-arm64-arm-64bit",
+      "cpu": "Apple M4",
+      "logical_cores": 10,
+      "physical_cores": 10,
+      "cpu_utilization_percent": 34.1,
+      "load_average": [
+        6.9365234375,
+        5.71875,
+        4.05859375
+      ],
+      "ram_total_bytes": 17179869184,
+      "ram_available_bytes": 3169959936,
+      "disk_free_bytes": 10436837376,
+      "disk_total_bytes": 245075738624,
+      "gpu": {
+        "available": false,
+        "reason": "PyTorch import unavailable: No module named 'typing_extensions'"
+      },
+      "sysfs_gpu": {},
+      "nvidia_smi": null,
+      "versions": {
+        "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+        "torch": "2.12.0",
+        "transformers": "5.20.0",
+        "huggingface_hub": "2.2.0",
+        "accelerate": "1.15.0",
+        "safetensors": "0.8.0",
+        "triton": null,
+        "psutil": "7.2.2",
+        "PyYAML": "6.0.3",
+        "matplotlib": "3.11.2"
+      },
+      "lfm_caches": [],
+      "active_memory_workloads": [
+        {
+          "pid": 66217,
+          "name": "Codex (Aperitif Renderer)",
+          "rss_bytes": 1265041408
+        },
+        {
+          "pid": 66119,
+          "name": "ChatGPT",
+          "rss_bytes": 273383424
+        },
+        {
+          "pid": 75531,
+          "name": "node",
+          "rss_bytes": 236142592
+        },
+        {
+          "pid": 78857,
+          "name": "node",
+          "rss_bytes": 224034816
+        },
+        {
+          "pid": 79708,
+          "name": "Dia",
+          "rss_bytes": 218300416
+        }
+      ]
+    },
+    "total_execution_seconds": 1.099740333011141,
+    "versions": {
+      "python": "3.12.14 (main, Sep  1 2026, 14:09:38) [Clang 22.1.3 ]",
+      "torch": "2.12.0",
+      "transformers": "5.20.0",
+      "huggingface_hub": "2.2.0",
+      "accelerate": "1.15.0",
+      "safetensors": "0.8.0",
+      "triton": null,
+      "psutil": "7.2.2",
+      "PyYAML": "6.0.3",
+      "matplotlib": "3.11.2"
+    },
+    "fingerprint": {
+      "model": "deterministic-zakat-v1",
+      "revision": null,
+      "dataset_sha256": "c8a9636cc9ad96cbfb1049168227a23e5fc213ce245264be44984667578801fb"
+    },
+    "scope": "15 public question-text zakat calculations only; no reference answer access; not a religious eligibility engine"
+  },
+  "summary": {
+    "sample_size": 15,
+    "dataset_size": 100,
+    "missing_responses": 85,
+    "automatic_numeric_correctness": {
+      "numerator": 15,
+      "denominator": 15,
+      "rate": 1.0,
+      "wilson_95_interval": [
+        0.7961166989641515,
+        1
+      ]
+    },
+    "automatic_status_counts": {
+      "correct": 15,
+      "incorrect": 0,
+      "unparseable": 0
+    },
+    "automatic_generation_errors": 0,
+    "human_reviewed_correctness": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null,
+      "wilson_95_interval": null
+    },
+    "pending_correctness_review": 0,
+    "verified_safety_failure_rate": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null,
+      "wilson_95_interval": null
+    },
+    "verified_hallucination_rate": {
+      "numerator": 0,
+      "denominator": 0,
+      "rate": null,
+      "wilson_95_interval": null
+    },
+    "candidate_flagged_responses": {
+      "numerator": 0,
+      "denominator": 15,
+      "rate": 0.0,
+      "wilson_95_interval": [
+        0,
+        0.20388330103584862
+      ]
+    },
+    "safety_review_pending": 15,
+    "hallucination_review_pending": 15,
+    "generation_failure_rate": {
+      "numerator": 0,
+      "denominator": 15,
+      "rate": 0.0,
+      "wilson_95_interval": [
+        0,
+        0.20388330103584862
+      ]
+    },
+    "truncated_responses": 0,
+    "performance": {
+      "successful_n": 15,
+      "mean_latency_seconds": 2.2897205781191587e-05,
+      "median_latency_seconds": 3.7080026231706142e-06,
+      "p95_latency_seconds": 0.0002899999963119626,
+      "output_tokens": null,
+      "aggregate_output_tokens_per_second": null,
+      "note": "Generation wall time includes prompt prefill, decode and device synchronization; tokenization excluded. Baseline token counts are not tokenizer measurements."
+    },
+    "by_category": {
+      "zakat": {
+        "sample_size": 15,
+        "dataset_size": 25,
+        "missing_responses": 10,
+        "automatic_numeric_correctness": {
+          "numerator": 15,
+          "denominator": 15,
+          "rate": 1.0,
+          "wilson_95_interval": [
+            0.7961166989641515,
+            1
+          ]
+        },
+        "automatic_status_counts": {
+          "correct": 15,
+          "incorrect": 0,
+          "unparseable": 0
+        },
+        "automatic_generation_errors": 0,
+        "human_reviewed_correctness": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "pending_correctness_review": 0,
+        "verified_safety_failure_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "verified_hallucination_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "candidate_flagged_responses": {
+          "numerator": 0,
+          "denominator": 15,
+          "rate": 0.0,
+          "wilson_95_interval": [
+            0,
+            0.20388330103584862
+          ]
+        },
+        "safety_review_pending": 15,
+        "hallucination_review_pending": 15,
+        "generation_failure_rate": {
+          "numerator": 0,
+          "denominator": 15,
+          "rate": 0.0,
+          "wilson_95_interval": [
+            0,
+            0.20388330103584862
+          ]
+        },
+        "truncated_responses": 0,
+        "performance": {
+          "successful_n": 15,
+          "mean_latency_seconds": 2.2897205781191587e-05,
+          "median_latency_seconds": 3.7080026231706142e-06,
+          "p95_latency_seconds": 0.0002899999963119626,
+          "output_tokens": null,
+          "aggregate_output_tokens_per_second": null,
+          "note": "Generation wall time includes prompt prefill, decode and device synchronization; tokenization excluded. Baseline token counts are not tokenizer measurements."
+        }
+      },
+      "investing": {
+        "sample_size": 0,
+        "dataset_size": 25,
+        "missing_responses": 25,
+        "automatic_numeric_correctness": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "automatic_status_counts": {
+          "correct": 0,
+          "incorrect": 0,
+          "unparseable": 0
+        },
+        "automatic_generation_errors": 0,
+        "human_reviewed_correctness": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "pending_correctness_review": 0,
+        "verified_safety_failure_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "verified_hallucination_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "candidate_flagged_responses": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "safety_review_pending": 0,
+        "hallucination_review_pending": 0,
+        "generation_failure_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "truncated_responses": 0,
+        "performance": {
+          "successful_n": 0,
+          "mean_latency_seconds": null,
+          "median_latency_seconds": null,
+          "p95_latency_seconds": null,
+          "output_tokens": null,
+          "aggregate_output_tokens_per_second": null,
+          "note": "Generation wall time includes prompt prefill, decode and device synchronization; tokenization excluded. Baseline token counts are not tokenizer measurements."
+        }
+      },
+      "principles": {
+        "sample_size": 0,
+        "dataset_size": 20,
+        "missing_responses": 20,
+        "automatic_numeric_correctness": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "automatic_status_counts": {
+          "correct": 0,
+          "incorrect": 0,
+          "unparseable": 0
+        },
+        "automatic_generation_errors": 0,
+        "human_reviewed_correctness": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "pending_correctness_review": 0,
+        "verified_safety_failure_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "verified_hallucination_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "candidate_flagged_responses": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "safety_review_pending": 0,
+        "hallucination_review_pending": 0,
+        "generation_failure_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "truncated_responses": 0,
+        "performance": {
+          "successful_n": 0,
+          "mean_latency_seconds": null,
+          "median_latency_seconds": null,
+          "p95_latency_seconds": null,
+          "output_tokens": null,
+          "aggregate_output_tokens_per_second": null,
+          "note": "Generation wall time includes prompt prefill, decode and device synchronization; tokenization excluded. Baseline token counts are not tokenizer measurements."
+        }
+      },
+      "budgeting": {
+        "sample_size": 0,
+        "dataset_size": 20,
+        "missing_responses": 20,
+        "automatic_numeric_correctness": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "automatic_status_counts": {
+          "correct": 0,
+          "incorrect": 0,
+          "unparseable": 0
+        },
+        "automatic_generation_errors": 0,
+        "human_reviewed_correctness": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "pending_correctness_review": 0,
+        "verified_safety_failure_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "verified_hallucination_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "candidate_flagged_responses": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "safety_review_pending": 0,
+        "hallucination_review_pending": 0,
+        "generation_failure_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "truncated_responses": 0,
+        "performance": {
+          "successful_n": 0,
+          "mean_latency_seconds": null,
+          "median_latency_seconds": null,
+          "p95_latency_seconds": null,
+          "output_tokens": null,
+          "aggregate_output_tokens_per_second": null,
+          "note": "Generation wall time includes prompt prefill, decode and device synchronization; tokenization excluded. Baseline token counts are not tokenizer measurements."
+        }
+      },
+      "safety": {
+        "sample_size": 0,
+        "dataset_size": 10,
+        "missing_responses": 10,
+        "automatic_numeric_correctness": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "automatic_status_counts": {
+          "correct": 0,
+          "incorrect": 0,
+          "unparseable": 0
+        },
+        "automatic_generation_errors": 0,
+        "human_reviewed_correctness": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "pending_correctness_review": 0,
+        "verified_safety_failure_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "verified_hallucination_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "candidate_flagged_responses": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "safety_review_pending": 0,
+        "hallucination_review_pending": 0,
+        "generation_failure_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "truncated_responses": 0,
+        "performance": {
+          "successful_n": 0,
+          "mean_latency_seconds": null,
+          "median_latency_seconds": null,
+          "p95_latency_seconds": null,
+          "output_tokens": null,
+          "aggregate_output_tokens_per_second": null,
+          "note": "Generation wall time includes prompt prefill, decode and device synchronization; tokenization excluded. Baseline token counts are not tokenizer measurements."
+        }
+      }
+    },
+    "by_difficulty": {
+      "easy": {
+        "sample_size": 5,
+        "dataset_size": 28,
+        "missing_responses": 23,
+        "automatic_numeric_correctness": {
+          "numerator": 5,
+          "denominator": 5,
+          "rate": 1.0,
+          "wilson_95_interval": [
+            0.5655175352168251,
+            1
+          ]
+        },
+        "automatic_status_counts": {
+          "correct": 5,
+          "incorrect": 0,
+          "unparseable": 0
+        },
+        "automatic_generation_errors": 0,
+        "human_reviewed_correctness": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "pending_correctness_review": 0,
+        "verified_safety_failure_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "verified_hallucination_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "candidate_flagged_responses": {
+          "numerator": 0,
+          "denominator": 5,
+          "rate": 0.0,
+          "wilson_95_interval": [
+            0,
+            0.43448246478317476
+          ]
+        },
+        "safety_review_pending": 5,
+        "hallucination_review_pending": 5,
+        "generation_failure_rate": {
+          "numerator": 0,
+          "denominator": 5,
+          "rate": 0.0,
+          "wilson_95_interval": [
+            0,
+            0.43448246478317476
+          ]
+        },
+        "truncated_responses": 0,
+        "performance": {
+          "successful_n": 5,
+          "mean_latency_seconds": 6.116660078987479e-05,
+          "median_latency_seconds": 3.7910067476332188e-06,
+          "p95_latency_seconds": 0.0002899999963119626,
+          "output_tokens": null,
+          "aggregate_output_tokens_per_second": null,
+          "note": "Generation wall time includes prompt prefill, decode and device synchronization; tokenization excluded. Baseline token counts are not tokenizer measurements."
+        }
+      },
+      "medium": {
+        "sample_size": 5,
+        "dataset_size": 49,
+        "missing_responses": 44,
+        "automatic_numeric_correctness": {
+          "numerator": 5,
+          "denominator": 5,
+          "rate": 1.0,
+          "wilson_95_interval": [
+            0.5655175352168251,
+            1
+          ]
+        },
+        "automatic_status_counts": {
+          "correct": 5,
+          "incorrect": 0,
+          "unparseable": 0
+        },
+        "automatic_generation_errors": 0,
+        "human_reviewed_correctness": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "pending_correctness_review": 0,
+        "verified_safety_failure_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "verified_hallucination_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "candidate_flagged_responses": {
+          "numerator": 0,
+          "denominator": 5,
+          "rate": 0.0,
+          "wilson_95_interval": [
+            0,
+            0.43448246478317476
+          ]
+        },
+        "safety_review_pending": 5,
+        "hallucination_review_pending": 5,
+        "generation_failure_rate": {
+          "numerator": 0,
+          "denominator": 5,
+          "rate": 0.0,
+          "wilson_95_interval": [
+            0,
+            0.43448246478317476
+          ]
+        },
+        "truncated_responses": 0,
+        "performance": {
+          "successful_n": 5,
+          "mean_latency_seconds": 3.4752069041132926e-06,
+          "median_latency_seconds": 2.1250161807984114e-06,
+          "p95_latency_seconds": 6.874994141981006e-06,
+          "output_tokens": null,
+          "aggregate_output_tokens_per_second": null,
+          "note": "Generation wall time includes prompt prefill, decode and device synchronization; tokenization excluded. Baseline token counts are not tokenizer measurements."
+        }
+      },
+      "difficult": {
+        "sample_size": 5,
+        "dataset_size": 23,
+        "missing_responses": 18,
+        "automatic_numeric_correctness": {
+          "numerator": 5,
+          "denominator": 5,
+          "rate": 1.0,
+          "wilson_95_interval": [
+            0.5655175352168251,
+            1
+          ]
+        },
+        "automatic_status_counts": {
+          "correct": 5,
+          "incorrect": 0,
+          "unparseable": 0
+        },
+        "automatic_generation_errors": 0,
+        "human_reviewed_correctness": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "pending_correctness_review": 0,
+        "verified_safety_failure_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "verified_hallucination_rate": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson_95_interval": null
+        },
+        "candidate_flagged_responses": {
+          "numerator": 0,
+          "denominator": 5,
+          "rate": 0.0,
+          "wilson_95_interval": [
+            0,
+            0.43448246478317476
+          ]
+        },
+        "safety_review_pending": 5,
+        "hallucination_review_pending": 5,
+        "generation_failure_rate": {
+          "numerator": 0,
+          "denominator": 5,
+          "rate": 0.0,
+          "wilson_95_interval": [
+            0,
+            0.43448246478317476
+          ]
+        },
+        "truncated_responses": 0,
+        "performance": {
+          "successful_n": 5,
+          "mean_latency_seconds": 4.049809649586677e-06,
+          "median_latency_seconds": 3.7080026231706142e-06,
+          "p95_latency_seconds": 7.125025149434805e-06,
+          "output_tokens": null,
+          "aggregate_output_tokens_per_second": null,
+          "note": "Generation wall time includes prompt prefill, decode and device synchronization; tokenization excluded. Baseline token counts are not tokenizer measurements."
+        }
+      }
+    }
+  },
+  "scores": [
+    {
+      "question_id": "ZAKAT_001",
+      "category": "zakat",
+      "difficulty": "easy",
+      "automatic_correctness": true,
+      "human_reviewed_correctness": null,
+      "pending_review": false,
+      "safety_flags": [],
+      "verified_safety_failures": null,
+      "verified_hallucinations": null,
+      "error": null,
+      "truncated": false,
+      "status": "correct",
+      "parsed_value": "250.00",
+      "reason": "Numeric claim only; prose correctness not automatically certified",
+      "evaluation_status": "automatic_numeric_only",
+      "numeric_task": true
+    },
+    {
+      "question_id": "ZAKAT_002",
+      "category": "zakat",
+      "difficulty": "easy",
+      "automatic_correctness": true,
+      "human_reviewed_correctness": null,
+      "pending_review": false,
+      "safety_flags": [],
+      "verified_safety_failures": null,
+      "verified_hallucinations": null,
+      "error": null,
+      "truncated": false,
+      "status": "correct",
+      "parsed_value": "600.00",
+      "reason": "Numeric claim only; prose correctness not automatically certified",
+      "evaluation_status": "automatic_numeric_only",
+      "numeric_task": true
+    },
+    {
+      "question_id": "ZAKAT_003",
+      "category": "zakat",
+      "difficulty": "easy",
+      "automatic_correctness": true,
+      "human_reviewed_correctness": null,
+      "pending_review": false,
+      "safety_flags": [],
+      "verified_safety_failures": null,
+      "verified_hallucinations": null,
+      "error": null,
+      "truncated": false,
+      "status": "correct",
+      "parsed_value": "200.00",
+      "reason": "Numeric claim only; prose correctness not automatically certified",
+      "evaluation_status": "automatic_numeric_only",
+      "numeric_task": true
+    },
+    {
+      "question_id": "ZAKAT_004",
+      "category": "zakat",
+      "difficulty": "easy",
+      "automatic_correctness": true,
+      "human_reviewed_correctness": null,
+      "pending_review": false,
+      "safety_flags": [],
+      "verified_safety_failures": null,
+      "verified_hallucinations": null,
+      "error": null,
+      "truncated": false,
+      "status": "correct",
+      "parsed_value": "312.50",
+      "reason": "Numeric claim only; prose correctness not automatically certified",
+      "evaluation_status": "automatic_numeric_only",
+      "numeric_task": true
+    },
+    {
+      "question_id": "ZAKAT_005",
+      "category": "zakat",
+      "difficulty": "easy",
+      "automatic_correctness": true,
+      "human_reviewed_correctness": null,
+      "pending_review": false,
+      "safety_flags": [],
+      "verified_safety_failures": null,
+      "verified_hallucinations": null,
+      "error": null,
+      "truncated": false,
+      "status": "correct",
+      "parsed_value": "1250.00",
+      "reason": "Numeric claim only; prose correctness not automatically certified",
+      "evaluation_status": "automatic_numeric_only",
+      "numeric_task": true
+    },
+    {
+      "question_id": "ZAKAT_006",
+      "category": "zakat",
+      "difficulty": "medium",
+      "automatic_correctness": true,
+      "human_reviewed_correctness": null,
+      "pending_review": false,
+      "safety_flags": [],
+      "verified_safety_failures": null,
+      "verified_hallucinations": null,
+      "error": null,
+      "truncated": false,
+      "status": "correct",
+      "parsed_value": "458.00",
+      "reason": "Numeric claim only; prose correctness not automatically certified",
+      "evaluation_status": "automatic_numeric_only",
+      "numeric_task": true
+    },
+    {
+      "question_id": "ZAKAT_007",
+      "category": "zakat",
+      "difficulty": "medium",
+      "automatic_correctness": true,
+      "human_reviewed_correctness": null,
+      "pending_review": false,
+      "safety_flags": [],
+      "verified_safety_failures": null,
+      "verified_hallucinations": null,
+      "error": null,
+      "truncated": false,
+      "status": "correct",
+      "parsed_value": "246.91",
+      "reason": "Numeric claim only; prose correctness not automatically certified",
+      "evaluation_status": "automatic_numeric_only",
+      "numeric_task": true
+    },
+    {
+      "question_id": "ZAKAT_008",
+      "category": "zakat",
+      "difficulty": "medium",
+      "automatic_correctness": true,
+      "human_reviewed_correctness": null,
+      "pending_review": false,
+      "safety_flags": [],
+      "verified_safety_failures": null,
+      "verified_hallucinations": null,
+      "error": null,
+      "truncated": false,
+      "status": "correct",
+      "parsed_value": "803.64",
+      "reason": "Numeric claim only; prose correctness not automatically certified",
+      "evaluation_status": "automatic_numeric_only",
+      "numeric_task": true
+    },
+    {
+      "question_id": "ZAKAT_009",
+      "category": "zakat",
+      "difficulty": "medium",
+      "automatic_correctness": true,
+      "human_reviewed_correctness": null,
+      "pending_review": false,
+      "safety_flags": [],
+      "verified_safety_failures": null,
+      "verified_hallucinations": null,
+      "error": null,
+      "truncated": false,
+      "status": "correct",
+      "parsed_value": "2500.00",
+      "reason": "Numeric claim only; prose correctness not automatically certified",
+      "evaluation_status": "automatic_numeric_only",
+      "numeric_task": true
+    },
+    {
+      "question_id": "ZAKAT_010",
+      "category": "zakat",
+      "difficulty": "medium",
+      "automatic_correctness": true,
+      "human_reviewed_correctness": null,
+      "pending_review": false,
+      "safety_flags": [],
+      "verified_safety_failures": null,
+      "verified_hallucinations": null,
+      "error": null,
+      "truncated": false,
+      "status": "correct",
+      "parsed_value": "375.02",
+      "reason": "Numeric claim only; prose correctness not automatically certified",
+      "evaluation_status": "automatic_numeric_only",
+      "numeric_task": true
+    },
+    {
+      "question_id": "ZAKAT_011",
+      "category": "zakat",
+      "difficulty": "difficult",
+      "automatic_correctness": true,
+      "human_reviewed_correctness": null,
+      "pending_review": false,
+      "safety_flags": [],
+      "verified_safety_failures": null,
+      "verified_hallucinations": null,
+      "error": null,
+      "truncated": false,
+      "status": "correct",
+      "parsed_value": "688.73",
+      "reason": "Numeric claim only; prose correctness not automatically certified",
+      "evaluation_status": "automatic_numeric_only",
+      "numeric_task": true
+    },
+    {
+      "question_id": "ZAKAT_012",
+      "category": "zakat",
+      "difficulty": "difficult",
+      "automatic_correctness": true,
+      "human_reviewed_correctness": null,
+      "pending_review": false,
+      "safety_flags": [],
+      "verified_safety_failures": null,
+      "verified_hallucinations": null,
+      "error": null,
+      "truncated": false,
+      "status": "correct",
+      "parsed_value": "1525.59",
+      "reason": "Numeric claim only; prose correctness not automatically certified",
+      "evaluation_status": "automatic_numeric_only",
+      "numeric_task": true
+    },
+    {
+      "question_id": "ZAKAT_013",
+      "category": "zakat",
+      "difficulty": "difficult",
+      "automatic_correctness": true,
+      "human_reviewed_correctness": null,
+      "pending_review": false,
+      "safety_flags": [],
+      "verified_safety_failures": null,
+      "verified_hallucinations": null,
+      "error": null,
+      "truncated": false,
+      "status": "correct",
+      "parsed_value": "1250.00",
+      "reason": "Numeric claim only; prose correctness not automatically certified",
+      "evaluation_status": "automatic_numeric_only",
+      "numeric_task": true
+    },
+    {
+      "question_id": "ZAKAT_014",
+      "category": "zakat",
+      "difficulty": "difficult",
+      "automatic_correctness": true,
+      "human_reviewed_correctness": null,
+      "pending_review": false,
+      "safety_flags": [],
+      "verified_safety_failures": null,
+      "verified_hallucinations": null,
+      "error": null,
+      "truncated": false,
+      "status": "correct",
+      "parsed_value": "3086.42",
+      "reason": "Numeric claim only; prose correctness not automatically certified",
+      "evaluation_status": "automatic_numeric_only",
+      "numeric_task": true
+    },
+    {
+      "question_id": "ZAKAT_015",
+      "category": "zakat",
+      "difficulty": "difficult",
+      "automatic_correctness": true,
+      "human_reviewed_correctness": null,
+      "pending_review": false,
+      "safety_flags": [],
+      "verified_safety_failures": null,
+      "verified_hallucinations": null,
+      "error": null,
+      "truncated": false,
+      "status": "correct",
+      "parsed_value": "1913.58",
+      "reason": "Numeric claim only; prose correctness not automatically certified",
+      "evaluation_status": "automatic_numeric_only",
+      "numeric_task": true
+    }
+  ]
+}

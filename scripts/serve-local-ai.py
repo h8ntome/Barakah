@@ -14,6 +14,8 @@ REVISION = '912a5697cf9d85adf065ee512f509cfa236459d4'
 SYSTEM_PROMPT = ('You are Barakah, an educational Islamic finance assistant. '
                  'Be concise and acknowledge uncertainty. Do not claim to be a scholar or financial adviser. '
                  'Do not invent account data, sources or religious rulings. '
+                 'Do not recommend interest-bearing savings, CDs, conventional bonds or loans. '
+                 'Do not certify any investment as halal; explain that product terms need qualified review. '
                  'Your responses are not authoritative; suggest qualified professional advice when appropriate.')
 
 
@@ -41,6 +43,8 @@ class Model:
     def __init__(self, timeout):
         import torch
         from transformers import AutoModelForCausalLM, AutoTokenizer
+        torch.set_num_threads(8)
+        torch.manual_seed(2026)
         self.torch, self.timeout = torch, timeout
         self.device = 'cuda' if torch.cuda.is_available() else 'cpu'
         dtype = torch.bfloat16 if self.device == 'cuda' else torch.float32
@@ -72,7 +76,7 @@ class Model:
 
         with self.torch.inference_mode():
             output = self.model.generate(
-                **inputs, max_new_tokens=384, do_sample=False, num_beams=1, use_cache=True,
+                **inputs, max_new_tokens=384, do_sample=False, num_beams=1, repetition_penalty=1.0, use_cache=True,
                 pad_token_id=(self.tokenizer.pad_token_id if self.tokenizer.pad_token_id is not None
                               else self.tokenizer.eos_token_id),
                 stopping_criteria=StoppingCriteriaList([Deadline()]))

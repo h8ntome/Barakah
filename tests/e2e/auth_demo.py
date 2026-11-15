@@ -9,7 +9,7 @@ import sqlite3
 import urllib.parse
 import journey as j
 
-j.OUT = Path(__file__).resolve().parents[2] / 'audit' / 'artifacts'
+j.OUT = Path(os.environ.get('BARAKAH_E2E_OUTPUT', str(Path(__file__).resolve().parents[2] / 'audit' / 'artifacts')))
 
 
 def main():

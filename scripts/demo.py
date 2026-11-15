@@ -16,6 +16,7 @@ import urllib.request
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--url', default='http://127.0.0.1:8000')
+    parser.add_argument('--origin', default='http://localhost:5173', help='Allowed frontend origin; for start-local.sh use the same value as --url')
     parser.add_argument('--email', required=True)
     parser.add_argument('--date', default=date.today().isoformat())
     parser.add_argument('--delete-test-account', action='store_true')
@@ -28,7 +29,7 @@ def main():
     token = None
 
     def api(method, path, body=None):
-        headers = {'Content-Type': 'application/json', 'Origin': 'http://localhost:5173'}
+        headers = {'Content-Type': 'application/json', 'Origin': args.origin}
         if token:
             headers['Authorization'] = 'Bearer ' + token
         data = json.dumps(body).encode() if body is not None else None

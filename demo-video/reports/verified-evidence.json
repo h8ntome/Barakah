@@ -1,0 +1,38 @@
+{
+  "category_counts": {
+    "zakat": 25,
+    "investing": 25,
+    "principles": 20,
+    "budgeting": 20,
+    "safety": 10
+  },
+  "questions": 100,
+  "arithmetic": 40,
+  "expert_review_pending": 60,
+  "failure": {
+    "question_id": "ZAKAT_007",
+    "model": "LiquidAI/LFM3-1.7B",
+    "question": "Eligible zakatable wealth is USD 9876.40. Assume nisab and one lunar year are satisfied, eligibility and debt treatment have already been reviewed, and use a 2.5% rate. What is the zakat amount? Round to two decimal places and end with 'Final answer: <number> USD'.",
+    "timestamp": "2026-11-14T18:59:25.131789+00:00",
+    "response": "Zakat amount is calculated as:\n\nZakat = Eligible wealth \u00d7 Rate\n\nGiven:\n- Eligible zakatable wealth = USD 9,876.40\n- Rate = 2.5% = 0.025\n\nZakat = 9,876.40 \u00d7 0.025 = 246.61\n\nCalculation:\n9,876.40 \u00d7 0.025 = 246.61\n\nFinal answer: 246.61 USD"
+  },
+  "raw_sha256": "7d308ad7f4cded25daf64fe2b790c6ebf34ed3cd70f55bfd97a9b6f1b0e3a697",
+  "api": {
+    "ai_health": {
+      "provider": "unavailable",
+      "status": "unavailable",
+      "is_demo": false
+    },
+    "send_status": 503,
+    "send_result": {
+      "conversation_id": null,
+      "response": null,
+      "error": {
+        "code": "ai_unavailable",
+        "message": "The AI assistant is not connected yet. No message was saved. Your other financial tools remain available."
+      }
+    },
+    "conversation_count_after_send": 0,
+    "environment": "isolated loopback 127.0.0.1:8095"
+  }
+}

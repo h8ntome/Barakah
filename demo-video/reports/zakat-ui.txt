@@ -1,0 +1,76 @@
+Private demo · fictional data · reset in Settings
+
+Zakat calculator
+Estimated zakat due
+$375.00
+
+Nisab and attested haul conditions met
+
+Total entered assets
+$15,000.00
+Eligible base
+$15,000.00
+Nisab threshold
+$5,000.00
+Haul attestation
+Complete
+
+Valued 2026-11-15 · Source: Fictional threshold, not current market data
+
+manual-wealth-v1: declared deductible debt; 85g gold/595g silver or manual nisab; user-attested haul; educational estimate, not a ruling
+
+Save calculation to history
+
+Educational estimate, not a religious ruling. Asset qualification, deductible debt and haul require your judgment and qualified guidance. Prices and attestations are user supplied.
+
+Assets and methodology
+Currency
+USD
+EUR
+GBP
+PKR
+SAR
+AED
+
+Enter all assets in this currency. Changing currency does not convert amounts. Enter each asset only once; move savings out of cash if previously included there. Account and portfolio values are not added automatically. Enter only amounts eligible under your chosen interpretation: personal-use assets may be excluded; jewelry and investment treatment differ between scholars. Enter zero for excluded assets and only the eligible portion of holdings. Deduct only liabilities permitted by your chosen method.
+
+Asset and liability treatment notes
+Record your jewelry treatment, investment approach and eligible debt deductions. These notes do not automatically classify assets.
+Cash and bank balances (excluding savings)
+Zero or positive decimal amount; up to 2 decimal places.
+Savings balances
+Zero or positive decimal amount; up to 2 decimal places.
+Other eligible assets
+Zero or positive decimal amount; up to 2 decimal places.
+Eligible investments
+Zero or positive decimal amount; up to 2 decimal places.
+Gold value
+Zero or positive decimal amount; up to 2 decimal places.
+Silver value
+Zero or positive decimal amount; up to 2 decimal places.
+Business assets
+Zero or positive decimal amount; up to 2 decimal places.
+Deductible liabilities
+Zero or positive decimal amount; up to 2 decimal places.
+Valuation date
+Nisab method
+Manual threshold
+Gold threshold
+Silver threshold
+Manual nisab threshold
+Positive decimal amount; up to 2 decimal places.
+Price or threshold source
+Describe where you obtained this dated, manually entered value. No live prices are supplied.
+Zakat rate (fraction)
+0.025 means 2.5%. Confirm the appropriate rate with a qualified scholar.
+Haul start date (optional)
+I attest that the required lunar-year holding period (haul) is complete. A start date alone does not confirm eligibility.
+Save and calculate zakat
+Calculation history
+Record a zakat payment
+Zakat payment history
+Home
+Invest
+Zakat
+AI Chat
+Give

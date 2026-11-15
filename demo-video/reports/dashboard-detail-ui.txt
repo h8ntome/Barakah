@@ -1,0 +1,100 @@
+Private demo · fictional data · reset in Settings
+
+Assalamu Alaikum, Amina Rahman
+
+Welcome to Barakah.
+A little intention. A brighter tomorrow.
+Your financial overview
+Overview month
+
+Tracked net assets · USD
+
+$23,500.00
+Monthly income
+$4,500.00
+Monthly expenses
+$2,850.00
+Monthly surplus / deficit
+$1,650.00
+Monthly savings rate
+36.67%
+Account balance
+$15,000.00
+Total assets
+$23,500.00
+Manually valued portfolio
+$8,500.00
+Liabilities
+$0.00
+Monthly expenses by category
+Housing
+$1,500.00
+Food
+$400.00
+Transport
+$300.00
+Utilities
+$250.00
+Household
+$400.00
+
+Account balances plus manually quoted portfolio holdings; liabilities from zakat profile. Other manually classified zakat assets excluded to avoid double counting.
+
+Zakat
+Sadaqah
+Invest
+AI Advisor
+Overview
+Accounts
+Transactions
+Budgets
+Savings goals
+Settings
+Recent transactions
+Fictional food
+
+2026-11-15 · expense · $400.00
+
+Fictional household
+
+2026-11-15 · expense · $400.00
+
+Fictional utilities
+
+2026-11-15 · expense · $250.00
+
+Fictional transport
+
+2026-11-15 · expense · $300.00
+
+Fictional housing
+
+2026-11-15 · expense · $1,500.00
+
+Budget overview
+Food
+
+Spent $400.00 · Limit $500.00 · Remaining $100.00
+
+Housing
+
+Spent $1,500.00 · Limit $1,500.00 · Remaining $0.00
+
+Transport
+
+Spent $300.00 · Limit $350.00 · Remaining $50.00
+
+Savings progress
+Hajj savings
+
+25.00% · Remaining $3,750.00
+
+Zakat summary
+
+Current estimate $375.00 under your saved assumptions. Latest saved record outstanding: $375.00.
+
+Home
+Invest
+Zakat
+AI Chat
+Give

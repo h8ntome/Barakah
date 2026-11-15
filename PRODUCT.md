@@ -15,7 +15,7 @@ Young adults and households learning faith-aligned personal finance, including b
 Islamic Finance for a Blessed Tomorrow. Help people track their finances, estimate and record Zakat, monitor manually entered investments, record Sadaqah and learn with an educational finance guide.
 
 ## Capabilities and Constraints
-Five destinations: Home, Invest, Zakat, AI Chat, Give. The full-stack implementation supersedes the original frontend-only assignment. Authenticated services persist records; financial arithmetic is server-authoritative and per-currency. No actual payment processing, bank/broker linking, live market feed or certification. AI is explicitly unavailable; no inference or fabricated replies are enabled. The future LFM3-1.7B boundary is separate from model training and benchmarking. Preserve the existing visual design and benchmark work.
+Five destinations: Home, Invest, Zakat, AI Chat, Give. The full-stack implementation supersedes the original frontend-only assignment. Authenticated services persist records; financial arithmetic is server-authoritative and per-currency. No actual payment processing, bank/broker linking, live market feed or certification. AI is unavailable by default/publicly; explicit local opt-in connects a pinned checkpoint after saved consent. No fabricated replies or automatic financial-record sharing. Model suggestions are not Sharia-screened and have observed advice failures. Local integration is separate from model training and neutral-prompt benchmarking. Preserve the existing visual design and benchmark work.
 
 ## Brand Commitments
 Barakah spelling; emerald, mint and off-white palette; refined serif wordmark; mosque arch/crescent logo; approachable, respectful, financially credible voice. The user explicitly pins the visual world and composition: an emerald desktop editorial panel and one interactive phone, becoming edge-to-edge on mobile.
@@ -33,4 +33,4 @@ Barakah spelling; emerald, mint and off-white palette; refined serif wordmark; m
 320px to desktop; readable text, visible focus, labeled fields, keyboard navigation and dialogs, reduced-motion support, loading/error/retry/empty states. Avoid a single universal scholarly method or regional threshold.
 
 ## Open Decisions
-Live market/provider credentials, final model runtime/checkpoint, scholarly methodology approval, advertiser/charity vetting and production infrastructure remain operator decisions. See docs/testing for verified scope and explicit limitations.
+Live market/provider credentials, public model hosting, scholarly methodology approval, advertiser/charity vetting and production infrastructure remain operator decisions. See docs/RELEASE_AUDIT.md and docs/local-ai.md for current verified scope and limitations.

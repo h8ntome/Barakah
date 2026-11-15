@@ -83,6 +83,8 @@ test("Configured status is not readiness and model content remains plain React t
   assert.match(source, /availability is checked on send/);
   assert.match(source, /Save consent in Settings first/);
   assert.match(source, /never your financial records automatically/);
+  assert.match(source, /Model suggestions are not Sharia-screened/);
+  assert.match(source, /Verify calculations independently/);
   assert.match(source, /\{message.text\}/);
   assert.doesNotMatch(source, /dangerouslySetInnerHTML|marked|innerHTML/);
 });

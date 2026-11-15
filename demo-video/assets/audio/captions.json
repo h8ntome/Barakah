@@ -1,0 +1,154 @@
+[
+  {
+    "text": "Managing your money is complicated.",
+    "startMs": 650,
+    "endMs": 2847,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  },
+  {
+    "text": "Managing it around your values shouldn't be.",
+    "startMs": 3250,
+    "endMs": 5661,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  },
+  {
+    "text": "Meet Barakah. A personal finance prototype built around Islamic values.",
+    "startMs": 8600,
+    "endMs": 13421,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  },
+  {
+    "text": "Real accounts, real calculations. Fictional demo data.",
+    "startMs": 14000,
+    "endMs": 17617,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  },
+  {
+    "text": "Amina's demo starts with forty-five hundred dollars of monthly income.",
+    "startMs": 18500,
+    "endMs": 22767,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  },
+  {
+    "text": "Twenty-eight fifty in expenses leaves sixteen-fifty to plan with.",
+    "startMs": 23500,
+    "endMs": 27361,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  },
+  {
+    "text": "Change the month, explore spending, and keep your records together.",
+    "startMs": 28500,
+    "endMs": 32041,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  },
+  {
+    "text": "Fifteen thousand in eligible wealth gives a three-hundred-seventy-five-dollar zakat estimate.",
+    "startMs": 34500,
+    "endMs": 40397,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  },
+  {
+    "text": "That assumes eligibility, a completed lunar year, and this fictional nisab threshold.",
+    "startMs": 40700,
+    "endMs": 45777,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  },
+  {
+    "text": "Save the calculation. Track giving made elsewhere.",
+    "startMs": 46300,
+    "endMs": 49351,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  },
+  {
+    "text": "The portfolio brings manually recorded holdings and allocations into view.",
+    "startMs": 51600,
+    "endMs": 56165,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  },
+  {
+    "text": "Fictional valuations, not live prices. Screening is unverified, never a guarantee of compliance or safety.",
+    "startMs": 57200,
+    "endMs": 64008,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  },
+  {
+    "text": "The local assistant now connects to a pinned model through the app.",
+    "startMs": 65600,
+    "endMs": 69099,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  },
+  {
+    "text": "This is a real response from a private service. Public AI remains unavailable.",
+    "startMs": 71200,
+    "endMs": 76408,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  },
+  {
+    "text": "It gets the surplus right, but recommends high-yield savings despite no-interest instructions.",
+    "startMs": 77100,
+    "endMs": 82988,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  },
+  {
+    "text": "It also dismisses a parental transfer. Available monthly surplus should fall to six twenty-five.",
+    "startMs": 83800,
+    "endMs": 90051,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  },
+  {
+    "text": "On forty numeric checks, the original scores thirty-six; the candidate, thirty-two.",
+    "startMs": 91600,
+    "endMs": 96763,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  },
+  {
+    "text": "On fifteen matched zakat tasks, rules score fifteen; the candidate, eleven. Sixty conceptual answers remain unreviewed.",
+    "startMs": 98700,
+    "endMs": 106406,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  },
+  {
+    "text": "Barakah. Local AI connected. Advice unverified. A clearer view of what matters.",
+    "startMs": 107700,
+    "endMs": 113332,
+    "timestampMs": null,
+    "confidence": null,
+    "pageBreakAfter": true
+  }
+]

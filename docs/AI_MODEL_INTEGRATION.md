@@ -1,9 +1,7 @@
-# Future AI integration
+# AI integration
 
-The current application intentionally has **no connected AI**, mock advice generator or inference transport. `AI_MODE=unavailable` is the only accepted runtime value. Do not set legacy `mock`/`local` modes.
+The current contract is [opt-in local AI](local-ai.md). Default and public deployment use `AI_MODE=unavailable`; no fake answer or failed send is persisted. Explicit `AI_MODE=http` connects a private authenticated loopback service with saved consent, pinned model identity, bounded conversation history and atomic successful persistence. It never loads financial records for the model or changes them from model text.
 
-The authoritative contract, privacy boundaries, superseded test rationale and future implementation seam are documented in [audit/AI_INTEGRATION.md](../audit/AI_INTEGRATION.md).
+[Release evidence](RELEASE_AUDIT.md) separates actual local inference from mocked transport tests and neutral-prompt offline evaluations. The model has observed arithmetic/context and product-suitability failures; no advice-quality, Sharia or safety certification is claimed.
 
-When the separately trained Liquid AI LFM3-1.7B model is ready, a future approved change can implement `backend/app/ai.py`'s typed request/result interface using local hosting or a private inference service. Verify exact checkpoint/tokenizer/chat-template/runtime compatibility with the model team. Add bounded authenticated transport, timeout/cancellation, consent, minimized owned context, safety review, and transactional conversation persistence. Do not infer runtime compatibility or quality from the model name.
-
-No model weights, benchmark artifacts or training code were modified by this application audit.
+[The earlier unavailable-only report](../audit/AI_INTEGRATION.md) is preserved as historical evidence, not current configuration guidance. No model weights were changed for this integration.

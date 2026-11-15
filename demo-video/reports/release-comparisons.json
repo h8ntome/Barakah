@@ -1,0 +1,30 @@
+{
+  "numeric": {
+    "source": "../benchmark/results/comparisons/20261115/comparison.json",
+    "sha256": "c66bdb7a33ac6f57b245df52494c91a480e0d1ecfe7fb6a28d6db1af6ff1e1e2",
+    "baseline": "original-matched_20261115T153923318073+0000",
+    "candidate": "barakah-matched_20261115T154845353654+0000",
+    "paired_numeric_n": 40,
+    "numeric_correctness": {
+      "baseline": 0.9,
+      "candidate": 0.8,
+      "absolute": -0.09999999999999998,
+      "percentage_points": -9.999999999999998,
+      "relative_change": -0.11111111111111108
+    }
+  },
+  "rules": {
+    "source": "../benchmark/results/comparisons/rules-release_20261115T164650954399+0000__barakah-matched_20261115T154845353654+0000.json",
+    "sha256": "5e7ad8cdb99ca352953907b852b93b51691763b7c8ff51cc982e2f2a7a028527",
+    "baseline": "rules-release_20261115T164650954399+0000",
+    "candidate": "barakah-matched_20261115T154845353654+0000",
+    "paired_numeric_n": 15,
+    "numeric_correctness": {
+      "baseline": 1.0,
+      "candidate": 0.7333333333333333,
+      "absolute": -0.2666666666666667,
+      "percentage_points": -26.66666666666667,
+      "relative_change": -0.2666666666666667
+    }
+  }
+}

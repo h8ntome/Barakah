@@ -9,7 +9,7 @@ PYTHON="$ROOT/backend/.venv/bin/python"
 export FRONTEND_DIST="$ROOT/barakah-ui/dist"
 export ALLOWED_ORIGINS="${ALLOWED_ORIGINS:-http://127.0.0.1:$PORT,http://localhost:$PORT}"
 export RESET_URL="${RESET_URL:-http://127.0.0.1:$PORT/reset-password}"
-export AI_MODE=unavailable
+export AI_MODE="${AI_MODE:-unavailable}"
 cd "$ROOT/barakah-ui"
 VITE_API_BASE_URL=/api/v1 npm run build
 cd "$ROOT/backend"

@@ -1,5 +1,7 @@
 # Executed test results — 2026-11-15
 
+> Historical pre-opt-in snapshot. See [current release audit](../docs/RELEASE_AUDIT.md) and [local AI setup](../docs/local-ai.md). The public demo still has unavailable AI; local opt-in now has separate real inference evidence. Historical results below are preserved, not overwritten.
+
 ## Public production verification — 2026-11-15
 
 **https://barakah-gamma.vercel.app is now live.** After the owner accepted Neon terms, the free `barakah-demo` database was provisioned in `iad1` for Production only. It contained zero public tables before migration; all existing migrations applied and Alembic parity passed. Vercel production deployment `dpl_GNC9Z3btAS9FBxAYsMSai1JyLVqZ` is Ready and assigned to the public alias. Homepage and API readiness return200.

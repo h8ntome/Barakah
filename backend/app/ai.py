@@ -75,6 +75,8 @@ def send_message(request: AIRequest) -> AIResult:
         with httpx.Client(timeout=config.ai_timeout_seconds, trust_env=False) as client:
             with client.stream('POST', config.ai_url, json=payload,
                                headers={'Authorization': 'Bearer ' + config.ai_token.get_secret_value()}) as response:
+                if response.status_code == 504:
+                    raise httpx.ReadTimeout('Model generation deadline')
                 response.raise_for_status()
                 if response.headers.get('Content-Encoding', 'identity') != 'identity':
                     raise ValueError('Encoded response unsupported')

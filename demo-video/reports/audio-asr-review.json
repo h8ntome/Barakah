@@ -1,0 +1,1178 @@
+{
+  "model": "Systran/faster-whisper-tiny.en",
+  "purpose": "local ASR QA, not product model or ground truth",
+  "duration": 115.008,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 2.72,
+      "text": " Managing your money is complicated.",
+      "words": [
+        {
+          "start": 0.0,
+          "end": 1.1,
+          "word": " Managing"
+        },
+        {
+          "start": 1.1,
+          "end": 1.4,
+          "word": " your"
+        },
+        {
+          "start": 1.4,
+          "end": 1.82,
+          "word": " money"
+        },
+        {
+          "start": 1.82,
+          "end": 2.1,
+          "word": " is"
+        },
+        {
+          "start": 2.1,
+          "end": 2.72,
+          "word": " complicated."
+        }
+      ]
+    },
+    {
+      "start": 3.7,
+      "end": 6.0,
+      "text": " Managing it around your values shouldn't be.",
+      "words": [
+        {
+          "start": 3.7,
+          "end": 3.76,
+          "word": " Managing"
+        },
+        {
+          "start": 3.76,
+          "end": 4.18,
+          "word": " it"
+        },
+        {
+          "start": 4.18,
+          "end": 4.46,
+          "word": " around"
+        },
+        {
+          "start": 4.46,
+          "end": 4.72,
+          "word": " your"
+        },
+        {
+          "start": 4.72,
+          "end": 5.04,
+          "word": " values"
+        },
+        {
+          "start": 5.04,
+          "end": 5.32,
+          "word": " shouldn't"
+        },
+        {
+          "start": 5.32,
+          "end": 6.0,
+          "word": " be."
+        }
+      ]
+    },
+    {
+      "start": 8.72,
+      "end": 13.36,
+      "text": " Meet Barreca, a personal finance prototype built around Islamic values.",
+      "words": [
+        {
+          "start": 8.72,
+          "end": 9.0,
+          "word": " Meet"
+        },
+        {
+          "start": 9.0,
+          "end": 9.48,
+          "word": " Barreca,"
+        },
+        {
+          "start": 10.0,
+          "end": 10.16,
+          "word": " a"
+        },
+        {
+          "start": 10.16,
+          "end": 10.5,
+          "word": " personal"
+        },
+        {
+          "start": 10.5,
+          "end": 10.98,
+          "word": " finance"
+        },
+        {
+          "start": 10.98,
+          "end": 11.52,
+          "word": " prototype"
+        },
+        {
+          "start": 11.52,
+          "end": 12.02,
+          "word": " built"
+        },
+        {
+          "start": 12.02,
+          "end": 12.36,
+          "word": " around"
+        },
+        {
+          "start": 12.36,
+          "end": 12.74,
+          "word": " Islamic"
+        },
+        {
+          "start": 12.74,
+          "end": 13.36,
+          "word": " values."
+        }
+      ]
+    },
+    {
+      "start": 14.4,
+      "end": 17.76,
+      "text": " Real accounts, real calculations, fictional demo data.",
+      "words": [
+        {
+          "start": 14.4,
+          "end": 14.4,
+          "word": " Real"
+        },
+        {
+          "start": 14.4,
+          "end": 14.9,
+          "word": " accounts,"
+        },
+        {
+          "start": 15.12,
+          "end": 15.34,
+          "word": " real"
+        },
+        {
+          "start": 15.34,
+          "end": 15.9,
+          "word": " calculations,"
+        },
+        {
+          "start": 16.66,
+          "end": 16.88,
+          "word": " fictional"
+        },
+        {
+          "start": 16.88,
+          "end": 17.22,
+          "word": " demo"
+        },
+        {
+          "start": 17.22,
+          "end": 17.76,
+          "word": " data."
+        }
+      ]
+    },
+    {
+      "start": 18.68,
+      "end": 22.86,
+      "text": " Amina's demo starts with $4,500 of monthly income.",
+      "words": [
+        {
+          "start": 18.68,
+          "end": 19.12,
+          "word": " Amina's"
+        },
+        {
+          "start": 19.12,
+          "end": 19.38,
+          "word": " demo"
+        },
+        {
+          "start": 19.38,
+          "end": 19.98,
+          "word": " starts"
+        },
+        {
+          "start": 19.98,
+          "end": 20.54,
+          "word": " with"
+        },
+        {
+          "start": 20.54,
+          "end": 20.76,
+          "word": " $4"
+        },
+        {
+          "start": 20.76,
+          "end": 21.18,
+          "word": ",500"
+        },
+        {
+          "start": 21.18,
+          "end": 21.84,
+          "word": " of"
+        },
+        {
+          "start": 21.84,
+          "end": 22.22,
+          "word": " monthly"
+        },
+        {
+          "start": 22.22,
+          "end": 22.86,
+          "word": " income."
+        }
+      ]
+    },
+    {
+      "start": 23.66,
+      "end": 27.5,
+      "text": " 2850 in expenses leaves 1650 to plan with.",
+      "words": [
+        {
+          "start": 23.66,
+          "end": 24.56,
+          "word": " 2850"
+        },
+        {
+          "start": 24.56,
+          "end": 24.76,
+          "word": " in"
+        },
+        {
+          "start": 24.76,
+          "end": 25.22,
+          "word": " expenses"
+        },
+        {
+          "start": 25.22,
+          "end": 25.86,
+          "word": " leaves"
+        },
+        {
+          "start": 25.86,
+          "end": 26.6,
+          "word": " 1650"
+        },
+        {
+          "start": 26.6,
+          "end": 26.86,
+          "word": " to"
+        },
+        {
+          "start": 26.86,
+          "end": 27.08,
+          "word": " plan"
+        },
+        {
+          "start": 27.08,
+          "end": 27.5,
+          "word": " with."
+        }
+      ]
+    },
+    {
+      "start": 28.5,
+      "end": 32.74,
+      "text": " Change the month, explore spending, and keep your records together.",
+      "words": [
+        {
+          "start": 28.46,
+          "end": 28.88,
+          "word": " Change"
+        },
+        {
+          "start": 28.88,
+          "end": 29.1,
+          "word": " the"
+        },
+        {
+          "start": 29.1,
+          "end": 29.46,
+          "word": " month,"
+        },
+        {
+          "start": 29.86,
+          "end": 30.06,
+          "word": " explore"
+        },
+        {
+          "start": 30.06,
+          "end": 30.58,
+          "word": " spending,"
+        },
+        {
+          "start": 30.76,
+          "end": 30.88,
+          "word": " and"
+        },
+        {
+          "start": 30.88,
+          "end": 31.06,
+          "word": " keep"
+        },
+        {
+          "start": 31.06,
+          "end": 31.24,
+          "word": " your"
+        },
+        {
+          "start": 31.24,
+          "end": 31.52,
+          "word": " records"
+        },
+        {
+          "start": 31.52,
+          "end": 32.74,
+          "word": " together."
+        }
+      ]
+    },
+    {
+      "start": 34.74,
+      "end": 40.34,
+      "text": " 15,000 in eligible wealth gives a $375 Zachat estimate.",
+      "words": [
+        {
+          "start": 34.74,
+          "end": 35.04,
+          "word": " 15"
+        },
+        {
+          "start": 35.04,
+          "end": 35.74,
+          "word": ",000"
+        },
+        {
+          "start": 35.74,
+          "end": 36.0,
+          "word": " in"
+        },
+        {
+          "start": 36.0,
+          "end": 36.36,
+          "word": " eligible"
+        },
+        {
+          "start": 36.36,
+          "end": 37.0,
+          "word": " wealth"
+        },
+        {
+          "start": 37.0,
+          "end": 37.42,
+          "word": " gives"
+        },
+        {
+          "start": 37.42,
+          "end": 38.08,
+          "word": " a"
+        },
+        {
+          "start": 38.08,
+          "end": 39.04,
+          "word": " $375"
+        },
+        {
+          "start": 39.04,
+          "end": 39.92,
+          "word": " Zachat"
+        },
+        {
+          "start": 39.92,
+          "end": 40.34,
+          "word": " estimate."
+        }
+      ]
+    },
+    {
+      "start": 40.98,
+      "end": 45.7,
+      "text": " That assumes eligibility, a completed lunar year, and this fictional nisab threshold.",
+      "words": [
+        {
+          "start": 40.98,
+          "end": 41.0,
+          "word": " That"
+        },
+        {
+          "start": 41.0,
+          "end": 41.26,
+          "word": " assumes"
+        },
+        {
+          "start": 41.26,
+          "end": 41.92,
+          "word": " eligibility,"
+        },
+        {
+          "start": 42.48,
+          "end": 42.74,
+          "word": " a"
+        },
+        {
+          "start": 42.74,
+          "end": 43.04,
+          "word": " completed"
+        },
+        {
+          "start": 43.04,
+          "end": 43.32,
+          "word": " lunar"
+        },
+        {
+          "start": 43.32,
+          "end": 43.84,
+          "word": " year,"
+        },
+        {
+          "start": 44.02,
+          "end": 44.14,
+          "word": " and"
+        },
+        {
+          "start": 44.14,
+          "end": 44.36,
+          "word": " this"
+        },
+        {
+          "start": 44.36,
+          "end": 44.68,
+          "word": " fictional"
+        },
+        {
+          "start": 44.68,
+          "end": 45.18,
+          "word": " nisab"
+        },
+        {
+          "start": 45.18,
+          "end": 45.7,
+          "word": " threshold."
+        }
+      ]
+    },
+    {
+      "start": 46.44,
+      "end": 49.32,
+      "text": " Save the calculation, track giving made elsewhere.",
+      "words": [
+        {
+          "start": 46.44,
+          "end": 46.68,
+          "word": " Save"
+        },
+        {
+          "start": 46.68,
+          "end": 46.92,
+          "word": " the"
+        },
+        {
+          "start": 46.92,
+          "end": 47.42,
+          "word": " calculation,"
+        },
+        {
+          "start": 48.2,
+          "end": 48.26,
+          "word": " track"
+        },
+        {
+          "start": 48.26,
+          "end": 48.52,
+          "word": " giving"
+        },
+        {
+          "start": 48.52,
+          "end": 48.78,
+          "word": " made"
+        },
+        {
+          "start": 48.78,
+          "end": 49.32,
+          "word": " elsewhere."
+        }
+      ]
+    },
+    {
+      "start": 51.56,
+      "end": 56.38,
+      "text": " The portfolio brings manually recorded holdings and allocations into view.",
+      "words": [
+        {
+          "start": 51.56,
+          "end": 51.78,
+          "word": " The"
+        },
+        {
+          "start": 51.78,
+          "end": 52.3,
+          "word": " portfolio"
+        },
+        {
+          "start": 52.3,
+          "end": 52.92,
+          "word": " brings"
+        },
+        {
+          "start": 52.92,
+          "end": 53.4,
+          "word": " manually"
+        },
+        {
+          "start": 53.4,
+          "end": 53.88,
+          "word": " recorded"
+        },
+        {
+          "start": 53.88,
+          "end": 54.36,
+          "word": " holdings"
+        },
+        {
+          "start": 54.36,
+          "end": 54.92,
+          "word": " and"
+        },
+        {
+          "start": 54.92,
+          "end": 55.46,
+          "word": " allocations"
+        },
+        {
+          "start": 55.46,
+          "end": 55.84,
+          "word": " into"
+        },
+        {
+          "start": 55.84,
+          "end": 56.38,
+          "word": " view."
+        }
+      ]
+    },
+    {
+      "start": 56.38,
+      "end": 59.6,
+      "text": " Fictional valuations, not live prices.",
+      "words": [
+        {
+          "start": 56.38,
+          "end": 57.6,
+          "word": " Fictional"
+        },
+        {
+          "start": 57.6,
+          "end": 58.28,
+          "word": " valuations,"
+        },
+        {
+          "start": 58.64,
+          "end": 58.84,
+          "word": " not"
+        },
+        {
+          "start": 58.84,
+          "end": 59.14,
+          "word": " live"
+        },
+        {
+          "start": 59.14,
+          "end": 59.6,
+          "word": " prices."
+        }
+      ]
+    },
+    {
+      "start": 60.2,
+      "end": 64.16,
+      "text": " Screening is unverified, never a guarantee of compliance or safety.",
+      "words": [
+        {
+          "start": 60.2,
+          "end": 60.6,
+          "word": " Screening"
+        },
+        {
+          "start": 60.6,
+          "end": 60.9,
+          "word": " is"
+        },
+        {
+          "start": 60.9,
+          "end": 61.46,
+          "word": " unverified,"
+        },
+        {
+          "start": 62.08,
+          "end": 62.08,
+          "word": " never"
+        },
+        {
+          "start": 62.08,
+          "end": 62.36,
+          "word": " a"
+        },
+        {
+          "start": 62.36,
+          "end": 62.5,
+          "word": " guarantee"
+        },
+        {
+          "start": 62.5,
+          "end": 62.9,
+          "word": " of"
+        },
+        {
+          "start": 62.9,
+          "end": 63.16,
+          "word": " compliance"
+        },
+        {
+          "start": 63.16,
+          "end": 63.56,
+          "word": " or"
+        },
+        {
+          "start": 63.56,
+          "end": 64.16,
+          "word": " safety."
+        }
+      ]
+    },
+    {
+      "start": 65.64,
+      "end": 69.38,
+      "text": " The local assistant now connects to a pinned model through the app.",
+      "words": [
+        {
+          "start": 65.64,
+          "end": 65.82,
+          "word": " The"
+        },
+        {
+          "start": 65.82,
+          "end": 66.12,
+          "word": " local"
+        },
+        {
+          "start": 66.12,
+          "end": 66.66,
+          "word": " assistant"
+        },
+        {
+          "start": 66.66,
+          "end": 67.24,
+          "word": " now"
+        },
+        {
+          "start": 67.24,
+          "end": 67.56,
+          "word": " connects"
+        },
+        {
+          "start": 67.56,
+          "end": 67.8,
+          "word": " to"
+        },
+        {
+          "start": 67.8,
+          "end": 67.96,
+          "word": " a"
+        },
+        {
+          "start": 67.96,
+          "end": 68.08,
+          "word": " pinned"
+        },
+        {
+          "start": 68.08,
+          "end": 68.34,
+          "word": " model"
+        },
+        {
+          "start": 68.34,
+          "end": 68.64,
+          "word": " through"
+        },
+        {
+          "start": 68.64,
+          "end": 68.82,
+          "word": " the"
+        },
+        {
+          "start": 68.82,
+          "end": 69.38,
+          "word": " app."
+        }
+      ]
+    },
+    {
+      "start": 71.14,
+      "end": 73.78,
+      "text": " This is a real response from a private service.",
+      "words": [
+        {
+          "start": 71.14,
+          "end": 71.48,
+          "word": " This"
+        },
+        {
+          "start": 71.48,
+          "end": 71.78,
+          "word": " is"
+        },
+        {
+          "start": 71.78,
+          "end": 71.84,
+          "word": " a"
+        },
+        {
+          "start": 71.84,
+          "end": 72.14,
+          "word": " real"
+        },
+        {
+          "start": 72.14,
+          "end": 72.64,
+          "word": " response"
+        },
+        {
+          "start": 72.64,
+          "end": 72.86,
+          "word": " from"
+        },
+        {
+          "start": 72.86,
+          "end": 73.0,
+          "word": " a"
+        },
+        {
+          "start": 73.0,
+          "end": 73.26,
+          "word": " private"
+        },
+        {
+          "start": 73.26,
+          "end": 73.78,
+          "word": " service."
+        }
+      ]
+    },
+    {
+      "start": 74.52,
+      "end": 76.2,
+      "text": " Public AI remains unavailable.",
+      "words": [
+        {
+          "start": 74.52,
+          "end": 74.52,
+          "word": " Public"
+        },
+        {
+          "start": 74.52,
+          "end": 75.12,
+          "word": " AI"
+        },
+        {
+          "start": 75.12,
+          "end": 75.66,
+          "word": " remains"
+        },
+        {
+          "start": 75.66,
+          "end": 76.2,
+          "word": " unavailable."
+        }
+      ]
+    },
+    {
+      "start": 77.22,
+      "end": 82.9,
+      "text": " It gets the surplus right, but recommends high yield savings, despite no interest in instructions.",
+      "words": [
+        {
+          "start": 77.22,
+          "end": 77.3,
+          "word": " It"
+        },
+        {
+          "start": 77.3,
+          "end": 77.54,
+          "word": " gets"
+        },
+        {
+          "start": 77.54,
+          "end": 77.8,
+          "word": " the"
+        },
+        {
+          "start": 77.8,
+          "end": 78.12,
+          "word": " surplus"
+        },
+        {
+          "start": 78.12,
+          "end": 78.62,
+          "word": " right,"
+        },
+        {
+          "start": 79.0,
+          "end": 79.26,
+          "word": " but"
+        },
+        {
+          "start": 79.26,
+          "end": 79.56,
+          "word": " recommends"
+        },
+        {
+          "start": 79.56,
+          "end": 80.02,
+          "word": " high"
+        },
+        {
+          "start": 80.02,
+          "end": 80.28,
+          "word": " yield"
+        },
+        {
+          "start": 80.28,
+          "end": 80.72,
+          "word": " savings,"
+        },
+        {
+          "start": 81.2,
+          "end": 81.44,
+          "word": " despite"
+        },
+        {
+          "start": 81.44,
+          "end": 81.88,
+          "word": " no"
+        },
+        {
+          "start": 81.88,
+          "end": 82.18,
+          "word": " interest"
+        },
+        {
+          "start": 82.18,
+          "end": 82.4,
+          "word": " in"
+        },
+        {
+          "start": 82.4,
+          "end": 82.9,
+          "word": " instructions."
+        }
+      ]
+    },
+    {
+      "start": 82.9,
+      "end": 86.14,
+      "text": " It also dismisses a parental transfer.",
+      "words": [
+        {
+          "start": 82.9,
+          "end": 84.0,
+          "word": " It"
+        },
+        {
+          "start": 84.0,
+          "end": 84.46,
+          "word": " also"
+        },
+        {
+          "start": 84.46,
+          "end": 85.06,
+          "word": " dismisses"
+        },
+        {
+          "start": 85.06,
+          "end": 85.18,
+          "word": " a"
+        },
+        {
+          "start": 85.18,
+          "end": 85.46,
+          "word": " parental"
+        },
+        {
+          "start": 85.46,
+          "end": 86.14,
+          "word": " transfer."
+        }
+      ]
+    },
+    {
+      "start": 86.7,
+      "end": 89.76,
+      "text": " Available monthly surplus should fall to 625.",
+      "words": [
+        {
+          "start": 86.7,
+          "end": 87.08,
+          "word": " Available"
+        },
+        {
+          "start": 87.08,
+          "end": 87.64,
+          "word": " monthly"
+        },
+        {
+          "start": 87.64,
+          "end": 88.14,
+          "word": " surplus"
+        },
+        {
+          "start": 88.14,
+          "end": 88.62,
+          "word": " should"
+        },
+        {
+          "start": 88.62,
+          "end": 88.84,
+          "word": " fall"
+        },
+        {
+          "start": 88.84,
+          "end": 89.1,
+          "word": " to"
+        },
+        {
+          "start": 89.1,
+          "end": 89.76,
+          "word": " 625."
+        }
+      ]
+    },
+    {
+      "start": 91.68,
+      "end": 96.88,
+      "text": " On 40 numeric checks, the original scores 36, the candidate 32.",
+      "words": [
+        {
+          "start": 91.68,
+          "end": 91.92,
+          "word": " On"
+        },
+        {
+          "start": 91.92,
+          "end": 92.2,
+          "word": " 40"
+        },
+        {
+          "start": 92.2,
+          "end": 92.62,
+          "word": " numeric"
+        },
+        {
+          "start": 92.62,
+          "end": 93.0,
+          "word": " checks,"
+        },
+        {
+          "start": 93.26,
+          "end": 93.42,
+          "word": " the"
+        },
+        {
+          "start": 93.42,
+          "end": 93.74,
+          "word": " original"
+        },
+        {
+          "start": 93.74,
+          "end": 94.14,
+          "word": " scores"
+        },
+        {
+          "start": 94.14,
+          "end": 94.92,
+          "word": " 36,"
+        },
+        {
+          "start": 95.34,
+          "end": 95.58,
+          "word": " the"
+        },
+        {
+          "start": 95.58,
+          "end": 95.84,
+          "word": " candidate"
+        },
+        {
+          "start": 95.84,
+          "end": 96.88,
+          "word": " 32."
+        }
+      ]
+    },
+    {
+      "start": 98.72,
+      "end": 102.9,
+      "text": " On 15 matched Zachat tasks, rules score 15, the candidate 11.",
+      "words": [
+        {
+          "start": 98.72,
+          "end": 98.96,
+          "word": " On"
+        },
+        {
+          "start": 98.96,
+          "end": 99.38,
+          "word": " 15"
+        },
+        {
+          "start": 99.38,
+          "end": 99.7,
+          "word": " matched"
+        },
+        {
+          "start": 99.7,
+          "end": 100.06,
+          "word": " Zachat"
+        },
+        {
+          "start": 100.06,
+          "end": 100.46,
+          "word": " tasks,"
+        },
+        {
+          "start": 100.9,
+          "end": 101.14,
+          "word": " rules"
+        },
+        {
+          "start": 101.14,
+          "end": 101.4,
+          "word": " score"
+        },
+        {
+          "start": 101.4,
+          "end": 101.9,
+          "word": " 15,"
+        },
+        {
+          "start": 102.28,
+          "end": 102.42,
+          "word": " the"
+        },
+        {
+          "start": 102.42,
+          "end": 102.72,
+          "word": " candidate"
+        },
+        {
+          "start": 102.72,
+          "end": 103.12,
+          "word": " 11."
+        }
+      ]
+    },
+    {
+      "start": 104.2,
+      "end": 106.48,
+      "text": " 60 conceptual answers remain unreviewed.",
+      "words": [
+        {
+          "start": 104.2,
+          "end": 104.34,
+          "word": " 60"
+        },
+        {
+          "start": 104.34,
+          "end": 104.92,
+          "word": " conceptual"
+        },
+        {
+          "start": 104.92,
+          "end": 105.36,
+          "word": " answers"
+        },
+        {
+          "start": 105.36,
+          "end": 105.76,
+          "word": " remain"
+        },
+        {
+          "start": 105.76,
+          "end": 106.48,
+          "word": " unreviewed."
+        }
+      ]
+    },
+    {
+      "start": 107.60000000000001,
+      "end": 113.14,
+      "text": " Barreca local AI connected, advice unverified, a clear view of what matters.",
+      "words": [
+        {
+          "start": 107.60000000000001,
+          "end": 108.4,
+          "word": " Barreca"
+        },
+        {
+          "start": 108.4,
+          "end": 108.8,
+          "word": " local"
+        },
+        {
+          "start": 108.8,
+          "end": 109.26,
+          "word": " AI"
+        },
+        {
+          "start": 109.26,
+          "end": 109.78,
+          "word": " connected,"
+        },
+        {
+          "start": 110.58,
+          "end": 110.68,
+          "word": " advice"
+        },
+        {
+          "start": 110.68,
+          "end": 111.38,
+          "word": " unverified,"
+        },
+        {
+          "start": 111.92,
+          "end": 112.0,
+          "word": " a"
+        },
+        {
+          "start": 112.0,
+          "end": 112.2,
+          "word": " clear"
+        },
+        {
+          "start": 112.2,
+          "end": 112.46,
+          "word": " view"
+        },
+        {
+          "start": 112.46,
+          "end": 112.6,
+          "word": " of"
+        },
+        {
+          "start": 112.6,
+          "end": 112.88,
+          "word": " what"
+        },
+        {
+          "start": 112.88,
+          "end": 113.14,
+          "word": " matters."
+        }
+      ]
+    }
+  ]
+}
