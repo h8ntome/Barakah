@@ -30,7 +30,7 @@ def db_setup(tmp_path, monkeypatch):
         url = make_url(os.environ['TEST_DATABASE_URL']).update_query_dict({'options': f'-csearch_path={schema}'}).render_as_string(hide_password=False)
     monkeypatch.setattr(settings, 'database_url', url)
     monkeypatch.setattr(settings, 'reset_outbox', str(tmp_path / 'outbox'))
-    monkeypatch.setattr(settings, 'ai_mode', 'mock')
+    monkeypatch.setattr(settings, 'ai_mode', 'unavailable')
     monkeypatch.setattr(settings, 'auth_rate_limit', 1000)
     monkeypatch.setattr(settings, 'advisor_rate_limit', 30)
     limiter.entries.clear()
@@ -80,3 +80,23 @@ def account(client, auth):
 @pytest.fixture
 def zakat_profile():
     return {'currency': 'USD', 'assets': {'cash': '10000.00', 'investments': '0.00', 'gold': '0.00', 'silver': '0.00', 'business': '0.00', 'liabilities': '0.00'}, 'nisab_method': 'manual', 'manual_nisab': '5000.00', 'gold_price_per_gram': None, 'silver_price_per_gram': None, 'price_source': 'Manual test valuation', 'valuation_date': '2026-01-15', 'haul_start': '2025-01-01', 'haul_complete': True, 'rate': '0.025'}
+
+
+@pytest.fixture
+def historical_conversation(db_setup):
+    """Seed legacy history directly; unavailable sends must never create it."""
+    from app import models as m
+    from sqlalchemy import select
+    def seed(user_id=None):
+        with db_setup.begin() as db:
+            if user_id is None:
+                user_id = db.scalar(select(m.User.id))
+            conversation = m.Conversation(user_id=user_id)
+            db.add(conversation)
+            db.flush()
+            for role, content in [('user', 'Historical question'), ('assistant', 'Historical fixture, not advice')]:
+                db.add(m.Message(user_id=user_id, conversation_id=conversation.id,
+                                 role=role, text=content, is_demo=True))
+                db.flush()
+            return conversation.id
+    return seed

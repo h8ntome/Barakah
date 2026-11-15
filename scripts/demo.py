@@ -67,8 +67,6 @@ def main():
     holding = api('POST', '/portfolio/holdings', {'symbol': 'DEMO', 'name': 'Fictional Example Holding', 'currency': 'USD'})
     api('POST', '/portfolio/trades', {'holding_id': holding['id'], 'side': 'buy', 'quantity': '10', 'price': '20.00', 'fees': '1.00', 'traded_on': day})
     api('PUT', f"/portfolio/holdings/{holding['id']}/quote", {'price': '21.00', 'as_of': day, 'source': 'Fictional manual quote, NOT live'})
-    api('PATCH', '/auth/profile', {'ai_consent': True})
-    api('POST', '/advisor/messages', {'text': 'Explain a simple monthly budget using fictional examples.'})
     print('Fictional demo created. Log in using the email and private password you supplied.')
     print('No payment, bank connection, live quote or certified screening was performed.')
 

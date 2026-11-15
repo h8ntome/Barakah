@@ -11,7 +11,7 @@ import { Pagination } from "../components/FinancialForms.jsx";
 import { useResource } from "../services/useResource.js";
 import * as api from "../services/index.js";
 import { conversationOptions } from "../utils/conversationOptions.js";
-export default function Chat({ user, navigate, active }) {
+export default function Chat({ navigate, active }) {
   const context = useResource(api.getAdvisorContext);
   const [offset, setOffset] = useState(0);
   const conversations = useResource(api.getConversations, {
@@ -28,7 +28,6 @@ export default function Chat({ user, navigate, active }) {
       [conversationId || "new"]: value,
     }));
   const [sending, setSending] = useState(false);
-  const [includeContext, setIncludeContext] = useState(false);
   const [error, setError] = useState("");
   const lock = useRef(false);
   const bottom = useRef(null);
@@ -44,7 +43,6 @@ export default function Chat({ user, navigate, active }) {
     try {
       const reply = await api.sendMessage({
         text: text.trim(),
-        include_financial_context: includeContext,
         ...(conversationId ? { conversation_id: conversationId } : {}),
       });
       setText("");
@@ -53,7 +51,9 @@ export default function Chat({ user, navigate, active }) {
       else messages.retry();
       conversations.retry();
     } catch (failure) {
-      setError(failure.message);
+      setError(failure.code === "ai_unavailable"
+        ? "AI assistant unavailable — no model is connected. No message was saved."
+        : failure.message);
     } finally {
       lock.current = false;
       setSending(false);
@@ -72,7 +72,7 @@ export default function Chat({ user, navigate, active }) {
       />
       <div className="chat-toolbar">
         <Field
-          label="Conversation"
+          label="Conversation history"
           value={conversationId}
           onChange={(value) => {
             setConversationId(value);
@@ -130,22 +130,18 @@ export default function Chat({ user, navigate, active }) {
       </div>
       <div className="chat-scroll">
         <Notice>
-          Educational guidance, not a fatwa or personalized investment advice.
-          Your current question is sent to the configured model. Monthly totals
-          are included only when you opt in below; individual transactions and
-          earlier messages are not sent. Conversation history is stored in your
-          account. Avoid sensitive details.
+          AI assistant unavailable — no model is connected. You can try sending a
+          question to check availability; no advice is generated and no new
+          messages are saved. Your financial tools remain available.
         </Notice>
-        <label className="check-field">
-          <input type="checkbox" checked={includeContext} disabled={sending || !user.ai_consent}
-            onChange={(event) => setIncludeContext(event.target.checked)} />
-          <span>Include my monthly income and expense summary (by currency).</span>
-        </label>
-        {!user.ai_consent && (
+        {conversationId && (
           <Notice>
-            Enable advisor consent in Home → Settings before sending a question.
-            You can still review or delete your conversation history.
+            Historical conversation only. These saved messages are not new advice
+            or evidence of a connected AI. You can review or delete this history.
           </Notice>
+        )}
+        {!conversationId && (
+          <Empty>No messages yet. AI replies are unavailable; drafts are not saved to your account.</Empty>
         )}
         {!conversationId && (
           <RequestState resource={context} label="advisor context">
@@ -155,14 +151,12 @@ export default function Chat({ user, navigate, active }) {
                   <div className="message-bubble">
                     {context.data.welcome_message.text}
                     <p className="message-meta">
-                      {context.data.welcome_message.is_demo
-                        ? "Local demonstration response"
-                        : "Educational guidance"}
+                      Service status · Not an AI response
                     </p>
                   </div>
                 </div>
                 <div className="suggestions">
-                  <p>Start with a question</p>
+                  <p>Example questions · AI not connected</p>
                   {context.data.starter_questions.map((question) => (
                     <button
                       key={question}
@@ -191,8 +185,8 @@ export default function Chat({ user, navigate, active }) {
                 {message.role === "assistant" && (
                   <p className="message-meta">
                     {message.is_demo
-                      ? "Local demonstration response"
-                      : "Model-generated · May be inaccurate"}
+                      ? "Historical demonstration · Not AI advice"
+                      : "Historical model response · May be inaccurate"}
                   </p>
                 )}
               </div>
@@ -201,12 +195,12 @@ export default function Chat({ user, navigate, active }) {
         </RequestState>
         {sending && (
           <p className="reply-pending" role="status">
-            Waiting for the advisor…
+            Checking AI availability…
           </p>
         )}
         {error && (
           <InlineError
-            message={`${error} Your draft is kept. Review the conversation before resending if the connection was interrupted.`}
+            message={`${error} Your draft is kept; you can try again.`}
           />
         )}
         <div ref={bottom} />
@@ -221,13 +215,13 @@ export default function Chat({ user, navigate, active }) {
           onChange={(event) => setText(event.target.value)}
           placeholder="Ask a finance question…"
           maxLength={1000}
-          disabled={sending || !user.ai_consent}
+          disabled={sending}
           required
         />
         <button
           type="submit"
           aria-label="Send message"
-          disabled={sending || !user.ai_consent || !text.trim()}
+          disabled={sending || !text.trim()}
         >
           <Send size={18} />
         </button>

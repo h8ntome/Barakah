@@ -128,10 +128,9 @@ def test_rate_limit(client, monkeypatch):
     assert client.post(BASE + '/auth/login', json={'email': 'missing@example.com', 'password': 'no'}).status_code == 429
 
 
-def test_delete_cascades_and_password_required(client, auth, account, db_setup):
+def test_delete_cascades_and_password_required(client, auth, account, db_setup, historical_conversation):
     account()
-    client.patch(BASE + '/auth/profile', headers=auth, json={'ai_consent': True})
-    client.post(BASE + '/advisor/messages', headers=auth, json={'text': 'hello'})
+    historical_conversation()
     assert client.request('DELETE', BASE + '/auth/me', headers=auth, json={'password': 'wrong'}).status_code == 401
     assert client.request('DELETE', BASE + '/auth/me', headers=auth, json={'password': 'correct horse battery'}).status_code == 204
     with db_setup() as db:
@@ -140,7 +139,7 @@ def test_delete_cascades_and_password_required(client, auth, account, db_setup):
     assert client.get(BASE + '/auth/me', headers=auth).status_code == 401
 
 
-@pytest.mark.parametrize('settings', [{'environment': 'production'}, {'environment': 'production', 'cookie_secure': True, 'secret_key': 'a' * 40, 'allowed_origins': 'http://localhost:5173'}, {'allowed_origins': '*'}, {'ai_local_url': 'http://evil.example/chat'}, {'ai_local_url': 'http://127.0.0.1@evil.example/chat'}])
+@pytest.mark.parametrize('settings', [{'environment': 'production'}, {'environment': 'production', 'cookie_secure': True, 'secret_key': 'a' * 40, 'allowed_origins': 'http://localhost:5173'}, {'allowed_origins': '*'}, {'ai_mode': 'mock'}, {'ai_mode': 'local'}])
 def test_insecure_configuration_rejected(settings):
     with pytest.raises(ValueError):
         Settings(_env_file=None, **settings)

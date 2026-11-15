@@ -1,82 +1,78 @@
-import json
-import threading
-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from datetime import date, timedelta
 import pytest
-from sqlalchemy import select
-from app import models as m
+from sqlalchemy import select, func
+from app import ai, models as m
 from app.config import get_settings
 B = '/api/v1'
 
 
-@pytest.fixture
-def local_provider():
-    state = {'requests': [], 'fail': False, 'oversize': False}
-    class Handler(BaseHTTPRequestHandler):
-        def do_GET(self):
-            self.send_response(200)
-            self.end_headers()
-            self.wfile.write(b'{"status":"ok"}')
-        def do_POST(self):
-            state['requests'].append(json.loads(self.rfile.read(int(self.headers['Content-Length']))))
-            self.send_response(503 if state['fail'] else 200)
-            self.end_headers()
-            self.wfile.write(json.dumps({'text': 'x' * 40000 if state['oversize'] else 'Local educational response'}).encode())
-        def log_message(self, *args):
-            pass
-    server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
-    thread = threading.Thread(target=server.serve_forever, daemon=True)
-    thread.start()
-    yield f'http://127.0.0.1:{server.server_port}/chat', state
-    server.shutdown()
-    server.server_close()
-    thread.join(timeout=2)
-
-
-def test_consent_mock_history_ownership_revocation(client, auth, register):
-    assert client.get(B + '/ai/health', headers=auth).json()['is_demo'] is True
-    assert client.post(B + '/advisor/messages', headers=auth, json={'text': 'zakat'}).status_code == 403
-    client.patch(B + '/auth/profile', headers=auth, json={'ai_consent': True})
-    response = client.post(B + '/advisor/messages', headers=auth, json={'text': 'zakat'}).json()
-    assert response['is_demo'] and 'nisab' in response['text']
-    conversation_id = response['conversation_id']
-    history = client.get(B + '/advisor/conversations/' + conversation_id + '/messages', headers=auth).json()
-    assert [message['role'] for message in history] == ['user', 'assistant']
-    other, _ = register('other@example.com')
-    client.patch(B + '/auth/profile', headers=other, json={'ai_consent': True})
-    assert client.get(B + '/advisor/conversations/' + conversation_id + '/messages', headers=other).status_code == 404
-    assert client.post(B + '/advisor/messages', headers=other, json={'text': 'hi', 'conversation_id': conversation_id}).status_code == 404
-    client.patch(B + '/auth/profile', headers=auth, json={'ai_consent': False})
-    assert client.post(B + '/advisor/messages', headers=auth, json={'text': 'zakat'}).status_code == 403
-    assert client.delete(B + '/advisor/conversations/' + conversation_id, headers=auth).status_code == 204
+@pytest.mark.parametrize('consent', [False, True])
+def test_unavailable_send_never_persists_with_or_without_consent(client, auth, db_setup, consent):
+    client.patch(B + '/auth/profile', headers=auth, json={'ai_consent': consent})
+    assert client.get(B + '/ai/health', headers=auth).json() == {
+        'provider': 'unavailable', 'status': 'unavailable', 'is_demo': False}
+    context = client.get(B + '/advisor/context', headers=auth).json()
+    assert context['status'] == 'unavailable'
+    assert context['welcome_message']['text'] == ai.UNAVAILABLE_MESSAGE
+    assert context['starter_questions']
+    response = client.post(B + '/advisor/messages', headers=auth, json={'text': 'PRIVATE question'})
+    assert response.status_code == 503
+    assert response.json() == {'conversation_id': None, 'response': None,
+                               'error': {'code': 'ai_unavailable', 'message': ai.UNAVAILABLE_MESSAGE}}
+    assert 'PRIVATE' not in response.text
     assert client.get(B + '/advisor/conversations', headers=auth).json() == []
+    with db_setup() as db:
+        for model in (m.Conversation, m.Message):
+            assert db.scalar(select(func.count()).select_from(model)) == 0
 
 
-def test_local_http_adapter_only_current_text_failure_rollback(client, auth, local_provider, monkeypatch):
-    url, state = local_provider
-    monkeypatch.setattr(get_settings(), 'ai_mode', 'local')
-    monkeypatch.setattr(get_settings(), 'ai_local_url', url)
-    client.patch(B + '/auth/profile', headers=auth, json={'ai_consent': True})
-    assert client.get(B + '/ai/health', headers=auth).json()['status'] == 'available'
-    response = client.post(B + '/advisor/messages', headers=auth, json={'text': 'hello'})
-    assert response.status_code == 201
-    assert response.json()['is_demo'] is False
-    from app.ai import SYSTEM_PROMPT
-    assert state['requests'] == [{'text': 'hello', 'system_prompt': SYSTEM_PROMPT}]
-    state['fail'] = True
-    failure = client.post(B + '/advisor/messages', headers=auth, json={'text': 'private text'})
-    assert failure.status_code == 502 and 'private text' not in failure.text
-    assert len(client.get(B + '/advisor/conversations', headers=auth).json()) == 1
-    state['fail'], state['oversize'] = False, True
-    assert client.post(B + '/advisor/messages', headers=auth, json={'text': 'hi'}).status_code == 502
+def test_historical_history_ownership_revocation_delete(client, auth, register, historical_conversation, db_setup):
+    conversation_id = historical_conversation()
+    path = B + '/advisor/conversations/' + conversation_id
+    before = client.get(path + '/messages', headers=auth).json()
+    assert [message['role'] for message in before] == ['user', 'assistant']
+    assert client.get(path + '/messages?limit=1&offset=1', headers=auth).json() == before[1:]
+    other, _ = register('other@example.com')
+    assert client.get(B + '/advisor/conversations', headers=other).json() == []
+    assert client.get(path + '/messages', headers=other).status_code == 404
+    assert client.delete(path, headers=other).status_code == 404
+    assert client.post(B + '/advisor/messages', headers=other, json={'text': 'hi', 'conversation_id': conversation_id}).status_code == 404
+    for consent in (True, False):
+        client.patch(B + '/auth/profile', headers=auth, json={'ai_consent': consent})
+        response = client.post(B + '/advisor/messages', headers=auth, json={'text': 'hi', 'conversation_id': conversation_id})
+        assert response.status_code == 503
+        assert response.json()['conversation_id'] == conversation_id
+        assert response.json()['error']['code'] == 'ai_unavailable'
+        assert client.get(path + '/messages', headers=auth).json() == before
+    assert client.delete(path, headers=auth).status_code == 204
+    assert client.get(B + '/advisor/conversations', headers=auth).json() == []
+    with db_setup() as db:
+        assert db.scalar(select(func.count()).select_from(m.Message)) == 0
+
+
+def test_advisor_endpoints_require_authentication(client, auth, historical_conversation):
+    conversation_id = historical_conversation()
+    for method, path, body in [
+        ('GET', '/ai/health', None), ('GET', '/advisor/context', None),
+        ('GET', '/advisor/conversations', None),
+        ('GET', f'/advisor/conversations/{conversation_id}/messages', None),
+        ('DELETE', f'/advisor/conversations/{conversation_id}', None),
+        ('POST', '/advisor/messages', {'text': 'hello'}),
+    ]:
+        assert client.request(method, B + path, json=body).status_code == 401
+
+
+def test_advisor_openapi_documents_unavailable_result(client):
+    responses = client.get('/openapi.json').json()['paths'][B + '/advisor/messages']['post']['responses']
+    assert '200' not in responses and '201' not in responses
+    assert responses['503']['content']['application/json']['schema']['$ref'].endswith('/AIResult')
 
 
 def test_advisor_input_limit_throttle(client, auth, monkeypatch):
-    client.patch(B + '/auth/profile', headers=auth, json={'ai_consent': True})
-    assert client.post(B + '/advisor/messages', headers=auth, json={'text': ' '}).status_code == 422
-    assert client.post(B + '/advisor/messages', headers=auth, json={'text': 'x' * 1001}).status_code == 422
+    for body in ({'text': ' '}, {'text': 'x' * 1001}, {'text': 'hi', 'conversation_id': 'invalid'}):
+        assert client.post(B + '/advisor/messages', headers=auth, json=body).status_code == 422
     monkeypatch.setattr(get_settings(), 'advisor_rate_limit', 1)
-    assert client.post(B + '/advisor/messages', headers=auth, json={'text': 'hi'}).status_code == 201
+    assert client.post(B + '/advisor/messages', headers=auth, json={'text': 'hi'}).status_code == 503
     assert client.post(B + '/advisor/messages', headers=auth, json={'text': 'hi'}).status_code == 429
 
 

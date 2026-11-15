@@ -1,11 +1,8 @@
 import pytest
 from decimal import Decimal
-import threading
-import time
-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from sqlalchemy.exc import DataError
 from app import ai, db as database, models as m
-from app.config import get_settings
+from app.config import Settings, get_settings
 from app.portfolio import holding_view
 
 
@@ -28,80 +25,63 @@ def test_database_errors_do_not_escape_with_private_parameters(client, auth, mon
     assert database.engine.hide_parameters is True
 
 
-def test_postgres_driver_error_is_handled_without_prompt_leak(client, auth, db_setup, caplog):
-    if db_setup.kw['bind'].dialect.name != 'postgresql':
-        pytest.skip('PostgreSQL driver-specific regression; executed in parity suite')
-    client.patch('/api/v1/auth/profile', headers=auth, json={'ai_consent': True})
-    marker = 'PRIVATE_MARKER\x00'
-    response = client.post('/api/v1/advisor/messages', headers=auth, json={'text': marker})
-    assert response.status_code == 503
-    assert 'PRIVATE_MARKER' not in response.text and 'PRIVATE_MARKER' not in caplog.text
-
-
-def test_provider_selection_and_conversation_bound(client, auth, monkeypatch):
-    assert isinstance(ai.get_provider(), ai.MockProvider)
-    monkeypatch.setattr(get_settings(), 'ai_max_conversation_messages', 2)
-    client.patch('/api/v1/auth/profile', headers=auth, json={'ai_consent': True})
-    first = client.post('/api/v1/advisor/messages', headers=auth, json={'text': 'hello'}).json()
-    response = client.post('/api/v1/advisor/messages', headers=auth, json={'text': 'again', 'conversation_id': first['conversation_id']})
-    assert response.status_code == 409
-    assert response.json()['error']['code'] == 'conversation_limit'
-    monkeypatch.setattr(get_settings(), 'ai_mode', 'local')
-    assert isinstance(ai.get_provider(), ai.LocalProvider)
-
-
-def test_financial_context_is_opt_in_and_owner_only(client, auth, register, monkeypatch):
-    from datetime import date
-    prompts = []
-    class SpyProvider:
-        async def generate(self, text, system_prompt):
-            prompts.append(system_prompt)
-            return 'Educational fixture'
-    monkeypatch.setattr(ai, 'get_provider', lambda: SpyProvider())
-    for headers, amount in [(auth, '1234'), (register('context-other@example.com')[0], '9876')]:
-        account = client.post('/api/v1/accounts', headers=headers, json={'name': 'Private account name', 'currency': 'USD'}).json()
-        client.post('/api/v1/transactions', headers=headers, json={'account_id': account['id'], 'kind': 'income', 'amount': amount, 'category': 'Private category', 'description': 'Private record', 'occurred_on': date.today().isoformat()})
-    client.patch('/api/v1/auth/profile', headers=auth, json={'ai_consent': True})
-    client.post('/api/v1/advisor/messages', headers=auth, json={'text': 'hello'})
-    assert prompts[-1] == ai.SYSTEM_PROMPT
-    response = client.post('/api/v1/advisor/messages', headers=auth, json={'text': 'hello', 'include_financial_context': True})
-    assert response.status_code == 201
-    assert '1234.00' in prompts[-1] and '9876' not in prompts[-1]
-    assert 'Private' not in prompts[-1]
-    assert 'Verified backend monthly totals' in response.json()['text']
-
-
-def test_slow_drip_provider_has_total_deadline(client, auth, monkeypatch):
-    class Handler(BaseHTTPRequestHandler):
-        def do_POST(self):
-            self.rfile.read(int(self.headers['Content-Length']))
-            self.send_response(200)
-            self.end_headers()
-            try:
-                for byte in b'{"text":"slow response"}':
-                    self.wfile.write(bytes([byte]))
-                    self.wfile.flush()
-                    time.sleep(.04)
-            except (BrokenPipeError, ConnectionResetError):
-                pass
-        def log_message(self, *args):
-            pass
-    server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
-    thread = threading.Thread(target=server.serve_forever, daemon=True)
-    thread.start()
-    config = get_settings()
-    monkeypatch.setattr(config, 'ai_mode', 'local')
-    monkeypatch.setattr(config, 'ai_local_url', f'http://127.0.0.1:{server.server_port}/chat')
-    monkeypatch.setattr(config, 'ai_request_timeout_seconds', .2)
-    client.patch('/api/v1/auth/profile', headers=auth, json={'ai_consent': True})
+def test_unavailable_prompt_never_reaches_database_or_logs(client, auth, db_setup, caplog):
+    from sqlalchemy import event
+    statements = []
+    engine = db_setup.kw['bind']
+    def capture(connection, cursor, statement, parameters, context, executemany):
+        statements.append((statement, parameters))
+    event.listen(engine, 'before_cursor_execute', capture)
     try:
-        start = time.monotonic()
-        response = client.post('/api/v1/advisor/messages', headers=auth, json={'text': 'hello'})
-        assert response.status_code == 502
-        assert time.monotonic() - start < .7
-        assert client.get('/api/v1/accounts', headers=auth).status_code == 200
-        assert client.get('/api/v1/advisor/conversations', headers=auth).json() == []
+        marker = 'PRIVATE_MARKER\x00'
+        response = client.post('/api/v1/advisor/messages', headers=auth, json={'text': marker})
+        assert response.status_code == 503
+        assert response.json()['error']['code'] == 'ai_unavailable'
+        assert 'PRIVATE_MARKER' not in response.text + caplog.text + repr(statements)
+        assert not any('INSERT' in sql.upper() for sql, _ in statements)
     finally:
-        server.shutdown()
-        server.server_close()
-        thread.join(timeout=2)
+        event.remove(engine, 'before_cursor_execute', capture)
+
+
+@pytest.mark.parametrize('mode', ['mock', 'local', 'remote', ''])
+def test_ai_configuration_rejects_every_connected_or_mock_mode(mode):
+    with pytest.raises(ValueError):
+        Settings(_env_file=None, ai_mode=mode)
+    assert Settings(_env_file=None, ai_mode='unavailable').ai_mode == 'unavailable'
+
+
+def test_ai_request_supports_history_without_generating_a_response():
+    request = ai.AIRequest(message='Current private question', conversation_id='historical-id',
+                           history=(ai.AIMessage(role='user', text='Old private question'),))
+    result = ai.send_message(request)
+    assert result.conversation_id == request.conversation_id
+    assert result.response is None
+    assert result.error.code == 'ai_unavailable'
+    assert 'private' not in repr(result)
+
+
+@pytest.mark.parametrize('include_context', [False, True])
+def test_unavailable_never_loads_financial_context(client, auth, monkeypatch, include_context):
+    from app import finance
+    def forbidden(*args, **kwargs):
+        pytest.fail('Unavailable AI must not load financial context')
+    monkeypatch.setattr(finance, 'dashboard', forbidden)
+    response = client.post('/api/v1/advisor/messages', headers=auth,
+                           json={'text': 'hello', 'include_financial_context': include_context})
+    assert response.status_code == 503
+    assert response.json()['response'] is None
+
+
+def test_unavailable_health_and_send_never_open_provider_transport(client, auth, monkeypatch):
+    import httpx
+    def forbidden(*args, **kwargs):
+        pytest.fail('Unavailable AI must not create a provider HTTP client')
+    monkeypatch.setattr(httpx, 'AsyncClient', forbidden)
+    monkeypatch.setattr(httpx, 'Client', forbidden)
+    # Even an in-process override cannot re-enable the removed providers.
+    monkeypatch.setattr(get_settings(), 'ai_mode', 'local')
+    assert client.get('/api/v1/ai/health', headers=auth).json()['status'] == 'unavailable'
+    response = client.post('/api/v1/advisor/messages', headers=auth, json={'text': 'hello'})
+    assert response.status_code == 503
+    assert client.get('/api/v1/accounts', headers=auth).status_code == 200
+    assert client.get('/api/v1/advisor/conversations', headers=auth).json() == []

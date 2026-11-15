@@ -86,9 +86,9 @@ export default function Settings({ user }) {
             onChange={(event) => setConsent(event.target.checked)}
           />
           <span>
-            Allow advisor requests. My current question may be sent to the
-            configured model. Do not include sensitive financial or personal
-            details.
+            Saved advisor consent preference (inactive). AI is unavailable;
+            this setting does not connect a model or enable replies. You can
+            check availability and review historical conversations without it.
           </span>
         </label>
       </ActionForm>

@@ -1,7 +1,7 @@
 from functools import lru_cache
-from pydantic import model_validator, Field
+from pydantic import model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from urllib.parse import urlparse
+from typing import Literal
 
 
 class Settings(BaseSettings):
@@ -12,11 +12,7 @@ class Settings(BaseSettings):
     allowed_origins: str = 'http://localhost:5173,http://127.0.0.1:5173'
     cookie_secure: bool = False
     frontend_dist: str | None = None
-    ai_mode: str = 'unavailable'
-    ai_request_timeout_seconds: float = Field(default=10, gt=0, le=120)
-    ai_max_conversation_messages: int = Field(default=100, ge=2, le=1000)
-    ai_model_name: str = 'lfm3-1.7b-pending'
-    ai_local_url: str = 'http://127.0.0.1:8080/chat'
+    ai_mode: Literal['unavailable'] = 'unavailable'
     reset_outbox: str | None = None
     smtp_host: str | None = None
     smtp_port: int = 587
@@ -46,11 +42,6 @@ class Settings(BaseSettings):
                 raise ValueError('Production requires explicit HTTPS origins')
         if '*' in self.origins:
             raise ValueError('Wildcard origins are forbidden')
-        if self.ai_mode not in {'unavailable', 'mock', 'local'}:
-            raise ValueError('Invalid AI mode')
-        url = urlparse(self.ai_local_url)
-        if url.scheme != 'http' or url.hostname not in {'127.0.0.1', '::1', 'localhost'} or url.username or url.password:
-            raise ValueError('AI endpoint must be an administrator-configured loopback HTTP endpoint')
         return self
 
 

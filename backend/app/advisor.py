@@ -1,51 +1,43 @@
+from dataclasses import asdict
 from uuid import UUID
-from sqlalchemy import select, func
-from .ai import DISCLAIMER, generate_reply, provider_available
 from fastapi import APIRouter, Depends
-from . import models as m, schemas as s
+from fastapi.responses import JSONResponse
+from . import ai, models as m, schemas as s
 from .db import get_db
 from .security import current_user, limiter
 from .config import get_settings
-from .common import fail, owned, pagination, public, rows
+from .common import owned, pagination, public, rows
 
 router = APIRouter(tags=['advisor'])
+
+
 @router.get('/ai/health')
 def ai_health(user=Depends(current_user)):
-    mode = get_settings().ai_mode
-    return {'provider': mode, 'status': 'available' if provider_available() else 'unavailable', 'is_demo': mode == 'mock'}
+    return {'provider': 'unavailable', 'status': 'unavailable', 'is_demo': False}
 
 
 @router.get('/advisor/context')
 def context(user=Depends(current_user)):
-    return {'welcome_message': {'role': 'assistant', 'text': 'I can share educational budgeting, giving and screening information. ' + DISCLAIMER, 'is_demo': get_settings().ai_mode == 'mock'}, 'starter_questions': ['How do I estimate zakat?', 'How can I plan giving?', 'What does uncertain screening mean?']}
+    return {
+        'status': 'unavailable',
+        'welcome_message': {'role': 'assistant', 'text': ai.UNAVAILABLE_MESSAGE, 'is_demo': False},
+        'starter_questions': ['How do I estimate zakat?', 'How can I plan giving?', 'What does uncertain screening mean?'],
+    }
 
 
-@router.post('/advisor/messages', status_code=201)
+@router.post('/advisor/messages', status_code=503, response_model=ai.AIResult,
+             responses={503: {'description': 'AI is not connected; nothing is saved'}})
 def send_message(data: s.AdvisorMessage, user=Depends(current_user), db=Depends(get_db)):
-    if not user.ai_consent:
-        fail(403, 'consent_required', 'Explicit advisor consent is required before sending a message')
     limiter.check(('advisor', user.id), get_settings().advisor_rate_limit)
     if data.conversation_id:
-        conversation = owned(db, m.Conversation, data.conversation_id, user.id, lock=True)
-    else:
-        conversation = m.Conversation(user_id=user.id)
-        db.add(conversation)
-        db.flush()
-    count = db.scalar(select(func.count()).select_from(m.Message).where(m.Message.conversation_id == conversation.id))
-    if count + 2 > get_settings().ai_max_conversation_messages:
-        fail(409, 'conversation_limit', 'This conversation is full; start a new conversation')
-    is_demo = get_settings().ai_mode == 'mock'
-    financial_context = None
-    if data.include_financial_context:
-        from .finance import dashboard
-        summary = dashboard(month=None, user=user, db=db)
-        financial_context = [{key: item[key] for key in ('currency', 'income', 'expenses', 'savings')} for item in summary['by_currency']]
-    answer = generate_reply(data.text, financial_context)
-    db.add(m.Message(user_id=user.id, conversation_id=conversation.id, role='user', text=data.text, is_demo=is_demo))
-    reply = m.Message(user_id=user.id, conversation_id=conversation.id, role='assistant', text=answer, is_demo=is_demo)
-    db.add(reply)
-    db.flush()
-    return public(reply)
+        owned(db, m.Conversation, data.conversation_id, user.id)
+    # No consent or financial context is needed to report unavailability. Do not
+    # create a conversation, load private history/totals, or persist failed sends.
+    result = ai.send_message(ai.AIRequest(
+        message=data.text,
+        conversation_id=str(data.conversation_id) if data.conversation_id else None,
+    ))
+    return JSONResponse(asdict(result), status_code=503)
 
 
 @router.get('/advisor/conversations')
