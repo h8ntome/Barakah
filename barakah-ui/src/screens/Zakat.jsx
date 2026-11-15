@@ -22,35 +22,21 @@ import {
 import { useResource } from "../services/useResource.js";
 import * as api from "../services/index.js";
 import { money } from "../utils/finance.js";
+import {
+  createZakatDraft,
+  validatePaymentHistory,
+} from "../utils/zakatDraft.js";
 
-const blankProfile = () => ({
-  currency: "USD",
-  assets: {
-    cash: "0.00",
-    investments: "0.00",
-    gold: "0.00",
-    business: "0.00",
-    liabilities: "0.00",
-  },
-  nisab_method: "manual",
-  manual_nisab: "",
-  gold_price_per_gram: "",
-  silver_price_per_gram: "",
-  price_source: "",
-  valuation_date: today(),
-  haul_start: "",
-  haul_complete: false,
-  rate: "0.025",
-});
 const assetLabels = {
   cash: "Cash and bank balances",
   investments: "Eligible investments",
-  gold: "Gold and silver value",
+  gold: "Gold value",
+  silver: "Silver value",
   business: "Business assets",
   liabilities: "Deductible liabilities",
 };
 function ProfileForm({ initial, onSaved }) {
-  const [draft, setDraft] = useState(initial || blankProfile());
+  const [draft, setDraft] = useState(() => createZakatDraft(initial, today()));
   const set = (key, value) => setDraft({ ...draft, [key]: value });
   return (
     <ActionForm
@@ -191,6 +177,7 @@ export function GivingRecordForm({
       success="Record saved. No payment was processed."
       onSubmit={async () => {
         const { history_id, ...body } = draft;
+        validatePaymentHistory(histories, draft.currency, history_id);
         await save({ ...body, ...(history_id ? { history_id } : {}) });
         onSaved();
         setDraft({ ...draft, amount: "", note: "" });
@@ -234,13 +221,26 @@ export function GivingRecordForm({
         onChange={(note) => setDraft({ ...draft, note })}
         maxLength={500}
       />
-      {histories.length > 0 && (
+      {(histories.length > 0 || draft.history_id) && (
         <Field
           label="Link calculation (optional)"
           value={draft.history_id}
           onChange={(history_id) => setDraft({ ...draft, history_id })}
           options={[
             { value: "", label: "No linked calculation" },
+            ...(draft.history_id &&
+            !histories.some(
+              (item) =>
+                item.id === draft.history_id &&
+                item.estimate.currency === draft.currency,
+            )
+              ? [
+                  {
+                    value: draft.history_id,
+                    label: "Selected calculation unavailable — reload choices",
+                  },
+                ]
+              : []),
             ...histories
               .filter((item) => item.estimate.currency === draft.currency)
               .map((item) => ({
@@ -258,6 +258,7 @@ export default function Zakat({ navigate, onChanged }) {
   const estimate = useResource(api.getZakatEstimate);
   const [offset, setOffset] = useState(0);
   const history = useResource(api.getZakatHistory, { offset, limit: 50 });
+  const historyChoices = useResource(api.getZakatHistoryChoices);
   const [paymentOffset, setPaymentOffset] = useState(0);
   const payments = useResource(api.getZakatPayments, {
     offset: paymentOffset,
@@ -312,6 +313,7 @@ export default function Zakat({ navigate, onChanged }) {
               onSubmit={async () => {
                 await api.saveZakatHistory();
                 history.retry();
+                historyChoices.retry();
               }}
             />
           </>
@@ -381,10 +383,11 @@ export default function Zakat({ navigate, onChanged }) {
           Record a payment made elsewhere. Barakah does not transfer money or
           issue payment receipts.
         </Notice>
+        <RequestState resource={historyChoices} label="calculation choices" />
         <GivingRecordForm
           label="Save zakat payment record"
           save={api.createZakatPayment}
-          histories={history.data || []}
+          histories={historyChoices.data || []}
           onSaved={() => {
             payments.retry();
             history.retry();

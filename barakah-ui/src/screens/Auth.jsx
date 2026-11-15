@@ -6,13 +6,17 @@ import {
   register,
   requestReset,
   confirmReset,
+  client,
 } from "../services/index.js";
-export default function Auth() {
-  const [mode, setMode] = useState("login");
+export default function Auth({
+  initialResetToken = "",
+  onResetComplete = () => {},
+}) {
+  const [mode, setMode] = useState(initialResetToken ? "reset" : "login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(initialResetToken);
   const [notice, setNotice] = useState("");
   return (
     <div className="screen-content auth-screen">
@@ -37,6 +41,8 @@ export default function Auth() {
         onChange={(value) => {
           setMode(value);
           setNotice("");
+          setToken("");
+          onResetComplete();
         }}
         options={[
           { id: "login", label: "Existing account" },
@@ -64,6 +70,9 @@ export default function Auth() {
           }
           if (mode === "reset") {
             await confirmReset({ token, new_password: password });
+            client.clearSession();
+            setToken("");
+            onResetComplete();
             setPassword("");
             setMode("login");
             setNotice("Password reset. Sign in with your new password.");
@@ -144,9 +153,8 @@ export default function Auth() {
       </div>
       {(mode === "request" || mode === "reset") && (
         <Notice>
-          Password delivery depends on the server configuration. In local
-          development, the operator retrieves tokens from the private outbox; no
-          email delivery is implied.
+          Reset instructions are sent only when server delivery is configured.
+          Local development may use a private, operator-managed outbox.
         </Notice>
       )}
       <Notice>

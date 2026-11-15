@@ -35,3 +35,18 @@ Suggested integrated pass:
 7. Check 320px and desktop layouts, keyboard focus, empty/error/pending states, unauthorized ownership denial and reload persistence.
 
 Known limits: drafts are in memory and intentionally lost at reload/logout; no mutation idempotency key contract; separate browser tabs are not coordinated for cookie rotation. Preference controls do not provide translated UI or FX. No live banking/prices/payments/brokerage/religious certification is supplied.
+
+## Supplement: goals, reset links and independent-review corrections
+
+- `npm test`: **46/46 passing**, including 15 additional regressions for this supplement.
+- `npm run build`: passed; JS 213.90 kB / 66.29 kB gzip; CSS unchanged at 30.97 kB / 7.28 kB gzip.
+- `git diff --check`: passed. Supplemental Impeccable detector: `[]`.
+- Added charitable goals CRUD, server-reported progress and paginated manual contribution history in Give. Decimal amounts remain strings; goals never transfer money or create donation receipts.
+- Added separate silver input/default/type; gold label now refers only to gold. Tests load a nonzero silver profile, edit gold independently and verify missing legacy silver defaults to zero. Final backend schema does not support separate savings/other assets; savings stay in cash/bank balances.
+- Reset URL `?token=` is consumed once before React mounts and removed via `history.replaceState`, preserving unrelated query/hash/history state. The in-memory reset form opens directly, including when a refresh cookie exists. Successful reset clears token/form session state. No persistent browser storage is used.
+- Addressed reviewer P1 account-switch race: request generation is checked before accepting original/retry responses and before retrying a 401. Four tests cover delayed success/401 from account A after switching to B, including already-started retries; old work cannot return data, replay under B or clear B's session.
+- Removed the public-request exemption from account deletion. Tests cover access expiry -> refresh -> successful DELETE and wrong-password rejection without refresh/session loss.
+- Payment-history choices now fetch all pages independently of visible history pagination. Tests cover page changes without losing selection and reject missing/currency-mismatched selections; unavailable selected calculations stay visibly labeled rather than silently appearing unlinked.
+- Sponsored placements report visible impressions and link clicks through the API. An IntersectionObserver plus hidden-screen/document-visibility checks avoids counting mounted-but-hidden screens; tests cover visibility, offscreen state, cleanup, deduplication and event payloads. Unsupported observation or analytics errors do not block financial workflows.
+
+No servers were started and no parent checkout files were edited for this supplement. Authenticated browser/E2E rechecks and independent re-review belong to the parent orchestration gate; unit transport/visibility tests are not a claim of live browser validation.

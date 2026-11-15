@@ -59,7 +59,8 @@ function Workspace({ user, activeTab, navigate }) {
     </div>
   );
 }
-export default function App() {
+export default function App({ initialResetToken = "" }) {
+  const [resetToken, setResetToken] = useState(initialResetToken);
   const [user, setUser] = useState(getSession);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -71,6 +72,7 @@ export default function App() {
     setLoading(true);
     setError(null);
     if (
+      initialResetToken ||
       !document.cookie
         .split("; ")
         .some((cookie) => cookie.startsWith("csrf_token="))
@@ -115,7 +117,10 @@ export default function App() {
                   navigate={navigate}
                 />
               ) : (
-                <Auth />
+                <Auth
+                  initialResetToken={resetToken}
+                  onResetComplete={() => setResetToken("")}
+                />
               )}
             </RequestState>
             <BottomTabs activeTab={activeTab} navigate={navigate} />

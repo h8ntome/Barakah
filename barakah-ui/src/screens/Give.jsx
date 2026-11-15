@@ -10,6 +10,7 @@ import {
 import { ActionForm, Field, RecordList } from "../components/forms.jsx";
 import { AmountField, Pagination } from "../components/FinancialForms.jsx";
 import { GivingRecordForm } from "./Zakat.jsx";
+import Goals from "./Goals.jsx";
 import SponsoredAd from "../components/SponsoredAd.jsx";
 import { useResource } from "../services/useResource.js";
 import * as api from "../services/index.js";
@@ -65,6 +66,7 @@ export default function Give({ navigate, onChanged }) {
         Records and intentions only. No money is collected or transferred here.
         Verify recipients independently before giving elsewhere.
       </Notice>
+      <Goals onChanged={onChanged} />
       <SectionHeader title="Cause directory" />
       <Field
         label="Search causes"

@@ -101,10 +101,22 @@ export function createHttpClient({
     return refreshPromise;
   }
   async function request(path, options = {}) {
+    const started = generation;
+    const assertCurrentSession = () => {
+      if (started !== generation)
+        throw new ApiError(
+          "Your session changed. Review your current account before trying again.",
+          409,
+          { code: "session_changed" },
+        );
+    };
     const sentToken = accessToken;
     try {
-      return await transport(path, { ...options, token: sentToken });
+      const result = await transport(path, { ...options, token: sentToken });
+      assertCurrentSession();
+      return result;
     } catch (error) {
+      assertCurrentSession();
       if (
         error.status !== 401 ||
         options.public ||
@@ -112,9 +124,16 @@ export function createHttpClient({
       )
         throw error;
       if (!accessToken || accessToken === sentToken) await refresh();
+      assertCurrentSession();
       try {
-        return await transport(path, { ...options, token: accessToken });
+        const result = await transport(path, {
+          ...options,
+          token: accessToken,
+        });
+        assertCurrentSession();
+        return result;
       } catch (retryError) {
+        assertCurrentSession();
         if (
           retryError.status === 401 &&
           retryError.code !== "invalid_credentials"

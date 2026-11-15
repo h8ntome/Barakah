@@ -40,7 +40,7 @@ export const changePassword = async (body) => {
   client.clearSession();
 };
 export const deleteUser = async (body) => {
-  await client.request("/auth/me", { method: "DELETE", body, public: true });
+  await client.request("/auth/me", { method: "DELETE", body });
   client.clearSession();
 };
 export const requestReset = (body) =>
@@ -150,3 +150,24 @@ export const getPortfolioChoices = async () => {
   } while (page.length === 100);
   return portfolios;
 };
+
+export const getGoals = (filters) => get("/goals", filters);
+export const createGoal = (body) => post("/goals", body);
+export const updateGoal = (goalId, body) => patch(`/goals/${id(goalId)}`, body);
+export const deleteGoal = (goalId) => del(`/goals/${id(goalId)}`);
+export const getGoalContributions = (goalId, filters) =>
+  get(`/goals/${id(goalId)}/contributions`, filters);
+export const createGoalContribution = (goalId, body) =>
+  post(`/goals/${id(goalId)}/contributions`, body);
+
+export const getZakatHistoryChoices = async () => {
+  const history = [];
+  let page;
+  do {
+    page = await getZakatHistory({ limit: 100, offset: history.length });
+    history.push(...page);
+  } while (page.length === 100);
+  return history;
+};
+export const recordAdEvent = (adId, kind) =>
+  post(`/ads/${id(adId)}/events`, { kind });

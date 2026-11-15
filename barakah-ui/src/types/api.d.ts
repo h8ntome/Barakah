@@ -94,6 +94,7 @@ export interface Assets {
   cash: DecimalString;
   investments: DecimalString;
   gold: DecimalString;
+  silver: DecimalString;
   business: DecimalString;
   liabilities: DecimalString;
 }
@@ -258,4 +259,21 @@ export interface SponsoredAd {
   url: string;
   context: "dashboard" | "giving" | "education";
   sponsored: true;
+}
+
+export interface GoalInput {
+  name: string;
+  currency: Currency;
+  target_amount: DecimalString;
+  target_date: ISODate | null;
+}
+export interface Goal extends GoalInput {
+  id: string;
+  saved_amount: DecimalString;
+}
+export interface GoalContribution {
+  id: string;
+  goal_id: string;
+  amount: DecimalString;
+  created_at: ISODateTime;
 }

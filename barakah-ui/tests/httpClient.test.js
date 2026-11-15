@@ -219,3 +219,74 @@ test("wrong confirmation password does not rotate or clear a valid session", asy
   assert.equal(requests, 1);
   assert.deepEqual(sessions, []);
 });
+
+for (const status of [200, 401]) {
+  test(`delayed ${status} from account A is rejected after signing into B without replay`, async () => {
+    let release;
+    const calls = [];
+    const client = createHttpClient({
+      fetchImpl: async (url, options) => {
+        calls.push([url, options.headers.Authorization]);
+        if (url.endsWith("/login")) {
+          const account = JSON.parse(options.body).account;
+          return response({ access_token: account, user: { id: account } });
+        }
+        if (url.endsWith("/logout")) return response(null, 204);
+        return new Promise((resolve) => {
+          release = () => resolve(response({ owner: "A" }, status));
+        });
+      },
+    });
+    await client.authenticate("/auth/login", { account: "A" });
+    const pending = client.request("/accounts", {
+      method: "POST",
+      body: { name: "A private account" },
+    });
+    const rejected = assert.rejects(pending, { code: "session_changed" });
+    await client.logout();
+    await client.authenticate("/auth/login", { account: "B" });
+    release();
+    await rejected;
+    assert.deepEqual(
+      calls.filter(([url]) => url.endsWith("/accounts")),
+      [["/api/v1/accounts", "Bearer A"]],
+    );
+    assert.equal(
+      calls.some(([url]) => url.endsWith("/refresh")),
+      false,
+    );
+  });
+  test(`delayed retry ${status} cannot return data or clear a newer session`, async () => {
+    let release;
+    let announceRetry;
+    const retryStarted = new Promise((resolve) => {
+      announceRetry = resolve;
+    });
+    const sessions = [];
+    const client = createHttpClient({
+      onSession: (user) => sessions.push(user),
+      fetchImpl: async (url, options) => {
+        if (url.endsWith("/login")) {
+          const account = JSON.parse(options.body).account;
+          return response({ access_token: account, user: { id: account } });
+        }
+        if (url.endsWith("/refresh"))
+          return response({ access_token: "A-rotated", user: { id: "A" } });
+        if (options.headers.Authorization === "Bearer A")
+          return response({}, 401);
+        announceRetry();
+        return new Promise((resolve) => {
+          release = () => resolve(response({ owner: "A" }, status));
+        });
+      },
+    });
+    await client.authenticate("/auth/login", { account: "A" });
+    const pending = client.request("/accounts");
+    const rejected = assert.rejects(pending, { code: "session_changed" });
+    await retryStarted;
+    await client.authenticate("/auth/login", { account: "B" });
+    release();
+    await rejected;
+    assert.equal(sessions.at(-1).id, "B");
+  });
+}
