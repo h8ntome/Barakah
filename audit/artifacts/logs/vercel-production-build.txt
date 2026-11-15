@@ -1,0 +1,48 @@
+Vercel CLI 65.16.0
+2026-11-15T12:15:18.293Z  Running build in Washington, D.C., USA (East) – iad1
+2026-11-15T12:15:18.294Z  Build machine configuration: 2 cores, 8 GB
+2026-11-15T12:15:18.315Z  Retrieving list of deployment files...
+2026-11-15T12:15:18.443Z  Previous build caches not available.
+2026-11-15T12:15:18.681Z  Downloading 132 deployment files...
+2026-11-15T12:15:22.141Z  Running "vercel build"
+2026-11-15T12:15:22.156Z  Vercel CLI 65.15.0
+2026-11-15T12:15:23.403Z  Running "install" command: `npm ci --prefix barakah-ui`...
+2026-11-15T12:15:24.145Z  npm warn Unknown env config "cache-dir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+2026-11-15T12:15:26.270Z  
+2026-11-15T12:15:26.270Z  added 19 packages, and audited 20 packages in 3s
+2026-11-15T12:15:26.270Z  
+2026-11-15T12:15:26.270Z  5 packages are looking for funding
+2026-11-15T12:15:26.271Z  run `npm fund` for details
+2026-11-15T12:15:26.272Z  
+2026-11-15T12:15:26.272Z  found 0 vulnerabilities
+2026-11-15T12:15:26.274Z  npm warn install-scripts 1 package has install scripts not yet covered by allowScripts:
+2026-11-15T12:15:26.274Z  npm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)
+2026-11-15T12:15:26.274Z  npm warn install-scripts
+2026-11-15T12:15:26.274Z  npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+2026-11-15T12:15:26.592Z  npm warn Unknown env config "cache-dir". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+2026-11-15T12:15:26.609Z  
+2026-11-15T12:15:26.610Z  > barakah-ui@1.0.0 build
+2026-11-15T12:15:26.610Z  > vite build
+2026-11-15T12:15:26.610Z  
+2026-11-15T12:15:26.923Z  vite v7.3.8 building client environment for production...
+2026-11-15T12:15:27.002Z  transforming...
+2026-11-15T12:15:29.574Z  ✓ 1600 modules transformed.
+2026-11-15T12:15:29.733Z  rendering chunks...
+2026-11-15T12:15:29.741Z  computing gzip size...
+2026-11-15T12:15:29.755Z  dist/index.html                   0.64 kB │ gzip:  0.40 kB
+2026-11-15T12:15:29.755Z  dist/assets/index-BKmEP22F.css   31.23 kB │ gzip:  7.29 kB
+2026-11-15T12:15:29.755Z  dist/assets/index-CneMdcl2.js   229.15 kB │ gzip: 69.95 kB
+2026-11-15T12:15:29.755Z  ✓ built in 2.80s
+2026-11-15T12:15:29.878Z  Using Python 3.13 from .python-version
+2026-11-15T12:15:29.913Z  Using uv 0.13.5 (x86_64-unknown-linux-gnu)
+2026-11-15T12:15:29.915Z  Creating virtual environment at "/vercel/path0/.vercel/python/.venv"...
+2026-11-15T12:15:30.602Z  Installing required dependencies from requirements.txt...
+2026-11-15T12:15:32.197Z  Compiling Python bytecode...
+2026-11-15T12:15:35.924Z  Build Completed in /vercel/output [13s]
+2026-11-15T12:15:35.971Z  Deploying outputs...
+2026-11-15T12:15:46.345Z  Deployment completed
+2026-11-15T12:15:46.350Z  Creating build cache...
+2026-11-15T12:15:54.017Z  Created build cache: 8s
+2026-11-15T12:15:54.017Z  Uploading build cache [31.93 MB]
+2026-11-15T12:15:54.447Z  Build cache uploaded: 430.000ms
+status	● Ready

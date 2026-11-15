@@ -1,0 +1,44 @@
+PASS: public Try Demo authenticates
+PASS: stored demo income
+PASS: stored demo spending
+PASS: public demo writes stored records
+PASS: reload refreshes session and retains edits
+PASS: public transaction correction persists
+PASS: second tester has independent seed totals
+PASS: reset restores first demo
+PASS: reset does not delete another tester records
+PASS: public zakat calculation
+PASS: AI is unavailable without saving fake advice
+PASS: demo logout removes authenticated UI
+PASS: public registration succeeds
+PASS: newly registered user can log in
+PASS: registered session survives reload
+PASS: only temporary QA account is deleted
+{
+  "url": "https://barakah-gamma.vercel.app",
+  "passed": 21,
+  "failed": 0,
+  "checks": [
+    "public Try Demo authenticates",
+    "stored demo income",
+    "stored demo spending",
+    "live refresh cookie is Secure and HttpOnly",
+    "public demo writes stored records",
+    "reload refreshes session and retains edits",
+    "public transaction correction persists",
+    "second tester has independent seed totals",
+    "first tester edits do not leak to second tester",
+    "reset restores first demo",
+    "reset removes first demo edits",
+    "reset does not delete another tester records",
+    "public zakat calculation",
+    "AI is unavailable without saving fake advice",
+    "public mobile layout has no horizontal overflow",
+    "demo logout removes authenticated UI",
+    "public registration succeeds",
+    "newly registered user can log in",
+    "registered session survives reload",
+    "only temporary QA account is deleted",
+    "no uncaught browser exceptions"
+  ]
+}

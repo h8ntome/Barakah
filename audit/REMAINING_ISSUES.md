@@ -1,14 +1,12 @@
 # Remaining issues and limits
 
-## P0 — Public hosted application is not verified/ready
+## Resolved — Public hosted demo verified
 
-**Reproduce:** request `https://barakah-gamma.vercel.app/` or `/api/v1/health`; the known alias returned Vercel404 during this audit. The original configuration was static-only. A subsequent hosting change adds the Python API entrypoint and ordered API/SPA routing; see `docs/VERCEL.md`. This does not provision the hosted database or authenticate the deployment account.
+The former404/static-only blocker is resolved at **https://barakah-gamma.vercel.app**. The real frontend and Python API are deployed to Vercel, with a newly provisioned free Neon PostgreSQL database (initially empty, then migrated). Homepage and API readiness return200. **21 real-browser public checks passed**: editable demo, reload persistence, two-tester isolation, owner-only reset, HTTPS cookies, registration/login/logout and mobile layout. See `artifacts/logs/public-demo.txt`, screenshots in `artifacts/public/`, and `docs/VERCEL.md`.
 
-**Needed:** Neon terms acceptance and persistent hosted PostgreSQL, one migration release, and production alias verification. Vercel login, production secret/origin configuration and a real cloud build have now succeeded. Run demo isolation/persistence and the mandatory browser registration flow against that exact deployment after provisioning. Only Barakah's project settings were updated (Node24 and server-side configuration); the operator must personally accept Neon terms. No database or paid plan has been created, and no production alias has been changed. A Git push alone does not fix infrastructure or prove deployment success.
+**READY for remote fictional-data demonstration.** This does not certify production financial-service readiness. AI remains unavailable and email recovery requires SMTP.
 
-The user's exact failing registration URL/request remains unknown; the configured local baseline worked, and the separate unsupported-origin403 was reproduced. Do not claim the particular reported public failure is conclusively diagnosed or fixed.
-
-**Verified fallback:** `bash scripts/start-local.sh` provides a working laptop demo. The final overall hosted-release verdict remains **NOT READY**, despite passing local core workflows.
+Production was published explicitly with the CLI. Git branch tracking remains set to `main`; for future automatic production releases select `audit/full-application-fix` in Vercel's dashboard, or continue deliberate `vercel deploy --prod` releases. A Git push alone currently creates previews, not a new production release.
 
 ## P2 — Legacy and non-latest trade correction is deliberately bounded
 

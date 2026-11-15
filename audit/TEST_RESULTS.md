@@ -1,10 +1,18 @@
 # Executed test results — 2026-11-15
 
-## Vercel hosting follow-up
+## Public production verification — 2026-11-15
 
-The subsequent Vercel entrypoint/configuration change passed **121 SQLite tests** (one PostgreSQL-only test skipped), **122 PostgreSQL tests**, **64 frontend tests**, and the production frontend build. The added real-PostgreSQL entrypoint test exercises production HTTPS cookies, demo isolation, persisted writes, refresh and reset. Logs: `artifacts/logs/vercel-*.txt`. An initial Alembic import-path failure was repaired and the complete suites rerun. Generic schema validation could not validate Vercel's upstream schema itself; no cloud-build validation is claimed. Public deployment remains blocked by account login and hosted database configuration; see `../docs/VERCEL.md`.
+**https://barakah-gamma.vercel.app is now live.** After the owner accepted Neon terms, the free `barakah-demo` database was provisioned in `iad1` for Production only. It contained zero public tables before migration; all existing migrations applied and Alembic parity passed. Vercel production deployment `dpl_GNC9Z3btAS9FBxAYsMSai1JyLVqZ` is Ready and assigned to the public alias. Homepage and API readiness return200.
 
-The original full-application audit results below are retained as dated evidence; its browser journeys were not rerun against a public deployment.
+`BARAKAH_PUBLIC_SMOKE=1 python3 tests/e2e/public_demo.py` passed **21 named checks** against the actual public deployment: Try Demo, seeded data, Secure/HttpOnly refresh cookie, creation/correction, reload persistence, two-browser isolation, owner-only reset, zakat, unavailable AI, mobile layout, logout, registration/login/reload and cleanup of the synthetic registered account. No public API mocks were used. The two initial test failures were harness assertions (current-URL cookie listing omits API-path cookies; an expected checking balance was not displayed in the transaction list); browser state and the actual corrected transaction amount are now checked instead. No application behavior was weakened. Logs: `artifacts/logs/public-demo.txt` and `vercel-production-build.txt`; inspected screenshots: `artifacts/public/`.
+
+Verdict: **READY for remote fictional-data demo**, not a production financial-service certification. Actual SMTP, non-Chromium devices and production load remain outside this verification.
+
+## Vercel hosting follow-up (earlier)
+
+The subsequent Vercel entrypoint/configuration change passed **121 SQLite tests** (one PostgreSQL-only test skipped), **122 PostgreSQL tests**, **64 frontend tests**, and the production frontend build. The added real-PostgreSQL entrypoint test exercises production HTTPS cookies, demo isolation, persisted writes, refresh and reset. Logs: `artifacts/logs/vercel-*.txt`. An initial Alembic import-path failure was repaired and the complete suites rerun. Generic schema validation could not validate Vercel's upstream schema itself; no cloud-build validation is claimed. This earlier account/database blocker was subsequently resolved; see the public verification above and `../docs/VERCEL.md`.
+
+The original full-application audit results below are retained as dated evidence. The new public smoke above supplements, rather than relabels, those local journeys.
 
 ## Environment and evidence scope
 

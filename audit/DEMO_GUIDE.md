@@ -1,5 +1,9 @@
 # Demonstration guide
 
+## Public demo — ready for remote testers
+
+Open **https://barakah-gamma.vercel.app** and choose **Try Demo**. No Vercel account or shared password is required. Each tester gets a private editable fictional workspace, persisted in hosted PostgreSQL. Reset through **Home → Settings → Reset demo data**; demos expire after24 hours. Public browser verification passed21 checks. AI is intentionally unavailable; no actual money moves.
+
 ## Start locally
 
 Requirements: Python 3.11–3.13, Node 20.19+, dependencies installed. No API key/model is required.
