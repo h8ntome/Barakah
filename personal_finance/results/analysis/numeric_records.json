@@ -1,0 +1,636 @@
+[
+  {
+    "model_key": "base",
+    "question_id": "budgeting-01",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "base",
+    "question_id": "budgeting-02",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "base",
+    "question_id": "budgeting-03",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "budgeting-04",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "base",
+    "question_id": "budgeting-05",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "base",
+    "question_id": "budgeting-06",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "base",
+    "question_id": "budgeting-07",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "budgeting-08",
+    "status": "correct",
+    "score": 1,
+    "extracted": "85.00",
+    "unit": "USD"
+  },
+  {
+    "model_key": "base",
+    "question_id": "budgeting-09",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "budgeting-10",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "base",
+    "question_id": "saving-01",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "base",
+    "question_id": "saving-02",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "base",
+    "question_id": "saving-03",
+    "status": "correct",
+    "score": 1,
+    "extracted": "105.00",
+    "unit": "USD"
+  },
+  {
+    "model_key": "base",
+    "question_id": "saving-04",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "saving-05",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "base",
+    "question_id": "saving-06",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "saving-07",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "base",
+    "question_id": "saving-08",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "debt-01",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "debt-02",
+    "status": "correct",
+    "score": 1,
+    "extracted": "843.00",
+    "unit": "USD"
+  },
+  {
+    "model_key": "base",
+    "question_id": "debt-03",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "debt-04",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "debt-05",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "base",
+    "question_id": "debt-06",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "debt-07",
+    "status": "correct",
+    "score": 1,
+    "extracted": "78.00",
+    "unit": "USD"
+  },
+  {
+    "model_key": "base",
+    "question_id": "debt-08",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "decisions-01",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "base",
+    "question_id": "decisions-02",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "decisions-03",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "base",
+    "question_id": "decisions-04",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "base",
+    "question_id": "decisions-05",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "decisions-06",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "base",
+    "question_id": "decisions-07",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "decisions-08",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "literacy-01",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "literacy-02",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "literacy-03",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "literacy-04",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "literacy-05",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "base",
+    "question_id": "literacy-06",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "literacy-07",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "literacy-08",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "base",
+    "question_id": "conversations-01",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "conversations-02",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "conversations-03",
+    "status": "correct",
+    "score": 1,
+    "extracted": "1750.00",
+    "unit": "USD"
+  },
+  {
+    "model_key": "base",
+    "question_id": "conversations-04",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "conversations-05",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "conversations-06",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "base",
+    "question_id": "conversations-07",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "base",
+    "question_id": "conversations-08",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "budgeting-01",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "budgeting-02",
+    "status": "incorrect",
+    "score": 0,
+    "extracted": "110.00",
+    "unit": "USD"
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "budgeting-03",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "budgeting-04",
+    "status": "correct",
+    "score": 1,
+    "extracted": "34840.00",
+    "unit": "USD"
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "budgeting-05",
+    "status": "correct",
+    "score": 1,
+    "extracted": "130.00",
+    "unit": "USD"
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "budgeting-06",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "budgeting-07",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "budgeting-08",
+    "status": "incorrect",
+    "score": 0,
+    "extracted": "15.00",
+    "unit": "USD"
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "budgeting-09",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "budgeting-10",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "saving-01",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "saving-02",
+    "status": "incorrect",
+    "score": 0,
+    "extracted": "120.00",
+    "unit": "USD"
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "saving-03",
+    "status": "correct",
+    "score": 1,
+    "extracted": "105.00",
+    "unit": "USD"
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "saving-04",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "saving-05",
+    "status": "correct",
+    "score": 1,
+    "extracted": "4200.00",
+    "unit": "USD"
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "saving-06",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "saving-07",
+    "status": "correct",
+    "score": 1,
+    "extracted": "7.50",
+    "unit": "percent"
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "saving-08",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "debt-01",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "debt-02",
+    "status": "correct",
+    "score": 1,
+    "extracted": "843.00",
+    "unit": "USD"
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "debt-03",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "debt-04",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "debt-05",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "debt-06",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "debt-07",
+    "status": "correct",
+    "score": 1,
+    "extracted": "78.00",
+    "unit": "USD"
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "debt-08",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "decisions-01",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "decisions-02",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "decisions-03",
+    "status": "correct",
+    "score": 1,
+    "extracted": "55.00",
+    "unit": "USD"
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "decisions-04",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "decisions-05",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "decisions-06",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "decisions-07",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "decisions-08",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "literacy-01",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "literacy-02",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "literacy-03",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "literacy-04",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "literacy-05",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "literacy-06",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "literacy-07",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "literacy-08",
+    "status": "correct",
+    "score": 1,
+    "extracted": "45.00",
+    "unit": "USD"
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "conversations-01",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "conversations-02",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "conversations-03",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "conversations-04",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "conversations-05",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "conversations-06",
+    "status": "not_applicable",
+    "score": null
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "conversations-07",
+    "status": "unparseable",
+    "score": 0
+  },
+  {
+    "model_key": "candidate",
+    "question_id": "conversations-08",
+    "status": "not_applicable",
+    "score": null
+  }
+]

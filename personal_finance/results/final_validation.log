@@ -1,0 +1,39 @@
+{
+  "validated_at": "2026-11-15T16:33:03.820134+00:00",
+  "script_sha256": "0ac50f29ee2265f39fcffee6b067e20dc0d1d861de666102a2b45ea539e541c3",
+  "all_checks_passed": true,
+  "checks": {
+    "original_freeze_integrity": true,
+    "full_completed_50_each": true,
+    "ids_and_order_match_predeclared": true,
+    "checkpoint_revisions_match": true,
+    "metadata_parity": true,
+    "all_prompt_hashes_equal": true,
+    "response_hashes_valid": true,
+    "input_ids_identical_all50": true,
+    "resolved_generation_configs_identical_all50": true,
+    "actual_prompt_tokens_match_supplement": true,
+    "freeze_precedes_both_runs": true,
+    "independent_numeric_counts_agree": true,
+    "canonical_packets_50_unique": true,
+    "human_scores_all_null": true,
+    "packets_match_separate_mapping": true,
+    "mapping_not_inside_packets": true
+  },
+  "metadata_parity_fields": {
+    "software": true,
+    "precision": true,
+    "hostname": true,
+    "effective_generation_config": true,
+    "chat_template_sha256": true,
+    "system_prompt_sha256": true,
+    "inference_config": true,
+    "gpu_name": true
+  },
+  "independent_numeric_correct": {
+    "base": 5,
+    "candidate": 9
+  },
+  "explicit_model_identity_text_flags": [],
+  "canonical_rubric_sha256": "27ab3aa1571a66d0b637355caf0284b999e0c6a836b32d41484c8f43d8ed5503"
+}

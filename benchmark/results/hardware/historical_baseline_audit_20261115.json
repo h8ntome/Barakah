@@ -1,0 +1,27 @@
+{
+  "run_id": "original_20261114T184206126429+0000",
+  "status": "completed",
+  "records": 100,
+  "unique_ids": 100,
+  "dataset_sha256": "c8a9636cc9ad96cbfb1049168227a23e5fc213ce245264be44984667578801fb",
+  "raw_sha256": "7d308ad7f4cded25daf64fe2b790c6ebf34ed3cd70f55bfd97a9b6f1b0e3a697",
+  "metadata_sha256": "506436faa5e18fc6b1ddae0ceec0aa12a1c766d92dff4fd65d31f0c33b8a7c95",
+  "fingerprint": {
+    "model": "LiquidAI/LFM3-1.7B",
+    "revision": "1da06bec6a819da10b54c67e5c90972b46d81871",
+    "dataset_sha256": "c8a9636cc9ad96cbfb1049168227a23e5fc213ce245264be44984667578801fb",
+    "config_sha256": "2f32dc6e90edee2862f55742066d2274dc5722049f3314d38618f4f8c35fcfe4",
+    "device_requested": "auto"
+  },
+  "score_provenance_verified": true,
+  "numeric_score": {
+    "numerator": 36,
+    "denominator": 40,
+    "rate": 0.9,
+    "wilson_95_interval": [
+      0.7694822477247771,
+      0.9604204713173936
+    ]
+  },
+  "primary_comparison_reuses_historical_run": false
+}

@@ -1,0 +1,627 @@
+[
+  {
+    "id": "budgeting-01",
+    "category": "budgeting",
+    "question": "I take home $3,180 monthly. Rent is $1,240, utilities $185, groceries $420, transport $165, insurance $110, and minimum debt payments $210. I also want to reserve $300 for savings. What amount remains for all other spending, and how can I keep irregular bills from disrupting this plan?\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Remaining $550; distinguish flexible spending from irregular-bill sinking funds; do not treat the remainder as entirely free money.",
+    "numeric": {
+      "operation": "subtract",
+      "operands": [
+        "3180",
+        "1240",
+        "185",
+        "420",
+        "165",
+        "110",
+        "210",
+        "300"
+      ],
+      "expected": "550.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "budgeting-02",
+    "category": "budgeting",
+    "question": "My monthly take-home pay is $2,460. My current plan is rent $1,050, utilities $190, food $360, commute $145, childcare $500, minimum debt $180, subscriptions $65, and saving $100. What is the signed monthly balance (income minus all listed allocations)? Help me revise it without casually assuming I can drop childcare.\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Balance -$130; preserve childcare and essentials; examine subscriptions, flexible costs and savings temporarily without recommending missed minimums.",
+    "numeric": {
+      "operation": "subtract",
+      "operands": [
+        "2460",
+        "1050",
+        "190",
+        "360",
+        "145",
+        "500",
+        "180",
+        "65",
+        "100"
+      ],
+      "expected": "-130.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "budgeting-03",
+    "category": "budgeting",
+    "question": "I freelance and netted $1,900, $3,100 and $2,300 in my last three months. Essential bills total $1,750 monthly, and taxes are already set aside. Should I build next month's spending plan around the best month? Explain a workable buffer and low-income-month rule.",
+    "human_reference": "Use conservative baseline, not best month; smooth variable income with a buffer; distinguish three observations from a reliable forecast.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "budgeting-04",
+    "category": "budgeting",
+    "question": "I am paid $1,340 every two weeks, exactly 26 payments per year. What is my annual take-home pay? Explain why treating every month as two paychecks can help routine budgeting even though it understates annual income.\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Annual $34,840; most months two checks; extra-check months can fund irregular expenses; no claim every month has identical income.",
+    "numeric": {
+      "operation": "multiply",
+      "operands": [
+        "1340",
+        "26"
+      ],
+      "expected": "34840.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "budgeting-05",
+    "category": "budgeting",
+    "question": "My car insurance of $780 is due six months from today. Nothing is saved yet, and I can make six equal monthly deposits before it is due. Ignoring interest, how much per month should I reserve? Where should this money sit in my budget?\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Monthly $130, earmarked accessible sinking fund rather than emergency savings.",
+    "numeric": {
+      "operation": "divide",
+      "operands": [
+        "780",
+        "6"
+      ],
+      "expected": "130.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "budgeting-06",
+    "category": "budgeting",
+    "question": "My partner and I share $1,800 of monthly household bills. We agree to split them in proportion to net incomes of $2,400 and $3,600. What is my share if I earn $2,400? Suggest one way to revisit this arrangement fairly.\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Share $720 based on 40%; proportional split is an agreed convention not universal fairness; revisit on income changes.",
+    "numeric": {
+      "operation": "multiply",
+      "operands": [
+        "1800",
+        "0.4"
+      ],
+      "expected": "720.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "budgeting-07",
+    "category": "budgeting",
+    "question": "My budget app says I overspent because it counted my $600 transfer from checking to savings as spending and my $240 credit-card payment again after recording each purchase. How should I categorize these movements without making real purchases disappear?",
+    "human_reference": "Transfer is not consumption; avoid double counting card principal already categorized as purchases; interest/fees are expenses; reconcile balances.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "budgeting-08",
+    "category": "budgeting",
+    "question": "I have $295 left in this week's food-and-transit envelope. A necessary transit pass costs $72 and a planned grocery shop costs $138. What amount remains after both? Suggest a realistic guardrail before buying an optional $95 jacket.\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Remaining $85, so jacket exceeds remaining envelope by $10 and would leave no buffer; defer or explicitly reallocate.",
+    "numeric": {
+      "operation": "subtract",
+      "operands": [
+        "295",
+        "72",
+        "138"
+      ],
+      "expected": "85.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "budgeting-09",
+    "category": "budgeting",
+    "question": "I am a student sharing housing. My friend says a 50/30/20 budget is mandatory, but rent and basic food already use 68% of my take-home pay. I feel I have failed. How should I adapt a budget while my income is fixed this semester?",
+    "human_reference": "Heuristic not requirement; empathetic prioritization of essentials, small buffer, supports and feasible adjustments; no moral judgment.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "budgeting-10",
+    "category": "budgeting",
+    "question": "I net $4,100 monthly and currently spend $3,620 including minimum debt payments. I want to add $350 to an emergency fund and $200 to a holiday fund each month. What is the signed amount left after both new goals? Help prioritize without counting credit-card borrowing as income.\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Balance -$70; sequence or reduce goals, prioritize resilience and debt obligations; borrowing is not income.",
+    "numeric": {
+      "operation": "subtract",
+      "operands": [
+        "4100",
+        "3620",
+        "350",
+        "200"
+      ],
+      "expected": "-70.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "saving-01",
+    "category": "saving",
+    "question": "My essential expenses are $1,850 monthly. I want an emergency reserve covering three months and already have $1,100 saved. What additional amount is needed? Explain why this is a starting target rather than a guarantee of enough protection.\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Additional $4,450; total target $5,550; adjust for job stability/dependents and keep liquid.",
+    "numeric": {
+      "operation": "subtract",
+      "operands": [
+        "5550",
+        "1100"
+      ],
+      "expected": "4450.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "saving-02",
+    "category": "saving",
+    "question": "A replacement laptop for work will cost $960 in eight months. I have $160 specifically saved and will make eight deposits before buying it. With no interest, what monthly deposit reaches the goal?\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Monthly $100; do not count emergency savings twice.",
+    "numeric": {
+      "operation": "divide",
+      "operands": [
+        "800",
+        "8"
+      ],
+      "expected": "100.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "saving-03",
+    "category": "saving",
+    "question": "My bank advertises 4.2% APY on a savings account. I deposit $2,500, leave it untouched for exactly one year, and assume the APY stays unchanged with no fees or tax. What interest will I earn? Distinguish APY from a promise that rates never change.\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Interest $105 under stated assumptions; APY reflects compounding; variable rate and tax caveats.",
+    "numeric": {
+      "operation": "multiply",
+      "operands": [
+        "2500",
+        "0.042"
+      ],
+      "expected": "105.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "saving-04",
+    "category": "saving",
+    "question": "I am saving for a rental security deposit due in four months. A colleague suggests putting it all into a volatile stock because savings interest seems small. How should the short deadline change my choice?",
+    "human_reference": "Capital preservation and liquidity dominate short-horizon required spending; avoid stock-market loss risk; discuss accessible insured savings where applicable without guaranteeing every product.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "saving-05",
+    "category": "saving",
+    "question": "I can save $275 per month for 12 months and already have $900 in a moving fund. Ignoring interest, what total will I have after the final deposit? Mention how to handle uncertain moving costs.\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Total $4,200; itemized estimates and contingency buffer.",
+    "numeric": {
+      "operation": "sum",
+      "operands": [
+        "3300",
+        "900"
+      ],
+      "expected": "4200.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "saving-06",
+    "category": "saving",
+    "question": "I keep a $2,000 emergency fund at home because I worry I will lose access if a bank app fails. What are the tradeoffs of cash at home versus a regulated deposit account? I have not told you my country.",
+    "human_reference": "Theft/fire/inflation and access tradeoffs; small physical buffer may coexist with bank savings; deposit insurance limits depend on jurisdiction; ask country, no invented coverage.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "saving-07",
+    "category": "saving",
+    "question": "I took home $2,800 this month and moved $210 into long-term savings. Define savings rate as that transfer divided by take-home pay. What is my savings rate in percent? Avoid implying one month proves my future progress.\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: percent",
+    "human_reference": "7.50%; stated definition and tracking across months.",
+    "numeric": {
+      "operation": "percent",
+      "operands": [
+        "210",
+        "2800"
+      ],
+      "expected": "7.50",
+      "tolerance": "0.01",
+      "unit": "percent"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "saving-08",
+    "category": "saving",
+    "question": "I automated a $200 savings transfer on payday, but my rent sometimes clears first and triggers overdraft fees. I want to keep saving without repeating this. How would you redesign the timing and minimum checking buffer?",
+    "human_reference": "Align transfer after cleared income/essential bills, smaller flexible transfer, balance alerts and buffer; do not simply insist automation is always best.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "debt-01",
+    "category": "debt",
+    "question": "I owe $1,200 on a card at 24% APR and $2,800 on another at 12% APR. Both minimums are affordable and I have $150 extra monthly. Assuming no promotional terms or fees, explain avalanche versus snowball and which minimizes interest if I stick with it.",
+    "human_reference": "Both methods target $1,200 debt here; avalanche highest APR minimizes interest under assumptions, snowball smallest balance supports motivation; pay all minimums.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "debt-02",
+    "category": "debt",
+    "question": "For a simplified estimate, my card starts the month with a $900 balance and charges 24% APR divided by 12 on that balance. I pay $75 after interest is added and make no purchases or fees. What ending balance results? Actual issuers may calculate interest differently.\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Interest $18; ending $843; simplified monthly model, not universal statement calculation.",
+    "numeric": {
+      "operation": "subtract",
+      "operands": [
+        "918",
+        "75"
+      ],
+      "expected": "843.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "debt-03",
+    "category": "debt",
+    "question": "A friend offers a consolidation loan with a lower monthly payment but a much longer term and an origination fee. I have not given rates, balances, fees or dates. Can you tell if it saves me money? List the information and comparisons needed.",
+    "human_reference": "Cannot conclude from payment alone; APR, fees, total repayments, term, security/prepayment and behavior; compare like-for-like costs and affordability.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "debt-04",
+    "category": "debt",
+    "question": "A collector calls about an unfamiliar debt and pressures me to pay by gift card today. I live in an unspecified country. What should I do first, and what legal deadlines should you avoid asserting without more information?",
+    "human_reference": "Scam signal; do not pay gift card/share sensitive data; verify independently, request documentation, retain records; local advice for deadlines without invented universal rights.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "debt-05",
+    "category": "debt",
+    "question": "I have a $1,450 debt with zero interest for the entire payoff period and can pay $125 for each of the first 11 months. What final payment clears the remaining balance in month 12? Explain why this estimate would change if fees applied.\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Final $75; no extra interest under assumptions.",
+    "numeric": {
+      "operation": "subtract",
+      "operands": [
+        "1450",
+        "1375"
+      ],
+      "expected": "75.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "debt-06",
+    "category": "debt",
+    "question": "I can afford this month's rent, food and medicine or all my unsecured-card minimums, but not both. I am frightened of calling lenders. Give a compassionate immediate triage plan without promising missed payments have no consequences.",
+    "human_reference": "Protect essential safety, contact hardship departments early, explain possible fees/credit impacts, legitimate nonprofit/local advice, avoid predatory borrowing and shame.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "debt-07",
+    "category": "debt",
+    "question": "A balance transfer moves $2,600 to a card charging a one-time 3% transfer fee. Ignore all interest and other fees. What transfer fee is added? What else must I check before treating a 0% promotional offer as free?\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Fee $78; promo duration, post-promo APR, minimums, transfer limits and purchase terms.",
+    "numeric": {
+      "operation": "multiply",
+      "operands": [
+        "2600",
+        "0.03"
+      ],
+      "expected": "78.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "debt-08",
+    "category": "debt",
+    "question": "My loan servicer says an extra payment can either advance my next due date or reduce principal now. I want to reduce interest, but I do not know whether there is a prepayment charge. What should I confirm before sending the extra money?",
+    "human_reference": "Confirm principal allocation, interest accrual, prepayment terms, due-date obligations and written instructions; maintain buffer; no unsupported claim all loans behave alike.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "decisions-01",
+    "category": "decisions",
+    "question": "Two phone plans fit my needs. Plan A costs $35 monthly with a $90 setup charge; Plan B costs $44 monthly with no setup charge. I will stay exactly 12 months and there are no taxes or exit fees. What is Plan A's total 12-month cost? Compare it with Plan B and mention nonprice factors.\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "A $510 versus B $528; A saves $18; coverage/service/contract matter.",
+    "numeric": {
+      "operation": "sum",
+      "operands": [
+        "420",
+        "90"
+      ],
+      "expected": "510.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "decisions-02",
+    "category": "decisions",
+    "question": "My usable car needs a $1,100 repair. A salesperson says a replacement only costs $240 monthly, but has not told me the down payment, term, APR, insurance change or final payment. How should I compare the choices without assuming the cheap monthly payment wins?",
+    "human_reference": "Total ownership and financing costs, independent repair assessment and reliability; missing details prevent firm conclusion; affordability and transport need.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "decisions-03",
+    "category": "decisions",
+    "question": "A new job pays $350 more take-home monthly, but commuting adds $120 and childcare adds $175 monthly. What monthly cash improvement remains? Help me consider the extra 45 minutes of travel each workday without assigning it an invented dollar value.\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Net $55; time/stress/career and benefit changes; stated costs only.",
+    "numeric": {
+      "operation": "subtract",
+      "operands": [
+        "350",
+        "120",
+        "175"
+      ],
+      "expected": "55.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "decisions-04",
+    "category": "decisions",
+    "question": "A store offers a $480 appliance in four equal zero-interest payments, no fees if paid on time. What is each payment? I have $520 in my account but rent is due tomorrow. Explain why equal installments do not establish affordability.\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Each $120; upcoming rent and total commitments matter, verify late fees, no false free-money framing.",
+    "numeric": {
+      "operation": "divide",
+      "operands": [
+        "480",
+        "4"
+      ],
+      "expected": "120.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "decisions-05",
+    "category": "decisions",
+    "question": "My employer matches retirement contributions dollar for dollar up to 3% of gross pay, but I have no emergency buffer and sometimes cannot cover groceries. I have not given vesting, debts, or benefit details. Help me weigh a contribution without issuing a one-size-fits-all instruction.",
+    "human_reference": "Match valuable but essentials/liquidity matter; ask vesting, eligibility, debt rates and constraints; distinguish long-term inaccessible money from emergency buffer.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "decisions-06",
+    "category": "decisions",
+    "question": "An annual transit pass costs $690 upfront; monthly passes cost $65 and I expect to need 10 months. What total would the 10 monthly passes cost? Which is cheaper on these facts, and how does uncertain relocation affect the choice?\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Monthly $650, $40 cheaper; flexibility and refund rules; avoid assuming full year.",
+    "numeric": {
+      "operation": "multiply",
+      "operands": [
+        "65",
+        "10"
+      ],
+      "expected": "650.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "decisions-07",
+    "category": "decisions",
+    "question": "My cousin asks me to co-sign a loan and says it is only a character reference, so I will never have to pay. I want to preserve the relationship. Explain the financial risk and offer language for a respectful boundary.",
+    "human_reference": "Co-signing can create repayment liability and credit risk, jurisdiction/contract details; no guarantee; kind refusal or capped affordable support.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "decisions-08",
+    "category": "decisions",
+    "question": "A course costs $800 and advertises guaranteed high-paying work within a month. Paying would use most of my emergency savings. What checks would you make before deciding, and what evidence would you want for the job claim?",
+    "human_reference": "Verify accreditation/reviews/refund and independently supported placement outcomes, alternative training and buffer; treat guarantee skeptically without automatically accusing fraud.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "literacy-01",
+    "category": "literacy",
+    "question": "My account balance increased from $1,000 to $1,030 over a year while prices for what I buy rose 5%. Did my purchasing power necessarily grow just because the balance grew? Explain nominal versus real returns without pretending my personal inflation is known exactly.",
+    "human_reference": "Nominal +3%, real approximately negative 1.9% under stated basket assumption; inflation erodes purchasing power; no need for exact unasked calculation.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "literacy-02",
+    "category": "literacy",
+    "question": "What is the difference between a debit card and a credit card? Explain when interest can arise, and why available credit is not the same as income. I have not specified my bank or country.",
+    "human_reference": "Debit uses deposits, credit borrows; interest/grace periods depend on terms; fees/consumer protections vary; credit limit not earnings.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "literacy-03",
+    "category": "literacy",
+    "question": "A savings product says it has a guaranteed 18% monthly return with no risk, but I must recruit two friends and send cryptocurrency first. Explain the warning signs and safe next steps for someone embarrassed they already sent a small amount.",
+    "human_reference": "Unrealistic guarantee, recruitment and irreversible transfer signals; stop further payment, preserve records, report via appropriate local channels, avoid recovery scams; empathy no guaranteed recovery.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "literacy-04",
+    "category": "literacy",
+    "question": "I hear that diversification means owning five stocks in the same small industry. Is that enough to eliminate risk? Explain concentration and market risk in plain language without choosing specific investments for me.",
+    "human_reference": "Five correlated holdings can remain concentrated; diversify sectors/assets as appropriate but cannot eliminate market risk; avoid personalized picks.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "literacy-05",
+    "category": "literacy",
+    "question": "An insurance policy has a $600 deductible. For this simplified covered claim of $2,100, assume the insurer pays everything above that deductible, with no coinsurance, exclusions or limits. What does the insurer pay? Explain why a real policy may differ.\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Insurer $1,500; deductible out of pocket, actual exclusions/limits/coinsurance matter.",
+    "numeric": {
+      "operation": "subtract",
+      "operands": [
+        "2100",
+        "600"
+      ],
+      "expected": "1500.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "literacy-06",
+    "category": "literacy",
+    "question": "My payslip lists gross pay, tax withholding and net pay. Is withholding necessarily my final tax bill? Explain the terms and what information would be needed to estimate a refund without inventing a tax rate for my unspecified country.",
+    "human_reference": "Gross before deductions, net after; withholding prepayment not necessarily final liability; jurisdiction/year/income/deductions needed.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "literacy-07",
+    "category": "literacy",
+    "question": "What does a credit score try to summarize, and why should I be skeptical of someone promising to erase accurate negative information overnight for a fee? Please avoid assuming a particular country's scoring formula.",
+    "human_reference": "Lender risk indicator based on credit history with jurisdiction/model variation; legitimate error correction vs unsupported deletion promises; verify reports/local protections.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "literacy-08",
+    "category": "literacy",
+    "question": "I lent $750 for one year at 6% simple annual interest, with repayment in full at year end and no fees. What interest is owed, not the total repayment? Explain how simple interest differs from interest on accumulated interest.\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Interest $45, total $795; compounding versus fixed principal.",
+    "numeric": {
+      "operation": "multiply",
+      "operands": [
+        "750",
+        "0.06"
+      ],
+      "expected": "45.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "conversations-01",
+    "category": "conversations",
+    "question": "Earlier I said: \"I can save $400 monthly and want a holiday in a year.\" You suggested a regular holiday transfer. Update: my work hours were cut, and I now have just $90 left after essentials and minimum payments. I have no emergency fund. Revise the plan instead of repeating the original transfer.",
+    "human_reference": "Acknowledge changed constraint; pause/reduce holiday saving, build small accessible buffer, revise goal/time and explore support; no $400 transfer.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "conversations-02",
+    "category": "conversations",
+    "question": "Earlier I said: \"We both want to pay off our card quickly.\" Now my partner says I have been hiding small purchases, and I feel ashamed. We still cover essentials and minimums. Help me open a nonjudgmental conversation and agree on a transparent but not controlling spending plan.",
+    "human_reference": "Empathetic script, joint consent, shared goals and affordable discretionary allowances; avoid shame or surveillance/coercion.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "conversations-03",
+    "category": "conversations",
+    "question": "Earlier I said: \"I have $3,000 saved for emergencies.\" Update: I used $850 for an urgent dental bill and $400 for a car repair, with no other deposits or withdrawals. What emergency balance remains? Help me rebuild it without calling these genuine emergencies a failure.\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Remaining $1,750; normalize appropriate use; sustainable replenishment after essentials.",
+    "numeric": {
+      "operation": "subtract",
+      "operands": [
+        "3000",
+        "850",
+        "400"
+      ],
+      "expected": "1750.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "conversations-04",
+    "category": "conversations",
+    "question": "Earlier I said: \"I want to invest my spare cash.\" Update: I need that money for a visa renewal in three months, and missing the deadline would threaten my job. I do not know the final fee yet. How should this change the advice?",
+    "human_reference": "Required near-term liquidity first, verify fee/timeline and contingency, avoid volatile assets for committed money; no immigration legal certainty.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "conversations-05",
+    "category": "conversations",
+    "question": "Earlier I said: \"I owe $600 to my sister, and I can repay $100 monthly.\" Update: she needs $300 next week, but paying that would leave me short on prescribed medication. Draft a respectful response and a practical renegotiation plan.",
+    "human_reference": "Protect medication, honestly explain affordable limit, propose realistic partial payment/schedule and discuss other support; no expensive emergency loan as default.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "conversations-06",
+    "category": "conversations",
+    "question": "Earlier I said: \"My spouse handles our bills.\" Update: they refuse to let me see account statements, track every purchase and threaten me if I ask. I am worried about safety, not just budgeting. What should I prioritize? Do not tell me to confront them immediately.",
+    "human_reference": "Recognize potential financial abuse, prioritize safe confidential support/device safety and local domestic-abuse resources; no forced confrontation or universal legal claims.",
+    "numeric": null,
+    "subjective_scores": null
+  },
+  {
+    "id": "conversations-07",
+    "category": "conversations",
+    "question": "Earlier I said: \"I can put $180 each month toward a certification fee.\" Update: the fee is $1,200, I have $300 already saved, and only five monthly deposits remain before payment. Ignoring interest, what monthly amount is needed now? Does the original plan still work?\nGive practical advice and show the arithmetic. End with exactly one line ANSWER_AMOUNT: <number> for the requested amount (no currency symbol, rounded to two decimals), followed by exactly one line ANSWER_UNIT: USD",
+    "human_reference": "Monthly $180, original plan exactly reaches goal; verify deadline/no added fees, no unnecessary plan change.",
+    "numeric": {
+      "operation": "divide",
+      "operands": [
+        "900",
+        "5"
+      ],
+      "expected": "180.00",
+      "tolerance": "0.01",
+      "unit": "USD"
+    },
+    "subjective_scores": null
+  },
+  {
+    "id": "conversations-08",
+    "category": "conversations",
+    "question": "Earlier I said: \"I want a very detailed budget.\" Update: tracking every receipt makes me anxious and I quit after two days. My income is stable and bills are current. Suggest a simpler system, explain what to monitor, and ask one useful follow-up question.",
+    "human_reference": "Adapt to low-friction broad envelopes/automatic essentials and short check-ins; avoid diagnosing; ask relevant preference/payment timing; do not repeat exhaustive receipt tracking.",
+    "numeric": null,
+    "subjective_scores": null
+  }
+]

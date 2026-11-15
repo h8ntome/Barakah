@@ -1,0 +1,54 @@
+[1;91mE-001h rocSHMEM[0m Could not open libnuma. Returning	[90mNUMAWrapper@src/gda/numa_wrapper.cpp:48[0m
+Loading weights:   0%|          | 0/286 [00:00<?, ?it/s]Loading weights: 100%|██████████| 286/286 [00:00<00:00, 23027.93it/s]
+[transformers] The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+[transformers] Passing `generation_config` together with generation-related arguments=({'max_new_tokens'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+base 1/50 budgeting-01 tokens=222 error=None
+base 2/50 budgeting-02 tokens=384 error=None
+base 3/50 saving-01 tokens=243 error=None
+base 4/50 saving-02 tokens=145 error=None
+base 5/50 debt-01 tokens=384 error=None
+base 6/50 debt-02 tokens=156 error=None
+base 7/50 decisions-01 tokens=374 error=None
+base 8/50 decisions-02 tokens=384 error=None
+base 9/50 literacy-01 tokens=384 error=None
+base 10/50 literacy-02 tokens=384 error=None
+base 11/50 conversations-01 tokens=384 error=None
+base 12/50 conversations-02 tokens=384 error=None
+base 13/50 budgeting-03 tokens=384 error=None
+base 14/50 budgeting-04 tokens=384 error=None
+base 15/50 budgeting-05 tokens=216 error=None
+base 16/50 budgeting-06 tokens=181 error=None
+base 17/50 budgeting-07 tokens=384 error=None
+base 18/50 budgeting-08 tokens=240 error=None
+base 19/50 budgeting-09 tokens=384 error=None
+base 20/50 budgeting-10 tokens=231 error=None
+base 21/50 saving-03 tokens=335 error=None
+base 22/50 saving-04 tokens=384 error=None
+base 23/50 saving-05 tokens=204 error=None
+base 24/50 saving-06 tokens=372 error=None
+base 25/50 saving-07 tokens=222 error=None
+base 26/50 saving-08 tokens=384 error=None
+base 27/50 debt-03 tokens=384 error=None
+base 28/50 debt-04 tokens=384 error=None
+base 29/50 debt-05 tokens=201 error=None
+base 30/50 debt-06 tokens=384 error=None
+base 31/50 debt-07 tokens=213 error=None
+base 32/50 debt-08 tokens=384 error=None
+base 33/50 decisions-03 tokens=109 error=None
+base 34/50 decisions-04 tokens=358 error=None
+base 35/50 decisions-05 tokens=384 error=None
+base 36/50 decisions-06 tokens=384 error=None
+base 37/50 decisions-07 tokens=384 error=None
+base 38/50 decisions-08 tokens=384 error=None
+base 39/50 literacy-03 tokens=384 error=None
+base 40/50 literacy-04 tokens=384 error=None
+base 41/50 literacy-05 tokens=353 error=None
+base 42/50 literacy-06 tokens=384 error=None
+base 43/50 literacy-07 tokens=384 error=None
+base 44/50 literacy-08 tokens=231 error=None
+base 45/50 conversations-03 tokens=257 error=None
+base 46/50 conversations-04 tokens=384 error=None
+base 47/50 conversations-05 tokens=384 error=None
+base 48/50 conversations-06 tokens=358 error=None
+base 49/50 conversations-07 tokens=168 error=None
+base 50/50 conversations-08 tokens=324 error=None

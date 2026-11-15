@@ -1,0 +1,19 @@
+test_authored_distribution_and_unique_questions (test_benchmark.BenchmarkTests.test_authored_distribution_and_unique_questions) ... ok
+test_independent_decimal_references_from_scenario_facts (test_benchmark.BenchmarkTests.test_independent_decimal_references_from_scenario_facts) ... ok
+test_negative_and_percent (test_benchmark.BenchmarkTests.test_negative_and_percent) ... ok
+test_release_integrity_when_frozen (test_benchmark.BenchmarkTests.test_release_integrity_when_frozen) ... ok
+test_rubric_and_subset (test_benchmark.BenchmarkTests.test_rubric_and_subset) ... ok
+test_strict_numeric_extraction_does_not_search_prose (test_benchmark.BenchmarkTests.test_strict_numeric_extraction_does_not_search_prose) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.005s
+
+OK
+test_completed_packets_when_available (test_prospective_rubric.ProspectiveRubricTests.test_completed_packets_when_available) ... ok
+test_exact_five_dimensions_and_anchors (test_prospective_rubric.ProspectiveRubricTests.test_exact_five_dimensions_and_anchors) ... ok
+test_separate_amendment_integrity (test_prospective_rubric.ProspectiveRubricTests.test_separate_amendment_integrity) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.003s
+
+OK

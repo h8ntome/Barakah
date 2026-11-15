@@ -2,7 +2,9 @@
 
 An authenticated Islamic personal-finance tracker: transactions, budgets, savings goals, zakat records, sadaqah and manually valued investments. React/Vite + FastAPI/SQLAlchemy/Alembic; SQLite locally, PostgreSQL supported.
 
-**Tracking, not money movement.** No bank sync, payment processing, brokerage execution, live prices or religious certification. **AI is intentionally unavailable**: no model, fake advice, inference API or API key is required. `benchmark/` and model-training work are unchanged.
+**Tracking, not money movement.** No bank sync, payment processing, brokerage execution, live prices or religious certification. **AI is intentionally unavailable in the deployed app**: no fake advice, inference API or API key is required. Real model-only evaluation is separate from the application; no model weights were changed during evaluation.
+
+**Evaluation and submission:** [Fine-Tuning Evaluation and Personal Finance Domain Adaptation](benchmark/rescue/REPORT.md) · [submission checklist](benchmark/rescue/SUBMISSION_CHECKLIST.md). The original numerical comparison is **36/40 LFM3 vs 32/40 Barakah**, with conceptual answers unreviewed. The separate exploratory personal-finance benchmark completed 50 questions/model: **5/23 LFM3 vs 9/23 Barakah** on strict numeric fields, with substantial formatting failures and no reviewed advice-quality scores. It does not replace the original benchmark. **This project is a prototype and is not financial advice.**
 
 ## Start the complete app
 

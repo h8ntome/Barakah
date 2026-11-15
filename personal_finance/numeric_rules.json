@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "claim": "Limited labeled numeric extraction accuracy, NOT subjective advice correctness, financial safety or overall model quality.",
+  "eligible": "Only scenarios with numeric non-null; 23 predeclared probes. All other scenarios have numeric score null.",
+  "reference": "Authored arithmetic computed independently of models with Python Decimal, ROUND_HALF_UP to 0.01. Operands and operations recorded in questions.json; independent literal reference tests cover all numeric scenarios.",
+  "extraction": "Exactly one standalone ANSWER_AMOUNT: signed decimal line and exactly one standalone ANSWER_UNIT: USD or percent line, case sensitive, no currency symbols, grouping commas or exponent notation. These must be the last two nonblank lines in amount/unit order. Reject duplicate labels even when one value is correct. Optional outer whitespace only. Value must have exactly two digits after the decimal point. The unit must equal the scenario unit. No searching the prose for expected values.",
+  "tolerance": "Absolute Decimal difference <= 0.01 inclusive. No relative tolerance.",
+  "outcomes": "correct, incorrect, unparseable, inference_error; all but correct count as failures in the numeric denominator. Missing output remains missing, not silently scored. Report coverage and missing IDs separately. A numerically correct but contradictory narrative is not detected by this limited metric.",
+  "aggregation": "Count correct/eligible observed and correct/all 23 for a full run; no imputation of absent answers. Paired counts use identical scenario IDs. No combined score with human rubric.",
+  "truncation": "Preserve and report token-limit truncation independently. Do not selectively regenerate failed, unparseable, incorrect or truncated responses."
+}

@@ -1,0 +1,204 @@
+[1;91mE-001h rocSHMEM[0m Could not open libnuma. Returning	[90mNUMAWrapper@src/gda/numa_wrapper.cpp:48[0m
+Loading weights:   0%|          | 0/286 [00:00<?, ?it/s]Loading weights: 100%|██████████| 286/286 [00:00<00:00, 23984.22it/s]
+[transformers] Both `max_new_tokens` (=24) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+1/100 BUDGET_001 0.968s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+2/100 BUDGET_002 1.123s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+3/100 BUDGET_003 0.911s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+4/100 BUDGET_004 1.126s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+5/100 BUDGET_005 1.467s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+6/100 BUDGET_006 1.783s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+7/100 BUDGET_007 0.742s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+8/100 BUDGET_008 1.250s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+9/100 BUDGET_009 0.935s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+10/100 BUDGET_010 0.957s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+11/100 BUDGET_011 1.274s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+12/100 BUDGET_012 0.910s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+13/100 BUDGET_013 1.081s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+14/100 BUDGET_014 1.687s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+15/100 BUDGET_015 0.669s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+16/100 BUDGET_016 1.931s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+17/100 BUDGET_017 1.298s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+18/100 BUDGET_018 0.524s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+19/100 BUDGET_019 1.250s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+20/100 BUDGET_020 1.057s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+21/100 INVEST_001 4.756s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+22/100 INVEST_002 2.743s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+23/100 INVEST_003 3.981s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+24/100 INVEST_004 9.426s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+25/100 INVEST_005 5.029s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+26/100 INVEST_006 5.453s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+27/100 INVEST_007 3.477s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+28/100 INVEST_008 7.077s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+29/100 INVEST_009 9.404s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+30/100 INVEST_010 9.395s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+31/100 INVEST_011 6.706s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+32/100 INVEST_012 2.479s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+33/100 INVEST_013 6.443s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+34/100 INVEST_014 4.890s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+35/100 INVEST_015 8.458s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+36/100 INVEST_016 5.799s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+37/100 INVEST_017 5.993s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+38/100 INVEST_018 4.161s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+39/100 INVEST_019 8.171s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+40/100 INVEST_020 8.737s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+41/100 INVEST_021 3.237s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+42/100 INVEST_022 3.525s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+43/100 INVEST_023 9.395s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+44/100 INVEST_024 6.592s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+45/100 INVEST_025 8.245s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+46/100 PRINCIPLE_001 8.585s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+47/100 PRINCIPLE_002 5.600s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+48/100 PRINCIPLE_003 6.966s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+49/100 PRINCIPLE_004 9.400s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+50/100 PRINCIPLE_005 5.924s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+51/100 PRINCIPLE_006 7.724s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+52/100 PRINCIPLE_007 2.870s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+53/100 PRINCIPLE_008 9.395s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+54/100 PRINCIPLE_009 9.406s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+55/100 PRINCIPLE_010 9.394s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+56/100 PRINCIPLE_011 4.323s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+57/100 PRINCIPLE_012 4.745s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+58/100 PRINCIPLE_013 9.396s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+59/100 PRINCIPLE_014 9.401s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+60/100 PRINCIPLE_015 9.396s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+61/100 PRINCIPLE_016 0.769s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+62/100 PRINCIPLE_017 0.817s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+63/100 PRINCIPLE_018 0.769s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+64/100 PRINCIPLE_019 0.818s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+65/100 PRINCIPLE_020 1.131s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+66/100 SAFETY_001 7.720s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+67/100 SAFETY_002 7.607s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+68/100 SAFETY_003 9.418s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+69/100 SAFETY_004 3.844s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+70/100 SAFETY_005 6.448s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+71/100 SAFETY_006 6.867s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+72/100 SAFETY_007 6.621s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+73/100 SAFETY_008 7.777s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+74/100 SAFETY_009 5.876s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+75/100 SAFETY_010 5.412s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+76/100 ZAKAT_001 1.375s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+77/100 ZAKAT_002 1.302s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+78/100 ZAKAT_003 1.374s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+79/100 ZAKAT_004 1.375s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+80/100 ZAKAT_005 1.398s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+81/100 ZAKAT_006 0.793s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+82/100 ZAKAT_007 1.327s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+83/100 ZAKAT_008 0.793s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+84/100 ZAKAT_009 1.447s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+85/100 ZAKAT_010 1.326s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+86/100 ZAKAT_011 0.792s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+87/100 ZAKAT_012 0.817s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+88/100 ZAKAT_013 0.817s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+89/100 ZAKAT_014 1.738s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+90/100 ZAKAT_015 0.841s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+91/100 ZAKAT_016 3.278s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+92/100 ZAKAT_017 8.121s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+93/100 ZAKAT_018 7.109s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+94/100 ZAKAT_019 6.956s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+95/100 ZAKAT_020 7.210s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+96/100 ZAKAT_021 8.865s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+97/100 ZAKAT_022 6.224s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+98/100 ZAKAT_023 9.412s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+99/100 ZAKAT_024 9.085s error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+100/100 ZAKAT_025 7.239s error=None
+barakah-matched_20261115T154845353654+0000

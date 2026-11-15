@@ -21,6 +21,21 @@ def validate_resume_environment(previous, current):
     if execution_signature(previous) != execution_signature(current):
         raise ValueError("Resolved resume environment changed (device, precision, host, runtime or template); start a new run")
 
+def validate_recovered_records(records, questions, meta):
+    by_id = {q['id']:q for q in questions}
+    for r in records:
+        q = by_id.get(r['question_id'])
+        if q is None or r.get('run_id') != meta['run_id'] or r.get('model') != meta['fingerprint']['model']:
+            raise ValueError('Conflicting recovered record identity')
+        if r.get('question') != q['question'] or r.get('revision') != meta['fingerprint']['revision']:
+            raise ValueError('Conflicting recovered question or model revision')
+        if r.get('response_sha256') != hashlib.sha256(r['response'].encode()).hexdigest():
+            raise ValueError('Recovered response integrity mismatch')
+        for key in ('system_prompt_sha256','chat_template_sha256'):
+            if r.get(key) != meta.get(key):
+                raise ValueError('Conflicting recovered prompt or template')
+
+
 def main():
     cfg = config()
     p = argparse.ArgumentParser()
@@ -30,11 +45,25 @@ def main():
     p.add_argument("--resume", help="Exact existing run ID")
     p.add_argument("--device", default=cfg["device"])
     p.add_argument("--smoke-only", action="store_true")
+    p.add_argument("--checkpoint-manifest", type=Path, help="Verified immutable snapshot inventory")
     args = p.parse_args()
     if not re.fullmatch(r"[a-zA-Z0-9_-]+", args.run_name):
         p.error("run-name must contain only letters, digits, underscores or hyphens")
     rows = dataset(cfg)
     validate_data(rows)
+    release = json.loads((ROOT/'datasets/dataset_manifest.json').read_text())
+    if digest(ROOT/cfg['dataset']) != release['sha256']:
+        raise ValueError('Frozen dataset checksum mismatch')
+    checkpoint = None
+    model_source = args.model
+    if args.checkpoint_manifest:
+        from checkpoint import verify_manifest
+        checkpoint = json.loads(args.checkpoint_manifest.read_text())
+        if checkpoint['model'] != args.model or checkpoint['revision'] != args.revision:
+            raise ValueError('Checkpoint manifest does not match model/revision')
+        if checkpoint['kind'] != 'full':
+            raise ValueError('Adapter cannot be loaded as a full model; explicit compatible PEFT base required')
+        model_source = str(verify_manifest(checkpoint))
     if any(q["review_status"] == "reference_pending" for q in rows):
         raise ValueError("Unverified references in dataset; resolve before evaluation")
     revision = args.revision or (cfg["revision"] if args.model == cfg["model"] else None)
@@ -48,6 +77,9 @@ def main():
     meta_path = raw.with_suffix(".meta.json")
     fingerprint = {"model": args.model, "revision": revision, "dataset_sha256": digest(ROOT/cfg["dataset"]),
                    "config_sha256": digest(ROOT/"config.yaml"), "device_requested": args.device}
+    if checkpoint:
+        fingerprint['checkpoint_manifest_sha256'] = digest(args.checkpoint_manifest)
+    fingerprint['runner_sha256'] = digest(Path(__file__))
     if args.resume:
         old = json.loads(meta_path.read_text())
         if old["fingerprint"] != fingerprint:
@@ -58,6 +90,9 @@ def main():
     else:
         meta = {"run_id": run_id, "run_name": args.run_name, "fingerprint": fingerprint,
                 "started_at": now(), "segments": [], "status": "loading", "execution_host": "server2" if __import__("platform").node()=="server2" else "local"}
+    raw.parent.mkdir(parents=True, exist_ok=True)
+    if not args.resume and (raw.exists() or meta_path.exists()):
+        raise FileExistsError('Never overwrite an existing run')
     lock = raw.with_suffix(".lock")
     fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
     os.write(fd, str(os.getpid()).encode())
@@ -66,8 +101,7 @@ def main():
     segment_info = {}
     try:
         done = load_jsonl(raw, repair=True)
-        if not {r["question_id"] for r in done} <= {q["id"] for q in rows}:
-            raise ValueError("Unknown recovered question IDs")
+        validate_recovered_records(done, rows, meta)
         save(meta_path, meta)
         import random
         import torch
@@ -92,9 +126,18 @@ def main():
             if args.resume and old.get("local_checkpoint_files") != local_fingerprint:
                 raise ValueError("Local checkpoint changed since initial run")
             meta["local_checkpoint_files"] = local_fingerprint
-        tok = AutoTokenizer.from_pretrained(args.model, revision=revision, trust_remote_code=True)
-        model = AutoModelForCausalLM.from_pretrained(args.model, revision=revision, code_revision=revision,
+        load_start = time.perf_counter()
+        tok = AutoTokenizer.from_pretrained(model_source, revision=revision, trust_remote_code=True)
+        model = AutoModelForCausalLM.from_pretrained(model_source, revision=revision, code_revision=revision,
                     trust_remote_code=True, dtype=dtype, attn_implementation=cfg["attention"]).to(device).eval()
+        if device == 'cuda':
+            torch.cuda.synchronize()
+        loading_seconds = time.perf_counter() - load_start
+        meta['checkpoint_manifest'] = checkpoint
+        meta['parameter_count'] = sum(p.numel() for p in model.parameters())
+        meta['model_loading_seconds'] = loading_seconds
+        meta['effective_generation_config'] = model.generation_config.to_dict()
+        meta['system_prompt_sha256'] = hashlib.sha256(cfg['system_prompt'].encode()).hexdigest()
         def sync():
             if device == "cuda":
                 torch.cuda.synchronize()
@@ -115,7 +158,10 @@ def main():
             sync()
             elapsed = time.perf_counter()-started
             generated = output[0, inputs.input_ids.shape[1]:]
-            return {"response":tok.decode(generated, skip_special_tokens=True), "latency_seconds":elapsed,
+            response = tok.decode(generated, skip_special_tokens=True)
+            if not response.strip():
+                raise RuntimeError('Model generated an empty response')
+            return {"response":response, "latency_seconds":elapsed,
                     "input_tokens":inputs.input_ids.shape[1], "output_tokens":len(generated),
                     "output_token_ids":generated.tolist(),
                     "truncated":len(generated)==settings["max_new_tokens"],
@@ -142,20 +188,29 @@ def main():
                 if q["id"] in {r["question_id"] for r in done}:
                     continue
                 result = {"run_id":run_id,"question_id":q["id"],"model":args.model,
-                          "question":q["question"],"timestamp":now(),"error":None}
+                          "question":q["question"],"timestamp":now(),"error":None,
+                          "category":q['category'],"difficulty":q['difficulty'],"revision":revision,
+                          "system_prompt_sha256":meta['system_prompt_sha256'],
+                          "chat_template_sha256":meta['chat_template_sha256'],
+                          "metadata_reference":meta_path.name}
                 started = time.perf_counter()
                 try:
                     result.update(generate(q["question"]))
                 except Exception as e:
                     result.update(response="",latency_seconds=time.perf_counter()-started,
-                                  input_tokens=None,output_tokens=None,error=repr(e))
+                                  input_tokens=None,output_tokens=None,truncated=None,error=repr(e))
                     if device == "cuda":
                         torch.cuda.empty_cache()
+                result['response_sha256'] = hashlib.sha256(result['response'].encode()).hexdigest()
                 result["process_rss_bytes"] = psutil.Process().memory_info().rss
                 append(raw,result)
                 done.append(result)
                 print(f"{len(done)}/{len(rows)} {q['id']} {result['latency_seconds']:.3f}s error={result['error']}",flush=True)
+            if len(done) != len(rows) or {r['question_id'] for r in done} != {q['id'] for q in rows}:
+                raise ValueError('Cannot complete run with missing or conflicting IDs')
             meta["status"]="completed"
+            meta['successful_responses'] = sum(not r.get('error') for r in done)
+            meta['generation_failures'] = sum(bool(r.get('error')) for r in done)
         meta["completed_at"] = now()
         meta["peak_process_rss_bytes"] = max([r.get("process_rss_bytes",0) for r in done]+[psutil.Process().memory_info().rss])
         meta["peak_gpu_allocated_bytes"] = max(meta.get("peak_gpu_allocated_bytes") or 0, torch.cuda.max_memory_allocated()) if device=="cuda" else None

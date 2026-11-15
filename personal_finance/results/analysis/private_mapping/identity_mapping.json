@@ -1,0 +1,302 @@
+[
+  {
+    "packet_id": "pair-001",
+    "question_id": "saving-04",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-002",
+    "question_id": "budgeting-08",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-003",
+    "question_id": "debt-01",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-004",
+    "question_id": "literacy-06",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-005",
+    "question_id": "conversations-02",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-006",
+    "question_id": "literacy-03",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-007",
+    "question_id": "budgeting-04",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-008",
+    "question_id": "debt-04",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-009",
+    "question_id": "conversations-06",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-010",
+    "question_id": "debt-03",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-011",
+    "question_id": "budgeting-09",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-012",
+    "question_id": "decisions-01",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-013",
+    "question_id": "budgeting-01",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-014",
+    "question_id": "literacy-04",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-015",
+    "question_id": "decisions-07",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-016",
+    "question_id": "conversations-07",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-017",
+    "question_id": "decisions-02",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-018",
+    "question_id": "conversations-08",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-019",
+    "question_id": "saving-05",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-020",
+    "question_id": "literacy-01",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-021",
+    "question_id": "budgeting-05",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-022",
+    "question_id": "debt-06",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-023",
+    "question_id": "conversations-05",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-024",
+    "question_id": "debt-08",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-025",
+    "question_id": "literacy-08",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-026",
+    "question_id": "debt-07",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-027",
+    "question_id": "saving-07",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-028",
+    "question_id": "decisions-06",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-029",
+    "question_id": "literacy-02",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-030",
+    "question_id": "decisions-04",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-031",
+    "question_id": "saving-08",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-032",
+    "question_id": "budgeting-06",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-033",
+    "question_id": "budgeting-10",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-034",
+    "question_id": "literacy-07",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-035",
+    "question_id": "decisions-08",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-036",
+    "question_id": "saving-06",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-037",
+    "question_id": "budgeting-03",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-038",
+    "question_id": "budgeting-07",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-039",
+    "question_id": "saving-03",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-040",
+    "question_id": "decisions-03",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-041",
+    "question_id": "saving-02",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-042",
+    "question_id": "debt-05",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-043",
+    "question_id": "saving-01",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-044",
+    "question_id": "literacy-05",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-045",
+    "question_id": "conversations-01",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-046",
+    "question_id": "conversations-04",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-047",
+    "question_id": "conversations-03",
+    "A": "base",
+    "B": "candidate"
+  },
+  {
+    "packet_id": "pair-048",
+    "question_id": "decisions-05",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-049",
+    "question_id": "budgeting-02",
+    "A": "candidate",
+    "B": "base"
+  },
+  {
+    "packet_id": "pair-050",
+    "question_id": "debt-02",
+    "A": "candidate",
+    "B": "base"
+  }
+]

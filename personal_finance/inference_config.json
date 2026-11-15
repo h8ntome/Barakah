@@ -1,0 +1,22 @@
+{
+  "benchmark": "Personal Finance Domain Adaptation Benchmark v1.0",
+  "system_prompt": "You are a helpful assistant. Answer accurately and clearly. State uncertainty and ask for missing information when needed. Do not invent sources.",
+  "models": {
+    "base": {"model": "LiquidAI/LFM3-1.7B", "revision": "1da06bec6a819da10b54c67e5c90972b46d81871", "manifest": "../benchmark/results/hardware/original_checkpoint.json"},
+    "candidate": {"model": "h8notme/barakah1", "revision": "912a5697cf9d85adf065ee512f509cfa236459d4", "manifest": "../benchmark/results/hardware/barakah1_checkpoint.json"}
+  },
+  "generation": {"max_new_tokens": 384, "do_sample": false, "repetition_penalty": 1.0, "use_cache": true, "num_beams": 1},
+  "enable_thinking": false,
+  "seed": 2026,
+  "dtype": "bfloat16",
+  "device": "cuda",
+  "attention": "sdpa",
+  "cpu_threads": 8,
+  "warmup_tokens": 24,
+  "template": "Use base snapshot chat_template.jinja for both models; require both manifest template hashes and loaded tokenizer templates equal before generation.",
+  "template_sha256": "f45005c50cd2a97329722bf3a2dee9f16c04cdf825a589b280fb7e99e6827818",
+  "selection": "Full 50 per model is primary. Emergency reduced mode is first two authored IDs per category (12 total), chosen only before either run starts if UTC launch is at or after 16:33 on 2026-11-15. No outcome-driven switching or reruns. Full-mode deadline interruption is reported incomplete; paired predefined-12 may be reported only if present for both.",
+  "execution_order": "Predefined 12 first in category order, then the remaining 38 in authored order; base then candidate, sequentially.",
+  "review_randomization_seed": 20261115,
+  "no_tools": "No calculator, retrieval, network or code execution in model inference. Numeric references are never supplied to models."
+}

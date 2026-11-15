@@ -1,0 +1,26 @@
+[1;91mE-001h rocSHMEM[0m Could not open libnuma. Returning	[90mNUMAWrapper@src/gda/numa_wrapper.cpp:48[0m
+[transformers] You are using a model of type `lfm3` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
+barakah-smoke_20261115T154745470991+0000
+Traceback (most recent call last):
+  File "/home/hadi/barakah-benchmark-20261115/benchmark/scripts/run_benchmark.py", line 214, in <module>
+    main()
+  File "/home/hadi/barakah-benchmark-20261115/benchmark/scripts/run_benchmark.py", line 117, in main
+    model = AutoModelForCausalLM.from_pretrained(model_source, revision=revision, code_revision=revision,
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hadi/homefinance-benchmark-lfm3/.venv/lib/python3.12/site-packages/transformers/models/auto/auto_factory.py", line 345, in from_pretrained
+    config, kwargs = AutoConfig.from_pretrained(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hadi/homefinance-benchmark-lfm3/.venv/lib/python3.12/site-packages/transformers/models/auto/configuration_auto.py", line 414, in from_pretrained
+    config_class = get_class_from_dynamic_module(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hadi/homefinance-benchmark-lfm3/.venv/lib/python3.12/site-packages/transformers/dynamic_module_utils.py", line 611, in get_class_from_dynamic_module
+    final_module = get_cached_module_file(
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hadi/homefinance-benchmark-lfm3/.venv/lib/python3.12/site-packages/transformers/dynamic_module_utils.py", line 450, in get_cached_module_file
+    create_dynamic_module(full_submodule)
+  File "/home/hadi/homefinance-benchmark-lfm3/.venv/lib/python3.12/site-packages/transformers/dynamic_module_utils.py", line 113, in create_dynamic_module
+    create_dynamic_module(dynamic_module_path.parent)
+  File "/home/hadi/homefinance-benchmark-lfm3/.venv/lib/python3.12/site-packages/transformers/dynamic_module_utils.py", line 114, in create_dynamic_module
+    os.makedirs(dynamic_module_path, exist_ok=True)
+  File "<frozen os>", line 225, in makedirs
+PermissionError: [Errno 13] Permission denied: '/home/hadi/.cache/huggingface/modules/transformers_modules/_912a5697cf9d85adf065ee512f509cfa236459d4'

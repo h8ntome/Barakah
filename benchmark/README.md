@@ -1,5 +1,24 @@
 # Barakah AI benchmark
 
+## Current matched evaluation — 2026-11-15
+
+The actual **h8notme/barakah1** full checkpoint has now been evaluated against a fresh
+**LiquidAI/LFM3-1.7B** run on server2: **100/100 successful answers each**.
+Verified numerical scores: **36/40 (90%) original vs 32/40 (80%) Barakah**,
+a **10-percentage-point regression**, with zero improvements and four regressions.
+All 60 conceptual answers per model await qualified review; training leakage is unresolved.
+
+- [Interactive paired dashboard](visuals/20261115/html/index.html)
+- [Technical report](reports/20261115/BENCHMARK_REPORT.md)
+- [Judges summary](reports/20261115/JUDGES_SUMMARY.md)
+- [Reproducibility](reports/20261115/REPRODUCIBILITY.md)
+- [All paired responses](results/comparisons/20261115/questions.csv)
+
+The material below is the preserved **2026-11-14 historical baseline/rules evaluation**.
+Statements below that no adapted checkpoint was evaluated describe that earlier run only.
+
+---
+
 An independently runnable evaluation system for Barakah, an Islamic personal-finance prototype for the Veritas AI International High School Hackathon 2026. The production frontend in `../barakah-ui/` remains separate: **this benchmark does not connect the app to a live assistant**.
 
 ## What was tested

@@ -1,0 +1,86 @@
+{
+  "models": [
+    "Original LFM3-1.7B",
+    "Barakah fine-tuned"
+  ],
+  "comparison_correct": [
+    [
+      36,
+      5
+    ],
+    [
+      32,
+      9
+    ]
+  ],
+  "comparison_denominators": [
+    40,
+    23
+  ],
+  "personal_finance_categories": [
+    {
+      "budgeting": {
+        "correct": 1,
+        "n": 7
+      },
+      "saving": {
+        "correct": 1,
+        "n": 5
+      },
+      "debt": {
+        "correct": 2,
+        "n": 3
+      },
+      "decisions": {
+        "correct": 0,
+        "n": 4
+      },
+      "literacy": {
+        "correct": 0,
+        "n": 2
+      },
+      "conversations": {
+        "correct": 1,
+        "n": 2
+      }
+    },
+    {
+      "budgeting": {
+        "correct": 2,
+        "n": 7
+      },
+      "saving": {
+        "correct": 3,
+        "n": 5
+      },
+      "debt": {
+        "correct": 2,
+        "n": 3
+      },
+      "decisions": {
+        "correct": 1,
+        "n": 4
+      },
+      "literacy": {
+        "correct": 1,
+        "n": 2
+      },
+      "conversations": {
+        "correct": 0,
+        "n": 2
+      }
+    }
+  ],
+  "application": {
+    "backend_passed": 127,
+    "backend_skipped": 1,
+    "frontend_passed": 64,
+    "original_benchmark_tests_passed": 77,
+    "public_browser_checks": 21,
+    "calculation_regressions_passed": 6
+  },
+  "source_sha256": {
+    "personal_summary": "17c827d9ad6a44a33e61a779a5d93484e9d5b3ad773bba470280718c68be4bc3",
+    "original_audit": "dabfdd32d4431459788b2dd68550ab49b815f29dd9812f8b7fa5a22546cc4e0e"
+  }
+}

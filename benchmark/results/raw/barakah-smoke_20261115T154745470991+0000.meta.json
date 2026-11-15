@@ -1,0 +1,24 @@
+{
+  "run_id": "barakah-smoke_20261115T154745470991+0000",
+  "run_name": "barakah-smoke",
+  "fingerprint": {
+    "model": "h8notme/barakah1",
+    "revision": "912a5697cf9d85adf065ee512f509cfa236459d4",
+    "dataset_sha256": "c8a9636cc9ad96cbfb1049168227a23e5fc213ce245264be44984667578801fb",
+    "config_sha256": "2f32dc6e90edee2862f55742066d2274dc5722049f3314d38618f4f8c35fcfe4",
+    "device_requested": "auto",
+    "checkpoint_manifest_sha256": "4de6e7ba4482fe233c9899591a4195cc7138a604114c0f5cde3dcc8c4adfb1c1",
+    "runner_sha256": "c53aa0a57d5e15d913c47ac5562591ef7a951e38b9e4f0f31adc56680d9aadb9"
+  },
+  "started_at": "2026-11-15T15:47:45.471180+00:00",
+  "segments": [
+    {
+      "ended_at": "2026-11-15T15:47:49.339462+00:00",
+      "duration_seconds": 3.8676194740000938
+    }
+  ],
+  "status": "failed",
+  "execution_host": "server2",
+  "fatal_error": "PermissionError(13, 'Permission denied')",
+  "total_execution_seconds": 3.8676194740000938
+}

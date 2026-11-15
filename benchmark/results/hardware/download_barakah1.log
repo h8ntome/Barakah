@@ -1,0 +1,46 @@
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]{"timestamp":"2026-11-15T15:37:29.530530Z","level":"ERROR","fields":{"message":"Error logging to file \"/home/hadi/.cache/huggingface/xet/logs/xet_20261115T203729530+0500_57867.log\" (Permission denied (os error 13)); falling back to console logging."},"filename":"/home/runner/work/xet-core/xet-core/xet_runtime/src/logging/init.rs","line_number":64}
+Fetching 11 files:   0%|          | 0/11 [00:01<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/hadi/barakah-benchmark-20261115/benchmark/scripts/checkpoint.py", line 88, in <module>
+    download(a.model, a.revision, a.output, a.cache_dir)
+  File "/home/hadi/barakah-benchmark-20261115/benchmark/scripts/checkpoint.py", line 50, in download
+    path = Path(snapshot_download(model, revision=info.sha, cache_dir=cache_dir))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hadi/homefinance-benchmark-lfm3/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/hadi/homefinance-benchmark-lfm3/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 276, in _inner
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/hadi/homefinance-benchmark-lfm3/.venv/lib/python3.12/site-packages/huggingface_hub/_snapshot_download.py", line 541, in snapshot_download
+    hf_thread_map(
+  File "/home/hadi/homefinance-benchmark-lfm3/.venv/lib/python3.12/site-packages/huggingface_hub/utils/tqdm.py", line 441, in hf_thread_map
+    results[future_to_index[future]] = future.result()
+                                       ^^^^^^^^^^^^^^^
+  File "/opt/server2-ai/comfy-python/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/server2-ai/comfy-python/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/server2-ai/comfy-python/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hadi/homefinance-benchmark-lfm3/.venv/lib/python3.12/site-packages/huggingface_hub/_snapshot_download.py", line 521, in _inner_hf_hub_download
+    hf_hub_download(  # type: ignore
+  File "/home/hadi/homefinance-benchmark-lfm3/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/hadi/homefinance-benchmark-lfm3/.venv/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 276, in _inner
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/hadi/homefinance-benchmark-lfm3/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1047, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hadi/homefinance-benchmark-lfm3/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1285, in _hf_hub_download_to_cache_dir
+    _download_to_tmp_and_move(
+  File "/home/hadi/homefinance-benchmark-lfm3/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 2016, in _download_to_tmp_and_move
+    xet_get(
+  File "/home/hadi/homefinance-benchmark-lfm3/.venv/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 589, in xet_get
+    with session.new_file_download_group(
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: I/O error: I/O error: Permission denied (os error 13)

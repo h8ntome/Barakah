@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-11-15T16:41:18.623059+00:00",
+  "status": "passed",
+  "checks": {
+    "pre_mission_evidence_unchanged": 89,
+    "freeze_manifest_entries": 26,
+    "artifact_manifest_entries": 65,
+    "base_strict_numeric_correct": 5,
+    "candidate_strict_numeric_correct": 9,
+    "paired_prompt_hashes_equal": 50,
+    "unreviewed_ratings_null": 500,
+    "local_submission_links": "passed"
+  },
+  "independent_ai_acceptance": "Nine tests and all 16 artifact checks passed; no numeric-evaluation invalidity found. No human advice ratings performed."
+}

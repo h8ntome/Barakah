@@ -1,0 +1,762 @@
+{
+  "created_at": "2026-11-15T16:13:15.158339+00:00",
+  "dataset_sha256": "c8a9636cc9ad96cbfb1049168227a23e5fc213ce245264be44984667578801fb",
+  "audit_source_sha256": "0ac63259953e9d48e117029edc3728159a0e615bcdf4976cf2a50fd1363dcda1",
+  "independently_checked_references": 40,
+  "rendered_prompt_hashes_equal": true,
+  "runs": [
+    {
+      "run_id": "original-matched_20261115T153923318073+0000",
+      "model": "LiquidAI/LFM3-1.7B",
+      "raw_sha256": "fe6c4418505c7708852bd8d706f94a0f5d2ac821bb51fa5de3d05076202ee729",
+      "attempted": 100,
+      "numeric_denominator": 40,
+      "strict_counts": {
+        "correct": 36,
+        "incorrect": 4,
+        "unparseable": 0,
+        "generation_error": 0
+      },
+      "numeric_extractions": [
+        {
+          "question_id": "BUDGET_001",
+          "expected": "600.00",
+          "unit": "USD",
+          "response_sha256": "af38dd38d6afbf9c5c14557aa017c313870e1cefb3edb3bf4744a6faf9f9ae7e",
+          "status": "correct",
+          "parsed_value": "600.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_002",
+          "expected": "20.00",
+          "unit": "%",
+          "response_sha256": "4755e298c97be56aa7a34823f610403cd042a77e5fae91c5aac339d5c594770a",
+          "status": "correct",
+          "parsed_value": "20.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_003",
+          "expected": "1400.00",
+          "unit": "USD",
+          "response_sha256": "d6ac4852ecf86e82e03b9ac0cbb3b36ca0dafa70b6cdc51ee02a8335f8fb1e49",
+          "status": "correct",
+          "parsed_value": "1400.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_004",
+          "expected": "600.00",
+          "unit": "USD",
+          "response_sha256": "5aafd596aae320f375530c9e01e32d7b618350a6c96ea750a1cf8e4e8f387ad5",
+          "status": "correct",
+          "parsed_value": "600.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_005",
+          "expected": "12.00",
+          "unit": "months",
+          "response_sha256": "94fd5b6e0da44f557fc27369e30c6f24d380f0464e2333d3e1778fbc2ce95da7",
+          "status": "correct",
+          "parsed_value": "12.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_006",
+          "expected": "1400.00",
+          "unit": "USD",
+          "response_sha256": "27d2a9f6d779f33ae1c4f460eef9115d847ee8e482a252771ef12c6dd4591f62",
+          "status": "correct",
+          "parsed_value": "1400.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_007",
+          "expected": "15.00",
+          "unit": "%",
+          "response_sha256": "38ebc6ef1f88c8d047dce34b6ff0049269ab39e82562ccf15b476f624e0f884f",
+          "status": "correct",
+          "parsed_value": "15.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_008",
+          "expected": "7400.00",
+          "unit": "USD",
+          "response_sha256": "37bce87addf26830a2bd7c6211c2022a6e278aa8d4629048904885ad770cc7f4",
+          "status": "correct",
+          "parsed_value": "7400.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_009",
+          "expected": "45.00",
+          "unit": "USD",
+          "response_sha256": "762c4a63492eb5f922067e842d2a1ced8682e5d63edced21388047fbae3286d2",
+          "status": "correct",
+          "parsed_value": "45.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_010",
+          "expected": "53.00",
+          "unit": "USD",
+          "response_sha256": "f9ad01ab09f865aa27d16e7466b12d899e6fd2b2e83cc6875d37a7e0f10b05bd",
+          "status": "correct",
+          "parsed_value": "53.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_011",
+          "expected": "476.15",
+          "unit": "USD",
+          "response_sha256": "0c62bfd57f542f26005a278f558c24856149c179b14f3b79fc8390ad56eefb76",
+          "status": "correct",
+          "parsed_value": "476.15",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_012",
+          "expected": "12.50",
+          "unit": "%",
+          "response_sha256": "c1d4508571184b09122ffeafc4d24ab44ce21f5098f6ae83174a444dcbc81cb4",
+          "status": "correct",
+          "parsed_value": "12.50",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_013",
+          "expected": "1799.20",
+          "unit": "USD",
+          "response_sha256": "37a3aca69b1a72123150367c55b45d9689eef57552628e082bb20669f2dd3afc",
+          "status": "correct",
+          "parsed_value": "1799.20",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_014",
+          "expected": "5724.50",
+          "unit": "USD",
+          "response_sha256": "d83b1ac90e89b9062d20178cc1a28d4cd0aef3e83f64a0ba48ada7271df4d81a",
+          "status": "correct",
+          "parsed_value": "5724.50",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_015",
+          "expected": "1713.00",
+          "unit": "USD",
+          "response_sha256": "d973f8b40e66eb7569aab21ff00344de74cfe7c1d14e04f63d1783f4787e772d",
+          "status": "correct",
+          "parsed_value": "1713.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_016",
+          "expected": "1444.60",
+          "unit": "USD",
+          "response_sha256": "9e264f14cafb81e41a4887c8187e9c4fce2a3910ff290765259a849e9ee82911",
+          "status": "correct",
+          "parsed_value": "1444.60",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_017",
+          "expected": "13.12",
+          "unit": "%",
+          "response_sha256": "4b4a11278157900957965caf946691430437d5c63b56eda4f75bfaa7ef928195",
+          "status": "correct",
+          "parsed_value": "13.11",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_018",
+          "expected": "114.50",
+          "unit": "USD",
+          "response_sha256": "281bc0364146281a1198163d1dae7bdfff7be4eaa5357d3bacec4df56d919937",
+          "status": "correct",
+          "parsed_value": "114.50",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_019",
+          "expected": "227.45",
+          "unit": "USD",
+          "response_sha256": "2cef44521ed119432dc291694d41f354188e72f69b80f9d7edf067ac8fb488bb",
+          "status": "correct",
+          "parsed_value": "227.45",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_020",
+          "expected": "12807.90",
+          "unit": "USD",
+          "response_sha256": "0b3f49d8e3fdc381bd488a908725bbdffb809a2bf83abd28c77b317491245897",
+          "status": "correct",
+          "parsed_value": "12807.90",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "PRINCIPLE_016",
+          "expected": "400.00",
+          "unit": "USD",
+          "response_sha256": "53df529810d662fbad5926949eb4d64ee9c4b6edaa3a952f85722e180db5f13e",
+          "status": "correct",
+          "parsed_value": "400.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "PRINCIPLE_017",
+          "expected": "1500.00",
+          "unit": "USD",
+          "response_sha256": "085119774c652aedb018cb60cec627eecae8904e80b2e53600c81bb6be0a904c",
+          "status": "correct",
+          "parsed_value": "1500.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "PRINCIPLE_018",
+          "expected": "644.00",
+          "unit": "USD",
+          "response_sha256": "349133c613f7ecccf04e92cb6b35e642e22dc20eb49bea4b21f5ed5c391cc12f",
+          "status": "correct",
+          "parsed_value": "644.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "PRINCIPLE_019",
+          "expected": "3296.52",
+          "unit": "USD",
+          "response_sha256": "470441a774930e80f0e0babde9e7b4d27ce4d21504cfc50a58932a49d5febe03",
+          "status": "correct",
+          "parsed_value": "3296.52",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "PRINCIPLE_020",
+          "expected": "4630.42",
+          "unit": "USD",
+          "response_sha256": "fc17dc4e17cf3616673574b97ba0d3e6e3fc1d30e7b68cd366cfd6173394f021",
+          "status": "incorrect",
+          "parsed_value": "4630.93",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_001",
+          "expected": "250.00",
+          "unit": "USD",
+          "response_sha256": "beea97502ec28d43507ea676d4b8fe31ebea68afeb695a1176c50e2b6be8dc4d",
+          "status": "correct",
+          "parsed_value": "250.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_002",
+          "expected": "600.00",
+          "unit": "USD",
+          "response_sha256": "9ced3fbf9c21acbaf428044c7ea39e8534f63b3b8ef97ab48716bfcf7428d6a1",
+          "status": "correct",
+          "parsed_value": "600.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_003",
+          "expected": "200.00",
+          "unit": "USD",
+          "response_sha256": "035a1b32f289333f6cc11748479dc42abd6df3260f42ac96d32d4003bea11e49",
+          "status": "correct",
+          "parsed_value": "200.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_004",
+          "expected": "312.50",
+          "unit": "USD",
+          "response_sha256": "9d95b3018bd53ac8c93db3acc0fc4958aef30391022cf9232811a783c8d1e161",
+          "status": "correct",
+          "parsed_value": "312.50",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_005",
+          "expected": "1250.00",
+          "unit": "USD",
+          "response_sha256": "2f0e9d316b0ad4f6cc30318e8dc6dd2b6d6edece0ff11f503bf2d69f10eb1bd3",
+          "status": "correct",
+          "parsed_value": "1250.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_006",
+          "expected": "458.00",
+          "unit": "USD",
+          "response_sha256": "cb0c88177eaccb9a030b5473724328bbefb5a7d66ebb0d0efbd8bf58743fd98b",
+          "status": "correct",
+          "parsed_value": "458.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_007",
+          "expected": "246.91",
+          "unit": "USD",
+          "response_sha256": "285ea57e789cca7e191fba3a20f2b4449bdfae9675039a9d29db69451622b86e",
+          "status": "incorrect",
+          "parsed_value": "246.61",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_008",
+          "expected": "803.64",
+          "unit": "USD",
+          "response_sha256": "45a581f01e5930fe89626c63905ab70f49ddee15b1da9f5e2211e820fa9aaa17",
+          "status": "incorrect",
+          "parsed_value": "803.14",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_009",
+          "expected": "2500.00",
+          "unit": "USD",
+          "response_sha256": "5a7d9d73df1a690aa2cadfbf542dc96cebb544bec0d3ed9fe887ba8ca7617f7d",
+          "status": "correct",
+          "parsed_value": "2500.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_010",
+          "expected": "375.02",
+          "unit": "USD",
+          "response_sha256": "9e48a038fa2e97f66fb1b4d43fc7c78663c88e56e6dd2ca627c812ac4d6ddc9a",
+          "status": "correct",
+          "parsed_value": "375.02",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_011",
+          "expected": "688.73",
+          "unit": "USD",
+          "response_sha256": "3f1e890415b475529707c9be69280114a877f13cdcab505d67c3c4d42f1159bd",
+          "status": "correct",
+          "parsed_value": "688.73",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_012",
+          "expected": "1525.59",
+          "unit": "USD",
+          "response_sha256": "2c1304b935a888c976ff73c051d5df2c62db969a6a67d1b21652cbea7c6b3bc1",
+          "status": "correct",
+          "parsed_value": "1525.59",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_013",
+          "expected": "1250.00",
+          "unit": "USD",
+          "response_sha256": "f9b3bf4fbf25d3868f43596ac0b8a98ad0710de8aa9c80a1bcd7357753d14e4e",
+          "status": "correct",
+          "parsed_value": "1250.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_014",
+          "expected": "3086.42",
+          "unit": "USD",
+          "response_sha256": "f5db31567c8ac3b44c6ddd198af22df7c8bd968b3a7b89eae2614da34f1f9f5a",
+          "status": "correct",
+          "parsed_value": "3086.42",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_015",
+          "expected": "1913.58",
+          "unit": "USD",
+          "response_sha256": "f8306873375af84c8cda0ccec5180fbc5b83c6055311f0cd1156966965861435",
+          "status": "incorrect",
+          "parsed_value": "1913.33",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        }
+      ]
+    },
+    {
+      "run_id": "barakah-matched_20261115T154845353654+0000",
+      "model": "h8notme/barakah1",
+      "raw_sha256": "bc2299aed7e61dc3ec1f88f3f506ce565194f8e159e52b1a8615bc0d4b0c77c2",
+      "attempted": 100,
+      "numeric_denominator": 40,
+      "strict_counts": {
+        "correct": 32,
+        "incorrect": 8,
+        "unparseable": 0,
+        "generation_error": 0
+      },
+      "numeric_extractions": [
+        {
+          "question_id": "BUDGET_001",
+          "expected": "600.00",
+          "unit": "USD",
+          "response_sha256": "a87ecfdace73acf5a7dff8aa4e30a5a38ff848063959da1f084c89bbc481aaf9",
+          "status": "correct",
+          "parsed_value": "600.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_002",
+          "expected": "20.00",
+          "unit": "%",
+          "response_sha256": "786248fcbf934b23a5e6a06f25bb4ef71fc6fc0128fc10d1032cc1ffb723fec1",
+          "status": "correct",
+          "parsed_value": "20.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_003",
+          "expected": "1400.00",
+          "unit": "USD",
+          "response_sha256": "086f238ab5dca4ec9c4770d22a890d47670bb0ba424c949a8e748b59d5e5428a",
+          "status": "correct",
+          "parsed_value": "1400.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_004",
+          "expected": "600.00",
+          "unit": "USD",
+          "response_sha256": "205db0134d48476a130a671dad51ae77de0c8a2ad1e77c9d9e1d9d164b58fafe",
+          "status": "correct",
+          "parsed_value": "600.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_005",
+          "expected": "12.00",
+          "unit": "months",
+          "response_sha256": "142bef41d55a2c651db1c8b7dcfb238d57b15c74f76a1da92afad766c2369b1c",
+          "status": "correct",
+          "parsed_value": "12.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_006",
+          "expected": "1400.00",
+          "unit": "USD",
+          "response_sha256": "c84232473fcd5c2465a799f1646c37734a99d90010221e519857f672e946ce1e",
+          "status": "incorrect",
+          "parsed_value": "1310.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_007",
+          "expected": "15.00",
+          "unit": "%",
+          "response_sha256": "d4d6358110bd19eea796d6bf1b558b330ac76be865291dd1845f1a31617c9391",
+          "status": "correct",
+          "parsed_value": "15.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_008",
+          "expected": "7400.00",
+          "unit": "USD",
+          "response_sha256": "5b4d9274e5cc8df8d471e6ebaef2cc41b186222827fd3c1239f60542cee2727a",
+          "status": "correct",
+          "parsed_value": "7400.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_009",
+          "expected": "45.00",
+          "unit": "USD",
+          "response_sha256": "d3c016d2e0b72b602a10c00de8c12bd74f63b14ebec7d4a4cf86bcd9576721df",
+          "status": "correct",
+          "parsed_value": "45.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_010",
+          "expected": "53.00",
+          "unit": "USD",
+          "response_sha256": "de1807c7dc855ee36a25c70651be1a02bed2d6428ba1e183fbce5075bf0c976e",
+          "status": "correct",
+          "parsed_value": "53.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_011",
+          "expected": "476.15",
+          "unit": "USD",
+          "response_sha256": "c89b131e82ca1bd84e2f1bd8a067b122c6818d44a4755798c79000c3b4a76a33",
+          "status": "correct",
+          "parsed_value": "476.15",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_012",
+          "expected": "12.50",
+          "unit": "%",
+          "response_sha256": "704b61626b7c6fb090b856e33bfa41c42594f184b2a15e68875423e56b33edef",
+          "status": "correct",
+          "parsed_value": "12.51",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_013",
+          "expected": "1799.20",
+          "unit": "USD",
+          "response_sha256": "02aef8cfa3febc16ca5543ba09dce289195c1d2917caaeb06ff12e018b27bff6",
+          "status": "incorrect",
+          "parsed_value": "1919.20",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_014",
+          "expected": "5724.50",
+          "unit": "USD",
+          "response_sha256": "3e0550038dabe1455d1d9386d96c5108ae4a9061620a6a3d57f91631ecac774b",
+          "status": "correct",
+          "parsed_value": "5724.50",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_015",
+          "expected": "1713.00",
+          "unit": "USD",
+          "response_sha256": "b95b63e51807f5ef3be90581fee81c2820fab3ec8c5e2ddddde8bfb21c910777",
+          "status": "correct",
+          "parsed_value": "1713.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_016",
+          "expected": "1444.60",
+          "unit": "USD",
+          "response_sha256": "6e967097d0c5f2da4dc7d0e5f61eeb109e48d3371f617db75e9f1ba1249e98d9",
+          "status": "incorrect",
+          "parsed_value": "1264.40",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_017",
+          "expected": "13.12",
+          "unit": "%",
+          "response_sha256": "e697000dc367108a6a2f4ce404a328745c514a2a4133411d203445041b2880af",
+          "status": "correct",
+          "parsed_value": "13.12",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_018",
+          "expected": "114.50",
+          "unit": "USD",
+          "response_sha256": "0aa1c17c713edd344eca1807e64fc7254c9a825ed6882f66e8200a9ee3008cd2",
+          "status": "correct",
+          "parsed_value": "114.50",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_019",
+          "expected": "227.45",
+          "unit": "USD",
+          "response_sha256": "a5f45a4e2e56a635672061627452ba45a85b3045c8721208cf0de578f5f7d9fc",
+          "status": "correct",
+          "parsed_value": "227.45",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "BUDGET_020",
+          "expected": "12807.90",
+          "unit": "USD",
+          "response_sha256": "50e64d1e8f1353ae1be294d3ad58cdcaab53596d8cef7006900fc84a1320863b",
+          "status": "correct",
+          "parsed_value": "12807.90",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "PRINCIPLE_016",
+          "expected": "400.00",
+          "unit": "USD",
+          "response_sha256": "fac0563ad74cb748d1d2cd8eb03e7a803382edd4f0115bfb457fe43ab59625e2",
+          "status": "correct",
+          "parsed_value": "400.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "PRINCIPLE_017",
+          "expected": "1500.00",
+          "unit": "USD",
+          "response_sha256": "83f3fa7f1104e83b716603e0576f4ca43aebd49a413357e1a186bfa36d9eec91",
+          "status": "correct",
+          "parsed_value": "1500.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "PRINCIPLE_018",
+          "expected": "644.00",
+          "unit": "USD",
+          "response_sha256": "7a0d215d9c62d8a5f284daa886fdbe4321bbab39140d4dda845a42b1363dad11",
+          "status": "correct",
+          "parsed_value": "644.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "PRINCIPLE_019",
+          "expected": "3296.52",
+          "unit": "USD",
+          "response_sha256": "da53d7cfb67afd3e7abc80c6754a1ae1748acbe54a6810ce90d68e8314a72bcc",
+          "status": "correct",
+          "parsed_value": "3296.52",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "PRINCIPLE_020",
+          "expected": "4630.42",
+          "unit": "USD",
+          "response_sha256": "7ea9633ae9027c28d949e1b20bd57de467221648f8bdcf5a9c25217d413cca40",
+          "status": "incorrect",
+          "parsed_value": "4632.68",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_001",
+          "expected": "250.00",
+          "unit": "USD",
+          "response_sha256": "c96a7c073f1240902e7a5be104294cb13ebbef808ffcedbee0fbe8674f6c9f90",
+          "status": "correct",
+          "parsed_value": "250.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_002",
+          "expected": "600.00",
+          "unit": "USD",
+          "response_sha256": "3cbf7e2e41ec412dd844dbd6674c4f9fdd8c211e33a9de3eb773ff038e82f791",
+          "status": "correct",
+          "parsed_value": "600.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_003",
+          "expected": "200.00",
+          "unit": "USD",
+          "response_sha256": "72f16778ae9b704784b3e217e94ae03cf6610d1525228564bc1eb5403836e470",
+          "status": "correct",
+          "parsed_value": "200.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_004",
+          "expected": "312.50",
+          "unit": "USD",
+          "response_sha256": "5f7d9214ec68d9e812ff1e5e20949aa1ce7da15867b86dae8f18fd746f15d2ff",
+          "status": "correct",
+          "parsed_value": "312.50",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_005",
+          "expected": "1250.00",
+          "unit": "USD",
+          "response_sha256": "dba651e9c77f9753d97440119bc83d0ca1024d39482a08e3bdaf775831049856",
+          "status": "correct",
+          "parsed_value": "1250.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_006",
+          "expected": "458.00",
+          "unit": "USD",
+          "response_sha256": "94823fb5f98b5d792d9a5c2c1b5d3ebf7643ece2295aeb475c6ee0b68a0c4202",
+          "status": "correct",
+          "parsed_value": "458.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_007",
+          "expected": "246.91",
+          "unit": "USD",
+          "response_sha256": "6899d9dd7b849fa8aa749bbefc991cc49d11d6535b0e7f787ac6e4267be6d616",
+          "status": "incorrect",
+          "parsed_value": "246.81",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_008",
+          "expected": "803.64",
+          "unit": "USD",
+          "response_sha256": "072f53fb9dba52aa102d8821477e86182789a68621134b5e2e90084339f13109",
+          "status": "incorrect",
+          "parsed_value": "80.36",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_009",
+          "expected": "2500.00",
+          "unit": "USD",
+          "response_sha256": "faf5bc59ca93e48825be4e519937f2e319e0728e5beb9f1e124198164d94378f",
+          "status": "correct",
+          "parsed_value": "2500.00",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_010",
+          "expected": "375.02",
+          "unit": "USD",
+          "response_sha256": "2ee74f21493db750afb21be78e30fb09c14abdf1637378ea70faf0c6cfbd9d20",
+          "status": "correct",
+          "parsed_value": "375.02",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_011",
+          "expected": "688.73",
+          "unit": "USD",
+          "response_sha256": "f4579d9972a497e2857fc0fb1a0423b0a8c721022264411b1ea285a181821ef8",
+          "status": "correct",
+          "parsed_value": "688.74",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_012",
+          "expected": "1525.59",
+          "unit": "USD",
+          "response_sha256": "ef0a5700944602db09a9ae27799fa0579cdade9db8f3acf23bf5f49331de9964",
+          "status": "correct",
+          "parsed_value": "1525.59",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_013",
+          "expected": "1250.00",
+          "unit": "USD",
+          "response_sha256": "bb1e0f0c4fb5878e8755479a2f0c5255c1d99ce422e00a634b6c66a2458b9564",
+          "status": "correct",
+          "parsed_value": "1249.99",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_014",
+          "expected": "3086.42",
+          "unit": "USD",
+          "response_sha256": "0a834e211ce083caa333ea2fea1ac7f368ff074bc30605b8297e74a282dcffd1",
+          "status": "incorrect",
+          "parsed_value": "3086.17",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        },
+        {
+          "question_id": "ZAKAT_015",
+          "expected": "1913.58",
+          "unit": "USD",
+          "response_sha256": "e858d8645550e8c5f3c9fcfab0963bbe9759b45a8369ab69a80abd3d436f694b",
+          "status": "incorrect",
+          "parsed_value": "1913.33",
+          "reason": "Numeric claim only; prose correctness not automatically certified"
+        }
+      ]
+    }
+  ],
+  "semantic_rescore_applied": false,
+  "scope": "Strict terminal numeric claims only. No human review or surrounding-prose correctness implied.",
+  "conclusion": "No unparseable numerical answers in this matched pair; no formatting correction is justified."
+}

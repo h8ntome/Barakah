@@ -1,0 +1,105 @@
+[1;91mE-001h rocSHMEM[0m Could not open libnuma. Returning	[90mNUMAWrapper@src/gda/numa_wrapper.cpp:48[0m
+Loading weights:   0%|          | 0/286 [00:00<?, ?it/s]Loading weights: 100%|██████████| 286/286 [00:00<00:00, 23847.38it/s]
+[transformers] The following generation flags are not valid and may be ignored: ['temperature']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+[transformers] Passing `generation_config` together with generation-related arguments=({'max_new_tokens'}) is deprecated and will be removed in future versions. Please pass either a `generation_config` object OR all generation parameters explicitly, but not both.
+[transformers] Both `max_new_tokens` (=24) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 1/50 budgeting-01 tokens=261 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 2/50 budgeting-02 tokens=381 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 3/50 saving-01 tokens=334 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 4/50 saving-02 tokens=193 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 5/50 debt-01 tokens=216 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 6/50 debt-02 tokens=200 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 7/50 decisions-01 tokens=309 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 8/50 decisions-02 tokens=384 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 9/50 literacy-01 tokens=292 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 10/50 literacy-02 tokens=379 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 11/50 conversations-01 tokens=349 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 12/50 conversations-02 tokens=384 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 13/50 budgeting-03 tokens=384 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 14/50 budgeting-04 tokens=313 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 15/50 budgeting-05 tokens=226 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 16/50 budgeting-06 tokens=332 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 17/50 budgeting-07 tokens=384 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 18/50 budgeting-08 tokens=161 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 19/50 budgeting-09 tokens=384 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 20/50 budgeting-10 tokens=384 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 21/50 saving-03 tokens=374 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 22/50 saving-04 tokens=384 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 23/50 saving-05 tokens=299 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 24/50 saving-06 tokens=384 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 25/50 saving-07 tokens=205 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 26/50 saving-08 tokens=384 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 27/50 debt-03 tokens=217 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 28/50 debt-04 tokens=279 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 29/50 debt-05 tokens=347 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 30/50 debt-06 tokens=384 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 31/50 debt-07 tokens=305 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 32/50 debt-08 tokens=255 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 33/50 decisions-03 tokens=224 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 34/50 decisions-04 tokens=384 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 35/50 decisions-05 tokens=384 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 36/50 decisions-06 tokens=177 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 37/50 decisions-07 tokens=384 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 38/50 decisions-08 tokens=384 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 39/50 literacy-03 tokens=384 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 40/50 literacy-04 tokens=227 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 41/50 literacy-05 tokens=286 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 42/50 literacy-06 tokens=384 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 43/50 literacy-07 tokens=357 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 44/50 literacy-08 tokens=279 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 45/50 conversations-03 tokens=373 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 46/50 conversations-04 tokens=356 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 47/50 conversations-05 tokens=384 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 48/50 conversations-06 tokens=282 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 49/50 conversations-07 tokens=182 error=None
+[transformers] Both `max_new_tokens` (=384) and `max_length`(=262144) seem to have been set. `max_new_tokens` will take precedence. Please refer to the documentation for more information. (https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)
+candidate 50/50 conversations-08 tokens=288 error=None

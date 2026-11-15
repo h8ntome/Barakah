@@ -1,0 +1,11 @@
+Id=barakah-original-20261115.service
+ActiveState=inactive
+ExecMainStatus=0
+
+Id=barakah-candidate-20261115b.service
+ActiveState=inactive
+ExecMainStatus=0
+
+Id=barakah-monitor-20261115b.service
+ActiveState=inactive
+ExecMainStatus=0

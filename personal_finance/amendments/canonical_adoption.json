@@ -1,0 +1,12 @@
+{
+  "adopted_at": "2026-11-15T16:27:14.696300+00:00",
+  "canonical_parent_receipt": "2026-11-15T16:25:04Z",
+  "original_inference_launch": "2026-11-15T16:19:04Z",
+  "canonical_source": "/Users/hadi/Documents/Barakah/benchmark/rescue/personal_finance_rubric_amendment.json",
+  "canonical_sha256": "27ab3aa1571a66d0b637355caf0284b999e0c6a836b32d41484c8f43d8ed5503",
+  "exporter_sha256": "9b96e4777acde6219376c4456e2fcce14ee308255cfdbdbd01aa3abfca0c13ed",
+  "parent_reported_no_PF_answer_or_score_inspection_at_receipt": true,
+  "worker_no_PF_answer_text_or_numeric_outcomes_inspected_at_adoption": true,
+  "status": "Canonical parent rubric is the only active prospective human rubric. Worker 16:22:26 amendment and exporter retained as superseded audit history; never used for review.",
+  "subjective_scores": null
+}

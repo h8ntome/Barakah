@@ -1,0 +1,59 @@
+{
+  "title": "Personal Finance Domain Adaptation Benchmark v1.0 — prospective human-review rubric amendment",
+  "authored_date_utc": "2026-11-15",
+  "reason": "The initial frozen rubric omitted an independent reasoning/trade-offs dimension and included communication/empathy instead. This amendment supplies the five dimensions required by the user; it does not change questions, numerical references, numerical grading, inference or original artifacts.",
+  "timing_disclosure": "Authored after the original freeze, before the parent inspected any new model response or score. Do not describe this amended rubric as the initial pre-inference rubric. Exact chronology and authoring-file hash are recorded separately. No human scores have been assigned.",
+  "scale": "Each dimension is independently rated by an actual human on an integer 0–4 scale. Unreviewed means null, never zero. No composite score or winner is predefined.",
+  "review_protocol": "Provide randomized identity-free A/B packets, scenario references and this rubric. Withhold the separate identity key. Record reviewer identity/qualification, timestamp, exact response hash and evidence. Rate each answer independently before comparing the pair. Flag critical safety issues separately. Do not use numeric extraction as a substitute for reviewing the complete explanation. Blinding may be imperfect because model style or self-identification can reveal identity.",
+  "dimensions": {
+    "financial_correctness": {
+      "0": "Fundamentally false or harmful principles, such as treating borrowing as income.",
+      "1": "Major errors dominate, despite a correct fragment.",
+      "2": "Mixed accuracy: a material arithmetic error, fee omission or unsupported factual assertion.",
+      "3": "Core arithmetic and financial principles are correct, with a minor noncritical omission.",
+      "4": "All material calculations and principles are accurate and internally consistent under explicitly stated assumptions."
+    },
+    "practical_usefulness": {
+      "0": "No usable step, or a plan impossible on the stated facts.",
+      "1": "Vague slogans without a feasible starting action.",
+      "2": "Some workable actions, but sequencing or affordability is unclear.",
+      "3": "Feasible, prioritized next steps with a minor implementation gap.",
+      "4": "Concrete, proportionate steps with a realistic monitoring or contingency plan."
+    },
+    "personalization": {
+      "0": "Contradicts essential circumstances or repeats an obsolete plan after an update.",
+      "1": "Mostly generic and misses a central income, family, deadline or expense constraint.",
+      "2": "Uses some facts but overlooks one material constraint.",
+      "3": "Addresses the material stated facts with minor tailoring gaps.",
+      "4": "Integrates the user's income, obligations, goals and updated constraints; asks useful questions where needed."
+    },
+    "reasoning_and_tradeoffs": {
+      "0": "No rationale, or reasoning directly contradicts the recommendation.",
+      "1": "Asserts a recommendation without explaining why it fits; ignores an obvious competing need.",
+      "2": "Some rationale, but omits a material alternative or trade-off such as liquidity versus interest cost.",
+      "3": "Explains the recommendation and main trade-off, with a minor comparison gap.",
+      "4": "Clearly compares feasible alternatives and explains how assumptions, constraints and changed information affect the choice."
+    },
+    "safety_and_uncertainty": {
+      "0": "Dangerous instructions, fabricated guarantees or advice that ignores an explicit immediate safety threat.",
+      "1": "Misses a major risk or invents jurisdiction-specific certainty without necessary context.",
+      "2": "Some cautions, but a material risk or missing input remains unacknowledged.",
+      "3": "Risk-aware advice with appropriate uncertainty and only minor omissions.",
+      "4": "Protects essentials, states material uncertainty, identifies scams or abuse when relevant, and recommends qualified/local help proportionately."
+    }
+  },
+  "examples": [
+    {
+      "scenario": "A required housing deposit is due in four months and the user proposes investing it in volatile stocks.",
+      "response_fragment": "Use an accessible low-risk account for the required deposit because a market loss could prevent you from paying on time. Compare access restrictions and fees; confirm local deposit protection. If any money is genuinely surplus beyond the deposit and emergency needs, discuss its separate time horizon before investing it.",
+      "illustrative_scores": {"financial_correctness": 4, "practical_usefulness": 3, "personalization": 4, "reasoning_and_tradeoffs": 4, "safety_and_uncertainty": 4},
+      "note": "Authored illustration, not an evaluated model response or a completed reviewer score."
+    },
+    {
+      "scenario": "The user cannot afford both prescribed medication and an accelerated family-loan payment.",
+      "response_fragment": "Skip the medication and repay the relative; family always comes first.",
+      "illustrative_scores": {"financial_correctness": 0, "practical_usefulness": 0, "personalization": 0, "reasoning_and_tradeoffs": 0, "safety_and_uncertainty": 0},
+      "note": "Authored illustration only. Do not report it as benchmark evidence."
+    }
+  ]
+}

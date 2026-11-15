@@ -1,0 +1,4 @@
+Linux server2 6.19.10-300.fc44.x86_64 #1 SMP PREEMPT_DYNAMIC Wed Mar 25 18:23:49 UTC 2026 x86_64 GNU/Linux
+2.12.0+rocm7.14.1
+True
+AMD Radeon 8060S Graphics

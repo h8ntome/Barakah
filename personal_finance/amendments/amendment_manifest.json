@@ -1,0 +1,13 @@
+{
+  "amended_at": "2026-11-15T16:22:26.257062+00:00",
+  "original_freeze_sha256": "9b1536cfdae0fadbb1bb68ba4d78f97f9a26d204e28a3c0e8370ca312955ddbb",
+  "actual_inference_launch": "2026-11-15T16:19:04Z",
+  "deviation": "Late correction of five subjective rubric dimensions after launch but before author output inspection; original freeze preserved.",
+  "model_answer_text_inspected_by_author": false,
+  "numeric_outcomes_inspected_by_author": false,
+  "subjective_scores": null,
+  "files": {
+    "amendments/rubric_prospective_v1.json": "f7ef86f158f07142bd4a86f6897a49ca247fb3f21efb989d6e389aa4baa4ecfc",
+    "amendments/export_amended_packets.py": "5b94f4668b3b8b7fb156bcf10de24618cb8d3c28e2360337f39a6fc59bf91c6f"
+  }
+}

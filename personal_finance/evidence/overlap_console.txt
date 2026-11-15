@@ -1,0 +1,12 @@
+{
+  "corpus": "/tmp/homefinance-corpus/train_0.jsonl",
+  "corpus_sha256": "95f46af8ee1b4981aaa85a94fcb0701e51c27b987c2e6be1936bfc21fd103446",
+  "records": 27981,
+  "candidate_only": true,
+  "actual_finetune_rows_available": false,
+  "method": "number-masked word-trigram containment; exact masked full-scenario substring; top 3 fields per scenario",
+  "flag_threshold": 0.55,
+  "exact_masked_matches": [],
+  "limitations": "Lexical screening misses nonlexical/semantic paraphrases. Shared topics are not contamination. No claim of complete independence or confirmed training lineage."
+}
+Flagged: []

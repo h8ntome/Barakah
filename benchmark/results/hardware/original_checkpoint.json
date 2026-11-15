@@ -1,0 +1,234 @@
+{
+  "model": "LiquidAI/LFM3-1.7B",
+  "revision": "1da06bec6a819da10b54c67e5c90972b46d81871",
+  "public_without_authentication": true,
+  "kind": "full",
+  "snapshot_path": "/home/hadi/.cache/huggingface/hub/models--LiquidAI--LFM3-1.7B/snapshots/1da06bec6a819da10b54c67e5c90972b46d81871",
+  "timestamp": "2026-11-15T15:38:53.300569+00:00",
+  "files": {
+    ".eval_results/LFM3-1.7B.yaml": {
+      "bytes": 1553,
+      "sha256": "3e162ea4fdde47af47e1050b40d9b6aa516baa59cfd935217c23079b4c15c0be",
+      "hub_lfs_sha256": null
+    },
+    ".eval_results/ifbench.yaml": {
+      "bytes": 192,
+      "sha256": "63bfe58f450590722ac86fc43c97a8388d2a0ac077910719ca39f29736a4575c",
+      "hub_lfs_sha256": null
+    },
+    ".gitattributes": {
+      "bytes": 1838,
+      "sha256": "98cd74542392d7df88b3ea5c23e39bf347e44499d3a5250744c6f07cb5b1c64f",
+      "hub_lfs_sha256": null
+    },
+    "LICENSE": {
+      "bytes": 10574,
+      "sha256": "4d28ca14dedc0b3d0fcc2b3339f0e79931faa33874f3d24f522183a8fc70068c",
+      "hub_lfs_sha256": null
+    },
+    "README.md": {
+      "bytes": 55086,
+      "sha256": "63ef157d747e4fd77376a6eca0d7177bbeb4a2db3c9f5baacfd6afaf5a338e55",
+      "hub_lfs_sha256": null
+    },
+    "assets/icons/api.svg": {
+      "bytes": 304,
+      "sha256": "6a4bf6961897b9f33582cc1fdf580c24c02436f8edcd1c42c33f11e4fa1db7bd",
+      "hub_lfs_sha256": null
+    },
+    "assets/icons/blog.svg": {
+      "bytes": 329,
+      "sha256": "ad444704791f705ea53d1293a9e86b688cb5f4837a8b74dbe342eced1caba895",
+      "hub_lfs_sha256": null
+    },
+    "assets/icons/docs.svg": {
+      "bytes": 347,
+      "sha256": "2f3ad60851ac6726df7e0409038fcd45722f3c4b69539bf16cd797477be8568e",
+      "hub_lfs_sha256": null
+    },
+    "assets/icons/try.svg": {
+      "bytes": 317,
+      "sha256": "ba010a64fa3d2d71d91bd14c7ea948f9189bf2b9c08069319e27634da00645ee",
+      "hub_lfs_sha256": null
+    },
+    "assets/lfm3-edge-inference.webp": {
+      "bytes": 213860,
+      "sha256": "ac73ebf33a4ea9aa3191d64f28d10a3ed51531dfa5442390071b876ae1b37ea4",
+      "hub_lfs_sha256": "ac73ebf33a4ea9aa3191d64f28d10a3ed51531dfa5442390071b876ae1b37ea4"
+    },
+    "assets/lfm3-gpu-throughput-b300.png": {
+      "bytes": 85302,
+      "sha256": "cb378a251ef1234e7a7251b74952db0e7ea39d17c93cf6300dc3229093e342eb",
+      "hub_lfs_sha256": null
+    },
+    "assets/lfm3-post-training-recipe.webp": {
+      "bytes": 19342,
+      "sha256": "27d21292d1e8998a3ca52dad11f6905a74b60f367ae167e56e4fba3381bef477",
+      "hub_lfs_sha256": null
+    },
+    "assets/lfm3-pre-training-recipe.webp": {
+      "bytes": 28860,
+      "sha256": "1ecdb5082691ddcfaa14426cd3437f8948e3adb220c72616af4117eb51246b2f",
+      "hub_lfs_sha256": null
+    },
+    "assets/liquid-ai-banner.webp": {
+      "bytes": 38172,
+      "sha256": "30dbbfb9f1b412462ef8f690e95d490100b04487a4f534ac09a92f636f734196",
+      "hub_lfs_sha256": null
+    },
+    "chat_template.jinja": {
+      "bytes": 12129,
+      "sha256": "f45005c50cd2a97329722bf3a2dee9f16c04cdf825a589b280fb7e99e6827818",
+      "hub_lfs_sha256": null
+    },
+    "config.json": {
+      "bytes": 1454,
+      "sha256": "8c6ae8b8f6d88c87cfb98cf4b5e34e943d0ee07e24215c4121b3159a46e1399d",
+      "hub_lfs_sha256": null
+    },
+    "configuration_lfm3.py": {
+      "bytes": 6113,
+      "sha256": "176cced35657aedfea7d7002221360582d1c05fcaca882c21508bc3a73b282e5",
+      "hub_lfs_sha256": null
+    },
+    "generation_config.json": {
+      "bytes": 328,
+      "sha256": "0095ba7158e938b1e2d3082d412f00d8be85e42cbbd7608b63866f7a081cf270",
+      "hub_lfs_sha256": null
+    },
+    "lfm3_conv.py": {
+      "bytes": 8532,
+      "sha256": "80d4a985382a22774212759248a6b4c737bfbf9c2a47b3dd7f797dda748e4bb4",
+      "hub_lfs_sha256": null
+    },
+    "model.safetensors": {
+      "bytes": 3457635448,
+      "sha256": "135922caef64e81e52af88ede8b7c3ddaa9d6da220a9737fb3065275dbfb4330",
+      "hub_lfs_sha256": "135922caef64e81e52af88ede8b7c3ddaa9d6da220a9737fb3065275dbfb4330"
+    },
+    "modeling_lfm3.py": {
+      "bytes": 42359,
+      "sha256": "e8cd5254ea99ce6bd731b57b10908c2e8b5010ce8315341f895a38484885eeab",
+      "hub_lfs_sha256": null
+    },
+    "special_tokens_map.json": {
+      "bytes": 92,
+      "sha256": "7946f864cbfb62a1b041bda937244210a1a87f4a6cab3a48b791131b2cd57f88",
+      "hub_lfs_sha256": null
+    },
+    "tokenizer.json": {
+      "bytes": 17908635,
+      "sha256": "7e226e34bface23ccf6e495d157bf77186c1c30a7659880e1a8994db528c3701",
+      "hub_lfs_sha256": "7e226e34bface23ccf6e495d157bf77186c1c30a7659880e1a8994db528c3701"
+    },
+    "tokenizer_config.json": {
+      "bytes": 1545,
+      "sha256": "bf028f813efc6137bc07ed045cafe71820df9a5e26a38e39954706ed1e30a457",
+      "hub_lfs_sha256": null
+    }
+  },
+  "tensor_counts": {
+    "model.safetensors": 286
+  },
+  "model_config": {
+    "architectures": [
+      "Lfm3ForCausalLM"
+    ],
+    "auto_map": {
+      "AutoConfig": "configuration_lfm3.Lfm3Config",
+      "AutoModel": "modeling_lfm3.Lfm3Model",
+      "AutoModelForCausalLM": "modeling_lfm3.Lfm3ForCausalLM"
+    },
+    "bos_token_id": 124894,
+    "conv_L_cache": 7,
+    "conv_bias": false,
+    "dtype": "bfloat16",
+    "eos_token_id": 124900,
+    "head_dim": 128,
+    "hidden_size": 2048,
+    "intermediate_size": 7680,
+    "layer_types": [
+      "conv",
+      "conv",
+      "full_attention",
+      "conv",
+      "sliding_attention",
+      "conv",
+      "full_attention",
+      "conv",
+      "sliding_attention",
+      "conv",
+      "full_attention",
+      "conv",
+      "sliding_attention",
+      "conv",
+      "full_attention",
+      "conv",
+      "sliding_attention",
+      "conv",
+      "full_attention",
+      "conv",
+      "sliding_attention",
+      "conv",
+      "full_attention",
+      "conv"
+    ],
+    "max_position_embeddings": 262144,
+    "model_type": "lfm3",
+    "norm_eps": 1e-05,
+    "num_attention_heads": 16,
+    "num_hidden_layers": 24,
+    "num_key_value_heads": 4,
+    "pad_token_id": 124893,
+    "rope_parameters": {
+      "full_attention": {
+        "partial_rotary_factor": 0.5,
+        "rope_theta": 1000000.0,
+        "rope_type": "default"
+      },
+      "sliding_attention": {
+        "rope_theta": 10000,
+        "rope_type": "default"
+      }
+    },
+    "sliding_window": 256,
+    "tie_word_embeddings": true,
+    "transformers_version": "5.12.1",
+    "use_cache": true,
+    "use_sandwich_norm": true,
+    "vocab_size": 128000
+  },
+  "model_card": {
+    "base_model": "LiquidAI/LFM3-1.7B-Base",
+    "language": [
+      "en",
+      "ar",
+      "zh",
+      "fr",
+      "de",
+      "it",
+      "ja",
+      "ko",
+      "pt",
+      "es",
+      "vi",
+      "th",
+      "id",
+      "hi",
+      "ru",
+      "pl"
+    ],
+    "library_name": "transformers",
+    "license": "other",
+    "license_name": "lfm1.0",
+    "license_link": "LICENSE",
+    "pipeline_tag": "text-generation",
+    "tags": [
+      "liquid",
+      "lfm3",
+      "edge",
+      "conversational",
+      "custom_code"
+    ]
+  }
+}

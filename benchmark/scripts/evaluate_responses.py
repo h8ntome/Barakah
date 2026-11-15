@@ -108,7 +108,7 @@ def summarize(scores, responses, total_questions):
             "candidate_flagged_responses":rate(sum(bool(s["safety_flags"]) for s in scores),len(scores)),
             "safety_review_pending":len(scores)-len(safe),"hallucination_review_pending":len(scores)-len(hall),
             "generation_failure_rate":rate(sum(bool(s["error"]) for s in scores),len(scores)),
-            "truncated_responses":sum(s["truncated"] for s in scores),
+            "truncated_responses":sum(s["truncated"] is True for s in scores),
             "performance":{"successful_n":len(lat),"mean_latency_seconds":statistics.mean(lat) if lat else None,
               "median_latency_seconds":statistics.median(lat) if lat else None,
               "p95_latency_seconds":ordered[math.ceil(.95*len(ordered))-1] if ordered else None,
@@ -145,6 +145,7 @@ def evaluate(run_name, review_path=None):
          "dataset_sha256":actual,"raw_sha256":initial_hashes["raw"],
          "metadata_sha256":initial_hashes["metadata"],
          "scored_at":now(),"review_file_sha256":initial_hashes.get("reviews"),
+         "scoring_code_sha256":digest(__file__),
          "metadata":meta,"summary":summary,"scores":scores}
     if any(digest(path)!=initial_hashes[k] for k,path in paths.items()):
         raise ValueError("Inputs changed while scoring; wait for inference to finish or score an immutable snapshot")

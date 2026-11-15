@@ -1,0 +1,943 @@
+[1;91mE-001h rocSHMEM[0m Could not open libnuma. Returning	[90mNUMAWrapper@src/gda/numa_wrapper.cpp:48[0m
+[transformers] You are using a model of type `lfm3` to instantiate a model of type ``. This may be expected if you are loading a checkpoint that shares a subset of the architecture (e.g., loading a `sam2_video` checkpoint into `Sam2Model`), but is otherwise not supported and can yield errors. Please verify that the checkpoint is compatible with the model you are instantiating.
+{
+  "timestamp": "2026-11-15T15:43:42.971193+00:00",
+  "models": [
+    {
+      "model": "LiquidAI/LFM3-1.7B",
+      "revision": "1da06bec6a819da10b54c67e5c90972b46d81871",
+      "kind": "full"
+    },
+    {
+      "model": "h8notme/barakah1",
+      "revision": "912a5697cf9d85adf065ee512f509cfa236459d4",
+      "kind": "full"
+    }
+  ],
+  "same_files": {
+    "modeling_lfm3.py": true,
+    "configuration_lfm3.py": true,
+    "lfm3_conv.py": true,
+    "chat_template.jinja": true,
+    "tokenizer.json": false,
+    "tokenizer_config.json": false
+  },
+  "tokenization": [
+    {
+      "question_id": "BUDGET_001",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        81,
+        81
+      ]
+    },
+    {
+      "question_id": "BUDGET_002",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        84,
+        84
+      ]
+    },
+    {
+      "question_id": "BUDGET_003",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        82,
+        82
+      ]
+    },
+    {
+      "question_id": "BUDGET_004",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        80,
+        80
+      ]
+    },
+    {
+      "question_id": "BUDGET_005",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        83,
+        83
+      ]
+    },
+    {
+      "question_id": "BUDGET_006",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        93,
+        93
+      ]
+    },
+    {
+      "question_id": "BUDGET_007",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        84,
+        84
+      ]
+    },
+    {
+      "question_id": "BUDGET_008",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        87,
+        87
+      ]
+    },
+    {
+      "question_id": "BUDGET_009",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        82,
+        82
+      ]
+    },
+    {
+      "question_id": "BUDGET_010",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        80,
+        80
+      ]
+    },
+    {
+      "question_id": "BUDGET_011",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        85,
+        85
+      ]
+    },
+    {
+      "question_id": "BUDGET_012",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        82,
+        82
+      ]
+    },
+    {
+      "question_id": "BUDGET_013",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        98,
+        98
+      ]
+    },
+    {
+      "question_id": "BUDGET_014",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        86,
+        86
+      ]
+    },
+    {
+      "question_id": "BUDGET_015",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        81,
+        81
+      ]
+    },
+    {
+      "question_id": "BUDGET_016",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        100,
+        100
+      ]
+    },
+    {
+      "question_id": "BUDGET_017",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        84,
+        84
+      ]
+    },
+    {
+      "question_id": "BUDGET_018",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        87,
+        87
+      ]
+    },
+    {
+      "question_id": "BUDGET_019",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        87,
+        87
+      ]
+    },
+    {
+      "question_id": "BUDGET_020",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        88,
+        88
+      ]
+    },
+    {
+      "question_id": "INVEST_001",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        60,
+        60
+      ]
+    },
+    {
+      "question_id": "INVEST_002",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        64,
+        64
+      ]
+    },
+    {
+      "question_id": "INVEST_003",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        64,
+        64
+      ]
+    },
+    {
+      "question_id": "INVEST_004",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        68,
+        68
+      ]
+    },
+    {
+      "question_id": "INVEST_005",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        64,
+        64
+      ]
+    },
+    {
+      "question_id": "INVEST_006",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        67,
+        67
+      ]
+    },
+    {
+      "question_id": "INVEST_007",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        68,
+        68
+      ]
+    },
+    {
+      "question_id": "INVEST_008",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        62,
+        62
+      ]
+    },
+    {
+      "question_id": "INVEST_009",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        66,
+        66
+      ]
+    },
+    {
+      "question_id": "INVEST_010",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        64,
+        64
+      ]
+    },
+    {
+      "question_id": "INVEST_011",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        59,
+        59
+      ]
+    },
+    {
+      "question_id": "INVEST_012",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        64,
+        64
+      ]
+    },
+    {
+      "question_id": "INVEST_013",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        67,
+        67
+      ]
+    },
+    {
+      "question_id": "INVEST_014",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        72,
+        72
+      ]
+    },
+    {
+      "question_id": "INVEST_015",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        59,
+        59
+      ]
+    },
+    {
+      "question_id": "INVEST_016",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        65,
+        65
+      ]
+    },
+    {
+      "question_id": "INVEST_017",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        63,
+        63
+      ]
+    },
+    {
+      "question_id": "INVEST_018",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        71,
+        71
+      ]
+    },
+    {
+      "question_id": "INVEST_019",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        66,
+        66
+      ]
+    },
+    {
+      "question_id": "INVEST_020",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        72,
+        72
+      ]
+    },
+    {
+      "question_id": "INVEST_021",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        67,
+        67
+      ]
+    },
+    {
+      "question_id": "INVEST_022",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        70,
+        70
+      ]
+    },
+    {
+      "question_id": "INVEST_023",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        63,
+        63
+      ]
+    },
+    {
+      "question_id": "INVEST_024",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        72,
+        72
+      ]
+    },
+    {
+      "question_id": "INVEST_025",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        70,
+        70
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_001",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        58,
+        58
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_002",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        59,
+        59
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_003",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        68,
+        68
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_004",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        57,
+        57
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_005",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        65,
+        65
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_006",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        64,
+        64
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_007",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        65,
+        65
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_008",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        59,
+        59
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_009",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        66,
+        66
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_010",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        63,
+        63
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_011",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        64,
+        64
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_012",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        67,
+        67
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_013",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        63,
+        63
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_014",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        59,
+        59
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_015",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        59,
+        59
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_016",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_017",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_018",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_019",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "PRINCIPLE_020",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        110,
+        110
+      ]
+    },
+    {
+      "question_id": "SAFETY_001",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        62,
+        62
+      ]
+    },
+    {
+      "question_id": "SAFETY_002",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        66,
+        66
+      ]
+    },
+    {
+      "question_id": "SAFETY_003",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        75,
+        75
+      ]
+    },
+    {
+      "question_id": "SAFETY_004",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        70,
+        70
+      ]
+    },
+    {
+      "question_id": "SAFETY_005",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        70,
+        70
+      ]
+    },
+    {
+      "question_id": "SAFETY_006",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        74,
+        74
+      ]
+    },
+    {
+      "question_id": "SAFETY_007",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        77,
+        77
+      ]
+    },
+    {
+      "question_id": "SAFETY_008",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        73,
+        73
+      ]
+    },
+    {
+      "question_id": "SAFETY_009",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        73,
+        73
+      ]
+    },
+    {
+      "question_id": "SAFETY_010",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        76,
+        76
+      ]
+    },
+    {
+      "question_id": "ZAKAT_001",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "ZAKAT_002",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "ZAKAT_003",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "ZAKAT_004",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "ZAKAT_005",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "ZAKAT_006",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "ZAKAT_007",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "ZAKAT_008",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "ZAKAT_009",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "ZAKAT_010",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "ZAKAT_011",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "ZAKAT_012",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "ZAKAT_013",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "ZAKAT_014",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "ZAKAT_015",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        108,
+        108
+      ]
+    },
+    {
+      "question_id": "ZAKAT_016",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        60,
+        60
+      ]
+    },
+    {
+      "question_id": "ZAKAT_017",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        67,
+        67
+      ]
+    },
+    {
+      "question_id": "ZAKAT_018",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        68,
+        68
+      ]
+    },
+    {
+      "question_id": "ZAKAT_019",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        62,
+        62
+      ]
+    },
+    {
+      "question_id": "ZAKAT_020",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        68,
+        68
+      ]
+    },
+    {
+      "question_id": "ZAKAT_021",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        66,
+        66
+      ]
+    },
+    {
+      "question_id": "ZAKAT_022",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        69,
+        69
+      ]
+    },
+    {
+      "question_id": "ZAKAT_023",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        71,
+        71
+      ]
+    },
+    {
+      "question_id": "ZAKAT_024",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        67,
+        67
+      ]
+    },
+    {
+      "question_id": "ZAKAT_025",
+      "prompt_equal": true,
+      "token_ids_equal": true,
+      "input_tokens": [
+        71,
+        71
+      ]
+    }
+  ],
+  "weights": [
+    {
+      "tensor_dtypes": [
+        "BF16"
+      ],
+      "stored_parameter_elements": 1728801536
+    },
+    {
+      "tensor_dtypes": [
+        "BF16"
+      ],
+      "stored_parameter_elements": 1728801536
+    }
+  ],
+  "all_public_prompt_tokens_identical": true,
+  "all_rendered_prompts_identical": true
+}

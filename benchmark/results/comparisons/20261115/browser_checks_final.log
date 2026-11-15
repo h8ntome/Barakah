@@ -1,0 +1,42 @@
+✓ Barakah AI | Paired benchmark
+  file:///Users/hadi/Documents/Barakah/benchmark/visuals/20261115/html/index.html
+✓ Done
+✓ Done
+"4 regressions shown"
+✓ Done
+"3 budgeting regressions"
+✓ Done
+"1 difficult budgeting regression"
+✓ Done
+"Empty state visible"
+✓ Done
+✓ Done
+"25 conceptual questions, no numeric score"
+✓ Done
+"Chart selector works"
+✓ Done
+✓ Done
+✓ Done
+✓ Done
+"Both real responses expand"
+✓ Done
+✓ Screenshot saved to /Users/hadi/Documents/Barakah/benchmark/visuals/20261115/verification/mobile-response.png
+{
+  "interrupted": false
+}
+✓ Done
+{
+  "interrupted": false
+}
+✓ Screenshot saved to /Users/hadi/Documents/Barakah/benchmark/visuals/20261115/verification/mobile.png
+"390px layout has no horizontal overflow"
+✓ Done
+{
+  "interrupted": false
+}
+✓ Screenshot saved to /Users/hadi/Documents/Barakah/benchmark/visuals/20261115/verification/desktop.png
+"1440px layout, 100 question pairs, all images loaded"
+✓ Barakah blinded review
+  file:///Users/hadi/Documents/Barakah/benchmark/visuals/20261115/html/review.html
+"60 blinded question pairs"
+PASS: dashboard filters, missing-score state, chart switching, response expansion, desktop/mobile layout and blinded review coverage

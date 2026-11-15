@@ -1,0 +1,2 @@
+# Execution receipts are submission evidence, not disposable application logs.
+!evidence/**/*.log

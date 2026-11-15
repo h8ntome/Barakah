@@ -1,0 +1,9 @@
+{
+  "checked_at": "2026-11-15T16:47:31.352006+00:00",
+  "staged_files_checked": 222,
+  "total_staged_file_bytes": 7871066,
+  "high_confidence_secret_pattern_hits": [],
+  "model_weights_private_databases_videos_or_env_files_staged": false,
+  "unrelated_changes_excluded": true,
+  "limitation": "Targeted pattern/path/size scan, not a comprehensive security audit."
+}

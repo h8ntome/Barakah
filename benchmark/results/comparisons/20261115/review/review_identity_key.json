@@ -1,0 +1,482 @@
+{
+  "INVEST_001:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "0807ad16a5c7f693f9ca264ac63a45249c37bd75d089055ba1eddb34b4b17196"
+  },
+  "INVEST_001:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "36f52403f81c85b832cc8faa09579dd9b431af26e274a6501e1f482f1d1a15f0"
+  },
+  "INVEST_002:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "989b1afc2207cf9c8a8ede9c0f4b14dec631bfd228e4824b2d1b2d07c6d19bd1"
+  },
+  "INVEST_002:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "6024e1bde5a8c7846f867d22042d238a38d2fbe0023a81aa6c46a9cf6fec407e"
+  },
+  "INVEST_003:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "0d9c272df070223a2276707330c11a6cd1c7e5c0bb2849eefbf6e0f5f0949a2f"
+  },
+  "INVEST_003:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "257050d93766b900641493c4bb4b63ac53205a9a248dd873c290d6687517ab6a"
+  },
+  "INVEST_004:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "ff725fd0606c5d4884546cce2306c07ada724b02a1c420e898f693cd345ce6bb"
+  },
+  "INVEST_004:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "aedd962521b087687060a37fe1c2f2df4a2ff694877c8d97ce32266bea125676"
+  },
+  "INVEST_005:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "3c100cc234502393ecd7afde9e0f43b9142c4e223cc3076f004fc614051c6ea6"
+  },
+  "INVEST_005:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "fd8fc1592aae93e47e7c2c879b50de7207aff6a17b7551e5be0de10ca98f8a4f"
+  },
+  "INVEST_006:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "a9ebda4905e326fd7568c2e311e27de24aad7f5b61d4069c5e8c2d92cc1a3120"
+  },
+  "INVEST_006:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "c96a7db83bf6e2b241fb9a712eca5bb657f35fc40ac76bf0027478d3617a21a5"
+  },
+  "INVEST_007:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "b0703caa5c531ef7d8bc37b991f3b5ac401646642d36957d01e27c869200e87b"
+  },
+  "INVEST_007:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "263f54e604698bf2ab925dc05542521ba514ae72e33f3f2a27137d8fa8d7764f"
+  },
+  "INVEST_008:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "ac04e67fcc08c28b1cd9b3859673b191b5358964f747c1389ec4a527ad13e5f9"
+  },
+  "INVEST_008:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "02b303090cb90f0a9a5e6e2ed886d5f7ffdb0f1cc0e50ef3930db19d7c0b3592"
+  },
+  "INVEST_009:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "094513e5a450c67910e0e4c3bc51f07eff4244ff5d43722b14a9fb81c42d4c58"
+  },
+  "INVEST_009:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "56d7e5201887004679308acae3192b679ef9fa99a8abb5d9693035110bbb37e2"
+  },
+  "INVEST_010:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "cfcab7244b6ff904ae229661fc57f2e40ee8fc4a0ee3e95e1f393a0bf09f9309"
+  },
+  "INVEST_010:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "c538c556aa354e11a1ebfe7d00799a066e013aa213677f847e450940ef86eb20"
+  },
+  "INVEST_011:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "50a9eb64d18969727011f305b47ea80f80896df0310a93433c67be004b054076"
+  },
+  "INVEST_011:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "e66ccdb3950ef3d180bac7cfe892ad4d61aa00a03c1b9ed66d821d53e33cd1bc"
+  },
+  "INVEST_012:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "20fbf220e55c0a07ae7e20f34ed1f0b1d8205f5152c51a0c90dcc7667d5c388d"
+  },
+  "INVEST_012:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "eed0f200956a589d13da0c661f3fe4e814daaf227d33fb7ab64c96bda1d33d7a"
+  },
+  "INVEST_013:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "aef1ecc6961d3e2f6743cb3a2716e0fd8fe1b20ae6835e061473ebca37b69942"
+  },
+  "INVEST_013:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "7052f5ffa7a8967f3ae204c6ba98ec447a4ed7c1f34f36b62455426a273f6306"
+  },
+  "INVEST_014:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "49652091e8017b62b231169ce9c0b872b755f140d7640563aa1447a1be4dafbb"
+  },
+  "INVEST_014:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "cbd5098919af6e520977848fd563e3aa6c40c847958a14b21ebd9803f3d37953"
+  },
+  "INVEST_015:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "2d38c0cecd1ae56fcb633610167fc5c917fae52e6ffc2081c24be4b1e154bfdf"
+  },
+  "INVEST_015:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "2c7f0394cbb91c913c897b489266efbff64c4c593de27c4609e78022c5d66cbb"
+  },
+  "INVEST_016:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "ee306ffc58dfdd6e2c8cbb6c17922bb5404cc4cbba9c117e7c9c0b5d3745bff3"
+  },
+  "INVEST_016:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "8ee09fdc31833d23be880a2f0a8082cd1c0239a645c61c44f1fd4b8691a67041"
+  },
+  "INVEST_017:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "c0021e20b733fec6582ec58c67ae5a05c02442c37cc9c4f7fb8071c6e1420e73"
+  },
+  "INVEST_017:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "5b89f26b718847c335e6eb1d767bc94fcbbcd9560628f1a8c21cba0228ca4ac0"
+  },
+  "INVEST_018:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "65cbc9218a8dc11a4a97349bcbb79e9316a6bfa79ce0e4e981cbf0435b02a53c"
+  },
+  "INVEST_018:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "776a50fdcb9ada5acc9c566edee335dc4f276849ec0497b854537320c4a9b13b"
+  },
+  "INVEST_019:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "796f507d752dc0b9eb6149fe41f36bb25125f11aa1255c1b676ce39582a47527"
+  },
+  "INVEST_019:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "1f1720797be3e0894f117b9599cff9f2add2e6b0edc06025d606d154ea4639da"
+  },
+  "INVEST_020:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "d0e1203e1f7eea306f757b567338407f563365e0c01fc3830a6e1bbecf16f7fe"
+  },
+  "INVEST_020:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "0bfee008c961a704a67fbf10e667d01402356df03ef30cb5e004d8913ce20fa5"
+  },
+  "INVEST_021:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "92905a48269be2a3d9e9b53c65aada1bb62ec257ed0ced3e9c56cc6e0bc823cf"
+  },
+  "INVEST_021:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "132c54d74c899ac69bece012c435034ec6eee8b6df0dba9ece46ca09909cf0af"
+  },
+  "INVEST_022:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "c60be12d2fc542f2d83504dd3a7d6152304eb38498337b19e8f2180e954aff94"
+  },
+  "INVEST_022:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "8734ab2104fe12e0c9287a74fa52751fb5c228da6440bada6a7bf03e5afc844a"
+  },
+  "INVEST_023:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "233497145c9699dd9d997d7ac843864a7c865e0ccde6a7eeebd2c43f893d4eb2"
+  },
+  "INVEST_023:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "dab0f8c6b3cbd4945636e58b6be85e1d989ce6020589075dc3a283e2c5b746d0"
+  },
+  "INVEST_024:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "4a3177d5f8afbf80b72d00a4dafaec37c7506488f97dd0f12cd6ffff60f3afcc"
+  },
+  "INVEST_024:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "a319679ce2639cbb86e9e8ac6cf300db1354d06215f8f12c6ea685b6e6b3a9f6"
+  },
+  "INVEST_025:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "48408043af330929420a2a6c656b2cf157eb6ce450e62a53e412ccd3ce2ebaf7"
+  },
+  "INVEST_025:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "de7a82005310685516c475c6484cf65da10569e397c6ea5bb6bf9ddf20903d29"
+  },
+  "PRINCIPLE_001:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "33f96b895ae62f425a25d61d5b85e164c5aa3c4414fe6077671802fd1db57e88"
+  },
+  "PRINCIPLE_001:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "c83a5ca10467c227ec1d4f0bcfe4fa7200d3e54f4c1b7ce2db335adbe6197860"
+  },
+  "PRINCIPLE_002:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "a83b4d52c9877b4a82418a6dd6604f4ff9fab9a293dba552b5b7360f1e015af4"
+  },
+  "PRINCIPLE_002:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "a36ff501d134cfcd077e164ae991932471d76f8ba84f7e284b6c44ec47ab2478"
+  },
+  "PRINCIPLE_003:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "1944f0ddaf2c297f7ec3a6c837e345b57540eae7dcfd1376ebbc13dab5210016"
+  },
+  "PRINCIPLE_003:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "6a88ce0c5b6561b1624ee93fb5df6c53ce4fb28fb138fd0a6ae420780c4253e5"
+  },
+  "PRINCIPLE_004:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "07f46351541aa00c086bb57da8da93543a60d1a10be6482290eb1247450771e5"
+  },
+  "PRINCIPLE_004:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "19d357fa51c0ecba0416f7e5fbd47c34d620e51974d9227f36281cfff03c6283"
+  },
+  "PRINCIPLE_005:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "e5f5a8c545319ea5115df713d36bcf1a71292668c37b6a11e3b74d53f4b382f8"
+  },
+  "PRINCIPLE_005:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "0619e0a03cc78cd7c13cd4748d88e428701553db26bd653f982e24d74eeffb5d"
+  },
+  "PRINCIPLE_006:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "c6257e37c8afeaf526d80fb33b4bfdc5107a19a0e72f4606b7f9bb8024f4ca72"
+  },
+  "PRINCIPLE_006:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "580c645b77c66447d9a868ee85aa8febeea208e9f34baacc5a5b17a686995b63"
+  },
+  "PRINCIPLE_007:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "fb0f8e64048eda46071833402e9e99420e48e941a802a520ebeb5024c60fe392"
+  },
+  "PRINCIPLE_007:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "25503cdcb7e15b38f25674a366302a332b541dd47c3e2ea52c9a7d2da882f55d"
+  },
+  "PRINCIPLE_008:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "753a2f18be825aa0717f9c9001a2c9da44915a0cce91fe3db404669e61f6afba"
+  },
+  "PRINCIPLE_008:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "fe42d2f6df3913a4cff354d1d22c81267e850d04cb7f26002d411e412a0f866d"
+  },
+  "PRINCIPLE_009:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "ab13472a9cb4f58cf53bfbf924c3cc0f50ef51ad5302cc2cee93f116b30a611a"
+  },
+  "PRINCIPLE_009:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "87554d1b59677d1340772e57e62fcf216f93412dbcf966e37cf6d3dda477fa9d"
+  },
+  "PRINCIPLE_010:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "3fc272020e0b875ff30bdca3d7589675f6c8398a29db7ddf0f4e1091faa9ee13"
+  },
+  "PRINCIPLE_010:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "3e3e36d99b24def6d2bd3a742ebec08d16850c899621b402684b067fcd5e283f"
+  },
+  "PRINCIPLE_011:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "615d84c939f0341c2a1b905c99c2aedae7ba5c055773393dd9525c43131af748"
+  },
+  "PRINCIPLE_011:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "2c92343e2197b7f6638e7478b69f8cd9a314a21b42b0557a3d27ad93b11a611f"
+  },
+  "PRINCIPLE_012:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "522016e4c5fb362d6a5514673b9a9267f5963f773dc970b59a06dd5f9bb8655a"
+  },
+  "PRINCIPLE_012:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "db2571e7eee54dcd2ab5c99171899ba8b5a1caf39e1adc18486c1d8d6c99c5d0"
+  },
+  "PRINCIPLE_013:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "784585490b5627d8f0c038650fd68629375b28e5b24dff5bf68be8f6cb709240"
+  },
+  "PRINCIPLE_013:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "322b2789f815e07d4c98fb49fa0bcaf7c26d4004b842c9c884ba17a851cfcfe9"
+  },
+  "PRINCIPLE_014:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "a48bd5e974dafa708faf889eceaeb5c677e38522126f59ec367b0d49ffbc8310"
+  },
+  "PRINCIPLE_014:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "86d96421e3f57f1ec1bfc6c74b2518f4724752d0a82b3dce56e3a0fcf9c8321d"
+  },
+  "PRINCIPLE_015:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "16f2545d4860224174f147cb3ba3bb69d1f472228a9552a032d70044c0667029"
+  },
+  "PRINCIPLE_015:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "fdf2286d7acfaeefa056205ae7d57e1590cd35f25826002e39debad91a16071a"
+  },
+  "SAFETY_001:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "42714454b80440948768b07321aa0bcb3e0fc3541c90d23d47cce84fc8be0ac0"
+  },
+  "SAFETY_001:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "cedb2d4bba556fb579d2f8d11d8fd86060326dabedda2221541808c36e9f0d0c"
+  },
+  "SAFETY_002:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "9336e71ecbf5216eba1d047683db1f93ac7bc0b08a9760082b25527b02157bca"
+  },
+  "SAFETY_002:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "2fc4cf6bf3f7fbba357a139a95c7e8c69d1bd7d783d96958b9861f733d0fc3ba"
+  },
+  "SAFETY_003:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "41b2411705e88372d6dba155bb107da889cead87fdbcd399cb2c1a097c3f003e"
+  },
+  "SAFETY_003:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "913599ccb253683a530ffe5fda66889c904f5ebf111590e10d16a3b7e7db0ffc"
+  },
+  "SAFETY_004:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "1d5bfa3d4dd9707cd64792ae6e9043ad3fb05bace288e1736534cfb1d10d822d"
+  },
+  "SAFETY_004:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "1eb71e0a0b851191f3f0aa601230304071425db5eab94e26f7372886cf9f4d6e"
+  },
+  "SAFETY_005:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "0839648253fc946c01a2eaa81407191fb2941ff713f6c5ad0f1caa15109f60e1"
+  },
+  "SAFETY_005:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "e5d49c7b8cf5238639efbde7756a7b0a4c035f3c0f58ba241bb8f340da001994"
+  },
+  "SAFETY_006:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "28c4779beabaff7e2a18ec6b74feba470ed486414f5c7d8314a52f5d3b89e543"
+  },
+  "SAFETY_006:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "cf43110d8a866178fc5fe11bb939cd6ceb4597002580ce69955750dae2401743"
+  },
+  "SAFETY_007:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "8838ed57ff773a5c1e5a81dbc6d8020f346a01efd5e4b3e9e7b461d1a3ae7e02"
+  },
+  "SAFETY_007:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "dce9175337b30320711db469a2229ac534e7592d5a7b321d2f84efca803065bd"
+  },
+  "SAFETY_008:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "d604cbb1ae988859f26209fef408ced37bbaf6427ee1a8b9c5865cc9831c7953"
+  },
+  "SAFETY_008:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "95aff835c7988e47f667cf74a7b31a1ff2d7e55bf5cd089c9b9fd932bdcd0f53"
+  },
+  "SAFETY_009:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "86cb4d116f719673bd4e1d1d9659949c5640725ae518dbf9c0357c4d4c8ad7d8"
+  },
+  "SAFETY_009:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "2872014643036ce55fd698f7d177849d29629fda1f0a93bd1fef665faf69b221"
+  },
+  "SAFETY_010:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "2974f06d5e0cbfdb1bef2e63feb2a68fb9bdc9a16da811ad3255eb12584d4a39"
+  },
+  "SAFETY_010:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "4418a9967f2b6a71af49c1c1c7ed6eecfcf7ef22139f4ee624e0db279be818eb"
+  },
+  "ZAKAT_016:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "4ed39bf1a91015f6053e718b3c23a613b3b7e73e345c9dd5ae3eb77e0d6c2d08"
+  },
+  "ZAKAT_016:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "ce615f44feeed47c6b960fdc9c5c4040fb18dbb1f5a11f097315dcfbf2d4c31a"
+  },
+  "ZAKAT_017:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "f040e1618ee275a770c7e3107fbbb9e5275d17f79082095d38f11c85b22e090d"
+  },
+  "ZAKAT_017:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "0e928a6688fcf5052afc81b90e98ae12779a5a270955b521885773fb3bc94f61"
+  },
+  "ZAKAT_018:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "71b053587f7697bb7ff573e3559bf5d786af9aed0f38eebe7b951ad436a003ac"
+  },
+  "ZAKAT_018:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "3d7edbcf3065f3d903372fb915bf6892ee519d784df112bf10c18141f4318d12"
+  },
+  "ZAKAT_019:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "00fbcc11cfe4fe62e15ec6582a01fe75d7172a40eaf825cfcb760ea35134433e"
+  },
+  "ZAKAT_019:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "4324f416d0bdba8bf389fe47c02d322fd618faa852ac326e0a6adb842d8facdc"
+  },
+  "ZAKAT_020:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "846687fa5e70546b73a124fc28b1b7c30ceaf016a0d6210c25d0d135f06bc553"
+  },
+  "ZAKAT_020:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "cf992e396fedb28559fc5f6018e0ca6cf5d27e68d5e9830b49a08120019241c4"
+  },
+  "ZAKAT_021:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "fee9fbc8cff37cb9ac5577e9ae2d998555bc625bb49776fa32488f54dc148ca7"
+  },
+  "ZAKAT_021:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "9c8b1d32b8df2301a713187821dec1d9f2bf15ba16511638a5b343a46c710926"
+  },
+  "ZAKAT_022:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "aab2c2cec32424382ba622c257cc0fce0a463d49e4cbd315617ff91a224c4f01"
+  },
+  "ZAKAT_022:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "0d79eaf3b7f0ade872c457bbf8c9a26493b4fe528fd31ed5db12a438c1b193e6"
+  },
+  "ZAKAT_023:A": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "77583f4bedc08d782cdbc9704c08c887e4ad0d71b79b88a343311a71ec723fde"
+  },
+  "ZAKAT_023:B": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "cecac7745d9710f5f473d7703ea2fa481cd346167e4f6bce25db3850f24fc0d8"
+  },
+  "ZAKAT_024:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "31c1445f3b19a36c099dde5c89ee2835e937ce96ccbed5579e6cc3fb8f4ede6f"
+  },
+  "ZAKAT_024:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "902fc382623f4cf9241851edc572a8f4fb026ea4f3453dd4aff67c13d47ad944"
+  },
+  "ZAKAT_025:A": {
+    "run_id": "barakah-matched_20261115T154845353654+0000",
+    "response_sha256": "719fa4774eab02015c28e7c9dd8b4f93bc563baa5e8f834c478f35d649736853"
+  },
+  "ZAKAT_025:B": {
+    "run_id": "original-matched_20261115T153923318073+0000",
+    "response_sha256": "9ee8ad7e5bb733d3a839110d3dbe644a4e582b4070fabba02bd95a5d4fd3475b"
+  }
+}

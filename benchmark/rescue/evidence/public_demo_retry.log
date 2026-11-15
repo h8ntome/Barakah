@@ -1,0 +1,19 @@
+PASS: public Try Demo authenticates
+PASS: stored demo income
+PASS: stored demo spending
+PASS: public demo writes stored records
+Traceback (most recent call last):
+  File "<stdin>", line 7, in <module>
+  File "/Users/hadi/Documents/Barakah/tests/e2e/public_demo.py", line 47, in main
+    j.check('reload refreshes session and retains edits', 'Fictional public isolation check')
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/hadi/Documents/Barakah/tests/e2e/journey.py", line 61, in check
+    wait(text)
+    ~~~~^^^^^^
+  File "/Users/hadi/Documents/Barakah/tests/e2e/journey.py", line 57, in wait
+    browser('wait', '--text', text)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/hadi/Documents/Barakah/tests/e2e/journey.py", line 24, in browser
+    raise AssertionError(f'Browser command {args[0]} failed: {result.stdout} {result.stderr}')
+AssertionError: Browser command wait failed:  ✗ Wait timed out after 25000ms
+

@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "runs": [
+    "original-matched_20261115T153923318073+0000",
+    "barakah-matched_20261115T154845353654+0000"
+  ],
+  "raw_records": [
+    100,
+    100
+  ],
+  "numerical_denominator_per_model": 40,
+  "conceptual_pending_per_model": 60,
+  "charts": {
+    "png": 10,
+    "svg": 10,
+    "minimum_dimensions": [
+      1920,
+      1080
+    ]
+  },
+  "checks": [
+    "processed raw/metadata provenance",
+    "paired question data",
+    "paired statistics",
+    "chart accuracy/latency/throughput/coverage",
+    "dashboard coverage and local links",
+    "evaluated source hash"
+  ]
+}

@@ -32,6 +32,8 @@ def main():
     assert refresh['secure'] and refresh['httpOnly'] and refresh['path'] == '/api/v1/auth'
     j.checks.append('live refresh cookie is Secure and HttpOnly')
     j.click('Transactions')
+    # Public account choices load asynchronously; navigation alone is not readiness.
+    j.wait('Record transaction')
     j.select('Transaction account', 'Demo checking (USD)')
     j.select('Transaction type', 'income')
     j.fill('Transaction amount', '500.00')
@@ -40,6 +42,8 @@ def main():
     j.click('Record transaction')
     j.check('public demo writes stored records', 'Fictional public isolation check')
     j.browser('reload')
+    # Wait for the new document, not welcome text still present in the old one.
+    j.browser('wait', '--load', 'networkidle')
     j.wait('Welcome to Barakah.')
     j.click('Transactions')
     j.check('reload refreshes session and retains edits', 'Fictional public isolation check')
@@ -61,6 +65,7 @@ def main():
         j.wait('Fictional salary')
         assert 'Fictional public isolation check' not in j.browser('get', 'text', 'body')
         j.checks.append('first tester edits do not leak to second tester')
+        j.wait('Record transaction')
         j.select('Transaction account', 'Demo checking (USD)')
         j.select('Transaction type', 'income')
         j.fill('Transaction amount', '25.00')
@@ -78,6 +83,7 @@ def main():
         j.checks.append('reset removes first demo edits')
         j.SESSION = first + '-second'
         j.browser('reload')
+        j.browser('wait', '--load', 'networkidle')
         j.wait('Welcome to Barakah.')
         j.click('Transactions')
         j.check('reset does not delete another tester records', 'Second tester retained record')
@@ -117,6 +123,7 @@ def main():
     j.click('Sign in')
     j.check('newly registered user can log in', 'Welcome to Barakah.')
     j.browser('reload')
+    j.browser('wait', '--load', 'networkidle')
     j.check('registered session survives reload', 'Welcome to Barakah.')
     j.click('Settings')
     j.details('Delete account and personal data')

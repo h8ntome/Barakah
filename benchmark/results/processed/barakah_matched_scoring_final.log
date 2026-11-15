@@ -1,0 +1,619 @@
+{
+  "sample_size": 100,
+  "dataset_size": 100,
+  "missing_responses": 0,
+  "automatic_numeric_correctness": {
+    "numerator": 32,
+    "denominator": 40,
+    "rate": 0.8,
+    "wilson_95_interval": [
+      0.652426936536005,
+      0.895000102745623
+    ]
+  },
+  "automatic_status_counts": {
+    "correct": 32,
+    "incorrect": 8,
+    "unparseable": 0
+  },
+  "automatic_generation_errors": 0,
+  "human_reviewed_correctness": {
+    "numerator": 0,
+    "denominator": 0,
+    "rate": null,
+    "wilson_95_interval": null
+  },
+  "pending_correctness_review": 60,
+  "verified_safety_failure_rate": {
+    "numerator": 0,
+    "denominator": 0,
+    "rate": null,
+    "wilson_95_interval": null
+  },
+  "verified_hallucination_rate": {
+    "numerator": 0,
+    "denominator": 0,
+    "rate": null,
+    "wilson_95_interval": null
+  },
+  "candidate_flagged_responses": {
+    "numerator": 6,
+    "denominator": 100,
+    "rate": 0.06,
+    "wilson_95_interval": [
+      0.027786123963188192,
+      0.1247681544589592
+    ]
+  },
+  "safety_review_pending": 100,
+  "hallucination_review_pending": 100,
+  "generation_failure_rate": {
+    "numerator": 0,
+    "denominator": 100,
+    "rate": 0.0,
+    "wilson_95_interval": [
+      3.469446951953614e-18,
+      0.03699349820698568
+    ]
+  },
+  "truncated_responses": 13,
+  "performance": {
+    "successful_n": 100,
+    "mean_latency_seconds": 4.519505317120056,
+    "median_latency_seconds": 4.242058205999456,
+    "p95_latency_seconds": 9.401268548001099,
+    "output_tokens": 18490,
+    "aggregate_output_tokens_per_second": 40.91155713427128,
+    "note": "Generation wall time includes prompt prefill, decode and device synchronization; tokenization excluded. Baseline token counts are not tokenizer measurements."
+  },
+  "by_category": {
+    "zakat": {
+      "sample_size": 25,
+      "dataset_size": 25,
+      "missing_responses": 0,
+      "automatic_numeric_correctness": {
+        "numerator": 11,
+        "denominator": 15,
+        "rate": 0.7333333333333333,
+        "wilson_95_interval": [
+          0.4804956594401943,
+          0.8910254667430761
+        ]
+      },
+      "automatic_status_counts": {
+        "correct": 11,
+        "incorrect": 4,
+        "unparseable": 0
+      },
+      "automatic_generation_errors": 0,
+      "human_reviewed_correctness": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "pending_correctness_review": 10,
+      "verified_safety_failure_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "verified_hallucination_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "candidate_flagged_responses": {
+        "numerator": 0,
+        "denominator": 25,
+        "rate": 0.0,
+        "wilson_95_interval": [
+          1.3877787807814457e-17,
+          0.13319225093904846
+        ]
+      },
+      "safety_review_pending": 25,
+      "hallucination_review_pending": 25,
+      "generation_failure_rate": {
+        "numerator": 0,
+        "denominator": 25,
+        "rate": 0.0,
+        "wilson_95_interval": [
+          1.3877787807814457e-17,
+          0.13319225093904846
+        ]
+      },
+      "truncated_responses": 1,
+      "performance": {
+        "successful_n": 25,
+        "mean_latency_seconds": 3.6406247474801057,
+        "median_latency_seconds": 1.3981003709996003,
+        "p95_latency_seconds": 9.084852359001161,
+        "output_tokens": 3718,
+        "aggregate_output_tokens_per_second": 40.850131588798874,
+        "note": "Generation wall time includes prompt prefill, decode and device synchronization; tokenization excluded. Baseline token counts are not tokenizer measurements."
+      }
+    },
+    "investing": {
+      "sample_size": 25,
+      "dataset_size": 25,
+      "missing_responses": 0,
+      "automatic_numeric_correctness": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "automatic_status_counts": {
+        "correct": 0,
+        "incorrect": 0,
+        "unparseable": 0
+      },
+      "automatic_generation_errors": 0,
+      "human_reviewed_correctness": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "pending_correctness_review": 25,
+      "verified_safety_failure_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "verified_hallucination_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "candidate_flagged_responses": {
+        "numerator": 2,
+        "denominator": 25,
+        "rate": 0.08,
+        "wilson_95_interval": [
+          0.022220401284847563,
+          0.24966108950395313
+        ]
+      },
+      "safety_review_pending": 25,
+      "hallucination_review_pending": 25,
+      "generation_failure_rate": {
+        "numerator": 0,
+        "denominator": 25,
+        "rate": 0.0,
+        "wilson_95_interval": [
+          1.3877787807814457e-17,
+          0.13319225093904846
+        ]
+      },
+      "truncated_responses": 4,
+      "performance": {
+        "successful_n": 25,
+        "mean_latency_seconds": 6.142978134199947,
+        "median_latency_seconds": 5.992883584000083,
+        "p95_latency_seconds": 9.404029263001576,
+        "output_tokens": 6292,
+        "aggregate_output_tokens_per_second": 40.970355827707735,
+        "note": "Generation wall time includes prompt prefill, decode and device synchronization; tokenization excluded. Baseline token counts are not tokenizer measurements."
+      }
+    },
+    "principles": {
+      "sample_size": 20,
+      "dataset_size": 20,
+      "missing_responses": 0,
+      "automatic_numeric_correctness": {
+        "numerator": 4,
+        "denominator": 5,
+        "rate": 0.8,
+        "wilson_95_interval": [
+          0.37553462976252533,
+          0.9637758913675698
+        ]
+      },
+      "automatic_status_counts": {
+        "correct": 4,
+        "incorrect": 1,
+        "unparseable": 0
+      },
+      "automatic_generation_errors": 0,
+      "human_reviewed_correctness": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "pending_correctness_review": 15,
+      "verified_safety_failure_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "verified_hallucination_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "candidate_flagged_responses": {
+        "numerator": 3,
+        "denominator": 20,
+        "rate": 0.15,
+        "wilson_95_interval": [
+          0.052368745896216595,
+          0.36041886474075696
+        ]
+      },
+      "safety_review_pending": 20,
+      "hallucination_review_pending": 20,
+      "generation_failure_rate": {
+        "numerator": 0,
+        "denominator": 20,
+        "rate": 0.0,
+        "wilson_95_interval": [
+          0,
+          0.16112515805281938
+        ]
+      },
+      "truncated_responses": 7,
+      "performance": {
+        "successful_n": 20,
+        "mean_latency_seconds": 5.841418096399957,
+        "median_latency_seconds": 6.445221083499746,
+        "p95_latency_seconds": 9.401268548001099,
+        "output_tokens": 4778,
+        "aggregate_output_tokens_per_second": 40.897603297259806,
+        "note": "Generation wall time includes prompt prefill, decode and device synchronization; tokenization excluded. Baseline token counts are not tokenizer measurements."
+      }
+    },
+    "budgeting": {
+      "sample_size": 20,
+      "dataset_size": 20,
+      "missing_responses": 0,
+      "automatic_numeric_correctness": {
+        "numerator": 17,
+        "denominator": 20,
+        "rate": 0.85,
+        "wilson_95_interval": [
+          0.6395811352592431,
+          0.9476312541037835
+        ]
+      },
+      "automatic_status_counts": {
+        "correct": 17,
+        "incorrect": 3,
+        "unparseable": 0
+      },
+      "automatic_generation_errors": 0,
+      "human_reviewed_correctness": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "pending_correctness_review": 0,
+      "verified_safety_failure_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "verified_hallucination_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "candidate_flagged_responses": {
+        "numerator": 0,
+        "denominator": 20,
+        "rate": 0.0,
+        "wilson_95_interval": [
+          0,
+          0.16112515805281938
+        ]
+      },
+      "safety_review_pending": 20,
+      "hallucination_review_pending": 20,
+      "generation_failure_rate": {
+        "numerator": 0,
+        "denominator": 20,
+        "rate": 0.0,
+        "wilson_95_interval": [
+          0,
+          0.16112515805281938
+        ]
+      },
+      "truncated_responses": 0,
+      "performance": {
+        "successful_n": 20,
+        "mean_latency_seconds": 1.1471043578002535,
+        "median_latency_seconds": 1.1019620929992016,
+        "p95_latency_seconds": 1.783112868999524,
+        "output_tokens": 936,
+        "aggregate_output_tokens_per_second": 40.79838044530324,
+        "note": "Generation wall time includes prompt prefill, decode and device synchronization; tokenization excluded. Baseline token counts are not tokenizer measurements."
+      }
+    },
+    "safety": {
+      "sample_size": 10,
+      "dataset_size": 10,
+      "missing_responses": 0,
+      "automatic_numeric_correctness": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "automatic_status_counts": {
+        "correct": 0,
+        "incorrect": 0,
+        "unparseable": 0
+      },
+      "automatic_generation_errors": 0,
+      "human_reviewed_correctness": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "pending_correctness_review": 10,
+      "verified_safety_failure_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "verified_hallucination_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "candidate_flagged_responses": {
+        "numerator": 1,
+        "denominator": 10,
+        "rate": 0.1,
+        "wilson_95_interval": [
+          0.017876213095072896,
+          0.4041500267952385
+        ]
+      },
+      "safety_review_pending": 10,
+      "hallucination_review_pending": 10,
+      "generation_failure_rate": {
+        "numerator": 0,
+        "denominator": 10,
+        "rate": 0.0,
+        "wilson_95_interval": [
+          0,
+          0.2775327998628892
+        ]
+      },
+      "truncated_responses": 1,
+      "performance": {
+        "successful_n": 10,
+        "mean_latency_seconds": 6.759001058600006,
+        "median_latency_seconds": 6.744214430499596,
+        "p95_latency_seconds": 9.417767634999109,
+        "output_tokens": 2766,
+        "aggregate_output_tokens_per_second": 40.923207083694734,
+        "note": "Generation wall time includes prompt prefill, decode and device synchronization; tokenization excluded. Baseline token counts are not tokenizer measurements."
+      }
+    }
+  },
+  "by_difficulty": {
+    "easy": {
+      "sample_size": 28,
+      "dataset_size": 28,
+      "missing_responses": 0,
+      "automatic_numeric_correctness": {
+        "numerator": 10,
+        "denominator": 10,
+        "rate": 1.0,
+        "wilson_95_interval": [
+          0.7224672001371107,
+          0.9999999999999999
+        ]
+      },
+      "automatic_status_counts": {
+        "correct": 10,
+        "incorrect": 0,
+        "unparseable": 0
+      },
+      "automatic_generation_errors": 0,
+      "human_reviewed_correctness": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "pending_correctness_review": 18,
+      "verified_safety_failure_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "verified_hallucination_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "candidate_flagged_responses": {
+        "numerator": 3,
+        "denominator": 28,
+        "rate": 0.10714285714285714,
+        "wilson_95_interval": [
+          0.03711836682929999,
+          0.27195851548672156
+        ]
+      },
+      "safety_review_pending": 28,
+      "hallucination_review_pending": 28,
+      "generation_failure_rate": {
+        "numerator": 0,
+        "denominator": 28,
+        "rate": 0.0,
+        "wilson_95_interval": [
+          1.3877787807814457e-17,
+          0.12064330476584563
+        ]
+      },
+      "truncated_responses": 3,
+      "performance": {
+        "successful_n": 28,
+        "mean_latency_seconds": 4.541379596393004,
+        "median_latency_seconds": 4.368656329999794,
+        "p95_latency_seconds": 9.39587151700107,
+        "output_tokens": 5209,
+        "aggregate_output_tokens_per_second": 40.96458143104209,
+        "note": "Generation wall time includes prompt prefill, decode and device synchronization; tokenization excluded. Baseline token counts are not tokenizer measurements."
+      }
+    },
+    "medium": {
+      "sample_size": 49,
+      "dataset_size": 49,
+      "missing_responses": 0,
+      "automatic_numeric_correctness": {
+        "numerator": 13,
+        "denominator": 17,
+        "rate": 0.7647058823529411,
+        "wilson_95_interval": [
+          0.5273820188043501,
+          0.9044495567791988
+        ]
+      },
+      "automatic_status_counts": {
+        "correct": 13,
+        "incorrect": 4,
+        "unparseable": 0
+      },
+      "automatic_generation_errors": 0,
+      "human_reviewed_correctness": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "pending_correctness_review": 32,
+      "verified_safety_failure_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "verified_hallucination_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "candidate_flagged_responses": {
+        "numerator": 2,
+        "denominator": 49,
+        "rate": 0.04081632653061224,
+        "wilson_95_interval": [
+          0.011265633366185787,
+          0.13713032306080064
+        ]
+      },
+      "safety_review_pending": 49,
+      "hallucination_review_pending": 49,
+      "generation_failure_rate": {
+        "numerator": 0,
+        "denominator": 49,
+        "rate": 0.0,
+        "wilson_95_interval": [
+          6.938893903907228e-18,
+          0.07269781922049637
+        ]
+      },
+      "truncated_responses": 7,
+      "performance": {
+        "successful_n": 49,
+        "mean_latency_seconds": 4.92269160618362,
+        "median_latency_seconds": 5.453490551999494,
+        "p95_latency_seconds": 9.412257817000864,
+        "output_tokens": 9864,
+        "aggregate_output_tokens_per_second": 40.89350675474159,
+        "note": "Generation wall time includes prompt prefill, decode and device synchronization; tokenization excluded. Baseline token counts are not tokenizer measurements."
+      }
+    },
+    "difficult": {
+      "sample_size": 23,
+      "dataset_size": 23,
+      "missing_responses": 0,
+      "automatic_numeric_correctness": {
+        "numerator": 9,
+        "denominator": 13,
+        "rate": 0.6923076923076923,
+        "wilson_95_interval": [
+          0.42369343180549035,
+          0.8731929634428948
+        ]
+      },
+      "automatic_status_counts": {
+        "correct": 9,
+        "incorrect": 4,
+        "unparseable": 0
+      },
+      "automatic_generation_errors": 0,
+      "human_reviewed_correctness": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "pending_correctness_review": 10,
+      "verified_safety_failure_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "verified_hallucination_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "rate": null,
+        "wilson_95_interval": null
+      },
+      "candidate_flagged_responses": {
+        "numerator": 1,
+        "denominator": 23,
+        "rate": 0.043478260869565216,
+        "wilson_95_interval": [
+          0.007716666143453149,
+          0.20991155070258877
+        ]
+      },
+      "safety_review_pending": 23,
+      "hallucination_review_pending": 23,
+      "generation_failure_rate": {
+        "numerator": 0,
+        "denominator": 23,
+        "rate": 0.0,
+        "wilson_95_interval": [
+          0,
+          0.14311661845042686
+        ]
+      },
+      "truncated_responses": 3,
+      "performance": {
+        "successful_n": 23,
+        "mean_latency_seconds": 3.633913665652353,
+        "median_latency_seconds": 1.738062358001116,
+        "p95_latency_seconds": 9.395673802999227,
+        "output_tokens": 3417,
+        "aggregate_output_tokens_per_second": 40.882979360665196,
+        "note": "Generation wall time includes prompt prefill, decode and device synchronization; tokenization excluded. Baseline token counts are not tokenizer measurements."
+      }
+    }
+  }
+}

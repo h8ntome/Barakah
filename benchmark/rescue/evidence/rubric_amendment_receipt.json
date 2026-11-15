@@ -1,0 +1,7 @@
+{
+  "recorded_at": "2026-11-15T16:25:04.373236+00:00",
+  "path": "benchmark/rescue/personal_finance_rubric_amendment.json",
+  "sha256": "27ab3aa1571a66d0b637355caf0284b999e0c6a836b32d41484c8f43d8ed5503",
+  "parent_has_inspected_new_model_predictions_or_scores": false,
+  "scope": "Prospective human-review correction only; all scores remain null; initial rubric and freeze are preserved."
+}

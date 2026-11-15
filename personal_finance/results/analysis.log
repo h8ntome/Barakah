@@ -1,0 +1,53 @@
+{
+  "created_at": "2026-11-15T16:32:30.469856+00:00",
+  "metric": "Limited labeled numeric extraction only; not subjective advice correctness",
+  "human_review_status": "not_performed",
+  "subjective_scores": null,
+  "models": {
+    "base": {
+      "status": "completed",
+      "observed": 50,
+      "expected": 50,
+      "missing_ids": [],
+      "numeric_status_counts": {
+        "unparseable": 18,
+        "correct": 5
+      },
+      "numeric_eligible_observed": 23,
+      "numeric_eligible_full": 23,
+      "correct": 5,
+      "inference_errors": 0,
+      "truncated": 27,
+      "total_output_tokens": 16081,
+      "model_loading_seconds": 2.4213888679987576,
+      "total_execution_seconds": 405.7831098819988
+    },
+    "candidate": {
+      "status": "completed",
+      "observed": 50,
+      "expected": 50,
+      "missing_ids": [],
+      "numeric_status_counts": {
+        "unparseable": 11,
+        "incorrect": 3,
+        "correct": 9
+      },
+      "numeric_eligible_observed": 23,
+      "numeric_eligible_full": 23,
+      "correct": 9,
+      "inference_errors": 0,
+      "truncated": 17,
+      "total_output_tokens": 15786,
+      "model_loading_seconds": 2.4134189409996907,
+      "total_execution_seconds": 398.60676516400054
+    }
+  },
+  "paired_count": 50,
+  "prompt_hash_mismatches": [],
+  "paired_numeric": {
+    "both_correct": 3,
+    "base_only_correct": 2,
+    "candidate_only_correct": 6,
+    "neither_correct": 12
+  }
+}

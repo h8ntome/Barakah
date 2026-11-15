@@ -1,0 +1,9 @@
+[1;91mE-001h rocSHMEM[0m Could not open libnuma. Returning	[90mNUMAWrapper@src/gda/numa_wrapper.cpp:48[0m
+{
+  "audited_at": "2026-11-15T16:23:10.606941+00:00",
+  "script_sha256": "2be003fc8f00b2ccfe90828fd0f4c00ccbfe52bc55ca688d2f76bf428d3fe2df",
+  "freeze_manifest_sha256": "9b1536cfdae0fadbb1bb68ba4d78f97f9a26d204e28a3c0e8370ca312955ddbb",
+  "generation_performed": false,
+  "count": 50,
+  "all_input_ids_equal": true
+}
