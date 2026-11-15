@@ -1,4 +1,5 @@
 import { Field } from "./forms.jsx";
+import { decimalInput } from "../utils/decimalInput.js";
 export const currencies = ["USD", "EUR", "GBP", "PKR", "SAR", "AED"];
 export function CurrencyField({ value, onChange, label = "Currency" }) {
   return (
@@ -20,7 +21,7 @@ export function AmountField({
   return (
     <Field
       label={label}
-      value={value}
+      value={decimalInput(value, precision)}
       onChange={onChange}
       inputMode="decimal"
       required

@@ -60,7 +60,9 @@ export function createHttpClient({
       const detail = data?.detail;
       const message =
         response.status >= 500
-          ? "Barakah is temporarily unavailable. Please try again."
+          ? (["ai_unavailable", "reset_unavailable"].includes(data?.error?.code)
+              ? data.error.message
+              : "Barakah is temporarily unavailable. Please try again.")
           : typeof detail === "string"
             ? detail
             : Array.isArray(detail)

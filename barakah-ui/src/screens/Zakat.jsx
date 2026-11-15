@@ -282,6 +282,7 @@ export function GivingRecordForm({
 export default function Zakat({ navigate, onChanged }) {
   const profile = useResource(api.getZakatProfile);
   const estimate = useResource(api.getZakatEstimate);
+  const [editingPayment, setEditingPayment] = useState(null);
   const [offset, setOffset] = useState(0);
   const history = useResource(api.getZakatHistory, { offset, limit: 50 });
   const historyChoices = useResource(api.getZakatHistoryChoices);
@@ -435,6 +436,21 @@ export default function Zakat({ navigate, onChanged }) {
                 </strong>
                 <p>{item.paid_on} · Manual record</p>
                 <p>{item.note}</p>
+                <button className="text-button" onClick={() => setEditingPayment(item.id)}>Edit zakat payment</button>
+                {editingPayment === item.id && <GivingRecordForm
+                  label="Save zakat payment changes"
+                  histories={historyChoices.data || []}
+                  initial={{ amount: item.amount, currency: item.currency, paid_on: item.paid_on,
+                    category: item.category, recipient: item.recipient, note: item.note, history_id: item.history_id || "" }}
+                  save={(body) => api.updateZakatPayment(item.id, body)}
+                  onSaved={() => { setEditingPayment(null); payments.retry(); history.retry(); onChanged(); }}
+                />}
+                <details><summary>Delete zakat payment record</summary>
+                  <p>Removes only this tracking record, not a payment made elsewhere.</p>
+                  <ActionForm label="Confirm delete zakat payment" onSubmit={async () => {
+                    await api.deleteZakatPayment(item.id); payments.retry(); history.retry(); onChanged();
+                  }} />
+                </details>
               </>
             )}
           </RecordList>

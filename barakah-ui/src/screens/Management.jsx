@@ -501,6 +501,8 @@ export function Budgets({ onChanged, version }) {
                 Remaining {money(item.remaining, item.currency)} · Utilization{" "}
                 {item.utilization_percent}%
               </p>
+              <progress aria-label={`${item.category} budget progress`} max="100" value={Math.min(100, Number(item.utilization_percent))} />
+              {Number(item.utilization_percent) > 100 && <p>Exceeded by {money(item.exceeded_amount, item.currency)}</p>}
               <button
                 className="text-button"
                 onClick={() => {

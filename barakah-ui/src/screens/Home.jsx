@@ -12,6 +12,7 @@ import { Tabs } from "../components/FinancialForms.jsx";
 import { Empty, Field, today } from "../components/forms.jsx";
 import { Accounts, Budgets, Transactions } from "./Management.jsx";
 import Settings from "./Settings.jsx";
+import Goals from "./Goals.jsx";
 import SponsoredAd from "../components/SponsoredAd.jsx";
 import { getDashboard } from "../services/index.js";
 import { useResource } from "../services/useResource.js";
@@ -60,7 +61,7 @@ export default function Home({ user, navigate, version, onChanged }) {
             {dashboard.data?.by_currency.length ? (
               dashboard.data.by_currency.map((item) => (
                 <div key={item.currency}>
-                  <p className="secondary">Net worth · {item.currency}</p>
+                  <p className="secondary">Tracked net assets · {item.currency}</p>
                   <div className="overview-figure">
                     <strong className="financial-amount">
                       {item.net_worth === null
@@ -78,7 +79,7 @@ export default function Home({ user, navigate, version, onChanged }) {
                       <dd>{money(item.expenses, item.currency)}</dd>
                     </div>
                     <div>
-                      <dt>Monthly savings</dt>
+                      <dt>Monthly surplus / deficit</dt>
                       <dd>{money(item.savings, item.currency)}</dd>
                     </div>
                     <div>
@@ -104,6 +105,10 @@ export default function Home({ user, navigate, version, onChanged }) {
                       </dd>
                     </div>
                     <div>
+                      <dt>Manually valued portfolio</dt>
+                      <dd>{item.portfolio_value === null ? "Valuation incomplete" : money(item.portfolio_value, item.currency)}</dd>
+                    </div>
+                    <div>
                       <dt>Liabilities</dt>
                       <dd>{money(item.liabilities, item.currency)}</dd>
                     </div>
@@ -116,6 +121,7 @@ export default function Home({ user, navigate, version, onChanged }) {
                           <div key={category}>
                             <dt>{category}</dt>
                             <dd>{money(amount, item.currency)}</dd>
+                            <progress aria-label={`${category} share of expenses`} max="100" value={Number(item.expense_category_percent?.[category] || 0)} />
                           </div>
                         ),
                       )}
@@ -169,14 +175,36 @@ export default function Home({ user, navigate, version, onChanged }) {
             { id: "accounts", label: "Accounts" },
             { id: "transactions", label: "Transactions" },
             { id: "budgets", label: "Budgets" },
+            { id: "goals", label: "Savings goals" },
             { id: "settings", label: "Settings" },
           ]}
         />
         <div hidden={section !== "overview"}>
-          <p className="empty-copy">
-            Keep your records current. Add accounts, record transactions and set
-            monthly budgets using the sections above.
-          </p>
+          <SectionHeader title="Recent transactions" />
+          <ul className="record-list">{dashboard.data?.recent_transactions?.map((item) => <li key={item.id}>
+            <strong>{item.description || item.category}</strong>
+            <p>{item.occurred_on} · {item.kind} · {money(item.amount, item.currency)}</p>
+          </li>)}</ul>
+          {!dashboard.data?.recent_transactions?.length && <Empty>No transactions yet. Record income or expenses in Transactions.</Empty>}
+          <SectionHeader title="Budget overview" />
+          <ul className="record-list">{dashboard.data?.budgets?.map((item) => <li key={item.id}>
+            <strong>{item.category}</strong>
+            <p>Spent {money(item.spent, item.currency)} · Limit {money(item.amount, item.currency)} · Remaining {money(item.remaining, item.currency)}</p>
+            <progress aria-label={`${item.category} budget used`} max="100" value={Math.min(100, Number(item.utilization_percent))} />
+            {Number(item.utilization_percent) > 100 && <p>Budget exceeded</p>}
+          </li>)}</ul>
+          {!dashboard.data?.budgets?.length && <Empty>No budgets for this month.</Empty>}
+          <SectionHeader title="Savings progress" />
+          <ul className="record-list">{dashboard.data?.goals?.map((item) => <li key={item.id}>
+            <strong>{item.name}</strong><p>{item.progress_percent}% · Remaining {money(item.remaining_amount, item.currency)}</p>
+            <progress aria-label={`${item.name} savings progress`} max="100" value={Math.min(100, Number(item.progress_percent))} />
+          </li>)}</ul>
+          {!dashboard.data?.goals?.length && <Empty>Set a Hajj or savings target in Savings goals.</Empty>}
+          <SectionHeader title="Zakat summary" />
+          {dashboard.data?.zakat ? <p className="section-description">
+            Current estimate {money(dashboard.data.zakat.estimated_due, dashboard.data.zakat.currency)} under your saved assumptions.
+            {dashboard.data.latest_zakat_record && <> Latest saved record outstanding: {money(dashboard.data.latest_zakat_record.remaining_amount, dashboard.data.latest_zakat_record.estimate.currency)}.</>}
+          </p> : <Empty>Enter eligible wealth and calculation assumptions in Zakat.</Empty>}
           <SponsoredAd context="dashboard" />
         </div>
         <div hidden={section !== "accounts"}>
@@ -187,6 +215,9 @@ export default function Home({ user, navigate, version, onChanged }) {
         </div>
         <div hidden={section !== "budgets"}>
           <Budgets onChanged={onChanged} version={version} />
+        </div>
+        <div hidden={section !== "goals"}>
+          <Goals onChanged={onChanged} version={version} />
         </div>
         <div hidden={section !== "settings"}>
           <Settings user={user} />

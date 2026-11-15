@@ -88,6 +88,8 @@ export const getZakatHistory = (filters) => get("/zakat/history", filters);
 export const saveZakatHistory = () => post("/zakat/history");
 export const getZakatPayments = (filters) => get("/zakat/payments", filters);
 export const createZakatPayment = (body) => post("/zakat/payments", body);
+export const updateZakatPayment = (paymentId, body) => patch(`/zakat/payments/${id(paymentId)}`, body);
+export const deleteZakatPayment = (paymentId) => del(`/zakat/payments/${id(paymentId)}`);
 export const getCauses = (filters) => get("/causes", filters);
 export const getDonations = (filters) => get("/donation-intents", filters);
 export const createDonation = (body) => post("/donation-intents", body);
@@ -161,6 +163,11 @@ export const getGoalContributions = (goalId, filters) =>
   get(`/goals/${id(goalId)}/contributions`, filters);
 export const createGoalContribution = (goalId, body) =>
   post(`/goals/${id(goalId)}/contributions`, body);
+
+export const updateGoalContribution = (goalId, contributionId, body) =>
+  patch(`/goals/${id(goalId)}/contributions/${id(contributionId)}`, body);
+export const deleteGoalContribution = (goalId, contributionId) =>
+  del(`/goals/${id(goalId)}/contributions/${id(contributionId)}`);
 
 export const getZakatHistoryChoices = async () => {
   const history = [];

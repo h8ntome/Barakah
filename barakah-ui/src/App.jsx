@@ -55,7 +55,7 @@ function Workspace({ user, activeTab, navigate }) {
         hidden={activeTab !== "give"}
         aria-label="Give"
       >
-        <Give navigate={navigate} onChanged={onChanged} />
+        <Give navigate={navigate} onChanged={onChanged} version={version} />
       </section>
     </div>
   );

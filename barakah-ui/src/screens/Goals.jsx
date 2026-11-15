@@ -45,6 +45,25 @@ function GoalFields({ draft, setDraft, prefix = "" }) {
     </>
   );
 }
+function ContributionRecord({ item, goal, onChanged }) {
+  const [amount, setAmount] = useState(item.amount);
+  return <>
+    <strong>{money(item.amount, goal.currency)}</strong>
+    <p>Manual progress record · {item.created_at.slice(0, 10)}</p>
+    <details><summary>Correct contribution</summary>
+      <ActionForm label="Save contribution correction" onSubmit={async () => {
+        await api.updateGoalContribution(goal.id, item.id, { amount });
+        onChanged();
+      }}><AmountField label="Corrected contribution amount" value={amount} onChange={setAmount} /></ActionForm>
+    </details>
+    <details><summary>Delete contribution</summary>
+      <ActionForm label="Confirm delete contribution" onSubmit={async () => {
+        await api.deleteGoalContribution(goal.id, item.id);
+        onChanged();
+      }} />
+    </details>
+  </>;
+}
 function Contributions({ goal, onChanged }) {
   const [amount, setAmount] = useState("");
   const [offset, setOffset] = useState(0);
@@ -76,10 +95,10 @@ function Contributions({ goal, onChanged }) {
           empty="No contributions recorded for this goal."
         >
           {(item) => (
-            <>
-              <strong>{money(item.amount, goal.currency)}</strong>
-              <p>Manual progress record</p>
-            </>
+            <ContributionRecord item={item} goal={goal} onChanged={() => {
+              history.retry();
+              onChanged("Contribution corrected.");
+            }} />
           )}
         </RecordList>
         <Pagination
@@ -107,6 +126,8 @@ function GoalRecord({ goal, onChanged }) {
         Recorded progress {money(goal.saved_amount, goal.currency)} · Target{" "}
         {money(goal.target_amount, goal.currency)}
       </p>
+      <p>{goal.progress_percent}% complete · Remaining {money(goal.remaining_amount, goal.currency)}</p>
+      <progress aria-label={`Progress for ${goal.name}`} max="100" value={Math.min(100, Number(goal.progress_percent))} />
       <p>
         {goal.target_date
           ? `Target date ${goal.target_date}`
@@ -166,9 +187,9 @@ function GoalRecord({ goal, onChanged }) {
     </>
   );
 }
-export default function Goals({ onChanged }) {
+export default function Goals({ onChanged, version = 0 }) {
   const [offset, setOffset] = useState(0);
-  const goals = useResource(api.getGoals, { offset, limit: 50 });
+  const goals = useResource(api.getGoals, { offset, limit: 50 }, version);
   const [draft, setDraft] = useState(emptyGoal);
   const [notice, setNotice] = useState("");
   const refresh = (message = "") => {
@@ -178,13 +199,13 @@ export default function Goals({ onChanged }) {
   };
   return (
     <details className="details-section">
-      <summary>Charitable goals</summary>
+      <summary>Savings & giving goals</summary>
       <Notice>
-        Plan your giving and record progress manually. Contributions do not move
-        money, create a donation record or count as payment receipts.
+        Plan Hajj, emergency savings or giving. Contributions track progress only:
+        they do not increase your assets, move money or count as donation receipts.
       </Notice>
       <ActionForm
-        label="Create charitable goal"
+        label="Create savings goal"
         onSubmit={async () => {
           await api.createGoal({
             ...draft,
@@ -201,10 +222,10 @@ export default function Goals({ onChanged }) {
           {notice}
         </p>
       )}
-      <RequestState resource={goals} label="charitable goals">
+      <RequestState resource={goals} label="savings goals">
         <RecordList
           items={goals.data}
-          empty="Create a charitable goal to begin planning your giving."
+          empty="Create a savings goal to begin planning."
         >
           {(goal) => <GoalRecord goal={goal} onChanged={refresh} />}
         </RecordList>

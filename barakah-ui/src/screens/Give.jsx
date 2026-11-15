@@ -15,7 +15,7 @@ import SponsoredAd from "../components/SponsoredAd.jsx";
 import { useResource } from "../services/useResource.js";
 import * as api from "../services/index.js";
 import { money } from "../utils/finance.js";
-export default function Give({ navigate, onChanged }) {
+export default function Give({ navigate, onChanged, version }) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
   const [offset, setOffset] = useState(0);
@@ -66,7 +66,7 @@ export default function Give({ navigate, onChanged }) {
         Records and intentions only. No money is collected or transferred here.
         Verify recipients independently before giving elsewhere.
       </Notice>
-      <Goals onChanged={onChanged} />
+      <Goals onChanged={onChanged} version={version} />
       <SectionHeader title="Cause directory" />
       <Field
         label="Search causes"

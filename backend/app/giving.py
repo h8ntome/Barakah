@@ -73,6 +73,30 @@ def create_payment(data: s.ZakatPaymentCreate, user=Depends(current_user), db=De
     return {**public(payment), 'payment_processed': False}
 
 
+@router.patch('/zakat/payments/{payment_id}')
+def update_payment(payment_id: UUID, data: s.ZakatPaymentCreate, user=Depends(current_user), db=Depends(get_db)):
+    payment = owned(db, m.Giving, payment_id, user.id, lock=True)
+    if payment.kind != 'zakat':
+        fail(404, 'not_found', 'Zakat payment not found')
+    if data.history_id:
+        history = owned(db, m.ZakatHistory, data.history_id, user.id)
+        if history.estimate['currency'] != data.currency:
+            fail(422, 'currency_mismatch', 'Payment and snapshot currencies must match')
+    for key, value in data.model_dump(exclude={'history_id'}).items():
+        setattr(payment, key, value)
+    payment.history_id = str(data.history_id) if data.history_id else None
+    db.flush()
+    return {**public(payment), 'payment_processed': False}
+
+
+@router.delete('/zakat/payments/{payment_id}', status_code=204)
+def delete_payment(payment_id: UUID, user=Depends(current_user), db=Depends(get_db)):
+    payment = owned(db, m.Giving, payment_id, user.id, lock=True)
+    if payment.kind != 'zakat':
+        fail(404, 'not_found', 'Zakat payment not found')
+    db.delete(payment)
+
+
 @router.get('/zakat/payments')
 def payments(page=Depends(pagination), user=Depends(current_user), db=Depends(get_db)):
     return [{**public(item), 'payment_processed': False} for item in rows(db, m.Giving, user.id, page, m.Giving.kind == 'zakat')]
@@ -185,9 +209,14 @@ def delete_sadaqah(giving_id: UUID, user=Depends(current_user), db=Depends(get_d
     db.delete(item)
 
 
+def goal_view(goal):
+    return {**public(goal), 'remaining_amount': str(cents(max(Decimal(0), goal.target_amount - goal.saved_amount))),
+            'progress_percent': str(cents(goal.saved_amount / goal.target_amount * 100))}
+
+
 @router.get('/goals')
 def goals(page=Depends(pagination), user=Depends(current_user), db=Depends(get_db)):
-    return [public(item) for item in rows(db, m.Goal, user.id, page)]
+    return [goal_view(item) for item in rows(db, m.Goal, user.id, page)]
 
 
 @router.post('/goals', status_code=201)
@@ -195,7 +224,7 @@ def create_goal(data: s.GoalCreate, user=Depends(current_user), db=Depends(get_d
     goal = m.Goal(user_id=user.id, **data.model_dump())
     db.add(goal)
     db.flush()
-    return public(goal)
+    return goal_view(goal)
 
 
 @router.patch('/goals/{goal_id}')
@@ -205,7 +234,7 @@ def update_goal(goal_id: UUID, data: s.GoalCreate, user=Depends(current_user), d
         fail(409, 'currency_mismatch', 'Cannot change currency after contributions')
     for key, value in data.model_dump().items():
         setattr(goal, key, value)
-    return public(goal)
+    return goal_view(goal)
 
 
 @router.post('/goals/{goal_id}/contributions', status_code=201)
@@ -220,6 +249,32 @@ def contribute(goal_id: UUID, data: s.ContributionCreate, user=Depends(current_u
     return public(contribution)
 
 
+def contribution_for_goal(db, goal_id, contribution_id, user_id):
+    goal = owned(db, m.Goal, goal_id, user_id, lock=True)
+    item = owned(db, m.Contribution, contribution_id, user_id, lock=True)
+    if item.goal_id != goal.id:
+        fail(404, 'not_found', 'Contribution not found for this goal')
+    return goal, item
+
+
+@router.patch('/goals/{goal_id}/contributions/{contribution_id}')
+def update_contribution(goal_id: UUID, contribution_id: UUID, data: s.ContributionCreate, user=Depends(current_user), db=Depends(get_db)):
+    goal, item = contribution_for_goal(db, goal_id, contribution_id, user.id)
+    revised = goal.saved_amount - item.amount + data.amount
+    if revised > Decimal('999999999999.99'):
+        fail(409, 'balance_limit', 'Goal balance limit exceeded')
+    goal.saved_amount, item.amount = revised, data.amount
+    db.flush()
+    return public(item)
+
+
+@router.delete('/goals/{goal_id}/contributions/{contribution_id}', status_code=204)
+def delete_contribution(goal_id: UUID, contribution_id: UUID, user=Depends(current_user), db=Depends(get_db)):
+    goal, item = contribution_for_goal(db, goal_id, contribution_id, user.id)
+    goal.saved_amount -= item.amount
+    db.delete(item)
+
+
 @router.get('/goals/{goal_id}/contributions')
 def contributions(goal_id: UUID, page=Depends(pagination), user=Depends(current_user), db=Depends(get_db)):
     owned(db, m.Goal, goal_id, user.id)
@@ -228,4 +283,4 @@ def contributions(goal_id: UUID, page=Depends(pagination), user=Depends(current_
 
 @router.delete('/goals/{goal_id}', status_code=204)
 def delete_goal(goal_id: UUID, user=Depends(current_user), db=Depends(get_db)):
-    db.delete(owned(db, m.Goal, goal_id, user.id))
+    db.delete(owned(db, m.Goal, goal_id, user.id, lock=True))

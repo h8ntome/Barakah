@@ -143,7 +143,7 @@ def transfer(data: s.TransferCreate, user=Depends(current_user), db=Depends(get_
 def budget_view(db, budget):
     entries = db.scalars(select(m.Transaction).where(m.Transaction.user_id == budget.user_id, m.Transaction.currency == budget.currency, m.Transaction.category == budget.category, m.Transaction.kind == 'expense')).all()
     spent = sum((t.amount for t in entries if t.occurred_on.strftime('%Y-%m') == budget.month), Decimal(0))
-    return {**public(budget), 'spent': str(cents(spent)), 'remaining': str(cents(budget.amount - spent)), 'utilization_percent': str(cents(spent / budget.amount * 100))}
+    return {**public(budget), 'spent': str(cents(spent)), 'remaining': str(cents(budget.amount - spent)), 'exceeded_amount': str(cents(max(Decimal(0), spent - budget.amount))), 'utilization_percent': str(cents(spent / budget.amount * 100))}
 
 
 @router.get('/budgets')
@@ -177,7 +177,7 @@ def delete_budget(budget_id: UUID, user=Depends(current_user), db=Depends(get_db
 def dashboard(month: str | None = Query(None, pattern=r'^\d{4}-(0[1-9]|1[0-2])$'), user=Depends(current_user), db=Depends(get_db)):
     month = month or datetime.now(timezone.utc).strftime('%Y-%m')
     categories = defaultdict(lambda: defaultdict(Decimal))
-    totals = defaultdict(lambda: {'balance': Decimal(0), 'income': Decimal(0), 'expenses': Decimal(0), 'total_assets': Decimal(0), 'liabilities': Decimal(0), 'valuation_complete': True})
+    totals = defaultdict(lambda: {'balance': Decimal(0), 'income': Decimal(0), 'expenses': Decimal(0), 'total_assets': Decimal(0), 'liabilities': Decimal(0), 'portfolio_value': Decimal(0), 'valuation_complete': True})
     for account in db.scalars(select(m.Account).where(m.Account.user_id == user.id)):
         totals[account.currency]['balance'] += account.balance
         totals[account.currency]['total_assets'] += account.balance
@@ -191,6 +191,7 @@ def dashboard(month: str | None = Query(None, pattern=r'^\d{4}-(0[1-9]|1[0-2])$'
             totals[holding.currency]['valuation_complete'] = False
         elif holding.quote_price is not None:
             totals[holding.currency]['total_assets'] += holding.quantity * holding.quote_price
+            totals[holding.currency]['portfolio_value'] += holding.quantity * holding.quote_price
     profile = db.scalar(select(m.ZakatProfile).where(m.ZakatProfile.user_id == user.id))
     if profile:
         totals[profile.data['currency']]['liabilities'] = Decimal(profile.data['assets']['liabilities'])
@@ -199,8 +200,19 @@ def dashboard(month: str | None = Query(None, pattern=r'^\d{4}-(0[1-9]|1[0-2])$'
         values['savings'] = values['income'] - values['expenses']
         values['savings_rate_percent'] = cents(values['savings'] / values['income'] * 100) if values['income'] else None
         values['expense_categories'] = {name: str(cents(amount)) for name, amount in categories[currency].items()}
+        values['expense_category_percent'] = {name: str(cents(amount / values['expenses'] * 100)) for name, amount in categories[currency].items()} if values['expenses'] else {}
         values['net_worth'] = values['total_assets'] - values['liabilities']
         if not values['valuation_complete']:
-            values['total_assets'] = values['net_worth'] = None
+            values['total_assets'] = values['net_worth'] = values['portfolio_value'] = None
         output.append({'currency': currency, **{k: str(cents(v)) if isinstance(v, Decimal) else v for k, v in values.items()}})
-    return {'display_name': user.display_name, 'month': month, 'by_currency': output, 'asset_basis': 'Account balances plus manually quoted portfolio holdings; liabilities from zakat profile. Other manually classified zakat assets excluded to avoid double counting.'}
+    from .giving import goal_view, history_view
+    from .calculations import zakat_estimate
+    latest = db.scalar(select(m.ZakatHistory).where(m.ZakatHistory.user_id == user.id).order_by(m.ZakatHistory.created_at.desc(), m.ZakatHistory.id.desc()).limit(1))
+    recent = db.scalars(select(m.Transaction).where(m.Transaction.user_id == user.id).order_by(m.Transaction.occurred_on.desc(), m.Transaction.id.desc()).limit(5))
+    return {'display_name': user.display_name, 'month': month, 'by_currency': output,
+            'recent_transactions': [public(item) for item in recent],
+            'budgets': [budget_view(db, item) for item in db.scalars(select(m.Budget).where(m.Budget.user_id == user.id, m.Budget.month == month))],
+            'goals': [goal_view(item) for item in db.scalars(select(m.Goal).where(m.Goal.user_id == user.id).order_by(m.Goal.id).limit(5))],
+            'zakat': zakat_estimate(profile.data) if profile else None,
+            'latest_zakat_record': history_view(db, latest) if latest else None,
+            'asset_basis': 'Account balances plus manually quoted portfolio holdings; liabilities from zakat profile. Other manually classified zakat assets excluded to avoid double counting.'}
