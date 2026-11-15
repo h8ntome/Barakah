@@ -15,7 +15,7 @@ Young adults and households learning faith-aligned personal finance, including b
 Islamic Finance for a Blessed Tomorrow. Help people track their finances, estimate and record Zakat, monitor manually entered investments, record Sadaqah and learn with an educational finance guide.
 
 ## Capabilities and Constraints
-Five destinations: Home, Invest, Zakat, AI Chat, Give. The full-stack implementation supersedes the original frontend-only assignment. Authenticated services persist records; financial arithmetic is server-authoritative and per-currency. No actual payment processing, bank/broker linking, live market feed or certification. AI defaults to a labelled mock; local inference adapter readiness is separate from the model benchmark. Preserve the existing visual design and benchmark work.
+Five destinations: Home, Invest, Zakat, AI Chat, Give. The full-stack implementation supersedes the original frontend-only assignment. Authenticated services persist records; financial arithmetic is server-authoritative and per-currency. No actual payment processing, bank/broker linking, live market feed or certification. AI is explicitly unavailable; no inference or fabricated replies are enabled. The future LFM3-1.7B boundary is separate from model training and benchmarking. Preserve the existing visual design and benchmark work.
 
 ## Brand Commitments
 Barakah spelling; emerald, mint and off-white palette; refined serif wordmark; mosque arch/crescent logo; approachable, respectful, financially credible voice. The user explicitly pins the visual world and composition: an emerald desktop editorial panel and one interactive phone, becoming edge-to-edge on mobile.

@@ -1,0 +1,64 @@
+PASS: registration and protected dashboard
+PASS: empty financial workspace
+PASS: account persisted
+PASS: network error is recoverable
+PASS: income recorded
+PASS: expense and dashboard updated
+PASS: budget actual spending
+PASS: budget remaining
+PASS: zakat calculated server-side
+PASS: calculation saved
+PASS: partial zakat payment remaining
+PASS: sadaqah persisted without payment processing
+PASS: charitable goal persisted
+PASS: goal contribution persisted
+PASS: portfolio created
+PASS: holding created
+PASS: trade cost basis
+PASS: manual portfolio valuation
+PASS: missing-data screening stays uncertain
+PASS: AI placeholder clearly unavailable
+PASS: send honestly reports disconnected model
+PASS: unavailable chat creates no phantom conversation
+PASS: logout protects workspace
+PASS: protected navigation stays signed out
+PASS: login restores stored balance
+PASS: quoted portfolio updates net worth
+{
+  "passed": 31,
+  "failed": 0,
+  "checks": [
+    "registration and protected dashboard",
+    "empty financial workspace",
+    "account persisted",
+    "network error is recoverable",
+    "failed transaction preserves draft",
+    "income recorded",
+    "expense and dashboard updated",
+    "budget actual spending",
+    "budget remaining",
+    "zakat calculated server-side",
+    "calculation saved",
+    "partial zakat payment remaining",
+    "sadaqah persisted without payment processing",
+    "charitable goal persisted",
+    "goal contribution persisted",
+    "portfolio created",
+    "holding created",
+    "trade cost basis",
+    "manual portfolio valuation",
+    "missing-data screening stays uncertain",
+    "AI placeholder clearly unavailable",
+    "send honestly reports disconnected model",
+    "AI unavailable preserves draft without fake advice",
+    "unavailable chat creates no phantom conversation",
+    "profile and currency preference persist without converting USD records",
+    "logout protects workspace",
+    "protected navigation stays signed out",
+    "login restores stored balance",
+    "quoted portfolio updates net worth",
+    "custom screening validity persists after reload",
+    "mobile has no document overflow"
+  ]
+}
+Elapsed: 28.0s

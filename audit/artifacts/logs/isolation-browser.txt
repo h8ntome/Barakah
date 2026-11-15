@@ -1,0 +1,27 @@
+{
+  "checks": [
+    "PATCH accounts denied",
+    "DELETE accounts denied",
+    "PATCH transactions denied",
+    "DELETE transactions denied",
+    "PATCH budgets denied",
+    "DELETE budgets denied",
+    "PATCH sadaqah denied",
+    "DELETE sadaqah denied",
+    "PATCH goals denied",
+    "DELETE goals denied",
+    "PATCH portfolio denied",
+    "DELETE portfolio denied",
+    "foreign account reference denied",
+    "/accounts listing isolated",
+    "/transactions listing isolated",
+    "/budgets listing isolated",
+    "/sadaqah listing isolated",
+    "/goals listing isolated",
+    "unauthenticated dashboard denied",
+    "admin operation denied",
+    "owner data unchanged after attacks"
+  ],
+  "failed": 0,
+  "passed": 21
+}

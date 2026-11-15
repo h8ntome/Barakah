@@ -1,0 +1,51 @@
+PASS: 500 income minus 120 expense produces 380 surplus
+PASS: expense edit recalculates ledger
+PASS: 400 budget less 275 spent leaves 125
+PASS: 450 spent exceeds 400 limit by 50
+PASS: budget edit recalculates remaining
+PASS: budget edit persists after refresh
+PASS: budget deletion
+PASS: expense deletion reverses balance
+PASS: deleted transaction stays deleted
+PASS: Hajj progress and remaining are exact
+PASS: contribution correction updates progress
+PASS: contribution deletion updates progress
+PASS: goal edit works with padded database decimals
+PASS: goal changes persist
+PASS: goal deletion
+PASS: sadaqah correction updates annual/monthly totals
+PASS: sadaqah deletion
+PASS: 15000 eligible wealth at 2.5 percent is 375
+PASS: zakat payment correction updates outstanding
+PASS: asset treatment notes persist in calculation snapshot
+PASS: zakat payment deletion restores outstanding
+PASS: zakat history persists after refresh
+{
+  "passed": 23,
+  "failed": 0,
+  "checks": [
+    "500 income minus 120 expense produces 380 surplus",
+    "expense edit recalculates ledger",
+    "400 budget less 275 spent leaves 125",
+    "450 spent exceeds 400 limit by 50",
+    "budget edit recalculates remaining",
+    "budget edit persists after refresh",
+    "budget deletion",
+    "expense deletion reverses balance",
+    "deleted transaction stays deleted",
+    "Hajj progress and remaining are exact",
+    "contribution correction updates progress",
+    "contribution deletion updates progress",
+    "goal edit works with padded database decimals",
+    "goal changes persist",
+    "goal deletion",
+    "sadaqah correction updates annual/monthly totals",
+    "sadaqah deletion",
+    "15000 eligible wealth at 2.5 percent is 375",
+    "zakat payment correction updates outstanding",
+    "asset treatment notes persist in calculation snapshot",
+    "zakat payment deletion restores outstanding",
+    "zakat history persists after refresh",
+    "no uncaught browser exceptions"
+  ]
+}

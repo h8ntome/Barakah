@@ -1,40 +1,9 @@
-# Connecting the fine-tuned model
+# Future AI integration
 
-## What is and is not included
+The current application intentionally has **no connected AI**, mock advice generator or inference transport. `AI_MODE=unavailable` is the only accepted runtime value. Do not set legacy `mock`/`local` modes.
 
-Barakah's default AI is an explicitly labelled **deterministic mock**, not the fine-tuned model. It makes no external inference requests. The LFM3 1.7B checkpoint is being developed separately; neither weights nor benchmark results are changed by this application integration.
+The authoritative contract, privacy boundaries, superseded test rationale and future implementation seam are documented in [audit/AI_INTEGRATION.md](../audit/AI_INTEGRATION.md).
 
-The application owns authentication, authorization, conversation persistence, input/history limits, consent and error handling. A provider adapter owns the inference transport. Financial arithmetic belongs to deterministic backend services, not generated text.
+When the separately trained Liquid AI LFM3-1.7B model is ready, a future approved change can implement `backend/app/ai.py`'s typed request/result interface using local hosting or a private inference service. Verify exact checkpoint/tokenizer/chat-template/runtime compatibility with the model team. Add bounded authenticated transport, timeout/cancellation, consent, minimized owned context, safety review, and transactional conversation persistence. Do not infer runtime compatibility or quality from the model name.
 
-## Runtime compatibility gate
-
-Do **not** infer runtime compatibility from the name “LFM3”. Before selecting a runtime, the model team must supply the exact checkpoint/revision, architecture/config, tokenizer and chat template, adapter/base-model relationship, license, supported precision, memory requirements and the runtime/version tested against those artifacts. Compare those with the runtime's published supported architectures and run its official minimal inference example. A successful call to a generic HTTP endpoint does not prove the actual checkpoint loads or performs well.
-
-No claim is made here that Ollama, vLLM, Transformers or a particular accelerator supports the pending checkpoint. If the selected runtime does not implement the configured HTTP contract, implement an adapter rather than changing API routes or browser components. Do not download weights merely to exercise the web application.
-
-## Implemented adapter contract
-
-`backend/app/ai.py` defines `AIProvider.generate(text, system_prompt)`, a deterministic `MockProvider`, and a `LocalProvider`. Routes call `generate_reply`; no runtime-specific loader lives in an API route. Set `AI_MODE=local`, `AI_LOCAL_URL=http://127.0.0.1:8080/chat`, `AI_MODEL_NAME` (informational pending-model label), and `AI_REQUEST_TIMEOUT_SECONDS` (default 10, total deadline). The local adapter sends `POST /chat` JSON `{text, system_prompt}` and expects `{text: "answer"}`. The serving wrapper must apply the supplied system prompt using its verified chat template. Health probes `GET /health` without buffering a response body. Redirects and proxy environment variables are disabled; only administrator-configured loopback HTTP URLs are allowed. A future remote adapter needs separate authenticated transport and explicit disclosure/consent; no external paid provider is bundled.
-
-The frontend's per-message financial-context checkbox defaults off. When selected and profile AI consent is enabled, only the current user's current-month currency/income/expenses/savings aggregates enter the prompt. Verified totals are also appended separately to the response, labeled as backend-calculated rather than generated arithmetic. No account names, category names, individual records or other users' information are sent. Conversations are capped at `AI_MAX_CONVERSATION_MESSAGES` (default 100); start a new conversation at the limit.
-
-## Safe integration checklist
-
-1. Run the model server privately, preferably on loopback or a private network. Do not expose an unauthenticated inference server publicly.
-2. Configure the backend's local provider, endpoint, model identifier and finite timeout (see `backend/.env.example`). Keep API credentials on the backend, never in `VITE_*` variables.
-3. Run one short non-sensitive question directly against the serving endpoint and verify response shape, model identity and actual model availability.
-4. Check `/api/v1/ai/health`. Process liveness is not proof that a model is loaded; perform an authenticated chat smoke test as well.
-5. Register an isolated application test account, enable AI consent and submit a message through `/api/v1/advisor/messages`, then retrieve its stored conversation. Verify provider labeling is no longer mock.
-6. Stop the model server and repeat. The application must return a safe unavailable error, preserve the editable draft and never silently fall back to mock text.
-7. Verify timeout behavior and a malformed provider response. Review safe operational logs, not private prompts, tokens or full financial context.
-8. Rerun the application's AI tests and the browser conversation flow. Model quality/Islamic-finance evaluation is a separate gate owned by `benchmark/` and the model team.
-
-## Privacy and advice boundaries
-
-Only user-requested, minimized aggregate financial context should enter a model request. Raw transactions and other users' data must not be included. External inference requires explicit consent and disclosure; using a local-looking URL does not make a third-party service private. Deployment operators must accurately classify the destination.
-
-Generated text is educational, not a compliance certificate, fatwa, guaranteed return or licensed individualized advice. A model must not fabricate scripture, Hadith, stock data or scholarly consensus. Screening uses the independent deterministic screening service and returns uncertainty for missing evidence.
-
-## Streaming
-
-Streaming is not required for initial integration. Do not enable SSE solely because another model runtime supports it. First verify this exact serving adapter's framing, cancellation, timeout/error behavior and persistence rules. Until implemented and tested, the frontend uses a bounded request with a loading state and one complete response.
+No model weights, benchmark artifacts or training code were modified by this application audit.

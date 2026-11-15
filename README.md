@@ -1,88 +1,73 @@
 # Barakah
 
-A connected personal-finance workspace for budgeting, Zakat, giving, manually tracked investments, and Islamic-finance education. The original React/Vite emerald-and-mint interface is preserved; data now lives in an authenticated FastAPI backend.
+An authenticated Islamic personal-finance tracker: transactions, budgets, savings goals, zakat records, sadaqah and manually valued investments. React/Vite + FastAPI/SQLAlchemy/Alembic; SQLite locally, PostgreSQL supported.
 
-**Tracking, not money movement.** No bank sync, payment processing, brokerage execution, live market feed or religious certification is included. AI defaults to an explicitly labelled deterministic mock; the fine-tuned model and `benchmark/` remain separate and unchanged.
+**Tracking, not money movement.** No bank sync, payment processing, brokerage execution, live prices or religious certification. **AI is intentionally unavailable**: no model, fake advice, inference API or API key is required. `benchmark/` and model-training work are unchanged.
 
-## Start locally
+## Start the complete app
 
-Python 3.11–3.13 and Node 20.19+ are required. Two terminals:
-
-```sh
-# Terminal 1, repository root
-cd backend
-python3.11 -m venv .venv
-. .venv/bin/activate
-pip install -r requirements.txt
-cp .env.example .env
-alembic upgrade head
-uvicorn app.main:app --host 127.0.0.1 --port 8000 --no-access-log
-```
+Requires Python **3.11–3.13** and Node **20.19+**. First install dependencies:
 
 ```sh
-# Terminal 2, repository root
-cd barakah-ui
-npm ci
-npm run dev -- --port 5173
+python3.13 -m venv backend/.venv
+backend/.venv/bin/python -m pip install -r backend/requirements.txt
+npm ci --prefix barakah-ui
 ```
 
-Open **http://127.0.0.1:5173** and create an account (password: 12–128 characters). SQLite is the no-infrastructure local default. For PostgreSQL set `DATABASE_URL=postgresql+psycopg://USER:PASSWORD@HOST:5432/barakah` in `backend/.env`, create that database, then run the same migrations. Never mix databases by changing configuration while the API is running.
+If using `uv` (also clean-install tested): `uv venv --python 3.13 backend/.venv`, then `uv pip install --python backend/.venv/bin/python -r backend/requirements.txt`. Do not recreate an existing environment while its server is running.
 
-Optional Docker Compose: copy root `.env.example` to `.env`, replace both placeholders with distinct random hex values, then `docker compose up --build`; visit **http://localhost:8080**. This configuration is supplied but **Docker execution was not tested here** because Docker is unavailable. Native PostgreSQL startup/migrations and the full browser flow were tested.
-
-## Try the product
-
-1. Home → Accounts: add a cash/bank account; Transactions: enter income and expenses; Budgets: set a monthly category limit.
-2. Zakat: enter eligible assets and deductible debt, choose manual/gold/silver Nisab, supply dated manual prices and attest to haul if applicable. Save a dated snapshot, then record payments against it.
-3. Give: record Sadaqah given elsewhere; view/filter history; create a giving goal and record contributions. These actions never transfer money.
-4. Invest: create portfolios/holdings, record buys/sells and optional dated manual quotes. Evaluate configurable educational screening checks; absent evidence stays uncertain, stale results need re-evaluation.
-5. Home → Settings: explicitly enable advisor consent. AI Chat stores conversations; optionally include only your current-month income/expense aggregates. Mock replies are labelled; no paid/external service is required.
-6. Reload, sign out, sign back in: records persist. Settings includes profile preferences, password change, and account deletion. For local password resets, uncomment `RESET_OUTBOX=./outbox` in `backend/.env` and restart the API. This private notification directory is not real email delivery; without an outbox or SMTP configuration, reset requests explicitly report unavailable.
-
-**Accounting boundary:** account balances must represent cash/uninvested balances, excluding securities separately entered as portfolio holdings. Portfolio trades do not automatically move cash; keep your manually tracked balances reconciled. Zakat assets are independently classified and are not added again to dashboard assets. No FX conversion is performed. Six two-decimal currencies are supported: USD/EUR/GBP/PKR/SAR/AED.
-
-## Optional fictional demo
-
-Against your local API:
+From the repository root:
 
 ```sh
-python3 scripts/demo.py --email judge@example.com
-# Prompts for your own private password; never creates a public known-password account.
-# Delete that isolated account and all its owned records when done:
-python3 scripts/demo.py --email judge@example.com --delete-test-account
+bash scripts/start-local.sh
+# Open http://127.0.0.1:8080
 ```
 
-The script labels its stock/metal values as fictional, creates one user only, refuses non-loopback URLs and refuses to overwrite an existing account. Reset by deleting and re-seeding that test account, not by dropping other users' data.
+This builds the frontend, applies additive migrations, and serves the real frontend and API together. The default database is `backend/barakah.db`; no external service is necessary. **Back up an existing database before upgrading.** See [migration/backup instructions](audit/DEMO_GUIDE.md).
 
-## Tests
+Use `PORT=8081 bash scripts/start-local.sh` for another port. `DATABASE_URL` can select a dedicated SQLite file or PostgreSQL database. The launcher configures exact localhost origins for the selected port; it does not disable CSRF or authentication. It is bound to loopback and is **not** a public-production server recipe.
+
+For frontend development, separately run `alembic upgrade head` and Uvicorn in `backend/`, then `npm run dev --prefix barakah-ui` on port 5173. Configure the actual frontend origin in backend `ALLOWED_ORIGINS`; opening an unconfigured port correctly returns 403. SQLite defaults are infrastructure-free. Do not change databases while a server is running.
+
+## Try Demo
+
+Choose **Try Demo** on the login screen. Each browser receives a unique, non-admin, editable workspace with fictional records:
+
+- Monthly income **$4,500**, expenses **$2,850**; savings balance **$12,000**.
+- Three fictional holdings valued manually at **$8,500**, not verified halal/live data.
+- Eligible wealth **$15,000**, fictional nisab threshold and attested haul → **$375** zakat.
+- Budgets, donations, transaction history and a **$5,000 Hajj goal with $1,250 contributed**.
+
+Reset using **Home → Settings → Reset demo data**. Only that demo is replaced. Changes survive refresh; separate demo browsers never share data. Demos expire after 24 hours and expired owners are cleaned in bounded batches when another demo starts. Never enter real information in demo mode. [Full demo guide](audit/DEMO_GUIDE.md).
+
+## Core workflows
+
+- **Home:** stored totals, category charts, recent transactions, budget/goal/zakat summaries; Accounts, Transactions, Budgets, Savings goals and Settings.
+- **Zakat:** manually classify eligible assets and deductible liabilities; document jewelry/investment assumptions, choose manual/gold/silver nisab, dated manual prices, rate and lunar-year attestation. Save immutable calculations; record/correct/remove payments made elsewhere.
+- **Give:** record/edit/delete sadaqah and inspect monthly/annual totals. Goals track earmarked progress only, not extra assets or donations.
+- **Invest:** portfolios, holding metadata, buys/sells, dated manual valuations including zero, configurable educational screening, allocation and gain/loss. Correct/remove the **latest post-migration trade** using exact snapshots; legacy trades cannot safely be individually reversed. Holding deletion explicitly removes its tracked history, not a real investment.
+- **AI Chat:** suggestions, input and history UI work; Send explicitly reports the model is not connected. No new messages or fake responses are persisted.
+- **Settings:** display name/preferences, logout/password change/deletion. Preferred currency never relabels or converts existing records.
+
+Passwords use Argon2id. Access tokens stay in memory; rotating refresh tokens use HttpOnly cookies. All financial records are owner-checked server-side. Amounts use Decimal, not binary floating-point accounting.
+
+For local password recovery, set `RESET_OUTBOX=/private/path` when launching; reset tokens are written to private files, **not emailed**. Production needs configured SMTP. Never expose or commit the outbox. [Backend guide](backend/README.md).
+
+## Verify
 
 ```sh
-cd backend
-.venv/bin/python -m pytest -q
-# Optional PostgreSQL parity, in a dedicated database with schema-creation permission:
-TEST_DATABASE_URL='postgresql+psycopg:///barakah_test' .venv/bin/python -m pytest -q
-cd ../barakah-ui
-npm test
-npm run build
-cd ..
-# With frontend/API running; requires agent-browser CLI and Chromium:
-python3 tests/e2e/journey.py
-# Optional reset browser flow; point to the private outbox configured on the API:
-BARAKAH_RESET_OUTBOX=backend/outbox python3 tests/e2e/reset_flow.py
-python3 tests/load_smoke.py
+(cd backend && .venv/bin/python -m pytest -q)
+(cd backend && TEST_DATABASE_URL='postgresql+psycopg:///YOUR_TEST_DB' .venv/bin/python -m pytest -q)
+npm test --prefix barakah-ui
+npm run build --prefix barakah-ui
+# With the single-origin app running against an isolated local database:
+BARAKAH_UI_URL=http://127.0.0.1:8080 python3 tests/e2e/journey.py
 ```
 
-See [actual test results](docs/testing/test-results.md), [coverage and limitations](docs/testing/feature-coverage.md), [security checks](docs/testing/security-tests.md), and [integration evidence/screenshots](docs/testing/integration-results.md). Browser tests create unique fictional users in the configured **local** API; use an isolated development database.
+Browser tests use installed `agent-browser`/Chromium and **actual backend/database requests**, not production mock APIs. [All commands and executed results](audit/TEST_RESULTS.md) · [feature matrix](audit/FEATURE_MATRIX.md) · [fixes](audit/FIXES.md) · [remaining issues](audit/REMAINING_ISSUES.md).
 
-## Architecture and API
+## Deployment boundary
 
-- React 18/Vite/plain CSS; same five destinations, service boundary and in-memory access tokens.
-- FastAPI `/api/v1`, Pydantic validation, SQLAlchemy 2, Alembic migrations, exact Decimal arithmetic. PostgreSQL preferred; SQLite exact-text numeric storage for local parity.
-- Argon2id passwords, hashed rotating refresh sessions, HttpOnly cookies, CSRF/Origin checks, per-resource ownership, admin-only campaign APIs.
-- Modular finance, giving/Zakat, portfolio/screening, AI providers, advertising, mail and security modules. No microservices required.
-- OpenAPI: **http://127.0.0.1:8000/docs**. [API contract](docs/backend-api.md).
-- `/health`: process liveness. `/api/v1/health`: database/schema readiness. Authenticated `/api/v1/ai/health`: mock/local provider availability, not a claim of model quality.
+The checked-in **Vercel configuration is frontend-only**. It does not provision Python, a database or an API proxy. The known public alias returned 404 during this audit; public deployment is not verified. Use the tested local launcher for a live laptop demonstration, or provision the backend/database and a same-origin HTTPS proxy before inviting remote users. Docker/Nginx deployment files are supplied but Docker runtime was not tested.
 
-[Backend guide](backend/README.md) · [Frontend guide](barakah-ui/README.md) · [AI model integration](docs/AI_MODEL_INTEGRATION.md) · [Deployment/backups](docs/DEPLOYMENT.md)
-
-The existing Vercel configuration builds only static frontend assets. It needs a configured same-site API proxy to run this integrated application; it does not deploy Python/PostgreSQL automatically.
+[Deployment/backups](docs/DEPLOYMENT.md) · [API contract](docs/backend-api.md) · [future LFM3-1.7B boundary](audit/AI_INTEGRATION.md). Older `docs/testing/` results are historical; `audit/TEST_RESULTS.md` is the current audit evidence.

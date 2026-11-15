@@ -1,0 +1,28 @@
+{
+  "passed": 22,
+  "failed": 0,
+  "checks": [
+    "home at 1280px: no overflow and navigation reachable",
+    "invest at 1280px: no overflow and navigation reachable",
+    "zakat at 1280px: no overflow and navigation reachable",
+    "chat at 1280px: no overflow and navigation reachable",
+    "give at 1280px: no overflow and navigation reachable",
+    "home at 768px: no overflow and navigation reachable",
+    "invest at 768px: no overflow and navigation reachable",
+    "zakat at 768px: no overflow and navigation reachable",
+    "chat at 768px: no overflow and navigation reachable",
+    "give at 768px: no overflow and navigation reachable",
+    "home at 390px: no overflow and navigation reachable",
+    "invest at 390px: no overflow and navigation reachable",
+    "zakat at 390px: no overflow and navigation reachable",
+    "chat at 390px: no overflow and navigation reachable",
+    "give at 390px: no overflow and navigation reachable",
+    "home at 320px: no overflow and navigation reachable",
+    "invest at 320px: no overflow and navigation reachable",
+    "zakat at 320px: no overflow and navigation reachable",
+    "chat at 320px: no overflow and navigation reachable",
+    "give at 320px: no overflow and navigation reachable",
+    "keyboard focus moves to an interactive control",
+    "no uncaught browser exceptions across destinations"
+  ]
+}

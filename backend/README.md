@@ -64,20 +64,9 @@ Clients cannot set admin status. Admin manually vets causes/ad destinations. Ad 
 - Screening: illustrative configurable debt/assets, interest income/revenue, interest-bearing assets/assets thresholds and prohibited-business input. Missing => uncertain, failed => non_compliant, complete passing => compliant_under_selected_methodology. Input/source/date/threshold/methodology version retained in immutable screening history. After `max_age_days` (default 90), current status becomes uncertain and `needs_reevaluation` is true; historical outcomes remain unchanged. **Not platform certification, a named scholarly standard or investment advice**.
 - Giving/intents/goal contributions are manual records only. No real payment or charity receipt, account movement or verified campaign total implied.
 
-## Advisor providers and privacy
+## AI availability and privacy
 
-`AI_MODE=mock` (default) is deterministic educational content. `AI_MODE=local` uses `AI_LOCAL_URL=http://127.0.0.1:8080/chat` (administrator configured loopback only). Protocol:
-
-```http
-POST /chat
-Content-Type: application/json
-
-{"text":"current user message only","system_prompt":"Barakah educational and safety instructions; optional authorized aggregate totals"}
-```
-
-Provider returns `{"text":"answer"}`; its `GET /health` returns 2xx when available. No OpenAI-specific protocol or bundled model/weights. An operator can implement a thin local service around their chosen model. Adapter ignores proxy environment, refuses redirects, has an overall configurable 10-second deadline (`AI_REQUEST_TIMEOUT_SECONDS`, connect 2s), caps response at 32 KiB/8,000 chars and sanitizes failures. `/api/v1/ai/health` reports mock/local health without exposing URL/secrets.
-
-Explicit profile `ai_consent=true` required even in mock; revoking blocks future prompts. Current prompt and system instructions are sent to the local provider, **never individual account/portfolio records or previous chat history**. Per-message `include_financial_context=true` additionally permits only current-owner monthly currency/income/expense/savings totals; defaults off. Conversation length is bounded by `AI_MAX_CONVERSATION_MESSAGES` (default 100). Conversation/messages retained in owned DB until conversation/account deletion. Provider protocol and implementations are in `app/ai.py`; see `docs/AI_MODEL_INTEGRATION.md`. No streaming, retrieval citations or guarantee of model correctness; educational disclaimer appended. Review local-provider content safety separately before public exposure. Synchronous requests hold DB transaction while awaiting local provider; timeout bounded, but throughput needs load testing before scale.
+`AI_MODE=unavailable` is the only supported setting. No local/external inference or generated advice exists. `POST /advisor/messages` returns 503 `ai_unavailable`, leaves the editable draft intact, and writes no conversation/messages. Historical owned conversations remain readable/deletable. The consent preference is inactive and cannot connect a model. See [the future LFM3-1.7B boundary](../audit/AI_INTEGRATION.md).
 
 ## Validation
 
@@ -89,6 +78,6 @@ TEST_DATABASE_URL='postgresql+psycopg://user:password@localhost:5432/test_databa
 .venv/bin/alembic check
 ```
 
-Initial implementation: 54 tests passed on each database. Additional integration/review regressions were added afterward; authoritative final counts and commands are in `../docs/testing/test-results.md`. Tests migrate actual databases (no create_all), verify migration downgrade/upgrade parity, credentials/mass assignment/token expiry/refresh CSRF and rotation/concurrent refresh/revocation/reset/deletion; foreign ownership, exact decimal boundaries/concurrent overdraft/transfers/reversal; zakat gates/rounding/history/payments; multiple portfolios/cost basis/screening/quotes; consent/history/local HTTP adapter with an actual in-process HTTP server/provider failure rollback; approved campaign/admin behavior; SMTP TLS flow. PostgreSQL tests run against isolated schemas, not application tables. One upstream Starlette TestClient warning about a future httpx2 transition is currently emitted; production HTTP calls and tests still use the supported httpx compatibility path.
+Initial implementation: 54 tests passed on each database. Additional integration/review regressions were added afterward; current audit counts and commands are in `../audit/TEST_RESULTS.md` (older `docs/testing/` records are historical). Tests migrate actual databases (no create_all), verify migration downgrade/upgrade parity, credentials/mass assignment/token expiry/refresh CSRF and rotation/concurrent refresh/revocation/reset/deletion; foreign ownership, exact decimal boundaries/concurrent overdraft/transfers/reversal; zakat gates/rounding/history/payments; multiple portfolios/cost basis/screening/quotes; unavailable-only AI/no network/no writes and historical conversation isolation; approved campaign/admin behavior; SMTP TLS flow. PostgreSQL tests run against isolated schemas, not application tables. One upstream Starlette TestClient warning about a future httpx2 transition is currently emitted; production HTTP calls and tests still use the supported httpx compatibility path.
 
 Production penetration/load testing, real SMTP delivery, Docker runtime and external AI/provider deployment are **not** claimed validated.

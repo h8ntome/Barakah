@@ -1,0 +1,2 @@
+PASS: correction 10×50→12×50, oversell rollback/draft retention, latest-trade removal, metadata edit, zero quote, screening, portfolio selection and confirmed cascade deletion; 320/1280px no overflow
+Screenshots: /Users/hadi/Documents/Barakah/audit/artifacts

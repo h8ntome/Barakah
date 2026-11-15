@@ -1,0 +1,41 @@
+PASS: register reaches authenticated dashboard
+PASS: logout protects dashboard
+PASS: protected navigation while logged out
+PASS: wrong password reports useful error
+PASS: new account can log in
+PASS: refresh retains session
+PASS: duplicate rejected clearly
+PASS: demo authenticated and labeled
+PASS: demo income
+PASS: demo expense
+PASS: demo accepts real persisted writes
+PASS: demo changes survive refresh
+PASS: independent demo starts from template
+PASS: demo zakat calculation
+PASS: reset returns original demo totals
+{
+  "passed": 20,
+  "failed": 0,
+  "checks": [
+    "register reaches authenticated dashboard",
+    "database user exists with Argon2id hash",
+    "logout protects dashboard",
+    "protected navigation while logged out",
+    "wrong password reports useful error",
+    "new account can log in",
+    "refresh retains session",
+    "duplicate rejected clearly",
+    "demo authenticated and labeled",
+    "demo income",
+    "demo expense",
+    "demo accepts real persisted writes",
+    "demo changes survive refresh",
+    "independent demo starts from template",
+    "demo writes do not leak to another browser session",
+    "demo zakat calculation",
+    "reset returns original demo totals",
+    "reset removes only current demo changes",
+    "mobile no horizontal overflow",
+    "no uncaught browser exceptions"
+  ]
+}

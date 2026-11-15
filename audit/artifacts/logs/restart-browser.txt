@@ -1,0 +1,16 @@
+PASS: session refresh after backend restart
+PASS: balance survives backend restart
+PASS: transaction survives backend restart
+PASS: login after restart retains data
+{
+  "passed": 6,
+  "failed": 0,
+  "checks": [
+    "committed exact balances and foreign keys survive process stop",
+    "session refresh after backend restart",
+    "balance survives backend restart",
+    "transaction survives backend restart",
+    "login after restart retains data",
+    "no uncaught browser exceptions"
+  ]
+}
