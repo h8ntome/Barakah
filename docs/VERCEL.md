@@ -1,6 +1,14 @@
 # Public Vercel demo
 
-**Public demo: https://barakah-gamma.vercel.app — select Try Demo.** This alias serves an **older release**, not the newly reviewed local source. The historical 21 public checks below apply to that deployment only. New personal-account AI settings and encrypted provider connections are **pending deployment**, not publicly verified. The existing database uses Neon's free plan; confirm current provider limits before rollout.
+**Public demo: https://barakah-gamma.vercel.app — select Try Demo.** Production personal-account OpenAI settings and encrypted storage were verified on **15 November 2026 (UTC)**. Demo accounts cannot save keys; AI stays off until a personal user saves a connection and consent. No custom destination is currently approved. **Successful external inference remains unverified.** The database uses Neon's free plan; confirm current provider limits.
+
+## Current verification
+
+Functional release [`e74b4ab`](https://github.com/h8ntome/Barakah/commit/e74b4ab15450cfac2632315e010ffc3a848e4f55) passed [fresh Linux CI](https://github.com/h8ntome/Barakah/actions/runs/43757595736). Independent current tests: SQLite264 +1 PostgreSQL-only skip; PostgreSQL265; frontend75; benchmark86. The frontend has no lint/type script; Vite build passed. Media TypeScript/ESLint/source checks are separate.
+
+Production was built with `--prod --skip-domain` before migrating from `c28e9f1b2a53` to `d39f0a2c3b64`. A private PostgreSQL18.7 custom backup and full archive decode passed; no global database client upgrade or service restart occurred. Promotion was confirmed8.182s after migration completion; canonical health returned200 ready/database available and schema-drift check passed. Existing data was preserved.
+
+Canonical production-command bundle: `index-BnW_DoQQ.js`, SHA256 `e57dff714ff06d6195ea59a59b0db3c8bc581259f0ea85462ea0444371e44381`. Production checks verified owner-bound AES-GCM storage, CSRF, demo refusal, actual invalid-key rejection, saved failure/consent across refresh, removal/no fallback and auth. Independent browser checks also verified signup, key clearing, failure/reload, removal/signout, retained demo data and immediate Zakat-to-Home updates. No successful external inference, quality improvement or financial-service certification is claimed. Historical checks below remain historical, not extra current-run passes.
 
 The repository now deploys **both** the Vite frontend and the existing FastAPI API on one Vercel domain. `api/index.py` exports the real application, `/api/*` routes to it before the SPA fallback, and Python3.13 installs the existing pinned backend dependencies. **A persistent hosted PostgreSQL database is still required.** There is no localStorage/mock-demo fallback and no shared demo password.
 
@@ -26,7 +34,7 @@ The entrypoint enforces production mode, secure cookies and `AI_MODE=unavailable
 
 Preview deployments require their own scoped configuration and preferably a separate database. Add only the exact trusted preview origin if testing there. Do not expose production secrets to untrusted pull requests or allow `*.vercel.app` origins.
 
-## Optional personal-account AI rollout (pending deployment)
+## Personal-account AI setup
 
 Follow [the user-provider guide](user-ai.md) before enabling this feature. Public demo accounts can never save provider keys. Personal accounts can use OpenAI or an exact operator-approved HTTPS OpenAI-compatible destination, not native Anthropic/Gemini APIs.
 
@@ -34,15 +42,18 @@ After backing up and applying the integrated migrations, supply `USER_AI_ENABLED
 
 Defaults: 6 attempts/minute and 30/day per account, one in-flight request/account and 8 globally through database-backed admission. Tests and failed provider attempts count. Users must save their connection and then consent; testing makes a real potentially billable request. No automatic financial-record sharing, financial writes, silent fallback or provider-key fallback. A provider's reported model identity is not independently proved.
 
-Verify migrations, setup gating, demo refusal, personal-account ownership, encryption, consent resets, removal, quotas and provider failures before announcing availability. This docs review made **no genuine external-key call and verified no successful external inference**. A live test requires separate authorization/budget. Keep the feature disabled until release verification is complete.
+Verify migrations, setup gating, demo refusal, personal-account ownership, encryption, consent resets, removal, quotas and provider failures before announcing availability. Production verification used a deliberately invalid synthetic key and **verified no successful external inference**. A genuine-key test requires separate authorization/budget. On another installation, keep the feature disabled until its release verification is complete.
 
-## Migrate, deploy, then verify
+## Build, back up, migrate, promote, then verify
 
 Back up any existing database using the provider's snapshot/export facility first. For a brand-new empty demo database there is no existing user data to migrate. Never run migrations per request/cold start or in concurrent preview builds.
 
-With local Python dependencies installed, pull the chosen environment and apply the existing migrations **once** before publishing:
+With local Python dependencies installed, stage a production-context build without moving the alias. Verify that build and a backup made with a compatible PostgreSQL client before applying migrations **once**. The old release checks an exact schema head; minimize the gap between migration and new-deployment health/promotion:
 
 ```sh
+npx vercel deploy --prod --skip-domain --yes
+# Record the immutable staged URL; verify build and private DB backup first.
+umask 077
 npx vercel env pull .env.vercel.local --environment=production
 # This generated private file is ignored by Git and Vercel uploads.
 # Vercel Secret values pull as [SENSITIVE]; do not source those placeholders.
@@ -60,10 +71,12 @@ from alembic import command
 from alembic.config import Config
 config = Config(str(Path('backend/alembic.ini').resolve()))
 command.upgrade(config, 'head')
-command.check(config)
 PY
-npx vercel deploy --prod
+# Check /api/v1/health on the staged deployment, then promote immediately.
+npx vercel promote https://YOUR-STAGED-DEPLOYMENT.vercel.app --yes
 ```
+
+After promotion, run Alembic's schema-drift check against the same database and verify the canonical alias. Retain the previous deployment receipt and database archive privately. After a schema upgrade, do not blindly roll back to code expecting the old head: prefer new-schema-compatible code with `USER_AI_ENABLED=false`. Never downgrade or restore a snapshot over newer writes without a write freeze and reconciliation.
 
 Publish the commit containing the Vercel entrypoint (on `audit/full-application-fix`). For automatic Git deployments, choose that branch as Production Branch or merge it normally into the project's production branch; do not force-push. Confirm the intended public alias points to this deployment. A successful Git push or static build alone is **not** a successful demo deployment.
 

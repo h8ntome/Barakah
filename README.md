@@ -10,7 +10,7 @@ Track everyday spending, plan a savings goal, estimate zakat and record giving �
 
 **[Try the public demo](https://barakah-gamma.vercel.app)** · **[Watch the demo](https://drive.google.com/file/d/1CirQfcmoW9D3MZjUdrb85dgt8V_h7S4r/view)** · **[Run locally](#run-locally)** · **[AI setup](docs/user-ai.md)** · **[Credits & licenses](docs/CREDITS.md)**
 
-> **Deployment boundary:** the public alias is an older release, not the source pictured here. New personal-account AI settings are **pending deployment**. AI is unavailable by default; public demo accounts cannot save provider keys. The finance tools need no AI service.
+> **Production verified 15 November 2026 (UTC):** personal-account AI settings and secure OpenAI key storage are deployed. AI stays off until a personal user saves a connection and consent; demo accounts cannot save keys. Custom destinations are not enabled on this deployment. **Successful external inference remains unverified.** The private pinned checkpoint is separate; finance tools need no AI service.
 
 **This project is a prototype and is not financial advice. Islamic finance is educational, not religious certification.**
 
@@ -18,7 +18,7 @@ Track everyday spending, plan a savings goal, estimate zakat and record giving �
 
 [![Watch the Barakah demo: real fictional-finance workflows and an honest model evaluation](docs/assets/demo-film-thumbnail.png)](https://drive.google.com/file/d/1CirQfcmoW9D3MZjUdrb85dgt8V_h7S4r/view)
 
-Real synthetic-data workflows and genuine private-model failures. The linked film is the existing verified version; a revised candidate remains under review. **No successful external inference is claimed.** [Verified release folder](https://drive.google.com/drive/folders/1qcRacwBeBUfiOjNu5KPX-jCEcr-nmcQI).
+Real synthetic-data workflows and genuine private-model failures. This stable video link is versioned with the release package. **No successful external inference is claimed.** [Release files and verification](https://drive.google.com/drive/folders/1qcRacwBeBUfiOjNu5KPX-jCEcr-nmcQI).
 
 ## From a monthly picture to a practical plan
 
@@ -49,7 +49,7 @@ Save the destination, then save consent before testing or sending. Only your que
 
 *Actual local settings, cropped to omit identity. Unsaved selection, empty credentials; not a successful provider connection.*
 
-A private pinned-runtime browser check returned **17 + 8 = 25**, then **21** after subtracting 4; reload restored both pairs with pinned metadata. That demonstrates transport, inference and persistence — **not better financial advice**. No genuine external API key or successful external-provider verification was used for this presentation.
+A private pinned-runtime browser check returned **17 + 8 = 25**, then **21** after subtracting 4; reload restored both pairs with pinned metadata. That demonstrates transport, inference and persistence — **not better financial advice**. Production encrypted storage and real invalid-key rejection were verified using a deliberately invalid synthetic key. No genuine external key or successful external inference was verified.
 
 ## What the benchmark actually shows
 
@@ -96,7 +96,7 @@ BARAKAH_UI_URL=http://127.0.0.1:8080 python3 tests/e2e/journey.py
 
 `journey.py` uses agent-browser/Chromium and actual backend requests. The AI-settings browser suite labels its UI-only failure fixture separately; no fixture establishes provider inference. Test reports are dated evidence, not automatic verification of another build.
 
-[Vercel setup and pending AI rollout](docs/VERCEL.md) · [deployment/backups](docs/DEPLOYMENT.md) · [API contract](docs/backend-api.md) · [release audit](docs/RELEASE_AUDIT.md). Historical audit/test reports describe their own snapshots, not automatic verification of today's source or public deployment. Docker/Nginx files are supplied; Docker runtime remains unverified.
+[Vercel setup and verified rollout](docs/VERCEL.md) · [deployment/backups](docs/DEPLOYMENT.md) · [API contract](docs/backend-api.md) · [release audit](docs/RELEASE_AUDIT.md). Historical audit/test reports describe their own snapshots, not automatic verification of today's source or public deployment. Docker/Nginx files are supplied; Docker runtime remains unverified.
 
 ## Team Barakah
 

@@ -1,6 +1,6 @@
 # Connect your own AI provider
 
-**Pending deployment:** this guide describes the new local source, not the older public alias. AI is unavailable by default. Public **Try Demo accounts cannot save keys**; use a personal account on an operator-enabled installation. The finance tools work without AI.
+**Production verified 15 November 2026 (UTC):** personal-account OpenAI connections are enabled on the public app with dedicated server-side encryption. No custom destinations are currently approved there. AI remains off until a user saves a connection and consent. Public **Try Demo accounts cannot save keys**. The finance tools work without AI. **Successful external inference remains unverified.**
 
 This project is a prototype and is not financial advice. Islamic finance is educational, not religious certification.
 
@@ -61,4 +61,4 @@ Custom destinations must match the allowlist, use HTTPS port 443 and a public DN
 
 ## Verification boundary
 
-This presentation exercised real local registration and settings UI without a genuine API key, test call or external inference. Transport/security implementation tests do not prove provider compatibility or advice quality. Before a public rollout, independently verify the integrated migrations, encrypted storage, consent, removal, quotas and failure paths; any live provider verification must be separately authorized and budgeted. Do not treat the older public deployment as verification of this feature.
+Production checks verified encrypted owner-bound storage, write-only responses, CSRF with the unchanged refresh-cookie path, demo refusal, saved consent, real OpenAI rejection of a deliberately invalid synthetic key, failure persistence after refresh/reload, removal, and no fallback. Independent browser review covered signup, key clearing, consent, failure/reload, removal and signout. No genuine approved external key or successful external inference was used. Protocol/security checks do not establish provider-model compatibility, advice quality or safety; genuine-key testing requires separate authorization and budget.
