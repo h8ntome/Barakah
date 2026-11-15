@@ -3,6 +3,8 @@ export function createZakatDraft(initial, valuationDate) {
     currency: "USD",
     assets: {
       cash: "0.00",
+      savings: "0.00",
+      other: "0.00",
       investments: "0.00",
       gold: "0.00",
       silver: "0.00",
@@ -11,6 +13,8 @@ export function createZakatDraft(initial, valuationDate) {
     },
     nisab_method: "manual",
     manual_nisab: "",
+    gold_nisab_grams: "85",
+    silver_nisab_grams: "595",
     gold_price_per_gram: "",
     silver_price_per_gram: "",
     price_source: "",
@@ -22,7 +26,15 @@ export function createZakatDraft(initial, valuationDate) {
   return initial
     ? {
         ...initial,
-        assets: { ...initial.assets, silver: initial.assets.silver ?? "0.00" },
+        gold_nisab_grams: initial.gold_nisab_grams ?? blank.gold_nisab_grams,
+        silver_nisab_grams:
+          initial.silver_nisab_grams ?? blank.silver_nisab_grams,
+        assets: {
+          ...initial.assets,
+          silver: initial.assets.silver ?? "0.00",
+          savings: initial.assets.savings ?? "0.00",
+          other: initial.assets.other ?? "0.00",
+        },
       }
     : blank;
 }

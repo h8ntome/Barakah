@@ -79,6 +79,8 @@ export interface DashboardCurrency {
   income: DecimalString;
   expenses: DecimalString;
   savings: DecimalString;
+  savings_rate_percent: DecimalString | null;
+  expense_categories: Record<string, DecimalString>;
   total_assets: DecimalString | null;
   liabilities: DecimalString;
   net_worth: DecimalString | null;
@@ -92,6 +94,8 @@ export interface Dashboard {
 }
 export interface Assets {
   cash: DecimalString;
+  savings: DecimalString;
+  other: DecimalString;
   investments: DecimalString;
   gold: DecimalString;
   silver: DecimalString;
@@ -103,6 +107,8 @@ export interface ZakatProfile {
   assets: Assets;
   nisab_method: "manual" | "gold" | "silver";
   manual_nisab: DecimalString | null;
+  gold_nisab_grams: DecimalString;
+  silver_nisab_grams: DecimalString;
   gold_price_per_gram: DecimalString | null;
   silver_price_per_gram: DecimalString | null;
   price_source: string;
@@ -206,6 +212,7 @@ export interface Holding {
   market_value: DecimalString | null;
   unrealized_gain: DecimalString | null;
   realized_gain: DecimalString;
+  needs_reevaluation: boolean;
   screening_status: string;
   screening_source: string | null;
   screening_date: ISODate | null;
@@ -275,5 +282,12 @@ export interface GoalContribution {
   id: string;
   goal_id: string;
   amount: DecimalString;
+  created_at: ISODateTime;
+}
+
+export interface ScreeningRecord {
+  id: string;
+  holding_id: string;
+  assessment: ScreeningAssessment;
   created_at: ISODateTime;
 }

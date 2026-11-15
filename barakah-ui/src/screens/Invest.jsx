@@ -18,12 +18,17 @@ import {
   CurrencyField,
   Pagination,
 } from "../components/FinancialForms.jsx";
-import { ScreeningForm, PortfolioManager } from "./PortfolioForms.jsx";
+import {
+  ScreeningForm,
+  PortfolioManager,
+  ScreeningHistory,
+} from "./PortfolioForms.jsx";
 import SponsoredAd from "../components/SponsoredAd.jsx";
 import { useResource } from "../services/useResource.js";
 import * as api from "../services/index.js";
 import { money } from "../utils/finance.js";
 function HoldingEditor({ holding, onSaved }) {
+  const [showHistory, setShowHistory] = useState(false);
   const [quote, setQuote] = useState({
     price: holding.quote_price || "",
     as_of: holding.quote_date || today(),
@@ -65,6 +70,10 @@ function HoldingEditor({ holding, onSaved }) {
       <details>
         <summary>Screen {holding.symbol}</summary>
         <ScreeningForm holding={holding} onSaved={onSaved} />
+      </details>
+      <details onToggle={(event) => setShowHistory(event.currentTarget.open)}>
+        <summary>Screening history for {holding.symbol}</summary>
+        {showHistory && <ScreeningHistory holdingId={holding.id} />}
       </details>
     </>
   );
@@ -211,6 +220,13 @@ export default function Invest({ navigate, onChanged }) {
                 <p>
                   {item.screening_source} {item.screening_notes}
                 </p>
+                {item.needs_reevaluation && (
+                  <Notice>
+                    This screening needs re-evaluation. Its evidence is stale;
+                    review current information and run a new assessment before
+                    relying on the result.
+                  </Notice>
+                )}
                 {item.screening_assessment && (
                   <>
                     <p>

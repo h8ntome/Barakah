@@ -28,7 +28,9 @@ import {
 } from "../utils/zakatDraft.js";
 
 const assetLabels = {
-  cash: "Cash and bank balances",
+  cash: "Cash and bank balances (excluding savings)",
+  savings: "Savings balances",
+  other: "Other eligible assets",
   investments: "Eligible investments",
   gold: "Gold value",
   silver: "Silver value",
@@ -64,7 +66,9 @@ function ProfileForm({ initial, onSaved }) {
       />
       <p className="formula-note">
         Enter all assets in this currency. Changing currency does not convert
-        amounts. Account and portfolio values are not added automatically.
+        amounts. Enter each asset only once; move savings out of cash if
+        previously included there. Account and portfolio values are not added
+        automatically.
       </p>
       {Object.entries(assetLabels).map(([key, label]) => (
         <AmountField
@@ -86,8 +90,8 @@ function ProfileForm({ initial, onSaved }) {
         label="Nisab method"
         options={[
           { value: "manual", label: "Manual threshold" },
-          { value: "gold", label: "Gold · 85 grams" },
-          { value: "silver", label: "Silver · 595 grams" },
+          { value: "gold", label: "Gold threshold" },
+          { value: "silver", label: "Silver threshold" },
         ]}
         value={draft.nisab_method}
         onChange={(value) => set("nisab_method", value)}
@@ -100,20 +104,42 @@ function ProfileForm({ initial, onSaved }) {
         />
       )}
       {draft.nisab_method === "gold" && (
-        <AmountField
-          label="Gold price per gram"
-          value={draft.gold_price_per_gram}
-          onChange={(value) => set("gold_price_per_gram", value)}
-          precision={6}
-        />
+        <>
+          <Field
+            label="Gold nisab weight (grams)"
+            value={draft.gold_nisab_grams}
+            onChange={(value) => set("gold_nisab_grams", value)}
+            inputMode="decimal"
+            pattern="[0-9]+(\.[0-9]{1,6})?"
+            required
+            help="Positive grams, up to six decimals. Default 85 g; confirm the weight with your chosen methodology."
+          />
+          <AmountField
+            label="Gold price per gram"
+            value={draft.gold_price_per_gram}
+            onChange={(value) => set("gold_price_per_gram", value)}
+            precision={6}
+          />
+        </>
       )}
       {draft.nisab_method === "silver" && (
-        <AmountField
-          label="Silver price per gram"
-          value={draft.silver_price_per_gram}
-          onChange={(value) => set("silver_price_per_gram", value)}
-          precision={6}
-        />
+        <>
+          <Field
+            label="Silver nisab weight (grams)"
+            value={draft.silver_nisab_grams}
+            onChange={(value) => set("silver_nisab_grams", value)}
+            inputMode="decimal"
+            pattern="[0-9]+(\.[0-9]{1,6})?"
+            required
+            help="Positive grams, up to six decimals. Default 595 g; confirm the weight with your chosen methodology."
+          />
+          <AmountField
+            label="Silver price per gram"
+            value={draft.silver_price_per_gram}
+            onChange={(value) => set("silver_price_per_gram", value)}
+            precision={6}
+          />
+        </>
       )}
       <Field
         label="Price or threshold source"

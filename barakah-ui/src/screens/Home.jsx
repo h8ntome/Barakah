@@ -7,7 +7,7 @@ import {
   Settings as SettingsIcon,
   Sparkles,
 } from "lucide-react";
-import { QuickAction, RequestState } from "../components/ui.jsx";
+import { QuickAction, RequestState, SectionHeader } from "../components/ui.jsx";
 import { Tabs } from "../components/FinancialForms.jsx";
 import { Empty, Field, today } from "../components/forms.jsx";
 import { Accounts, Budgets, Transactions } from "./Management.jsx";
@@ -82,6 +82,16 @@ export default function Home({ user, navigate, version, onChanged }) {
                       <dd>{money(item.savings, item.currency)}</dd>
                     </div>
                     <div>
+                      <dt>Monthly savings rate</dt>
+                      <dd>
+                        {item.savings_rate_percent === null
+                          ? "Not applicable — no income"
+                          : item.savings_rate_percent === undefined
+                            ? "Unavailable"
+                            : `${item.savings_rate_percent}%`}
+                      </dd>
+                    </div>
+                    <div>
                       <dt>Account balance</dt>
                       <dd>{money(item.balance, item.currency)}</dd>
                     </div>
@@ -98,6 +108,21 @@ export default function Home({ user, navigate, version, onChanged }) {
                       <dd>{money(item.liabilities, item.currency)}</dd>
                     </div>
                   </dl>
+                  <SectionHeader title="Monthly expenses by category" />
+                  {Object.keys(item.expense_categories || {}).length ? (
+                    <dl className="metric-grid">
+                      {Object.entries(item.expense_categories).map(
+                        ([category, amount]) => (
+                          <div key={category}>
+                            <dt>{category}</dt>
+                            <dd>{money(amount, item.currency)}</dd>
+                          </div>
+                        ),
+                      )}
+                    </dl>
+                  ) : (
+                    <Empty>No expenses recorded for this month.</Empty>
+                  )}
                 </div>
               ))
             ) : (

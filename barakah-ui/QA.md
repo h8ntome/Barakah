@@ -50,3 +50,11 @@ Known limits: drafts are in memory and intentionally lost at reload/logout; no m
 - Sponsored placements report visible impressions and link clicks through the API. An IntersectionObserver plus hidden-screen/document-visibility checks avoids counting mounted-but-hidden screens; tests cover visibility, offscreen state, cleanup, deduplication and event payloads. Unsupported observation or analytics errors do not block financial workflows.
 
 No servers were started and no parent checkout files were edited for this supplement. Authenticated browser/E2E rechecks and independent re-review belong to the parent orchestration gate; unit transport/visibility tests are not a claim of live browser validation.
+
+## Final backend-enhancement UI delta
+
+The final backend now supports separate `savings`/`other` assets and configurable `gold_nisab_grams`/`silver_nisab_grams`, superseding the earlier supplement's unsupported-field note. Added independent inputs with zero/default-weight migration for older profiles, preserving exact six-decimal strings. Copy warns against counting savings again in cash. Metal-method options no longer imply fixed weights.
+
+Added server-authoritative monthly savings rate (null means no income, not zero) and expense-category values, with wrapping for long category labels. Holdings display `needs_reevaluation`; an expandable, paginated history loads dated screening assessments, sources, methodology, missing/failed checks and disclaimers.
+
+Validation: **51/51 tests pass** (five additional regression tests plus extended decimal payload coverage); production build passes (JS 216.90 kB / 66.90 kB gzip, CSS 31.01 kB / 7.28 kB gzip); diff whitespace check passes; mechanical UI detector returns `[]`. No server started. Parent owns final authenticated browser checks and review.

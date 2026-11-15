@@ -37,3 +37,38 @@ test("missing or currency-mismatched payment history cannot silently be submitte
   );
   assert.doesNotThrow(() => validatePaymentHistory([], "USD", ""));
 });
+
+test("legacy zakat profiles gain independent savings/other and configurable nisab weight defaults", () => {
+  const initial = {
+    currency: "USD",
+    assets: { cash: "123.45", gold: "20.00" },
+  };
+  const draft = createZakatDraft(initial, "2026-01-15");
+  assert.equal(draft.assets.cash, "123.45");
+  assert.equal(draft.assets.savings, "0.00");
+  assert.equal(draft.assets.other, "0.00");
+  assert.equal(draft.gold_nisab_grams, "85");
+  assert.equal(draft.silver_nisab_grams, "595");
+  draft.assets.savings = "100.00";
+  assert.equal(draft.assets.cash, "123.45");
+  assert.equal(initial.assets.savings, undefined);
+});
+test("saved savings/other and six-decimal methodology weights survive draft initialization exactly", () => {
+  const initial = {
+    currency: "USD",
+    assets: {
+      cash: "1.00",
+      savings: "1200.30",
+      other: "42.20",
+      silver: "10.00",
+    },
+    gold_nisab_grams: "87.480001",
+    silver_nisab_grams: "612.360001",
+  };
+  assert.deepEqual(createZakatDraft(initial, "2026-01-15"), initial);
+  const blank = createZakatDraft(null, "2026-01-15");
+  assert.equal(blank.assets.savings, "0.00");
+  assert.equal(blank.assets.other, "0.00");
+  assert.equal(blank.gold_nisab_grams, "85");
+  assert.equal(blank.silver_nisab_grams, "595");
+});

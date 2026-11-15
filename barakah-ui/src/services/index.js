@@ -171,3 +171,6 @@ export const getZakatHistoryChoices = async () => {
 };
 export const recordAdEvent = (adId, kind) =>
   post(`/ads/${id(adId)}/events`, { kind });
+
+export const getScreeningHistory = (holdingId, filters) =>
+  get(`/portfolio/holdings/${id(holdingId)}/screenings`, filters);

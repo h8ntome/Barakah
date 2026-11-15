@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ActionForm, Field, RecordList, today } from "../components/forms.jsx";
 import { Notice, RequestState } from "../components/ui.jsx";
+import { Pagination } from "../components/FinancialForms.jsx";
+import { useResource } from "../services/useResource.js";
 import * as api from "../services/index.js";
 export function ScreeningForm({ holding, onSaved }) {
   const saved = holding.screening_assessment;
@@ -200,5 +202,51 @@ export function PortfolioManager({ portfolios, onChanged }) {
         </RecordList>
       </RequestState>
     </details>
+  );
+}
+
+export function ScreeningHistory({ holdingId }) {
+  const [offset, setOffset] = useState(0);
+  const history = useResource(api.getScreeningHistory, holdingId, {
+    offset,
+    limit: 50,
+  });
+  return (
+    <RequestState resource={history} label="screening history">
+      <RecordList
+        items={history.data}
+        empty="No screening assessments recorded for this holding."
+      >
+        {(record) => (
+          <>
+            <strong>{record.assessment.status.replaceAll("_", " ")}</strong>
+            <p>
+              Assessed {record.assessment.assessed_on} · Recorded{" "}
+              {record.created_at}
+            </p>
+            <p>Evidence: {record.assessment.source}</p>
+            <p>
+              Methodology: {record.assessment.methodology_source} ·{" "}
+              {record.assessment.methodology_version}
+            </p>
+            <p>
+              Missing inputs:{" "}
+              {record.assessment.missing_inputs.join(", ") || "None"}
+            </p>
+            <p>
+              Failed checks:{" "}
+              {record.assessment.failed_checks.join(", ") || "None"}
+            </p>
+            <p>{record.assessment.notes}</p>
+            <p>{record.assessment.disclaimer}</p>
+          </>
+        )}
+      </RecordList>
+      <Pagination
+        offset={offset}
+        onChange={setOffset}
+        count={history.data?.length || 0}
+      />
+    </RequestState>
   );
 }

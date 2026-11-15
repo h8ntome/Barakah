@@ -74,6 +74,8 @@ test("zakat, quote and screening payloads remain server inputs, never browser ar
     currency: "USD",
     assets: {
       cash: "12000.00",
+      savings: "1000.25",
+      other: "123.45",
       gold: "0.00",
       silver: "200.25",
       business: "0.00",
@@ -83,6 +85,8 @@ test("zakat, quote and screening payloads remain server inputs, never browser ar
     rate: "0.025",
     nisab_method: "gold",
     gold_price_per_gram: "80.123456",
+    gold_nisab_grams: "87.480001",
+    silver_nisab_grams: "612.360001",
     haul_complete: true,
     valuation_date: "2026-01-15",
   };
@@ -231,4 +235,73 @@ test("sponsored impressions and clicks use the event API without client financia
       body: { kind },
     });
   }
+});
+
+test("screening history is scoped to the holding and paginated without transforming assessments", async () => {
+  const history = [
+    {
+      id: "screening",
+      created_at: "2026-01-15T00:00:00Z",
+      assessment: {
+        status: "uncertain",
+        missing_inputs: ["debt_to_assets"],
+        source: "Statement",
+        assessed_on: "2026-01-14",
+      },
+    },
+  ];
+  responseOverride = () => history;
+  try {
+    assert.deepEqual(
+      await api.getScreeningHistory("holding/id", { offset: 50, limit: 50 }),
+      history,
+    );
+    assert.equal(
+      last().url,
+      "/api/v1/portfolio/holdings/holding%2Fid/screenings?offset=50&limit=50",
+    );
+  } finally {
+    responseOverride = undefined;
+  }
+});
+test("dashboard savings rate and category decimals remain authoritative, including null for no income", async () => {
+  for (const savings_rate_percent of [null, "0.00", "-12.34", "81.25"]) {
+    const dashboard = {
+      by_currency: [
+        {
+          currency: "USD",
+          savings_rate_percent,
+          expense_categories: { food: "123.40", travel: "22.05" },
+        },
+      ],
+    };
+    responseOverride = () => dashboard;
+    try {
+      assert.deepEqual(await api.getDashboard({ month: "2026-01" }), dashboard);
+    } finally {
+      responseOverride = undefined;
+    }
+  }
+});
+test("enhanced UI keeps missing-rate semantics, stale-screen warning and configurable weight inputs", async () => {
+  const home = await readFile(
+    new URL("../src/screens/Home.jsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(home, /item\.savings_rate_percent === null/);
+  assert.match(home, /Not applicable — no income/);
+  assert.match(home, /Object\.entries\(item\.expense_categories\)/);
+  const invest = await readFile(
+    new URL("../src/screens/Invest.jsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(invest, /item\.needs_reevaluation &&/);
+  assert.match(invest, /ScreeningHistory holdingId=\{holding\.id\}/);
+  const zakat = await readFile(
+    new URL("../src/screens/Zakat.jsx", import.meta.url),
+    "utf8",
+  );
+  assert.match(zakat, /Gold nisab weight \(grams\)/);
+  assert.match(zakat, /Silver nisab weight \(grams\)/);
+  assert.doesNotMatch(zakat, /Gold · 85 grams|Silver · 595 grams/);
 });
