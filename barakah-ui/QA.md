@@ -1,34 +1,37 @@
-# Local validation
+# Connected frontend validation
 
-Validated on 2026-11-14 with Node 26.12.1, npm 11.20.0, Vite 7.3.8 and headless Chromium via agent-browser.
+## Automated evidence
 
-## Automated checks
+- `npm ci`: passed; 0 audit vulnerabilities reported.
+- `npm test`: **31/31 passing** at implementation checkpoint. Includes 15 new API/transport checks and 16 retained legacy fixture/display checks. Legacy mock tests are explicitly named `legacyMockAdapter.test.js`; they do not validate the real backend.
+- `npm run build`: passed, Vite 7.3.8. At this checkpoint JS 207.78 kB / 64.60 kB gzip; CSS 30.97 kB / 7.28 kB gzip.
+- `git diff --check`: passed.
+- Impeccable mechanical detector over changed UI: `[]`.
+- No lint script exists; no lint-pass claim.
 
-- Dependency installation completed; final dependency tree audited with **0 vulnerabilities**.
-- `npm test`: **16/16 passing** (money arithmetic/rounding, liability clamping, validation, isolated JSON-ready fixtures, async behavior, saves/dashboard consistency, fault-safe retry, cause filters, demo intentions, deterministic advisor responses, allocations).
-- `npm run build`: **passed** in the supplied `barakah-ui/` directory and the local validation snapshot. Final app bundle approximately 187 kB JS / 61 kB gzip, 28 kB CSS / 7 kB gzip, plus local fonts.
-- Mechanical UI detector: no findings (`[]`).
-- Independent read-only reviewer: **SHIP — frontend prototype**, no material findings after inspecting source, contract and 16 screenshots. The named Impeccable reviewer was unavailable; the installed general reviewer performed this review. Final focus corrections were subsequently verified in Chromium and recaptured.
-- No existing lint script was supplied; no lint-pass claim is made.
+New automated coverage: exact decimal-string serialization, documented mutation/filter routes, absence of runtime mock selection, concurrent refresh serialization, late-401 token reuse, one-retry bound, session clearing on refresh rejection, logout/rotation ordering, current CSRF header, API error envelope, safe 5xx/network errors, non-retry of financial writes on network errors and query encoding and preserving the session when a confirmation password is wrong.
 
-## Browser interaction evidence
+## Browser evidence performed by frontend worker
 
-Production preview was served from an exact source snapshot outside Documents because iCloud repeatedly offloaded active checkout files. The same final source built successfully in the supplied directory. Local dependencies were placed outside the synced folder for validation; dependencies and build output are not committed.
+Used a unique `agent-browser` session against the replacement worktree Vite on `http://127.0.0.1:5174` (the pre-existing :5173 server was a different checkout and left untouched).
 
-- Rendered and visually inspected 1440×1000, 1280×800, 768×1024, 390×844 and 320×640. Document width matched the viewport at 320px and 1280px; no horizontal page overflow observed. Inner app content scrolls separately above the persistent bottom navigation.
-- Home shortcuts, bottom tabs and desktop navigation reach their destinations.
-- Cash changed from 12,000 to 13,000: preview and Zakat show **643.75 USD**, Home shows **25,750 USD**. Negative input is rejected; Escape cancels without saving.
-- Dialog Tab/Shift+Tab explicitly cycle from last to first control; Escape closes and restores focus to Edit assets. Dialogs scroll within 320×640.
-- Investment Explore renders three educational criteria. Portfolio allocations total 100%, holdings are labeled fictional.
-- Search with nonexistent text renders an empty result and Clear filters. Education filter returns two causes; only one category is pressed.
-- Custom gift **12.34 USD** produces the matching thank-you with “Demo only — no money moved.” No payment or receipt is created.
-- All starter-response mappings are covered by tests; the savings starter was browser-checked against its monthly-plan reply. Enter sends custom text. Messages remain when switching away and back.
-- Injected dashboard/cause read errors recover with Try again. Injected save retains cash draft; donation retains cause/amount; advisor retry produces one user bubble and one assistant bubble.
-- Empty portfolio and empty causes render appropriate guidance. Slow-mode capture shows pending loading and then success.
-- Final browser error buffer: **empty**. Performance resource origins: **no cross-origin requests** (fonts/services are local).
+- Rendered and visually inspected sign-in at 390×844, 320×640 and 1440×1000. Original emerald/mint/phone identity and five bottom destinations retained.
+- At 320px, document scroll width equals viewport width (320); no horizontal page overflow.
+- Submitted test credentials while backend was unavailable: safe error displayed; email/password draft retained; no false success. Browser JavaScript error buffer empty.
+- Local screenshots: `/tmp/barakah-frontend-auth.png`, `/tmp/barakah-frontend-auth-320.png`, `/tmp/barakah-frontend-auth-desktop.png` (not committed).
 
-## Limits
+## Integration review gate
 
-Headless Chromium checks are not a full screen-reader, real-device, Safari/Firefox, or regulatory/religious audit. The live backend, payment, authentication, AI, charity and compliance integrations are deliberately absent. Current data and schemas are mock/proposed, not verified or agreed backend facts.
+The parent orchestrator owns reproducible authenticated real-backend browser E2E and its artifacts. At the checkpoint above, no backend listener was available on :8000; therefore these frontend checks **do not claim** browser-validated registration, authenticated financial mutations, reset delivery or provider inference. Those must be accepted against the actual backend, not the legacy mocks or mocked fetch tests.
 
-See README for reproducible steps and mock query controls. Browser screenshots are local review artifacts, excluded from Git.
+Suggested integrated pass:
+
+1. Register/sign out/sign in, reload to restore via cookie, change settings/consent, test password reset and account deletion with isolated test accounts.
+2. Create two accounts; record/edit/delete income/expense; transfer; apply description/category/account/date filters; verify server dashboard month and budget totals after each mutation.
+3. Save manual/gold/silver zakat profiles, verify haul/no-haul/threshold conditions, snapshot history, link payment and verify paid/remaining.
+4. Create portfolio/holding, buy/sell, manual quote, incomplete quote state, uncertain and failed ratio screening. Confirm no cash movement or certification claims.
+5. Save/update/delete/filter sadaqah and compare server summary; approved cause directory/intention; labeled approved sponsor placement only.
+6. Enable advisor consent, send/read/reload/select/new/delete conversations; disable consent; test provider unavailable and preserve draft.
+7. Check 320px and desktop layouts, keyboard focus, empty/error/pending states, unauthorized ownership denial and reload persistence.
+
+Known limits: drafts are in memory and intentionally lost at reload/logout; no mutation idempotency key contract; separate browser tabs are not coordinated for cookie rotation. Preference controls do not provide translated UI or FX. No live banking/prices/payments/brokerage/religious certification is supplied.

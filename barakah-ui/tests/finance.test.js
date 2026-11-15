@@ -1,10 +1,12 @@
+// Legacy mock calculation regressions plus shared display formatter checks.
+// Production screens use server totals, never estimateZakat.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { estimateZakat, money, validateAssets, validGift } from '../src/utils/finance.js';
 
 const assets = { cash: 12000, investments: 10500, gold: 1500, business: 750, liabilities: 0 };
 
-test('default values match Home and Zakat example', () => {
+test('legacy mock default values match its Home and Zakat fixtures', () => {
   assert.deepEqual(estimateZakat(assets), { totalAssets: 24750, liabilities: 0, netWorth: 24750, eligibleBase: 24750, estimatedDue: 618.75 });
 });
 test('liabilities reduce net worth and estimate without making the estimate negative', () => {

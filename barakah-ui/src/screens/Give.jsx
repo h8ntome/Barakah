@@ -1,58 +1,286 @@
-import { useState } from 'react';
-import { Check, Heart, LoaderCircle, Search } from 'lucide-react';
-import { CauseCard, DemoTag, IconBadge, InlineError, Modal, Notice, PrimaryButton, RequestState, ScreenHeader, SectionHeader } from '../components/ui.jsx';
-import { createDonationIntent, getCauses } from '../services/index.js';
-import { useResource } from '../services/useResource.js';
-import { money, validGift } from '../utils/finance.js';
-
-export default function Give({ navigate }) {
-  const [category, setCategory] = useState('All');
-  const [query, setQuery] = useState('');
-  const [chosenCause, setChosenCause] = useState(null);
-  const causes = useResource(getCauses, { category, query });
-  return <div className="screen-content inner-screen">
-    <ScreenHeader title="Sadaqah & Giving" onBack={() => navigate('home')} />
-    <div className="give-hero"><IconBadge icon={Heart} large /><h3>Give Sadaqah</h3><p>Small acts. Lasting kindness.<br />Make space for the causes you care about.</p></div>
-    <label className="search-field"><Search size={19} /><input aria-label="Search causes" type="search" placeholder="Search causes..." maxLength={100} value={query} onChange={event => setQuery(event.target.value)} /></label>
-    <div className="category-filters" role="group" aria-label="Cause category">{['All', 'Education', 'Relief', 'Masjid'].map(item => <button key={item} aria-pressed={category === item} className={category === item ? 'active' : ''} onClick={() => setCategory(item)}>{item}</button>)}</div>
-    <SectionHeader title="A little good goes a long way" />
-    <div className="causes-meta"><DemoTag>Illustrative causes</DemoTag><span aria-live="polite">{causes.data ? `${causes.data.length} found` : ''}</span></div>
-    <RequestState resource={causes} label="causes">
-      <div className="cause-list">{causes.data?.map(cause => <CauseCard key={cause.id} cause={cause} onClick={() => setChosenCause(cause)} />)}</div>
-      {causes.data?.length === 0 && <div className="empty-state"><Search size={28} /><h3>No causes found</h3><p>Try another search or category.</p>{(query || category !== 'All') && <button className="mint-button" onClick={() => { setQuery(''); setCategory('All'); }}>Clear filters</button>}</div>}
-    </RequestState>
-    <Notice>All causes, funding figures and beneficiaries are illustrative. These are sadaqah examples, not verified zakat-eligible causes. No payment is processed.</Notice>
-    {chosenCause && <DonationModal cause={chosenCause} onClose={() => setChosenCause(null)} />}
-  </div>;
-}
-
-function DonationModal({ cause, onClose }) {
-  const [amount, setAmount] = useState('25');
-  const [preset, setPreset] = useState(25);
-  const [pending, setPending] = useState(false);
-  const [confirmation, setConfirmation] = useState(null);
-  const [error, setError] = useState('');
-  const numericAmount = Number(amount);
-  const valid = validGift(numericAmount);
-  async function confirm(event) {
-    event.preventDefault();
-    if (!valid || pending) return;
-    setPending(true); setError('');
-    try { setConfirmation(await createDonationIntent({ causeId: cause.id, amount: numericAmount, currency: cause.currency })); }
-    catch (reason) { setError(reason.message); }
-    finally { setPending(false); }
-  }
-  return <Modal title={confirmation ? 'A little kindness, imagined.' : cause.title} onClose={onClose} busy={pending}>
-    {confirmation ? <div className="donation-success" role="status"><IconBadge icon={Check} large /><h3>Thank you for your intention.</h3><p>You explored a <strong>{money(confirmation.amount, confirmation.currency)}</strong> gift to {cause.title}.</p><div className="demo-confirmation"><strong>Demo only — no money moved.</strong><p>No payment was made, and no receipt or real donation was created.</p></div><PrimaryButton onClick={onClose}>Done</PrimaryButton></div> : <>
-      <DemoTag>Demo gift · No payment</DemoTag><p>{cause.description}</p>
-      <form onSubmit={confirm}><fieldset className="donation-fields" disabled={pending}><legend>Choose a sample gift</legend>
-        <div className="amount-presets">{[10, 25, 50, 100].map(value => <button type="button" key={value} aria-pressed={preset === value} className={preset === value ? 'selected' : ''} onClick={() => { setPreset(value); setAmount(String(value)); setError(''); }}>{money(value, cause.currency)}</button>)}</div>
-        <label className="custom-amount"><span>Or enter an amount (USD)</span><span className="money-input"><span>$</span><input type="number" inputMode="decimal" min="1" max="100000" step="0.01" value={amount} required onChange={event => { setPreset(null); setAmount(event.target.value); setError(''); }} aria-describedby="gift-amount-help" /></span></label>
-        <p id="gift-amount-help" className="field-help">1–100,000 USD. Up to two decimal places.</p>
-      </fieldset>
-      {error && <InlineError message={error} />}
-      <PrimaryButton type="submit" disabled={!valid || pending}>{pending ? <><LoaderCircle size={17} className="spinner" />Confirming demo gift…</> : <><Heart size={17} />{error ? 'Retry demo gift' : 'Confirm demo gift'}{valid ? ` · ${money(numericAmount, cause.currency)}` : ''}</>}</PrimaryButton>
-      <p className="modal-note">This records a local demo intention, not a payment.</p></form>
-    </>}
-  </Modal>;
+import { useState } from "react";
+import { Heart } from "lucide-react";
+import {
+  IconBadge,
+  Notice,
+  RequestState,
+  ScreenHeader,
+  SectionHeader,
+} from "../components/ui.jsx";
+import { ActionForm, Field, RecordList } from "../components/forms.jsx";
+import { AmountField, Pagination } from "../components/FinancialForms.jsx";
+import { GivingRecordForm } from "./Zakat.jsx";
+import SponsoredAd from "../components/SponsoredAd.jsx";
+import { useResource } from "../services/useResource.js";
+import * as api from "../services/index.js";
+import { money } from "../utils/finance.js";
+export default function Give({ navigate, onChanged }) {
+  const [query, setQuery] = useState("");
+  const [category, setCategory] = useState("");
+  const [offset, setOffset] = useState(0);
+  const causes = useResource(api.getCauses, {
+    query,
+    category,
+    offset,
+    limit: 50,
+  });
+  const [selected, setSelected] = useState(null);
+  const [amount, setAmount] = useState("");
+  const [recordOffset, setRecordOffset] = useState(0);
+  const donations = useResource(api.getDonations, {
+    offset: recordOffset,
+    limit: 50,
+  });
+  const [givingOffset, setGivingOffset] = useState(0);
+  const [givingFilters, setGivingFilters] = useState({
+    category: "",
+    start_date: "",
+    end_date: "",
+  });
+  const sadaqah = useResource(api.getSadaqah, {
+    ...givingFilters,
+    offset: givingOffset,
+    limit: 50,
+  });
+  const givingSummary = useResource(api.getSadaqahSummary, givingFilters);
+  const [editing, setEditing] = useState(null);
+  const refreshGiving = () => {
+    sadaqah.retry();
+    givingSummary.retry();
+    onChanged();
+  };
+  const filterGiving = (key, value) => {
+    setGivingFilters({ ...givingFilters, [key]: value });
+    setGivingOffset(0);
+  };
+  return (
+    <div className="screen-content inner-screen">
+      <ScreenHeader title="Sadaqah & giving" onBack={() => navigate("home")} />
+      <section className="give-hero">
+        <IconBadge icon={Heart} large />
+        <h3>Make room for generosity.</h3>
+        <p>Discover approved causes and keep a record of your giving.</p>
+      </section>
+      <Notice>
+        Records and intentions only. No money is collected or transferred here.
+        Verify recipients independently before giving elsewhere.
+      </Notice>
+      <SectionHeader title="Cause directory" />
+      <Field
+        label="Search causes"
+        value={query}
+        onChange={(value) => {
+          setQuery(value);
+          setOffset(0);
+        }}
+        type="search"
+      />
+      <Field
+        label="Filter cause category"
+        value={category}
+        onChange={(value) => {
+          setCategory(value);
+          setOffset(0);
+        }}
+        help="Leave blank for all categories."
+      />
+      <RequestState resource={causes} label="approved causes">
+        <RecordList
+          items={causes.data}
+          empty="No approved causes match. Try another search, or record giving to a recipient below."
+        >
+          {(cause) => (
+            <>
+              <strong>{cause.title}</strong>
+              <p>
+                {cause.category} · {cause.currency}
+              </p>
+              <p>{cause.description}</p>
+              <button
+                className="mint-button"
+                onClick={() => setSelected(cause)}
+              >
+                Record intention for {cause.title}
+              </button>
+            </>
+          )}
+        </RecordList>
+        <Pagination
+          offset={offset}
+          onChange={setOffset}
+          count={causes.data?.length || 0}
+        />
+      </RequestState>
+      {selected && (
+        <section className="details-section">
+          <SectionHeader title={`Giving intention: ${selected.title}`} />
+          <p className="section-description">
+            {selected.currency} · Not a payment
+          </p>
+          <ActionForm
+            label="Save giving intention"
+            success="Intention recorded. No payment was processed."
+            onSubmit={async () => {
+              await api.createDonation({
+                cause_id: selected.id,
+                currency: selected.currency,
+                amount,
+              });
+              donations.retry();
+              onChanged();
+              setAmount("");
+            }}
+          >
+            <AmountField
+              label="Intended amount"
+              value={amount}
+              onChange={setAmount}
+            />
+          </ActionForm>
+          <button className="text-button" onClick={() => setSelected(null)}>
+            Close intention form
+          </button>
+        </section>
+      )}
+      <details className="details-section">
+        <summary>Giving intention history</summary>
+        <RequestState resource={donations} label="giving intentions">
+          <RecordList
+            items={donations.data}
+            empty="No giving intentions recorded."
+          >
+            {(item) => (
+              <>
+                <strong>{money(item.amount, item.currency)}</strong>
+                <p>
+                  Cause:{" "}
+                  {causes.data?.find((cause) => cause.id === item.cause_id)
+                    ?.title || item.cause_id}
+                </p>
+                <p>
+                  {item.status} ·{" "}
+                  {item.payment_processed
+                    ? "Check server payment status"
+                    : "No payment processed"}
+                </p>
+              </>
+            )}
+          </RecordList>
+          <Pagination
+            offset={recordOffset}
+            onChange={setRecordOffset}
+            count={donations.data?.length || 0}
+          />
+        </RequestState>
+      </details>
+      <details className="details-section">
+        <summary>Record sadaqah given elsewhere</summary>
+        <GivingRecordForm
+          label="Save sadaqah record"
+          save={api.createSadaqah}
+          onSaved={refreshGiving}
+        />
+      </details>
+      <details className="details-section">
+        <summary>Sadaqah history</summary>
+        <Field
+          label="Filter giving category"
+          value={givingFilters.category}
+          onChange={(value) => filterGiving("category", value)}
+          maxLength={80}
+        />
+        <div className="form-grid">
+          <Field
+            label="Giving from date"
+            type="date"
+            value={givingFilters.start_date}
+            onChange={(value) => filterGiving("start_date", value)}
+          />
+          <Field
+            label="Giving to date"
+            type="date"
+            value={givingFilters.end_date}
+            onChange={(value) => filterGiving("end_date", value)}
+          />
+        </div>
+        <RequestState resource={givingSummary} label="giving totals">
+          <RecordList
+            items={givingSummary.data?.map((item) => ({
+              ...item,
+              id: item.currency,
+            }))}
+            empty="No giving totals for these filters."
+          >
+            {(item) => (
+              <>
+                <strong>
+                  Total recorded: {money(item.total, item.currency)}
+                </strong>
+                <p>All matching records, not just this page.</p>
+              </>
+            )}
+          </RecordList>
+        </RequestState>
+        <RequestState resource={sadaqah} label="sadaqah records">
+          <RecordList
+            items={sadaqah.data}
+            empty="No sadaqah recorded. Record a gift after giving elsewhere."
+          >
+            {(item) => (
+              <>
+                <strong>
+                  {item.recipient} · {money(item.amount, item.currency)}
+                </strong>
+                <p>
+                  {item.paid_on} · {item.category} · Manual record
+                </p>
+                <p>{item.note}</p>
+                <button
+                  className="text-button"
+                  onClick={() => setEditing(item.id)}
+                >
+                  Edit sadaqah record
+                </button>
+                {editing === item.id && (
+                  <GivingRecordForm
+                    key={item.id}
+                    label="Save sadaqah changes"
+                    initial={{
+                      amount: item.amount,
+                      currency: item.currency,
+                      paid_on: item.paid_on,
+                      category: item.category,
+                      recipient: item.recipient,
+                      note: item.note,
+                    }}
+                    save={(body) => api.updateSadaqah(item.id, body)}
+                    onSaved={() => {
+                      setEditing(null);
+                      refreshGiving();
+                    }}
+                  />
+                )}
+                <details>
+                  <summary>Delete sadaqah record</summary>
+                  <ActionForm
+                    label="Confirm delete sadaqah record"
+                    onSubmit={async () => {
+                      await api.deleteSadaqah(item.id);
+                      refreshGiving();
+                    }}
+                  />
+                </details>
+              </>
+            )}
+          </RecordList>
+          <Pagination
+            offset={givingOffset}
+            onChange={setGivingOffset}
+            count={sadaqah.data?.length || 0}
+          />
+        </RequestState>
+      </details>
+      <SponsoredAd context="giving" />
+    </div>
+  );
 }

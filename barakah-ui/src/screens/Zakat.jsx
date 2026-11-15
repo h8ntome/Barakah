@@ -1,70 +1,421 @@
-import { useState } from 'react';
-import { BarChart3, Check, Coins, Landmark, LoaderCircle, Pencil, Wallet } from 'lucide-react';
-import { AssetRow, DemoTag, InlineError, Modal, Notice, PrimaryButton, ScreenHeader, SectionHeader, IconBadge } from '../components/ui.jsx';
-import { saveZakatProfile } from '../services/index.js';
-import { displayDate, estimateZakat, maxAmount, money, validateAssets } from '../utils/finance.js';
+import { useState } from "react";
+import { Coins } from "lucide-react";
+import {
+  IconBadge,
+  Notice,
+  RequestState,
+  ScreenHeader,
+  SectionHeader,
+} from "../components/ui.jsx";
+import {
+  ActionForm,
+  Empty,
+  Field,
+  RecordList,
+  today,
+} from "../components/forms.jsx";
+import {
+  AmountField,
+  CurrencyField,
+  Pagination,
+} from "../components/FinancialForms.jsx";
+import { useResource } from "../services/useResource.js";
+import * as api from "../services/index.js";
+import { money } from "../utils/finance.js";
 
-const fields = [
-  { key: 'cash', label: 'Cash & bank balances', icon: Wallet },
-  { key: 'investments', label: 'Eligible investments', icon: BarChart3 },
-  { key: 'gold', label: 'Gold & silver', icon: Coins },
-  { key: 'business', label: 'Business assets', icon: Landmark },
-  { key: 'liabilities', label: 'Deductible liabilities', icon: Wallet },
-];
-
-export default function Zakat({ profile, summary, navigate, editAssets }) {
-  const currency = profile.currency;
-  return <div className="screen-content inner-screen">
-    <ScreenHeader title="Zakat Calculator" onBack={() => navigate('home')} />
-    <div className="estimate-hero"><IconBadge icon={Coins} large /><h3>Your Estimated Zakat</h3><div className="large-amount">{money(summary.estimatedDue, currency, true)}</div><p>From the assets and liabilities you entered.</p><button className="mint-button" onClick={editAssets}><Pencil size={16} />Edit assets</button></div>
-    <div className="breakdown">
-      <div><span>Total assets</span><strong>{money(summary.totalAssets, currency)}</strong></div>
-      <div><span>Deductible liabilities</span><strong>−{money(summary.liabilities, currency)}</strong></div>
-      <div><span>Illustrative nisab <small>(not live)</small></span><strong>{money(profile.illustrativeNisab, currency)}</strong></div>
-      <div><span>Illustrative rate</span><strong>{profile.illustrativeRate * 100}%</strong></div>
-      <div className="breakdown-total"><strong>Estimated Zakat Due</strong><strong>{money(summary.estimatedDue, currency, true)}</strong></div>
-    </div>
-    <p className="formula-note">Simplified example: max(0, assets − liabilities) × 2.5%. This demo does not test nisab or holding-period eligibility.</p>
-    <SectionHeader title="Your entered assets" action="Edit" onAction={editAssets} />
-    <div className="asset-list">{fields.slice(0, 4).map(field => <AssetRow key={field.key} icon={field.icon} label={field.label} value={profile.assets[field.key]} currency={currency} />)}</div>
-    <Notice>Educational estimate, not a fatwa. Real eligibility depends on dated precious-metal rates, lunar holding period (haul), asset categories, debt treatment and scholarly methodology. The nisab shown is a nonlive example, not a current regional threshold. Consult a qualified scholar for a definitive ruling.</Notice>
-    <p className="screen-footnote"><DemoTag>USD prototype</DemoTag> Updated {displayDate(profile.updatedAt)}</p>
-  </div>;
+const blankProfile = () => ({
+  currency: "USD",
+  assets: {
+    cash: "0.00",
+    investments: "0.00",
+    gold: "0.00",
+    business: "0.00",
+    liabilities: "0.00",
+  },
+  nisab_method: "manual",
+  manual_nisab: "",
+  gold_price_per_gram: "",
+  silver_price_per_gram: "",
+  price_source: "",
+  valuation_date: today(),
+  haul_start: "",
+  haul_complete: false,
+  rate: "0.025",
+});
+const assetLabels = {
+  cash: "Cash and bank balances",
+  investments: "Eligible investments",
+  gold: "Gold and silver value",
+  business: "Business assets",
+  liabilities: "Deductible liabilities",
+};
+function ProfileForm({ initial, onSaved }) {
+  const [draft, setDraft] = useState(initial || blankProfile());
+  const set = (key, value) => setDraft({ ...draft, [key]: value });
+  return (
+    <ActionForm
+      label="Save and calculate zakat"
+      success="Profile saved. The estimate below is calculated by the server."
+      onSubmit={async () => {
+        await api.saveZakatProfile({
+          ...draft,
+          haul_start: draft.haul_start || null,
+          manual_nisab:
+            draft.nisab_method === "manual" ? draft.manual_nisab : null,
+          gold_price_per_gram:
+            draft.nisab_method === "gold" ? draft.gold_price_per_gram : null,
+          silver_price_per_gram:
+            draft.nisab_method === "silver"
+              ? draft.silver_price_per_gram
+              : null,
+        });
+        onSaved();
+      }}
+    >
+      <CurrencyField
+        value={draft.currency}
+        onChange={(value) => set("currency", value)}
+      />
+      <p className="formula-note">
+        Enter all assets in this currency. Changing currency does not convert
+        amounts. Account and portfolio values are not added automatically.
+      </p>
+      {Object.entries(assetLabels).map(([key, label]) => (
+        <AmountField
+          key={key}
+          label={label}
+          value={draft.assets[key]}
+          onChange={(value) => set("assets", { ...draft.assets, [key]: value })}
+          allowZero
+        />
+      ))}
+      <Field
+        label="Valuation date"
+        type="date"
+        value={draft.valuation_date}
+        onChange={(value) => set("valuation_date", value)}
+        required
+      />
+      <Field
+        label="Nisab method"
+        options={[
+          { value: "manual", label: "Manual threshold" },
+          { value: "gold", label: "Gold · 85 grams" },
+          { value: "silver", label: "Silver · 595 grams" },
+        ]}
+        value={draft.nisab_method}
+        onChange={(value) => set("nisab_method", value)}
+      />
+      {draft.nisab_method === "manual" && (
+        <AmountField
+          label="Manual nisab threshold"
+          value={draft.manual_nisab}
+          onChange={(value) => set("manual_nisab", value)}
+        />
+      )}
+      {draft.nisab_method === "gold" && (
+        <AmountField
+          label="Gold price per gram"
+          value={draft.gold_price_per_gram}
+          onChange={(value) => set("gold_price_per_gram", value)}
+          precision={6}
+        />
+      )}
+      {draft.nisab_method === "silver" && (
+        <AmountField
+          label="Silver price per gram"
+          value={draft.silver_price_per_gram}
+          onChange={(value) => set("silver_price_per_gram", value)}
+          precision={6}
+        />
+      )}
+      <Field
+        label="Price or threshold source"
+        value={draft.price_source}
+        onChange={(value) => set("price_source", value)}
+        required
+        maxLength={200}
+        help="Describe where you obtained this dated, manually entered value. No live prices are supplied."
+      />
+      <Field
+        label="Zakat rate (fraction)"
+        value={draft.rate}
+        onChange={(value) => set("rate", value)}
+        inputMode="decimal"
+        pattern="[0-9]+(\.[0-9]{1,6})?"
+        required
+        help="0.025 means 2.5%. Confirm the appropriate rate with a qualified scholar."
+      />
+      <Field
+        label="Haul start date (optional)"
+        type="date"
+        value={draft.haul_start}
+        onChange={(value) => set("haul_start", value)}
+        max={draft.valuation_date}
+      />
+      <label className="check-field">
+        <input
+          type="checkbox"
+          checked={draft.haul_complete}
+          onChange={(event) => set("haul_complete", event.target.checked)}
+        />
+        <span>
+          I attest that the required holding period (haul) is complete. A start
+          date alone does not confirm eligibility.
+        </span>
+      </label>
+    </ActionForm>
+  );
 }
-
-export function AssetModal({ profile, onSaved, onClose }) {
-  const [draft, setDraft] = useState(Object.fromEntries(fields.map(({ key }) => [key, String(profile.assets[key])])));
-  const [pending, setPending] = useState(false);
-  const [error, setError] = useState('');
-  const [validation, setValidation] = useState('');
-  const values = Object.fromEntries(Object.entries(draft).map(([key, value]) => [key, Number(value)]));
-  let preview = null;
-  try { if (Object.values(draft).every(value => value !== '')) preview = estimateZakat(values, profile.illustrativeRate); } catch { /* Invalid drafts stay editable. */ }
-  async function save(event) {
-    event.preventDefault();
-    try {
-      if (Object.values(draft).some(value => value === '')) throw new Error('Enter an amount in every field. Use 0 if none.');
-      validateAssets(values);
-      setValidation('');
-    } catch (reason) { setValidation(reason.message); return; }
-    setPending(true); setError('');
-    try {
-      const updated = await saveZakatProfile({ currency: profile.currency, assets: values });
-      onSaved(updated);
-    } catch (reason) { setError(reason.message); }
-    finally { setPending(false); }
-  }
-  return <Modal title="Edit your assets" onClose={onClose} busy={pending}>
-    <p>Use sample amounts in USD. Nothing is connected to your bank, and this demo resets on refresh.</p>
-    <form onSubmit={save}>
-      <fieldset disabled={pending} className="asset-fields"><legend className="visually-hidden">Assets and liabilities in USD</legend>
-        {fields.map(({ key, label }) => <label className="asset-field" key={key}><span>{label}</span><span className="money-input"><span>$</span><input aria-label={label} type="number" inputMode="decimal" min="0" max={maxAmount} step="0.01" required value={draft[key]} onChange={event => { setDraft(current => ({ ...current, [key]: event.target.value })); setValidation(''); }} /></span></label>)}
-      </fieldset>
-      {preview && <div className="estimate-preview"><span>Preview estimate</span><strong>{money(preview.estimatedDue, profile.currency, true)}</strong></div>}
-      {validation && <InlineError message={validation} />}
-      {error && <InlineError message={error} />}
-      <PrimaryButton type="submit" disabled={pending}>{pending ? <><LoaderCircle size={17} className="spinner" />Saving assets…</> : <><Check size={17} />{error ? 'Retry saving assets' : 'Save assets'}</>}</PrimaryButton>
-      <p className="modal-note">Provisional 2.5% illustration, not a religious ruling.</p>
-    </form>
-  </Modal>;
+export function GivingRecordForm({
+  label,
+  save,
+  histories = [],
+  onSaved,
+  initial,
+}) {
+  const [draft, setDraft] = useState(
+    initial || {
+      amount: "",
+      currency: "USD",
+      paid_on: today(),
+      category: "general",
+      recipient: "",
+      note: "",
+      history_id: "",
+    },
+  );
+  return (
+    <ActionForm
+      label={label}
+      success="Record saved. No payment was processed."
+      onSubmit={async () => {
+        const { history_id, ...body } = draft;
+        await save({ ...body, ...(history_id ? { history_id } : {}) });
+        onSaved();
+        setDraft({ ...draft, amount: "", note: "" });
+      }}
+    >
+      <AmountField
+        label="Recorded amount"
+        value={draft.amount}
+        onChange={(amount) => setDraft({ ...draft, amount })}
+      />
+      <CurrencyField
+        value={draft.currency}
+        onChange={(currency) =>
+          setDraft({ ...draft, currency, history_id: "" })
+        }
+      />
+      <Field
+        label="Date given"
+        type="date"
+        value={draft.paid_on}
+        onChange={(paid_on) => setDraft({ ...draft, paid_on })}
+        required
+      />
+      <Field
+        label="Giving category"
+        value={draft.category}
+        onChange={(category) => setDraft({ ...draft, category })}
+        required
+        maxLength={80}
+      />
+      <Field
+        label="Recipient"
+        value={draft.recipient}
+        onChange={(recipient) => setDraft({ ...draft, recipient })}
+        required
+        maxLength={120}
+      />
+      <Field
+        label="Record note"
+        value={draft.note}
+        onChange={(note) => setDraft({ ...draft, note })}
+        maxLength={500}
+      />
+      {histories.length > 0 && (
+        <Field
+          label="Link calculation (optional)"
+          value={draft.history_id}
+          onChange={(history_id) => setDraft({ ...draft, history_id })}
+          options={[
+            { value: "", label: "No linked calculation" },
+            ...histories
+              .filter((item) => item.estimate.currency === draft.currency)
+              .map((item) => ({
+                value: item.id,
+                label: `${item.estimate.valuation_date} · ${money(item.estimate.estimated_due, item.estimate.currency)}`,
+              })),
+          ]}
+        />
+      )}
+    </ActionForm>
+  );
+}
+export default function Zakat({ navigate, onChanged }) {
+  const profile = useResource(api.getZakatProfile);
+  const estimate = useResource(api.getZakatEstimate);
+  const [offset, setOffset] = useState(0);
+  const history = useResource(api.getZakatHistory, { offset, limit: 50 });
+  const [paymentOffset, setPaymentOffset] = useState(0);
+  const payments = useResource(api.getZakatPayments, {
+    offset: paymentOffset,
+    limit: 50,
+  });
+  const result = estimate.data;
+  return (
+    <div className="screen-content inner-screen">
+      <ScreenHeader title="Zakat calculator" onBack={() => navigate("home")} />
+      <RequestState resource={estimate} label="zakat estimate">
+        {result ? (
+          <>
+            <section className="estimate-hero">
+              <IconBadge icon={Coins} large />
+              <h3>Estimated zakat due</h3>
+              <div className="large-amount">
+                {money(result.estimated_due, result.currency)}
+              </div>
+              <p>
+                {result.eligible
+                  ? "Nisab and attested haul conditions met"
+                  : "Eligibility conditions not met"}
+              </p>
+            </section>
+            <div className="breakdown">
+              <div>
+                <span>Total entered assets</span>
+                <strong>{money(result.total_assets, result.currency)}</strong>
+              </div>
+              <div>
+                <span>Eligible base</span>
+                <strong>{money(result.eligible_base, result.currency)}</strong>
+              </div>
+              <div>
+                <span>Nisab threshold</span>
+                <strong>{money(result.nisab, result.currency)}</strong>
+              </div>
+              <div>
+                <span>Haul attestation</span>
+                <strong>
+                  {result.haul_complete ? "Complete" : "Not complete"}
+                </strong>
+              </div>
+            </div>
+            <p className="formula-note">
+              Valued {result.valuation_date} · Source: {result.price_source}
+            </p>
+            <Notice>{result.methodology}</Notice>
+            <ActionForm
+              label="Save calculation to history"
+              success="Calculation snapshot saved."
+              onSubmit={async () => {
+                await api.saveZakatHistory();
+                history.retry();
+              }}
+            />
+          </>
+        ) : (
+          <Empty>
+            No zakat profile yet. Enter your assets and methodology below to
+            calculate an estimate.
+          </Empty>
+        )}
+      </RequestState>
+      <Notice>
+        Educational estimate, not a religious ruling. Asset qualification,
+        deductible debt and haul require your judgment and qualified guidance.
+        Prices and attestations are user supplied.
+      </Notice>
+      <SectionHeader title="Assets and methodology" />
+      <RequestState resource={profile} label="zakat profile">
+        <ProfileForm
+          initial={profile.data}
+          onSaved={() => {
+            estimate.retry();
+            onChanged();
+          }}
+        />
+      </RequestState>
+      <details className="details-section">
+        <summary>Calculation history</summary>
+        <RequestState resource={history} label="calculation history">
+          <RecordList
+            items={history.data}
+            empty="Save a calculation above to preserve its dated methodology."
+          >
+            {(item) => (
+              <>
+                <strong>
+                  {money(item.estimate.estimated_due, item.estimate.currency)} ·{" "}
+                  {item.estimate.valuation_date}
+                </strong>
+                <p>
+                  {item.profile.nisab_method} · {item.estimate.price_source}
+                </p>
+                <p>
+                  Base{" "}
+                  {money(item.estimate.eligible_base, item.estimate.currency)} ·
+                  Nisab {money(item.estimate.nisab, item.estimate.currency)} ·
+                  Haul {item.estimate.haul_complete ? "complete" : "incomplete"}
+                </p>
+                <p>{item.estimate.methodology}</p>
+                <p>
+                  Recorded paid{" "}
+                  {money(item.paid_amount, item.estimate.currency)} · Remaining{" "}
+                  {money(item.remaining_amount, item.estimate.currency)}
+                </p>
+              </>
+            )}
+          </RecordList>
+          <Pagination
+            offset={offset}
+            onChange={setOffset}
+            count={history.data?.length || 0}
+          />
+        </RequestState>
+      </details>
+      <details className="details-section">
+        <summary>Record a zakat payment</summary>
+        <Notice>
+          Record a payment made elsewhere. Barakah does not transfer money or
+          issue payment receipts.
+        </Notice>
+        <GivingRecordForm
+          label="Save zakat payment record"
+          save={api.createZakatPayment}
+          histories={history.data || []}
+          onSaved={() => {
+            payments.retry();
+            history.retry();
+            onChanged();
+          }}
+        />
+      </details>
+      <details className="details-section">
+        <summary>Zakat payment history</summary>
+        <RequestState resource={payments} label="payment records">
+          <RecordList
+            items={payments.data}
+            empty="No payments recorded. Add a manual record after giving elsewhere."
+          >
+            {(item) => (
+              <>
+                <strong>
+                  {item.recipient} · {money(item.amount, item.currency)}
+                </strong>
+                <p>{item.paid_on} · Manual record</p>
+                <p>{item.note}</p>
+              </>
+            )}
+          </RecordList>
+          <Pagination
+            offset={paymentOffset}
+            onChange={setPaymentOffset}
+            count={payments.data?.length || 0}
+          />
+        </RequestState>
+      </details>
+    </div>
+  );
 }

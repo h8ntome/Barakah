@@ -1,48 +1,128 @@
-import { useState } from 'react';
-import { BottomTabs, DesktopPanel, RequestState } from './components/ui.jsx';
-import Home from './screens/Home.jsx';
-import Zakat, { AssetModal } from './screens/Zakat.jsx';
-import Invest from './screens/Invest.jsx';
-import Chat from './screens/Chat.jsx';
-import Give from './screens/Give.jsx';
-import { getDashboard, getZakatProfile } from './services/index.js';
-import { useResource } from './services/useResource.js';
-import { estimateZakat } from './utils/finance.js';
-
-function Workspace({ dashboard, initialProfile, activeTab, navigate }) {
-  const [profile, setProfile] = useState(initialProfile);
-  const [editingAssets, setEditingAssets] = useState(false);
-  const [saved, setSaved] = useState(false);
-  const summary = estimateZakat(profile.assets, profile.illustrativeRate);
-  const editAssets = () => { setSaved(false); setEditingAssets(true); };
-  return <>
+import { useEffect, useState } from "react";
+import { BottomTabs, DesktopPanel, RequestState } from "./components/ui.jsx";
+import Home from "./screens/Home.jsx";
+import Zakat from "./screens/Zakat.jsx";
+import Invest from "./screens/Invest.jsx";
+import Chat from "./screens/Chat.jsx";
+import Give from "./screens/Give.jsx";
+import Auth from "./screens/Auth.jsx";
+import {
+  getSession,
+  refreshSession,
+  subscribeSession,
+} from "./services/index.js";
+function Workspace({ user, activeTab, navigate }) {
+  const [version, setVersion] = useState(0);
+  const onChanged = () => setVersion((value) => value + 1);
+  return (
     <div className="screen-pages">
-      <section className="screen-page" hidden={activeTab !== 'home'} aria-label="Home"><Home dashboard={dashboard} summary={summary} currency={profile.currency} navigate={navigate} editAssets={editAssets} /></section>
-      <section className="screen-page" hidden={activeTab !== 'zakat'} aria-label="Zakat"><Zakat profile={profile} summary={summary} navigate={navigate} editAssets={editAssets} /></section>
-      <section className="screen-page" hidden={activeTab !== 'invest'} aria-label="Invest"><Invest navigate={navigate} /></section>
-      <section className="screen-page" hidden={activeTab !== 'chat'} aria-label="AI Chat"><Chat navigate={navigate} active={activeTab === 'chat'} /></section>
-      <section className="screen-page" hidden={activeTab !== 'give'} aria-label="Give"><Give navigate={navigate} /></section>
+      <section
+        className="screen-page"
+        hidden={activeTab !== "home"}
+        aria-label="Home"
+      >
+        <Home
+          user={user}
+          navigate={navigate}
+          version={version}
+          onChanged={onChanged}
+        />
+      </section>
+      <section
+        className="screen-page"
+        hidden={activeTab !== "zakat"}
+        aria-label="Zakat"
+      >
+        <Zakat navigate={navigate} onChanged={onChanged} />
+      </section>
+      <section
+        className="screen-page"
+        hidden={activeTab !== "invest"}
+        aria-label="Invest"
+      >
+        <Invest navigate={navigate} onChanged={onChanged} />
+      </section>
+      <section
+        className="screen-page"
+        hidden={activeTab !== "chat"}
+        aria-label="AI Chat"
+      >
+        <Chat user={user} navigate={navigate} active={activeTab === "chat"} />
+      </section>
+      <section
+        className="screen-page"
+        hidden={activeTab !== "give"}
+        aria-label="Give"
+      >
+        <Give navigate={navigate} onChanged={onChanged} />
+      </section>
     </div>
-    <div className="visually-hidden" role="status">{saved ? 'Assets saved. Your overview and zakat estimate have been updated.' : ''}</div>
-    {editingAssets && <AssetModal profile={profile} onClose={() => setEditingAssets(false)} onSaved={updated => { setProfile(updated); setEditingAssets(false); setSaved(true); }} />}
-  </>;
+  );
 }
-
 export default function App() {
-  const [activeTab, setActiveTab] = useState('home');
-  const dashboard = useResource(getDashboard);
-  const profile = useResource(getZakatProfile);
+  const [user, setUser] = useState(getSession);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [attempt, setAttempt] = useState(0);
+  const [activeTab, setActiveTab] = useState("home");
+  useEffect(() => subscribeSession(setUser), []);
+  useEffect(() => {
+    let current = true;
+    setLoading(true);
+    setError(null);
+    if (
+      !document.cookie
+        .split("; ")
+        .some((cookie) => cookie.startsWith("csrf_token="))
+    ) {
+      setLoading(false);
+      return;
+    }
+    refreshSession()
+      .catch((failure) => {
+        if (current && failure.status !== 401) setError(failure.message);
+      })
+      .finally(() => {
+        if (current) setLoading(false);
+      });
+    return () => {
+      current = false;
+    };
+  }, [attempt]);
   function navigate(tab) {
     setActiveTab(tab);
-    document.title = `Barakah | ${{ home: 'Overview', invest: 'Invest', zakat: 'Zakat', chat: 'AI Guide', give: 'Giving' }[tab]}`;
+    document.title = `Barakah | ${{ home: "Overview", invest: "Invest", zakat: "Zakat", chat: "AI Guide", give: "Giving" }[tab]}`;
   }
-  return <div className="app-shell"><DesktopPanel activeTab={activeTab} navigate={navigate} />
-    <main className="phone-region" aria-label="Barakah interactive demo">
-      <div className="phone-frame"><div className="phone-screen">
-        <RequestState resource={dashboard} label="your overview"><RequestState resource={profile} label="your assets">{dashboard.data && profile.data && <Workspace dashboard={dashboard.data} initialProfile={profile.data} activeTab={activeTab} navigate={navigate} />}</RequestState></RequestState>
-        <BottomTabs activeTab={activeTab} navigate={navigate} />
-      </div></div>
-      <p className="device-caption">A more intentional financial life.</p>
-    </main>
-  </div>;
+  return (
+    <div className="app-shell">
+      <DesktopPanel activeTab={activeTab} navigate={navigate} />
+      <main className="phone-region" aria-label="Barakah workspace">
+        <div className="phone-frame">
+          <div className="phone-screen">
+            <RequestState
+              resource={{
+                loading,
+                error,
+                retry: () => setAttempt((value) => value + 1),
+              }}
+              label="your session"
+            >
+              {user ? (
+                <Workspace
+                  key={user.id}
+                  user={user}
+                  activeTab={activeTab}
+                  navigate={navigate}
+                />
+              ) : (
+                <Auth />
+              )}
+            </RequestState>
+            <BottomTabs activeTab={activeTab} navigate={navigate} />
+          </div>
+        </div>
+        <p className="device-caption">A more intentional financial life.</p>
+      </main>
+    </div>
+  );
 }

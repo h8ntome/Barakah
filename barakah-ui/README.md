@@ -1,20 +1,21 @@
-# Barakah
+# Barakah frontend
 
-**Islamic Finance for a Blessed Tomorrow.**
-
-A complete React 18 frontend prototype: five interactive screens, a single-phone desktop showcase, and an edge-to-edge mobile app. **Frontend only.** No backend, database, authentication, market feed, live AI, payments, credentials or cloud infrastructure.
+React 18 / Vite interface for the Barakah backend. The original emerald editorial panel, phone layout, mobile safe areas and five-destination navigation are preserved. Financial records are server-backed; the browser does not calculate balances, zakat, cost basis, screening results or giving totals.
 
 ## Run
 
-Node **20.19+ or 22.12+** (Vite 7 requirements).
+Node 20.19+ or 22.12+:
 
 ```sh
 cd barakah-ui
-npm install
+npm ci
+cp .env.example .env
 npm run dev
 ```
 
-The app serves on the local address Vite prints (normally http://127.0.0.1:5173).
+Start the backend separately on `127.0.0.1:8000` using its README. Vite proxies `/api` to that address without rewriting the browser Origin. The backend must allow the frontend origin (normally `http://127.0.0.1:5173`). If another process uses that port, explicitly configure the actual frontend port in backend `ALLOWED_ORIGINS`.
+
+`VITE_API_BASE_URL` defaults to `/api/v1`. This is public configuration; never add API keys, signing secrets or model credentials to Vite variables. Production requires an HTTPS same-site reverse proxy for `/api`, a correctly configured backend Origin allowlist and secure cookies. Static hosting alone does not provide the backend.
 
 ```sh
 npm test
@@ -22,74 +23,32 @@ npm run build
 npm run preview
 ```
 
-The prototype needs no environment variables and makes no remote service or font requests at runtime. Fonts and their licenses are bundled. All sample changes reset on refresh; there is deliberately no storage of financial information.
+## Connected workflows
 
-## Explore the demo
+- **Account access:** registration, login, cookie-backed session restoration, logout, password change, reset request/token confirmation and permanent account deletion. Settings include display name, country, IANA time zone, language/currency preference and explicit advisor consent. Preferences do not imply localization or currency conversion.
+- **Home:** authoritative month-filtered totals separated by currency. Manage accounts, transactions and transfers; search descriptions and filter by account/category/date; create, edit and delete monthly budgets with server spending/utilization. Missing valuations remain visibly incomplete.
+- **Zakat:** manually classify assets/debts, choose manual/gold/silver nisab, enter dated price/source, rate and haul attestation. Save server estimates to history and link manual payment records. Recorded paid/remaining figures come from the server. No payment processing or religious ruling is implied.
+- **Invest:** create/rename/delete empty named portfolios, add holdings, record buys/sells and dated manual quotes. Configure evidence and ratio thresholds for server screening; missing evidence stays uncertain. Trades do not move account cash; quotes are not live; screening is educational rather than certification.
+- **AI Chat:** consent-gated prompts, persistent conversation selection, new conversation and deletion, drafts per conversation, loading/failure recovery. Local demonstration replies are labeled from server metadata. Only the current question is sent to the configured model; stored history can be reviewed/deleted. No financial data is automatically sent.
+- **Give:** approved cause search/category filters, giving intention records, sadaqah CRUD and category/date-filtered history/totals. These are manual records, never checkout or payment receipts.
+- **Sponsored placements:** contextual approved API ads only, labeled sponsored/not endorsement, with HTTPS links and no financial/chat targeting by the frontend. No invented campaign data or fallback promotions.
 
-- **Home:** sample 24,750 USD net worth, local estimate, four destination shortcuts, interactive priorities and an everyday financial habit.
-- **Zakat:** edit all four asset categories and liabilities, preview the estimate, save asynchronously, and see Home/Zakat update together. Cancel leaves the saved profile unchanged.
-- **Invest:** sample 18,420 USD portfolio with allocation chart, explicitly fictional baskets, and three educational screening criteria. No live certification or orders.
-- **AI Chat:** three suggested questions or your own text; deterministic local examples with pending/retry/edit states. Enter sends. Conversation survives switching tabs.
-- **Give:** combine search/category filters, explore illustrative causes, choose preset/custom amounts and confirm a **demo intention only**. No money is sent.
-- Native dialogs provide focus containment, Escape/backdrop dismissal and return focus. In-flight mutations cannot be accidentally dismissed.
+## Security and state
 
-## Mock request controls
+`src/services/httpClient.js` keeps the access token only in its closure. Requests include cookies and bearer authentication. Refresh and logout send `X-CSRF-Token` from the readable `csrf_token` cookie; the refresh token is HttpOnly and never read by JavaScript. One shared refresh promise prevents rotation races within the app. A delayed 401 reuses an already rotated token; protected requests retry once only. Non-auth failures never automatically retry financial writes.
 
-Use the production preview for fault demos. React StrictMode replays read effects in development.
+Money, quantities, rates and thresholds remain decimal strings throughout forms/transport. Formatting may convert for display; no browser financial arithmetic is authoritative. Missing values are not displayed as zero. List histories paginate; account/portfolio choices and conversation messages fetch all server pages. There is no localStorage/sessionStorage of tokens, records or drafts. Drafts survive navigation and failed requests but not reload/logout. If a mutation loses its response, review history before retrying: the API does not provide mutation idempotency keys.
 
-- `/?mockError=getDashboard` — initial error, then Try again succeeds.
-- `/?mockError=saveZakatProfile,createDonationIntent,sendAdvisorMessage` — first mutation attempt fails; the draft is retained for retry.
-- `/?mockError=getPortfolio,getInvestmentEducation,getCauses,getZakatProfile,getAdvisorContext` — resource errors.
-- `/?mockEmpty=causes,portfolio` — empty resource states.
-- `/?mockSlow=1` — 1.8s requests instead of 420ms. Controls can be combined.
+`useResource` suppresses stale responses after filters change or components unmount. Native controls have stable accessible labels; forms prevent duplicate submission while pending. No automatic payment or brokerage actions exist.
 
-Faults occur once per named operation per page load, not randomly. A new query never gets overwritten by a stale response.
+## Code and validation
 
-## Structure
+- `src/services/index.js`: real route/payload boundary; no runtime mock selector.
+- `src/services/httpClient.js`: transport/session/error boundary.
+- `src/screens/`: connected workflows; `Management.jsx`, `PortfolioForms.jsx`, `Settings.jsx` provide focused sections.
+- `src/components/forms.jsx`, `FinancialForms.jsx`: controlled inputs, pending/error/success states and paging.
+- `src/types/api.d.ts`: connected API shape documentation; backend OpenAPI remains authoritative.
+- `tests/httpClient.test.js`, `apiBoundary.test.js`: transport, refresh/CSRF/error, payload precision and route tests.
+- `tests/legacyMockAdapter.test.js`: explicitly legacy mock-only fixture regressions. `finance.test.js` retains legacy calculation tests plus display checks. Neither establishes backend correctness. The old `mockAdapter`, `mocks/data.js` and provisional calculation utility are not imported by production screens.
 
-```text
-src/
-  App.jsx                  shared profile and active destination; tabs stay mounted
-  components/ui.jsx        reusable UI, charts, native dialog and request states
-  screens/                 Home, Zakat (+ editor), Invest, Chat, Give (+ gift dialog)
-  services/
-    index.js               sole replaceable adapter-selection point
-    mockAdapter.js         asynchronous local operations and validation
-    useResource.js         read lifecycle, retry and stale-result protection
-  mocks/data.js            all fixture values and deterministic example replies
-  types/api.d.ts           documented client-facing API shapes
-  utils/finance.js         formatters and provisional pure display calculations
-  styles.css               responsive tokens, components and states
-public/fonts/              local licensed fonts
-tests/                     Node unit and adapter contract tests
-API_CONTRACT.md            proposed teammate handoff, not implemented endpoints
-```
-
-The desktop panel and phone use the same navigation state. Screens import service functions/hooks, never fetch. The mock adapter owns its local copy, while React owns the displayed editable profile. Financial totals are derived from that profile every render.
-
-## Important limitations
-
-USD is a prototype choice, not a user-selected or converted currency. The simplified zakat illustration is `max(0, assets − liabilities) × 0.025`, rounded to cents. It does not test nisab or lunar holding-period eligibility. The nisab shown is a nonlive example; asset eligibility, debt treatment, precious-metal rates and scholarly methodology require qualified review.
-
-Portfolio performance, chart values, holdings, causes and beneficiaries are illustrative. Portfolio holdings are separate from the eligible-investments entry. The guide is not an AI scholar or a live model; its answers are education, not personalized advice or a fatwa.
-
-Before real launch: agree the draft contract with the backend teammate, replace only the adapter/configuration/schema mapping for existing flows, and separately scope auth, vetted screening, currency/FX, charity verification, secured advisor behavior and payments. See **API_CONTRACT.md**.
-
-## Acceptance checklist
-
-1. At 320px, 390px, tablet and desktop, verify no horizontal overflow, readable text, scrollable content above persistent tabs and visible focus.
-2. Change cash from 12,000 to 13,000; preview/save must show 25,750 net worth and 643.75 estimated zakat. Set all amounts to zero, then test liabilities greater than assets. Cancel must not save.
-3. Test dialog keyboard containment, Escape and restored trigger focus; fields reject negative/overprecision amounts.
-4. Switch investment segments; allocation totals 100%; no verified/guaranteed-return claims.
-5. Search “school”, combine categories, search nonexistent text and clear filters. Exactly one category stays selected.
-6. Choose preset/custom gifts; confirmation explicitly says no money moved. Retry a failure without losing amount.
-7. Send every chat starter, Enter-send custom text, switch tabs and return, and retry a failure without duplicate user messages.
-8. Inspect slow, error, retry and empty resources with mock query controls; check browser errors and production build.
-
-No lint script existed in the supplied starter. Automated Node tests cover money edge cases, validation, adapter isolation, async behavior, filtering, draft-safe failures, demo intentions and deterministic responses. Browser validation is recorded in `QA.md`.
-
-## Assets
-
-`reference/barakah-concept.png` is the team-supplied concept, retained as design guidance and never shipped as the app UI. The arch logo is authored SVG; interface art uses Lucide line icons. Font sources/licenses: `public/fonts/`. No third-party beneficiary photos or invented endorsements.
-
-Repository-level `PRODUCT.md`, `DESIGN.md` and `.impeccable/surfaces/app.md` record product/design decisions. Build output, dependencies, secrets and browser screenshots are excluded from Git.
+See `API_CONTRACT.md` and `QA.md`. Root/backend documentation covers deployment, database, provider configuration and backend validation. No real banking, brokerage, payment rail, live-price service or certified scholarly screening is claimed.

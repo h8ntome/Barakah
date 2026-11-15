@@ -1,3 +1,4 @@
+// Legacy mock-only regression tests. The production UI does not import this adapter.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createMockAdapter } from '../src/services/mockAdapter.js';

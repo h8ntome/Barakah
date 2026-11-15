@@ -34,7 +34,7 @@ export function DesktopPanel({ activeTab, navigate }) {
         <Icon size={20} /><span>{title}</span><ArrowRight size={17} />
       </button>)}
     </nav>
-    <footer className="desktop-footer"><ShieldCheck size={22} /><p>Made for a more mindful financial life.<br /><span>An educational demo. No accounts or payments connected.</span></p></footer>
+    <footer className="desktop-footer"><ShieldCheck size={22} /><p>Made for a more mindful financial life.<br /><span>Manual financial records. No banking or payment processing.</span></p></footer>
   </aside>;
 }
 
@@ -95,7 +95,7 @@ export function CauseCard({ cause, onClick }) {
   </button>;
 }
 export function RequestState({ resource, label = 'your information', children }) {
-  if (resource.loading) return <div className="request-state" role="status"><LoaderCircle className="spinner" size={25} /><strong>Loading {label}…</strong><span>Preparing your local demo</span><div className="skeleton" /><div className="skeleton short" /></div>;
+  if (resource.loading) return <div className="request-state" role="status"><LoaderCircle className="spinner" size={25} /><strong>Loading {label}…</strong><span>Connecting to your workspace</span><div className="skeleton" /><div className="skeleton short" /></div>;
   if (resource.error) return <div className="request-state error" role="alert"><Info size={26} /><strong>We couldn’t load {label}</strong><p>{resource.error}</p><PrimaryButton onClick={resource.retry}><RefreshCw size={17} />Try again</PrimaryButton></div>;
   return children;
 }
@@ -116,7 +116,7 @@ export function Modal({ title, children, onClose, busy = false }) {
   }, []);
   return <dialog ref={ref} className="modal" aria-labelledby={titleId} aria-busy={busy} onKeyDown={event => {
     if (event.key !== 'Tab') return;
-    const controls = [...event.currentTarget.querySelectorAll('button:not(:disabled), input:not(:disabled)')];
+    const controls = [...event.currentTarget.querySelectorAll('button:not(:disabled), input:not(:disabled), select:not(:disabled), textarea:not(:disabled), a[href]')];
     const first = controls[0], last = controls.at(-1);
     if (!first) { event.preventDefault(); return; }
     if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }

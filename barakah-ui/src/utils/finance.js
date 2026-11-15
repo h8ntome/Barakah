@@ -29,6 +29,7 @@ export function estimateZakat(assets, rate = 0.025) {
 }
 
 export function money(value, currency = 'USD', decimals = false) {
+  if (value === null || value === undefined || value === '') return 'Unavailable';
   return new Intl.NumberFormat('en-US', {
     style: 'currency', currency, minimumFractionDigits: decimals || !Number.isInteger(value) ? 2 : 0, maximumFractionDigits: 2,
   }).format(value);

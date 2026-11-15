@@ -4,7 +4,7 @@ import {
 } from '../mocks/data.js';
 import { estimateZakat, validateAssets, validGift } from '../utils/finance.js';
 
-// Fault injection is mock-only, deterministic and documented in README.
+// Legacy mock-only fixture adapter; never selected by the running app.
 export function createMockAdapter({ delay = 420, failOnce = [], empty = [] } = {}) {
   let profile = structuredClone(zakatProfile);
   let sequence = 0;
