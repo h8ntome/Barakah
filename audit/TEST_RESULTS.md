@@ -1,5 +1,11 @@
 # Executed test results — 2026-11-15
 
+## Vercel hosting follow-up
+
+The subsequent Vercel entrypoint/configuration change passed **121 SQLite tests** (one PostgreSQL-only test skipped), **122 PostgreSQL tests**, **64 frontend tests**, and the production frontend build. The added real-PostgreSQL entrypoint test exercises production HTTPS cookies, demo isolation, persisted writes, refresh and reset. Logs: `artifacts/logs/vercel-*.txt`. An initial Alembic import-path failure was repaired and the complete suites rerun. Generic schema validation could not validate Vercel's upstream schema itself; no cloud-build validation is claimed. Public deployment remains blocked by account login and hosted database configuration; see `../docs/VERCEL.md`.
+
+The original full-application audit results below are retained as dated evidence; its browser journeys were not rerun against a public deployment.
+
 ## Environment and evidence scope
 
 macOS27.0.1 (Apple Silicon), Python3.13.5, Node26.12.1/npm11.20.0, agent-browser0.41.1 with real Chromium, PostgreSQL17.11. Frontend production build served with actual FastAPI at `http://127.0.0.1:8081`; SQLite `/tmp/barakah-audit/app.db`, private reset outbox `/tmp/barakah-audit/outbox`. PostgreSQL tests create/drop random isolated schemas in dedicated `barakah_audit_20261115`, never application tables. Backend fixtures apply actual Alembic migrations, not `create_all`.

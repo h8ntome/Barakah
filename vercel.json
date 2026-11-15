@@ -2,9 +2,19 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "installCommand": "npm ci --prefix barakah-ui",
-  "buildCommand": "npm run build --prefix barakah-ui",
+  "buildCommand": "VITE_API_BASE_URL=/api/v1 npm run build --prefix barakah-ui",
   "outputDirectory": "barakah-ui/dist",
+  "functions": {
+    "api/index.py": {
+      "maxDuration": 60,
+      "excludeFiles": "{barakah-ui/**,audit/**,benchmark/**,demo-video/**,tests/**,backend/tests/**,backend/.venv/**}"
+    }
+  },
   "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/index.py"
+    },
     {
       "source": "/(.*)",
       "destination": "/index.html"

@@ -21,7 +21,7 @@ Default database: `backend/barakah.db`. For a separate demo database:
 DATABASE_URL=sqlite:////absolute/private/path/demo.db PORT=8081 bash scripts/start-local.sh
 ```
 
-Use a writable private directory. Do not place databases/outboxes inside the frontend assets directory. This loopback HTTP configuration is for a laptop demonstration; public deployment requires HTTPS, secure cookies, a strong secret, persistent backend/database and same-origin proxy. Static Vercel hosting alone is not enough.
+Use a writable private directory. Do not place databases/outboxes inside the frontend assets directory. This loopback HTTP configuration is for a laptop demonstration; public deployment requires HTTPS, secure cookies, a strong secret, persistent backend/database and same-origin proxy. Static Vercel hosting alone is not enough. The API deployment entrypoint is now included; follow `docs/VERCEL.md` for the public hosted demo setup.
 
 ## Judge experience
 

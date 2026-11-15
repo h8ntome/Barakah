@@ -1,5 +1,5 @@
 from functools import lru_cache
-from pydantic import model_validator
+from pydantic import field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from typing import Literal
 
@@ -22,6 +22,15 @@ class Settings(BaseSettings):
     reset_url: str = 'http://localhost:5173/reset-password'
     auth_rate_limit: int = 20
     advisor_rate_limit: int = 30
+
+    @field_validator('database_url', mode='before')
+    @classmethod
+    def postgres_driver(cls, value):
+        # Hosted providers export standard URLs; this project installs psycopg 3.
+        for prefix in ('postgres://', 'postgresql://'):
+            if isinstance(value, str) and value.startswith(prefix):
+                return 'postgresql+psycopg://' + value[len(prefix):]
+        return value
 
     @property
     def origins(self):

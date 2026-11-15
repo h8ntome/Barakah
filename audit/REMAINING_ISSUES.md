@@ -2,9 +2,9 @@
 
 ## P0 — Public hosted application is not verified/ready
 
-**Reproduce:** request `https://barakah-gamma.vercel.app/` or `/api/v1/health`; the known alias returned Vercel404 during this audit. Inspect root `vercel.json`: it builds only static assets and rewrites paths to `index.html`, with no deployed Python API/database/proxy.
+**Reproduce:** request `https://barakah-gamma.vercel.app/` or `/api/v1/health`; the known alias returned Vercel404 during this audit. The original configuration was static-only. A subsequent hosting change adds the Python API entrypoint and ordered API/SPA routing; see `docs/VERCEL.md`. This does not provision the hosted database or authenticate the deployment account.
 
-**Needed:** an owner-accessible actual deployment URL and configured backend/database/HTTPS same-origin API proxy. Run the mandatory browser registration flow against that exact deployment after provisioning. No production hosting account/settings were changed or credentials requested. A Git push alone does not fix infrastructure or prove deployment success.
+**Needed:** Vercel account login, persistent hosted PostgreSQL, server-side secrets/exact HTTPS origins, one migration release, and production alias verification. Run demo isolation/persistence and the mandatory browser registration flow against that exact deployment after provisioning. No production hosting account/settings have yet been changed; the operator was asked to log in locally, not share credentials in chat. A Git push alone does not fix infrastructure or prove deployment success.
 
 The user's exact failing registration URL/request remains unknown; the configured local baseline worked, and the separate unsupported-origin403 was reproduced. Do not claim the particular reported public failure is conclusively diagnosed or fixed.
 

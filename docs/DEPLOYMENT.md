@@ -25,7 +25,7 @@ Visit `http://localhost:8080`. Nginx serves the React build and proxies `/api/` 
 - Supply a real reset-email provider before public account onboarding; development outbox behavior is not email delivery.
 - Keep `AI_MODE=unavailable`. No inference integration is enabled; future integration requires a separate approval/security review.
 - No real payment, bank-sync, brokerage execution or compliance certification is included. Vet advertisers/destinations separately.
-- Static Vercel hosting alone cannot run this Python/PostgreSQL application. Existing `vercel.json` only builds the frontend; configure a trusted same-site API reverse proxy when using Vercel, or use the supplied Nginx deployment.
+- Vercel now serves both frontend and Python API using `api/index.py`. Follow [VERCEL.md](VERCEL.md) to connect hosted PostgreSQL, configure secrets, migrate once and verify the public demo. Static-only hosting still cannot provide persistence; no database is provisioned by pushing code.
 
 ## Backups
 

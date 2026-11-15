@@ -12,6 +12,7 @@ coverage/
 .impeccable/questions/
 .impeccable/config.local.json
 .pi/
+.vercel/
 **/.venv/
 **/__pycache__/
 **/.pytest_cache/

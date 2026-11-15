@@ -1,4 +1,6 @@
+import os
 from decimal import Decimal
+from sqlalchemy.pool import NullPool
 from sqlalchemy import create_engine, event, text, Numeric, String
 from sqlalchemy.types import TypeDecorator
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
@@ -27,7 +29,13 @@ class Base(DeclarativeBase):
 
 
 def make_engine(url):
-    engine = create_engine(url, connect_args={'check_same_thread': False, 'timeout': 30} if url.startswith('sqlite') else {}, pool_pre_ping=True, hide_parameters=True)
+    options = {}
+    if os.environ.get('VERCEL') == '1' and url.startswith('postgresql+psycopg://'):
+        # The hosted pooler owns connections; suspended functions must not hoard them.
+        options = {'poolclass': NullPool, 'connect_args': {'prepare_threshold': None}}
+    elif url.startswith('sqlite'):
+        options = {'connect_args': {'check_same_thread': False, 'timeout': 30}}
+    engine = create_engine(url, pool_pre_ping=True, hide_parameters=True, **options)
     if url.startswith('sqlite'):
         @event.listens_for(engine, 'connect')
         def configure_sqlite(connection, _):

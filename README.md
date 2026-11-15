@@ -68,6 +68,6 @@ Browser tests use installed `agent-browser`/Chromium and **actual backend/databa
 
 ## Deployment boundary
 
-The checked-in **Vercel configuration is frontend-only**. It does not provision Python, a database or an API proxy. The known public alias returned 404 during this audit; public deployment is not verified. Use the tested local launcher for a live laptop demonstration, or provision the backend/database and a same-origin HTTPS proxy before inviting remote users. Docker/Nginx deployment files are supplied but Docker runtime was not tested.
+The checked-in **Vercel configuration now includes the Python API** alongside the frontend. Connect persistent hosted PostgreSQL, configure server-side secrets/origins, apply migrations, then deploy and verify the public demo. Follow [the Vercel setup guide](docs/VERCEL.md). Public hosting is not yet verified: Vercel login/database access is still required, and the known alias returned404. Docker/Nginx deployment files are also supplied but Docker runtime was not tested.
 
 [Deployment/backups](docs/DEPLOYMENT.md) · [API contract](docs/backend-api.md) · [future LFM3-1.7B boundary](audit/AI_INTEGRATION.md). Older `docs/testing/` results are historical; `audit/TEST_RESULTS.md` is the current audit evidence.
