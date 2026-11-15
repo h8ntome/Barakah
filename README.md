@@ -68,6 +68,6 @@ Browser tests use installed `agent-browser`/Chromium and **actual backend/databa
 
 ## Deployment boundary
 
-The checked-in **Vercel configuration now includes the Python API** alongside the frontend. Connect persistent hosted PostgreSQL, configure server-side secrets/origins, apply migrations, then deploy and verify the public demo. Follow [the Vercel setup guide](docs/VERCEL.md). Public hosting is not yet verified: Vercel login/database access is still required, and the known alias returned404. Docker/Nginx deployment files are also supplied but Docker runtime was not tested.
+The checked-in **Vercel configuration now includes the Python API** alongside the frontend. Connect persistent hosted PostgreSQL, configure server-side secrets/origins, apply migrations, then deploy and verify the public demo. Follow [the Vercel setup guide](docs/VERCEL.md). Public hosting is not yet verified: Vercel login and a cloud build succeeded, but Neon terms acceptance/database provisioning is still required; the known production alias returned404. Docker/Nginx deployment files are also supplied but Docker runtime was not tested.
 
 [Deployment/backups](docs/DEPLOYMENT.md) · [API contract](docs/backend-api.md) · [future LFM3-1.7B boundary](audit/AI_INTEGRATION.md). Older `docs/testing/` results are historical; `audit/TEST_RESULTS.md` is the current audit evidence.

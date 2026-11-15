@@ -73,7 +73,8 @@ def test_vercel_routes_api_before_spa():
     assert config['framework'] is None
     assert 'VITE_API_BASE_URL=/api/v1' in config['buildCommand']
     assert (ROOT / '.python-version').read_text().strip() == '3.13'
-    assert (ROOT / 'requirements.txt').read_text().strip() == '-r backend/requirements.txt'
+    # Vercel's dependency scanner cannot resolve nested -r includes at build time.
+    assert (ROOT / 'requirements.txt').read_text() == (ROOT / 'backend/requirements.txt').read_text()
 
 
 @pytest.mark.skipif(not os.environ.get('TEST_DATABASE_URL'), reason='Requires isolated PostgreSQL test schema')

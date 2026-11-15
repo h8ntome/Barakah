@@ -4,7 +4,7 @@
 
 **Reproduce:** request `https://barakah-gamma.vercel.app/` or `/api/v1/health`; the known alias returned Vercel404 during this audit. The original configuration was static-only. A subsequent hosting change adds the Python API entrypoint and ordered API/SPA routing; see `docs/VERCEL.md`. This does not provision the hosted database or authenticate the deployment account.
 
-**Needed:** Vercel account login, persistent hosted PostgreSQL, server-side secrets/exact HTTPS origins, one migration release, and production alias verification. Run demo isolation/persistence and the mandatory browser registration flow against that exact deployment after provisioning. No production hosting account/settings have yet been changed; the operator was asked to log in locally, not share credentials in chat. A Git push alone does not fix infrastructure or prove deployment success.
+**Needed:** Neon terms acceptance and persistent hosted PostgreSQL, one migration release, and production alias verification. Vercel login, production secret/origin configuration and a real cloud build have now succeeded. Run demo isolation/persistence and the mandatory browser registration flow against that exact deployment after provisioning. Only Barakah's project settings were updated (Node24 and server-side configuration); the operator must personally accept Neon terms. No database or paid plan has been created, and no production alias has been changed. A Git push alone does not fix infrastructure or prove deployment success.
 
 The user's exact failing registration URL/request remains unknown; the configured local baseline worked, and the separate unsupported-origin403 was reproduced. Do not claim the particular reported public failure is conclusively diagnosed or fixed.
 
