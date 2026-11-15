@@ -14,6 +14,8 @@ export interface User {
   updated_at: ISODateTime | null;
   ai_consent: boolean;
   is_admin: boolean;
+  is_demo: boolean;
+  demo_expires_at: ISODateTime | null;
   country: string | null;
   timezone: string;
   language: string;
@@ -73,6 +75,7 @@ export interface Budget extends BudgetInput {
   id: string;
   spent: DecimalString;
   remaining: DecimalString;
+  exceeded_amount: DecimalString;
   utilization_percent: DecimalString;
 }
 export interface DashboardCurrency {
@@ -83,6 +86,8 @@ export interface DashboardCurrency {
   savings: DecimalString;
   savings_rate_percent: DecimalString | null;
   expense_categories: Record<string, DecimalString>;
+  expense_category_percent: Record<string, DecimalString>;
+  portfolio_value: DecimalString | null;
   total_assets: DecimalString | null;
   liabilities: DecimalString;
   net_worth: DecimalString | null;
@@ -92,6 +97,11 @@ export interface Dashboard {
   display_name: string;
   month: string;
   by_currency: DashboardCurrency[];
+  recent_transactions: Transaction[];
+  budgets: Budget[];
+  goals: Goal[];
+  zakat: ZakatEstimate | null;
+  latest_zakat_record: ZakatHistory | null;
   asset_basis: string;
 }
 export interface Assets {
@@ -116,6 +126,7 @@ export interface ZakatProfile {
   price_source: string;
   valuation_date: ISODate;
   haul_start: ISODate | null;
+  classification_notes: string;
   haul_complete: boolean;
   rate: DecimalString;
 }
@@ -255,6 +266,9 @@ export interface TradeInput {
 }
 export interface Trade extends TradeInput {
   id: string;
+  sequence: number | null;
+  can_correct: boolean;
+  correction_unavailable_reason: 'legacy_trade' | 'not_latest_trade' | null;
   realized_gain: DecimalString;
 }
 export interface AdvisorMessage {
@@ -269,7 +283,13 @@ export interface Conversation {
   id: string;
   created_at: ISODateTime;
 }
+export interface AIResult {
+  conversation_id: string | null;
+  response: { role: 'assistant'; text: string } | null;
+  error: { code: 'ai_unavailable'; message: string } | null;
+}
 export interface AdvisorContext {
+  status: 'unavailable';
   welcome_message: Pick<AdvisorMessage, "role" | "text" | "is_demo">;
   starter_questions: string[];
 }
@@ -292,6 +312,8 @@ export interface GoalInput {
 export interface Goal extends GoalInput {
   id: string;
   saved_amount: DecimalString;
+  remaining_amount: DecimalString;
+  progress_percent: DecimalString;
 }
 export interface GoalContribution {
   id: string;

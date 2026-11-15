@@ -13,7 +13,8 @@ from urllib.parse import urlparse
 
 URL = os.environ.get('BARAKAH_UI_URL', 'http://127.0.0.1:8876')
 SESSION = 'portfolio-repairs-' + secrets.token_hex(4)
-OUT = Path(tempfile.mkdtemp(prefix='barakah-portfolio-screens-'))
+OUT = Path(__file__).resolve().parents[2] / 'audit' / 'artifacts'
+OUT.mkdir(parents=True, exist_ok=True)
 
 
 def browser(*args):
@@ -75,6 +76,11 @@ def main():
     fill('Trade price per unit', '50')
     click('Record trade')
     wait('Cost $500')
+    details('Update manual valuation for REPAIR')
+    fill('Quoted price per unit', '50')
+    fill('Quote source', 'Fictional manual valuation')
+    click('Save manual valuation')
+    wait('Allocation: 100.00%')
     details('Trade history')
     details('Correct latest trade')
     browser('select', ref('Corrected trade side', 'combobox'), 'sell')

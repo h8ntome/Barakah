@@ -136,6 +136,22 @@ test("logout waits for rotation and only clears session after cookie revocation"
   assert.equal(sessions.at(-1), null);
 });
 
+test("demo reset refreshes an expired access token before replacing the session", async () => {
+  const calls = [], sessions = [];
+  const client = createHttpClient({
+    onSession: user => sessions.push(user),
+    fetchImpl: async (url, options) => {
+      calls.push(url);
+      if (url.endsWith("/refresh")) return response({ access_token: "rotated", user: { id: "old-demo" } });
+      if (options.headers.Authorization !== "Bearer rotated") return response({ error: { code: "unauthorized" } }, 401);
+      return response({ access_token: "new-demo-token", user: { id: "new-demo" } });
+    },
+  });
+  await client.replaceSession("/auth/demo/reset");
+  assert.deepEqual(calls, ["/api/v1/auth/demo/reset", "/api/v1/auth/refresh", "/api/v1/auth/demo/reset"]);
+  assert.equal(sessions.at(-1).id, "new-demo");
+});
+
 test("HTML API fallback fails clearly instead of accepting a null session", async () => {
   const client = createHttpClient({ fetchImpl: async () => new Response("<html>Static frontend</html>", { status: 200 }) });
   await assert.rejects(client.authenticate("/auth/register", {}), { code: "api_not_connected" });

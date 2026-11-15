@@ -19,7 +19,7 @@ def test_demo_isolated_seed_reset_expiry(client, db_setup, register):
     assert user_a['id'] != user_b['id']
     assert user_a['is_demo'] and not user_a['is_admin']
     accounts = client.get('/api/v1/accounts', headers=a).json()
-    assert sorted(x['balance'] for x in accounts) == ['12000.00', '3000.00']
+    assert sorted(Decimal(x['balance']) for x in accounts) == [Decimal('3000.00'), Decimal('12000.00')]
     assert client.patch('/api/v1/accounts/' + accounts[0]['id'], headers=b, json={'name': 'Intruder'}).status_code == 404
     assert client.get('/api/v1/zakat/estimate', headers=a).json()['estimated_due'] == '375.00'
     assert client.get('/api/v1/portfolio', headers=a).json()['by_currency'][0]['cost_basis'] == '8500.00'

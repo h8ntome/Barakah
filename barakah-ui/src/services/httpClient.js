@@ -160,13 +160,19 @@ export function createHttpClient({
     generation += 1;
     return acceptSession(session);
   }
+  async function replaceSession(path) {
+    if (refreshPromise) await refreshPromise.catch(() => {});
+    const session = await request(path, { method: "POST" });
+    generation += 1;
+    return acceptSession(session);
+  }
   async function logout() {
     if (refreshPromise) await refreshPromise.catch(() => {});
     // Keep the session if the server cannot revoke its refresh cookie.
     await transport("/auth/logout", { method: "POST", token: accessToken });
     clearSession();
   }
-  return { request, refresh, authenticate, logout, clearSession };
+  return { request, refresh, authenticate, replaceSession, logout, clearSession };
 }
 export function queryString(filters = {}) {
   const params = new URLSearchParams();

@@ -221,6 +221,10 @@ export default function Invest({ navigate, onChanged }) {
                     ? "Unavailable — add a quote"
                     : money(item.market_value, item.currency)}
                 </p>
+                {item.allocation_percent !== null && item.allocation_percent !== undefined && <>
+                  <p>Allocation: {item.allocation_percent}% of valued {item.currency} holdings</p>
+                  <progress aria-label={`${item.symbol} portfolio allocation`} max="100" value={Number(item.allocation_percent)} />
+                </>}
                 <p>
                   Quote: {item.quote_date || "Not provided"} ·{" "}
                   {item.quote_source || "No source"}

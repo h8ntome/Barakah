@@ -14,7 +14,7 @@ import urllib.parse
 
 URL = os.environ.get('BARAKAH_UI_URL', 'http://127.0.0.1:5173')
 SESSION = 'barakah-journey-' + secrets.token_hex(4)
-OUT = Path(__file__).resolve().parents[2] / 'docs' / 'testing' / 'screenshots'
+OUT = Path(__file__).resolve().parents[2] / 'audit' / 'artifacts'
 checks = []
 
 
@@ -49,8 +49,8 @@ def select(name, value):
 
 def details(name):
     # Center nested disclosures above the fixed mobile navigation before clicking.
-    browser('eval', f"Array.from(document.querySelectorAll('summary')).find(x => x.textContent === {json.dumps(name)})?.scrollIntoView({{block:'center'}})")
-    browser('find', 'text', name, 'click', '--exact')
+    browser('eval', f"(() => {{ document.querySelectorAll('[data-journey-target]').forEach(x => x.removeAttribute('data-journey-target')); const target = Array.from(document.querySelectorAll('summary')).find(x => x.textContent === {json.dumps(name)} && x.getClientRects().length); if (!target) throw new Error('Visible disclosure not found'); target.setAttribute('data-journey-target', 'true'); target.scrollIntoView({{block:'center'}}); }})()")
+    browser('click', 'summary[data-journey-target="true"]')
 
 
 def wait(text):
@@ -121,7 +121,7 @@ def main():
     select('Nisab method', 'gold')
     fill('Gold price per gram', '80.00')
     fill('Price or threshold source', 'Fictional manual test valuation; NOT live')
-    browser('check', ref('I attest that the required holding period', 'checkbox'))
+    browser('check', ref('I attest that the required lunar-year holding period', 'checkbox'))
     click('Save and calculate zakat')
     check('zakat calculated server-side', '$250.00')
     click('Save calculation to history')
@@ -148,10 +148,10 @@ def main():
     click('Save sadaqah record')
     details('Sadaqah history')
     check('sadaqah persisted without payment processing', 'Fictional community fund')
-    details('Charitable goals')
+    details('Savings & giving goals')
     fill('Goal name', 'Fictional giving goal')
     fill('Goal target amount', '100.00')
-    click('Create charitable goal')
+    click('Create savings goal')
     check('charitable goal persisted', 'Fictional giving goal')
     details('Contributions to Fictional giving goal')
     wait('Contribution amount for Fictional giving goal')
@@ -191,22 +191,27 @@ def main():
 
     click('Home')
     click('Settings')
-    browser('check', ref('Allow advisor requests.', 'checkbox'))
+    fill('Display name', 'Updated Judge')
+    select('Preferred currency', 'EUR')
     click('Save settings')
     wait('Saved.')
     click('AI financial guide')
-    browser('check', ref('Include my monthly income and expense summary', 'checkbox'))
+    check('AI placeholder clearly unavailable', 'AI assistant unavailable')
     fill('Message to advisor', 'How can I plan giving?')
     click('Send message')
-    check('mock AI response and history', 'Track income and expenses by currency')
-    check('opt-in context uses verified totals', 'Verified backend monthly totals')
+    check('send honestly reports disconnected model', 'No message was saved.')
+    assert browser('get', 'value', ref('Message to advisor', 'textbox')) == 'How can I plan giving?'
+    checks.append('AI unavailable preserves draft without fake advice')
     screenshot('04-chat.png')
     browser('reload')
     wait('Welcome to Barakah.')
     click('AI financial guide')
-    check('conversation persists after reload', 'How can I plan giving?')
+    check('unavailable chat creates no phantom conversation', 'No messages yet.')
     click('Home')
     click('Settings')
+    assert browser('get', 'value', ref('Display name', 'textbox')) == 'Updated Judge'
+    assert browser('get', 'value', ref('Preferred currency', 'combobox')) == 'EUR'
+    checks.append('profile and currency preference persist without converting USD records')
     click('Sign out')
     check('logout protects workspace', 'Welcome back.')
     click('Investments')

@@ -33,7 +33,6 @@ export default function Settings({ user }) {
             display_name: name,
             ai_consent: consent,
             ...preferences,
-            country: preferences.country || null,
           })
         }
       >
@@ -51,6 +50,7 @@ export default function Settings({ user }) {
             setPreferences({ ...preferences, country: country.toUpperCase() })
           }
           pattern="[A-Z]{2}"
+          required
           maxLength={2}
           help="Two-letter country code, such as PK or US."
         />
