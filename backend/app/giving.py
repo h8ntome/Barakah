@@ -1,0 +1,212 @@
+from datetime import date
+from decimal import Decimal
+from uuid import UUID
+from fastapi import APIRouter, Depends, Query
+from sqlalchemy import select
+from . import models as m, schemas as s
+from .db import get_db
+from .security import current_user, admin_user
+from .common import cents, fail, owned, pagination, public, rows
+from .calculations import zakat_estimate
+
+router = APIRouter(tags=['zakat and giving'])
+
+
+def profile_row(db, user_id):
+    result = db.scalar(select(m.ZakatProfile).where(m.ZakatProfile.user_id == user_id))
+    if result is None:
+        fail(404, 'not_found', 'Save a zakat profile first')
+    return result
+
+
+@router.get('/zakat/profile')
+def get_profile(user=Depends(current_user), db=Depends(get_db)):
+    return profile_row(db, user.id).data
+
+
+@router.put('/zakat/profile')
+def put_profile(data: s.ZakatProfileInput, user=Depends(current_user), db=Depends(get_db)):
+    # Lock owner to serialize creation of the single per-user profile on PostgreSQL.
+    db.scalar(select(m.User).where(m.User.id == user.id).with_for_update())
+    row = db.scalar(select(m.ZakatProfile).where(m.ZakatProfile.user_id == user.id))
+    if row is None:
+        row = m.ZakatProfile(user_id=user.id)
+        db.add(row)
+    row.data = data.model_dump(mode='json')
+    db.flush()
+    return row.data
+
+
+@router.get('/zakat/estimate')
+def estimate(user=Depends(current_user), db=Depends(get_db)):
+    return zakat_estimate(profile_row(db, user.id).data)
+
+
+def history_view(db, history):
+    paid = sum((p.amount for p in db.scalars(select(m.Giving).where(m.Giving.user_id == history.user_id, m.Giving.history_id == history.id, m.Giving.kind == 'zakat'))), Decimal(0))
+    return {**public(history), 'paid_amount': str(cents(paid)), 'remaining_amount': str(cents(max(Decimal(0), Decimal(history.estimate['estimated_due']) - paid)))}
+
+
+@router.post('/zakat/history', status_code=201)
+def create_history(user=Depends(current_user), db=Depends(get_db)):
+    profile = profile_row(db, user.id).data
+    history = m.ZakatHistory(user_id=user.id, profile=profile, estimate=zakat_estimate(profile))
+    db.add(history)
+    db.flush()
+    return history_view(db, history)
+
+
+@router.get('/zakat/history')
+def history(page=Depends(pagination), user=Depends(current_user), db=Depends(get_db)):
+    return [history_view(db, item) for item in rows(db, m.ZakatHistory, user.id, page)]
+
+
+@router.post('/zakat/payments', status_code=201)
+def create_payment(data: s.ZakatPaymentCreate, user=Depends(current_user), db=Depends(get_db)):
+    if data.history_id:
+        history = owned(db, m.ZakatHistory, data.history_id, user.id)
+        if history.estimate['currency'] != data.currency:
+            fail(422, 'currency_mismatch', 'Payment and snapshot currencies must match')
+    payment = m.Giving(user_id=user.id, kind='zakat', **data.model_dump(exclude={'history_id'}), history_id=str(data.history_id) if data.history_id else None)
+    db.add(payment)
+    db.flush()
+    return {**public(payment), 'payment_processed': False}
+
+
+@router.get('/zakat/payments')
+def payments(page=Depends(pagination), user=Depends(current_user), db=Depends(get_db)):
+    return [{**public(item), 'payment_processed': False} for item in rows(db, m.Giving, user.id, page, m.Giving.kind == 'zakat')]
+
+
+@router.get('/causes')
+def causes(category: str | None = Query(None, max_length=80), query: str | None = Query(None, max_length=100), page=Depends(pagination), user=Depends(current_user), db=Depends(get_db)):
+    statement = select(m.Cause)
+    if category and category != 'All':
+        statement = statement.where(m.Cause.category == category)
+    if query:
+        statement = statement.where(m.Cause.title.icontains(query, autoescape=True))
+    return [public(cause) for cause in db.scalars(statement.order_by(m.Cause.id).limit(page[0]).offset(page[1]))]
+
+
+@router.post('/admin/causes', status_code=201)
+def create_cause(data: s.CauseCreate, user=Depends(admin_user), db=Depends(get_db)):
+    cause = m.Cause(**data.model_dump())
+    db.add(cause)
+    db.flush()
+    return public(cause)
+
+
+@router.post('/donation-intents', status_code=201)
+def create_intent(data: s.DonationCreate, user=Depends(current_user), db=Depends(get_db)):
+    cause = db.get(m.Cause, str(data.cause_id))
+    if cause is None:
+        fail(404, 'not_found', 'Cause not found')
+    if cause.currency != data.currency:
+        fail(422, 'currency_mismatch', 'Intention currency must match cause')
+    intent = m.DonationIntent(user_id=user.id, cause_id=cause.id, currency=data.currency, amount=data.amount)
+    db.add(intent)
+    db.flush()
+    return {**public(intent), 'status': 'recorded', 'payment_processed': False}
+
+
+@router.get('/donation-intents')
+def intents(page=Depends(pagination), user=Depends(current_user), db=Depends(get_db)):
+    return [{**public(item), 'status': 'recorded', 'payment_processed': False} for item in rows(db, m.DonationIntent, user.id, page)]
+
+
+def giving_conditions(category, start_date, end_date):
+    conditions = [m.Giving.kind == 'sadaqah']
+    if category:
+        conditions.append(m.Giving.category == category)
+    if start_date:
+        conditions.append(m.Giving.paid_on >= start_date)
+    if end_date:
+        conditions.append(m.Giving.paid_on <= end_date)
+    if start_date and end_date and start_date > end_date:
+        fail(422, 'validation_error', 'Date range is inverted')
+    return conditions
+
+
+@router.get('/sadaqah')
+def sadaqah(category: str | None = Query(None, max_length=80), start_date: date | None = None, end_date: date | None = None, page=Depends(pagination), user=Depends(current_user), db=Depends(get_db)):
+    return [public(item) for item in rows(db, m.Giving, user.id, page, *giving_conditions(category, start_date, end_date))]
+
+
+@router.get('/sadaqah/summary')
+def sadaqah_summary(category: str | None = Query(None, max_length=80), start_date: date | None = None, end_date: date | None = None, user=Depends(current_user), db=Depends(get_db)):
+    totals = {}
+    for item in db.scalars(select(m.Giving).where(m.Giving.user_id == user.id, *giving_conditions(category, start_date, end_date))):
+        totals[item.currency] = totals.get(item.currency, Decimal(0)) + item.amount
+    return [{'currency': currency, 'total': str(cents(amount))} for currency, amount in sorted(totals.items())]
+
+
+@router.post('/sadaqah', status_code=201)
+def create_sadaqah(data: s.GivingCreate, user=Depends(current_user), db=Depends(get_db)):
+    item = m.Giving(user_id=user.id, kind='sadaqah', **data.model_dump())
+    db.add(item)
+    db.flush()
+    return public(item)
+
+
+@router.patch('/sadaqah/{giving_id}')
+def update_sadaqah(giving_id: UUID, data: s.GivingCreate, user=Depends(current_user), db=Depends(get_db)):
+    item = owned(db, m.Giving, giving_id, user.id, lock=True)
+    if item.kind != 'sadaqah':
+        fail(404, 'not_found', 'Giving record not found')
+    for key, value in data.model_dump().items():
+        setattr(item, key, value)
+    return public(item)
+
+
+@router.delete('/sadaqah/{giving_id}', status_code=204)
+def delete_sadaqah(giving_id: UUID, user=Depends(current_user), db=Depends(get_db)):
+    item = owned(db, m.Giving, giving_id, user.id)
+    if item.kind != 'sadaqah':
+        fail(404, 'not_found', 'Giving record not found')
+    db.delete(item)
+
+
+@router.get('/goals')
+def goals(page=Depends(pagination), user=Depends(current_user), db=Depends(get_db)):
+    return [public(item) for item in rows(db, m.Goal, user.id, page)]
+
+
+@router.post('/goals', status_code=201)
+def create_goal(data: s.GoalCreate, user=Depends(current_user), db=Depends(get_db)):
+    goal = m.Goal(user_id=user.id, **data.model_dump())
+    db.add(goal)
+    db.flush()
+    return public(goal)
+
+
+@router.patch('/goals/{goal_id}')
+def update_goal(goal_id: UUID, data: s.GoalCreate, user=Depends(current_user), db=Depends(get_db)):
+    goal = owned(db, m.Goal, goal_id, user.id, lock=True)
+    if goal.saved_amount and data.currency != goal.currency:
+        fail(409, 'currency_mismatch', 'Cannot change currency after contributions')
+    for key, value in data.model_dump().items():
+        setattr(goal, key, value)
+    return public(goal)
+
+
+@router.post('/goals/{goal_id}/contributions', status_code=201)
+def contribute(goal_id: UUID, data: s.ContributionCreate, user=Depends(current_user), db=Depends(get_db)):
+    goal = owned(db, m.Goal, goal_id, user.id, lock=True)
+    if goal.saved_amount + data.amount > Decimal('999999999999.99'):
+        fail(409, 'balance_limit', 'Goal balance limit exceeded')
+    goal.saved_amount += data.amount
+    contribution = m.Contribution(user_id=user.id, goal_id=goal.id, amount=data.amount)
+    db.add(contribution)
+    db.flush()
+    return public(contribution)
+
+
+@router.get('/goals/{goal_id}/contributions')
+def contributions(goal_id: UUID, page=Depends(pagination), user=Depends(current_user), db=Depends(get_db)):
+    owned(db, m.Goal, goal_id, user.id)
+    return [public(item) for item in rows(db, m.Contribution, user.id, page, m.Contribution.goal_id == str(goal_id))]
+
+
+@router.delete('/goals/{goal_id}', status_code=204)
+def delete_goal(goal_id: UUID, user=Depends(current_user), db=Depends(get_db)):
+    db.delete(owned(db, m.Goal, goal_id, user.id))
