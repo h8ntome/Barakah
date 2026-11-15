@@ -30,7 +30,9 @@ This is the shared handoff file for AI agents working on this repository. Read i
 - `barakah-ui/src/types/api.d.ts` — documented service/resource shapes.
 - `barakah-ui/src/utils/finance.js` — formatters, validation, provisional zakat calculation.
 
-## Current frontend behavior
+## Frontend behavior at initial prototype delivery
+
+The items below describe the original frontend prototype through `c6cf345`, not all later teammate integrations. **Verified source update, 2026-11-15:** HEAD `0465314` includes newer teammate-owned frontend/backend integration work. The current `App.jsx` uses session services and an authentication screen; the current root README describes connected API workflows. Consult those current files before assuming the original mock-only behavior still applies. This agent has not audited or changed the teammate’s backend.
 
 - Five working destinations: Home, Invest, Zakat, AI Chat, Give.
 - **User preference, 2026-11-14:** no simulated phone status bar (time, signal, Wi-Fi or battery) on any screen. Removed the shared component and unused icons/CSS; retain real-device safe-area padding and actual screen headers.
@@ -70,4 +72,8 @@ Use a Node version supported by Vite 7 (20.19+ on Node 20, or 22.12+). No enviro
 
 ## Latest handoff
 
-**2026-11-14 · coding assistant:** Removed the simulated device status bar globally at the user’s request. Production build and all 16 tests passed; Chromium checks confirmed no status bar/icons, intact bottom navigation and screen headers, and no horizontal overflow at 320px. Visually checked 390px mobile and 1440px desktop; browser errors and the UI detector were empty. No backend or service behavior changed. Keep the Vercel blocker above open until the public UI is actually verified.
+**2026-11-15 · coding assistant — public access:** At the user’s explicit request, changed `h8ntome/Barakah` from private to **public**. Verified GitHub API `private: false`, `visibility: public`, and anonymous repository access HTTP 200. Before publishing, checked tracked/history paths for private environment/key/database files (only `.env.example` templates found) and searched reachable Git history for common high-confidence credential/private-key patterns (no matches). This was a targeted check, not a complete security audit. The supplied Vercel preview still returns HTTP 302 to Vercel SSO after the repository change. No authenticated Vercel CLI/session was available; hosting protection was not changed. The owner must disable Vercel Authentication under the project’s Deployment Protection settings to allow anonymous preview access. Do not disable the application’s own account authentication. Then verify the actual app anonymously, not just the GitHub deployment status.
+
+### Earlier live-status-bar investigation
+
+**2026-11-15 · coding assistant:** User reports still seeing the simulated status bar and requests live verification. Verified the repository homepage `https://barakah-gamma.vercel.app` returns HTTP 404 in both HTTP and Chromium checks. GitHub marks the Vercel deployment of HEAD `0465314` successful, which does not establish that the homepage serves it. Current `App.jsx`, shared `ui.jsx` and CSS still contain no `StatusBar`, `.status-bar`, time/battery/signal/Wi-Fi display; the earlier removal was preserved in the teammate’s newer integration. The user then supplied `https://barakah-chxq9q0bv-h8notmes-projects.vercel.app/#`. Verified that exact deployment URL returns HTTP 302 to Vercel SSO and redirects Chromium to the Vercel login page; the app itself was not inspectable. The branch alias `https://barakah-git-feat-barakah-frontend-h8notmes-projects.vercel.app/` also requires Vercel login. Explain that a deployment-specific URL remains pinned rather than following new pushes; do not claim the supplied preview is definitely old without deployment metadata. Ask for an owner-authorized shareable preview link or a screenshot, and direct the owner to the latest branch deployment. Live UI verification remains access-blocked. No frontend/backend code changes were made during this verification.
