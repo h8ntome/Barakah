@@ -4,6 +4,7 @@ import { ActionForm, Field } from "../components/forms.jsx";
 import {
   login,
   register,
+  startDemo,
   requestReset,
   confirmReset,
   client,
@@ -35,6 +36,9 @@ export default function Auth({
         Your financial records, giving intentions and learning, together in one
         private workspace.
       </p>
+      <ActionForm label="Try Demo" success="" onSubmit={startDemo}>
+        <p className="formula-note">Explore a private, editable workspace with fictional finances. No signup required. Resets in Settings; expires after 24 hours.</p>
+      </ActionForm>
       <SegmentedControl
         label="Account access"
         value={mode}

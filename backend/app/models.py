@@ -32,6 +32,8 @@ class User(Identity, Base):
     display_name: Mapped[str] = mapped_column(String(80))
     ai_consent: Mapped[bool] = mapped_column(Boolean, default=False)
     is_admin: Mapped[bool] = mapped_column(Boolean, default=False)
+    is_demo: Mapped[bool] = mapped_column(Boolean, default=False, server_default='false')
+    demo_expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), index=True)
     country: Mapped[str] = mapped_column(String(2), default='US')
     timezone: Mapped[str] = mapped_column(String(64), default='UTC')
     language: Mapped[str] = mapped_column(String(10), default='en')

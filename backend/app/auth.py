@@ -20,7 +20,7 @@ router = APIRouter(prefix='/auth', tags=['auth'])
 def register(data: s.Register, response: Response, db=Depends(get_db)):
     email = str(data.email).lower()
     if db.scalar(select(User).where(User.email == email)):
-        fail(409, 'registration_failed', 'Unable to register this email')
+        fail(409, 'registration_failed', 'This email is already registered. Sign in or reset your password.')
     user = User(email=email, display_name=data.display_name, password_hash=hasher.hash(data.password))
     db.add(user)
     db.flush()
@@ -31,7 +31,7 @@ def register(data: s.Register, response: Response, db=Depends(get_db)):
 def login(data: s.Login, response: Response, db=Depends(get_db)):
     user = db.scalar(select(User).where(User.email == str(data.email).lower()).with_for_update())
     valid = verify_password(data.password, user.password_hash if user else dummy_hash)
-    if not user or not valid:
+    if not user or not valid or user.is_demo:
         fail(401, 'invalid_credentials', 'Invalid email or password')
     return issue_session(db, user, response)
 
@@ -79,7 +79,7 @@ def reset_request(data: s.ResetRequest, db=Depends(get_db)):
     config = get_settings()
     if not config.reset_outbox and not config.smtp_host:
         fail(503, 'reset_unavailable', 'Password reset delivery is not configured')
-    if user:
+    if user and not user.is_demo:
         token = secrets.token_urlsafe(48)
         db.execute(update(PasswordReset).where(PasswordReset.user_id == user.id).values(used=True))
         db.add(PasswordReset(user_id=user.id, token_hash=digest(token), expires_at=datetime.now(timezone.utc) + timedelta(minutes=30)))

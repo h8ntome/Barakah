@@ -25,6 +25,8 @@ const del = (path, body) => client.request(path, { method: "DELETE", body });
 const id = encodeURIComponent;
 export const register = (body) => client.authenticate("/auth/register", body);
 export const login = (body) => client.authenticate("/auth/login", body);
+export const startDemo = () => client.authenticate("/auth/demo");
+export const resetDemo = () => client.authenticate("/auth/demo/reset");
 export const logout = () => client.logout();
 export const refreshSession = () => client.refresh();
 export const updateProfile = async (body) => {

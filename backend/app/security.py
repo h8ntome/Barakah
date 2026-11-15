@@ -74,6 +74,7 @@ def current_user(credentials: HTTPAuthorizationCredentials = Depends(bearer), db
         user = db.get(User, session.user_id)
         if user is None:
             fail(401, 'unauthorized', 'Authentication required')
+        check_demo_expiry(user)
         return user
     except jwt.InvalidTokenError:
         fail(401, 'unauthorized', 'Invalid or expired access token')
@@ -85,15 +86,21 @@ def admin_user(user=Depends(current_user)):
     return user
 
 
+def check_demo_expiry(user):
+    if user.is_demo and (not user.demo_expires_at or utc(user.demo_expires_at) <= datetime.now(timezone.utc)):
+        fail(401, 'unauthorized', 'Demo expired. Choose Try Demo for a fresh workspace.')
+
+
 def user_view(user):
-    result = {key: getattr(user, key) for key in ('id', 'email', 'display_name', 'ai_consent', 'is_admin', 'country', 'timezone', 'language', 'currency')}
-    for key in ('created_at', 'updated_at'):
+    result = {key: getattr(user, key) for key in ('id', 'email', 'display_name', 'ai_consent', 'is_admin', 'is_demo', 'country', 'timezone', 'language', 'currency')}
+    for key in ('created_at', 'updated_at', 'demo_expires_at'):
         value = getattr(user, key)
         result[key] = utc(value).astimezone(timezone.utc).isoformat() if value else None
     return result
 
 
 def issue_session(db, user, response):
+    check_demo_expiry(user)
     config = get_settings()
     refresh, csrf = secrets.token_urlsafe(48), secrets.token_urlsafe(32)
     now = datetime.now(timezone.utc)

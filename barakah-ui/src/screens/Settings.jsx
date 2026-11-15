@@ -7,6 +7,7 @@ import {
   changePassword,
   deleteUser,
   logout,
+  resetDemo,
 } from "../services/index.js";
 export default function Settings({ user }) {
   const [preferences, setPreferences] = useState({
@@ -91,8 +92,12 @@ export default function Settings({ user }) {
           </span>
         </label>
       </ActionForm>
+      {user.is_demo && <>
+        <Notice>Private demo · fictional data only. Expires after 24 hours. Reset replaces only this demo workspace and its changes.</Notice>
+        <ActionForm label="Reset demo data" success="" onSubmit={resetDemo} />
+      </>}
       <ActionForm label="Sign out" success="" onSubmit={logout} />
-      <details className="details-section">
+      {!user.is_demo && <><details className="details-section">
         <summary>Change password</summary>
         <ActionForm
           label="Change password and sign out"
@@ -159,7 +164,7 @@ export default function Settings({ user }) {
             <span>I understand that all my records will be deleted.</span>
           </label>
         </ActionForm>
-      </details>
+      </details></>}
     </section>
   );
 }

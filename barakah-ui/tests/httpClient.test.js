@@ -136,6 +136,11 @@ test("logout waits for rotation and only clears session after cookie revocation"
   assert.equal(sessions.at(-1), null);
 });
 
+test("HTML API fallback fails clearly instead of accepting a null session", async () => {
+  const client = createHttpClient({ fetchImpl: async () => new Response("<html>Static frontend</html>", { status: 200 }) });
+  await assert.rejects(client.authenticate("/auth/register", {}), { code: "api_not_connected" });
+});
+
 test("query parameters encode filters, omit blanks and preserve false/zero", () => {
   assert.equal(
     queryString({

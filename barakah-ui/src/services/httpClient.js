@@ -49,6 +49,13 @@ export function createHttpClient({
     }
     const data =
       response.status === 204 ? null : await response.json().catch(() => null);
+    if (response.status !== 204 && data === null) {
+      throw new ApiError(
+        "The Barakah API is not connected to this site. Ask the operator to configure the backend and same-origin /api proxy.",
+        response.status,
+        { code: "api_not_connected" },
+      );
+    }
     if (!response.ok) {
       const detail = data?.detail;
       const message =
@@ -71,6 +78,8 @@ export function createHttpClient({
     return data;
   }
   function acceptSession(session) {
+    if (!session?.access_token || !session?.user?.id)
+      throw new ApiError("The server returned an invalid session. Please contact the operator.", 502);
     accessToken = session.access_token;
     onSession(session.user);
     return session.user;
@@ -145,7 +154,7 @@ export function createHttpClient({
   }
   async function authenticate(path, payload) {
     if (refreshPromise) await refreshPromise.catch(() => {});
-    const session = await transport(path, { method: "POST", body: payload });
+    const session = await transport(path, { method: "POST", body: payload, token: accessToken });
     generation += 1;
     return acceptSession(session);
   }

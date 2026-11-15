@@ -11,7 +11,8 @@ class Settings(BaseSettings):
     environment: str = 'development'
     allowed_origins: str = 'http://localhost:5173,http://127.0.0.1:5173'
     cookie_secure: bool = False
-    ai_mode: str = 'mock'
+    frontend_dist: str | None = None
+    ai_mode: str = 'unavailable'
     ai_request_timeout_seconds: float = Field(default=10, gt=0, le=120)
     ai_max_conversation_messages: int = Field(default=100, ge=2, le=1000)
     ai_model_name: str = 'lfm3-1.7b-pending'
@@ -45,7 +46,7 @@ class Settings(BaseSettings):
                 raise ValueError('Production requires explicit HTTPS origins')
         if '*' in self.origins:
             raise ValueError('Wildcard origins are forbidden')
-        if self.ai_mode not in {'mock', 'local'}:
+        if self.ai_mode not in {'unavailable', 'mock', 'local'}:
             raise ValueError('Invalid AI mode')
         url = urlparse(self.ai_local_url)
         if url.scheme != 'http' or url.hostname not in {'127.0.0.1', '::1', 'localhost'} or url.username or url.password:

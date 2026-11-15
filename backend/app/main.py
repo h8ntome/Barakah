@@ -7,7 +7,7 @@ from fastapi.responses import JSONResponse
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from .config import get_settings
-from . import auth, finance, giving, portfolio, advisor, ads, market
+from . import auth, demo, finance, giving, portfolio, advisor, ads, market
 
 config = get_settings()
 MIGRATION_HEADS = set(ScriptDirectory(str(Path(__file__).resolve().parents[1] / 'alembic')).get_heads())
@@ -49,7 +49,8 @@ async def http_error(request, exc):
 @app.exception_handler(RequestValidationError)
 async def validation_error(request, exc):
     # Do not echo request values (passwords, tokens, chat or financial records).
-    return JSONResponse({'error': {'code': 'validation_error', 'message': 'Invalid request fields; consult API schema'}}, status_code=422)
+    fields = sorted({'.'.join(str(part) for part in error['loc'][1:]) or 'request' for error in exc.errors()})
+    return JSONResponse({'error': {'code': 'validation_error', 'message': 'Check these fields: ' + ', '.join(fields)}}, status_code=422)
 
 
 @app.exception_handler(IntegrityError)
@@ -89,5 +90,23 @@ def readiness():
     return {'status': 'ready', 'database': 'available', 'external_services': 'check /api/v1/ai/health separately'}
 
 
-for router in (auth.router, finance.router, giving.router, portfolio.router, advisor.router, ads.router, market.router):
+for router in (auth.router, demo.router, finance.router, giving.router, portfolio.router, advisor.router, ads.router, market.router):
     app.include_router(router, prefix='/api/v1')
+
+
+if config.frontend_dist:
+    from fastapi.staticfiles import StaticFiles
+    from fastapi.responses import FileResponse
+    frontend = Path(config.frontend_dist).resolve()
+    if not (frontend / 'index.html').is_file():
+        raise RuntimeError('Build barakah-ui before enabling FRONTEND_DIST')
+
+    @app.api_route('/api/{path:path}', methods=['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
+    def unknown_api(path: str):
+        raise HTTPException(404, 'API endpoint not found')
+
+    @app.get('/reset-password')
+    def reset_page():
+        return FileResponse(frontend / 'index.html')
+
+    app.mount('/', StaticFiles(directory=frontend, html=True), name='frontend')

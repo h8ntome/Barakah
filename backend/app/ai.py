@@ -49,6 +49,8 @@ def get_provider() -> AIProvider:
 
 
 def generate_reply(text: str, financial_context: list | None = None) -> str:
+    if get_settings().ai_mode == 'unavailable':
+        fail(503, 'ai_unavailable', 'The AI assistant is not connected yet. Your other financial tools remain available.')
     # Route runs in FastAPI's worker pool; cancellation bounds the entire stream,
     # not merely the gap between bytes. No background request survives timeout.
     try:
@@ -74,6 +76,8 @@ async def _health() -> bool:
 
 
 def provider_available() -> bool:
+    if get_settings().ai_mode == 'unavailable':
+        return False
     if get_settings().ai_mode == 'mock':
         return True
     try:

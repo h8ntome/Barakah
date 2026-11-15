@@ -52,7 +52,7 @@ def test_login_generic_failure_and_duplicate(client, register):
 def test_registration_validation_does_not_echo_credentials(client, payload):
     response = client.post(BASE + '/auth/register', json=payload)
     assert response.status_code == 422
-    assert 'password' not in response.text
+    assert payload['password'] not in response.text
 
 
 def test_cookie_csrf_rotation_and_logout(client, auth):

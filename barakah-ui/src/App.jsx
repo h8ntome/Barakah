@@ -16,6 +16,7 @@ function Workspace({ user, activeTab, navigate }) {
   const onChanged = () => setVersion((value) => value + 1);
   return (
     <div className="screen-pages">
+      {user.is_demo && <p className="demo-banner" role="status">Private demo · fictional data · reset in Settings</p>}
       <section
         className="screen-page"
         hidden={activeTab !== "home"}
