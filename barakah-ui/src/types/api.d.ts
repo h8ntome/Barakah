@@ -10,6 +10,8 @@ export interface User {
   id: string;
   email: string;
   display_name: string;
+  created_at: ISODateTime | null;
+  updated_at: ISODateTime | null;
   ai_consent: boolean;
   is_admin: boolean;
   country: string | null;
@@ -150,6 +152,15 @@ export interface Giving extends GivingInput {
   id: string;
   payment_processed?: false;
 }
+export interface GivingSummary {
+  currency: Currency;
+  total: DecimalString;
+  monthly_total: DecimalString;
+  annual_total: DecimalString;
+  donation_count: number;
+  by_recipient: Record<string, DecimalString>;
+  by_category: Record<string, DecimalString>;
+}
 export interface GivingFilters extends Page {
   category?: string;
   start_date?: ISODate;
@@ -185,6 +196,7 @@ export interface ScreeningInput {
   source: string;
   methodology_source: string;
   assessed_on: ISODate;
+  max_age_days: number;
   notes: string;
 }
 export interface ScreeningAssessment extends ScreeningInput {
@@ -212,6 +224,8 @@ export interface Holding {
   market_value: DecimalString | null;
   unrealized_gain: DecimalString | null;
   realized_gain: DecimalString;
+  allocation_percent?: DecimalString | null;
+  unrealized_return_percent?: DecimalString | null;
   needs_reevaluation: boolean;
   screening_status: string;
   screening_source: string | null;
@@ -266,6 +280,7 @@ export interface SponsoredAd {
   url: string;
   context: "dashboard" | "giving" | "education";
   sponsored: true;
+  advertiser_name: string;
 }
 
 export interface GoalInput {

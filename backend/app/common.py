@@ -23,7 +23,8 @@ def pagination(limit: int = Query(50, ge=1, le=100), offset: int = Query(0, ge=0
 
 
 def rows(db, model, user_id, page, *conditions):
-    return db.scalars(select(model).where(model.user_id == user_id, *conditions).order_by(model.id).limit(page[0]).offset(page[1])).all()
+    order = [model.created_at.desc(), model.id] if hasattr(model, 'created_at') else [model.id]
+    return db.scalars(select(model).where(model.user_id == user_id, *conditions).order_by(*order).limit(page[0]).offset(page[1])).all()
 
 
 def cents(value):

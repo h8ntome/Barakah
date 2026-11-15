@@ -27,3 +27,6 @@ coverage/
 **/*.gguf
 **/*.pt
 **/*.pth
+**/*.dump
+**/*.sqlite
+**/*.sqlite3

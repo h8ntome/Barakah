@@ -1,0 +1,11 @@
+{
+  "requests": 50,
+  "concurrency": 4,
+  "passed": 50,
+  "failed": 0,
+  "elapsed_seconds": 0.033,
+  "median_ms": 2.129,
+  "p95_ms": 6.426,
+  "max_ms": 6.77,
+  "scope": "Local bounded read probe only; no production capacity claim"
+}

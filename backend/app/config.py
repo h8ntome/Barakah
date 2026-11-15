@@ -1,5 +1,5 @@
 from functools import lru_cache
-from pydantic import model_validator
+from pydantic import model_validator, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from urllib.parse import urlparse
 
@@ -12,6 +12,9 @@ class Settings(BaseSettings):
     allowed_origins: str = 'http://localhost:5173,http://127.0.0.1:5173'
     cookie_secure: bool = False
     ai_mode: str = 'mock'
+    ai_request_timeout_seconds: float = Field(default=10, gt=0, le=120)
+    ai_max_conversation_messages: int = Field(default=100, ge=2, le=1000)
+    ai_model_name: str = 'lfm3-1.7b-pending'
     ai_local_url: str = 'http://127.0.0.1:8080/chat'
     reset_outbox: str | None = None
     smtp_host: str | None = None

@@ -66,7 +66,8 @@ def test_multiple_portfolios_currencies_and_missing_valuation(client, auth, regi
 def test_screening_missing_inputs_thresholds_provenance(client, auth):
     h = holding(client, auth)
     endpoint = B + '/portfolio/holdings/' + h['id'] + '/screening'
-    data = {'source': 'Manual annual statement', 'assessed_on': '2026-01-15', 'notes': 'Educational only'}
+    from datetime import date
+    data = {'source': 'Manual annual statement', 'assessed_on': date.today().isoformat(), 'notes': 'Educational only'}
     response = client.put(endpoint, headers=auth, json=data).json()
     assert response['screening_status'] == 'uncertain'
     assert len(response['screening_assessment']['missing_inputs']) == 4

@@ -2,6 +2,7 @@ from collections import defaultdict
 from datetime import date, datetime, timezone
 from decimal import Decimal
 from uuid import UUID
+from typing import Literal
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy import select, func
 from . import models as m, schemas as s
@@ -60,7 +61,7 @@ def delete_account(account_id: UUID, user=Depends(current_user), db=Depends(get_
 
 
 @router.get('/transactions')
-def transactions(account_id: UUID | None = None, category: str | None = Query(None, max_length=80), query: str | None = Query(None, max_length=100), start_date: date | None = None, end_date: date | None = None, page=Depends(pagination), user=Depends(current_user), db=Depends(get_db)):
+def transactions(sort: Literal['date_desc', 'date_asc'] = 'date_desc', account_id: UUID | None = None, category: str | None = Query(None, max_length=80), query: str | None = Query(None, max_length=100), start_date: date | None = None, end_date: date | None = None, page=Depends(pagination), user=Depends(current_user), db=Depends(get_db)):
     conditions = []
     if account_id:
         owned(db, m.Account, account_id, user.id)
@@ -75,7 +76,9 @@ def transactions(account_id: UUID | None = None, category: str | None = Query(No
         conditions.append(m.Transaction.occurred_on <= end_date)
     if start_date and end_date and start_date > end_date:
         fail(422, 'validation_error', 'Date range is inverted')
-    return [public(t) for t in rows(db, m.Transaction, user.id, page, *conditions)]
+    order = m.Transaction.occurred_on.desc() if sort == 'date_desc' else m.Transaction.occurred_on.asc()
+    statement = select(m.Transaction).where(m.Transaction.user_id == user.id, *conditions).order_by(order, m.Transaction.id).limit(page[0]).offset(page[1])
+    return [public(t) for t in db.scalars(statement)]
 
 
 @router.post('/transactions', status_code=201)
@@ -173,6 +176,7 @@ def delete_budget(budget_id: UUID, user=Depends(current_user), db=Depends(get_db
 @router.get('/dashboard')
 def dashboard(month: str | None = Query(None, pattern=r'^\d{4}-(0[1-9]|1[0-2])$'), user=Depends(current_user), db=Depends(get_db)):
     month = month or datetime.now(timezone.utc).strftime('%Y-%m')
+    categories = defaultdict(lambda: defaultdict(Decimal))
     totals = defaultdict(lambda: {'balance': Decimal(0), 'income': Decimal(0), 'expenses': Decimal(0), 'total_assets': Decimal(0), 'liabilities': Decimal(0), 'valuation_complete': True})
     for account in db.scalars(select(m.Account).where(m.Account.user_id == user.id)):
         totals[account.currency]['balance'] += account.balance
@@ -180,6 +184,8 @@ def dashboard(month: str | None = Query(None, pattern=r'^\d{4}-(0[1-9]|1[0-2])$'
     for transaction in db.scalars(select(m.Transaction).where(m.Transaction.user_id == user.id, m.Transaction.kind.in_(['income', 'expense']))):
         if transaction.occurred_on.strftime('%Y-%m') == month:
             totals[transaction.currency]['income' if transaction.kind == 'income' else 'expenses'] += transaction.amount
+            if transaction.kind == 'expense':
+                categories[transaction.currency][transaction.category] += transaction.amount
     for holding in db.scalars(select(m.Holding).where(m.Holding.user_id == user.id)):
         if holding.quantity and holding.quote_price is None:
             totals[holding.currency]['valuation_complete'] = False
@@ -191,6 +197,8 @@ def dashboard(month: str | None = Query(None, pattern=r'^\d{4}-(0[1-9]|1[0-2])$'
     output = []
     for currency, values in sorted(totals.items()):
         values['savings'] = values['income'] - values['expenses']
+        values['savings_rate_percent'] = cents(values['savings'] / values['income'] * 100) if values['income'] else None
+        values['expense_categories'] = {name: str(cents(amount)) for name, amount in categories[currency].items()}
         values['net_worth'] = values['total_assets'] - values['liabilities']
         if not values['valuation_complete']:
             values['total_assets'] = values['net_worth'] = None

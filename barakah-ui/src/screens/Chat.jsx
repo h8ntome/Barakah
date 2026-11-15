@@ -10,6 +10,7 @@ import { ActionForm, Empty, Field } from "../components/forms.jsx";
 import { Pagination } from "../components/FinancialForms.jsx";
 import { useResource } from "../services/useResource.js";
 import * as api from "../services/index.js";
+import { conversationOptions } from "../utils/conversationOptions.js";
 export default function Chat({ user, navigate, active }) {
   const context = useResource(api.getAdvisorContext);
   const [offset, setOffset] = useState(0);
@@ -27,6 +28,7 @@ export default function Chat({ user, navigate, active }) {
       [conversationId || "new"]: value,
     }));
   const [sending, setSending] = useState(false);
+  const [includeContext, setIncludeContext] = useState(false);
   const [error, setError] = useState("");
   const lock = useRef(false);
   const bottom = useRef(null);
@@ -42,6 +44,7 @@ export default function Chat({ user, navigate, active }) {
     try {
       const reply = await api.sendMessage({
         text: text.trim(),
+        include_financial_context: includeContext,
         ...(conversationId ? { conversation_id: conversationId } : {}),
       });
       setText("");
@@ -76,13 +79,7 @@ export default function Chat({ user, navigate, active }) {
             setError("");
           }}
           disabled={sending}
-          options={[
-            { value: "", label: "New conversation" },
-            ...(conversations.data || []).map((item) => ({
-              value: item.id,
-              label: `${item.created_at.slice(0, 16).replace("T", " ")} · ${item.id.slice(0, 6)}`,
-            })),
-          ]}
+          options={conversationOptions(conversations.data || [], conversationId)}
         />
         <div className="conversation-actions">
           <button
@@ -134,10 +131,16 @@ export default function Chat({ user, navigate, active }) {
       <div className="chat-scroll">
         <Notice>
           Educational guidance, not a fatwa or personalized investment advice.
-          Only your current question is sent to the configured model;
-          conversation history is stored in your account. Avoid sensitive
-          details.
+          Your current question is sent to the configured model. Monthly totals
+          are included only when you opt in below; individual transactions and
+          earlier messages are not sent. Conversation history is stored in your
+          account. Avoid sensitive details.
         </Notice>
+        <label className="check-field">
+          <input type="checkbox" checked={includeContext} disabled={sending || !user.ai_consent}
+            onChange={(event) => setIncludeContext(event.target.checked)} />
+          <span>Include my monthly income and expense summary (by currency).</span>
+        </label>
         {!user.ai_consent && (
           <Notice>
             Enable advisor consent in Home → Settings before sending a question.

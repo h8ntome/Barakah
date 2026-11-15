@@ -24,6 +24,7 @@ export function ScreeningForm({ holding, onSaved }) {
       saved?.methodology_source ||
       "Illustrative configurable educational checks, not a scholarly standard",
     assessed_on: saved?.assessed_on || today(),
+    max_age_days: saved?.max_age_days ?? 90,
     notes: saved?.notes || "",
   });
   const set = (key, value) => setDraft({ ...draft, [key]: value });
@@ -40,6 +41,7 @@ export function ScreeningForm({ holding, onSaved }) {
         onSubmit={async () => {
           await api.updateScreening(holding.id, {
             ...draft,
+            max_age_days: Number(draft.max_age_days),
             prohibited_business:
               draft.prohibited_business === ""
                 ? null
@@ -116,6 +118,14 @@ export function ScreeningForm({ holding, onSaved }) {
           value={draft.assessed_on}
           onChange={(value) => set("assessed_on", value)}
           required
+        />
+        <Field
+          label="Screening evidence validity days"
+          type="number"
+          value={draft.max_age_days}
+          onChange={(value) => set("max_age_days", value)}
+          min={1} max={3660} step={1} required
+          help="After this many days the result needs re-evaluation; this is not a scholarly ruling."
         />
         <Field
           label="Screening notes and limitations"

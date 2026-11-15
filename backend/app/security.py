@@ -86,7 +86,11 @@ def admin_user(user=Depends(current_user)):
 
 
 def user_view(user):
-    return {key: getattr(user, key) for key in ('id', 'email', 'display_name', 'ai_consent', 'is_admin', 'country', 'timezone', 'language', 'currency')}
+    result = {key: getattr(user, key) for key in ('id', 'email', 'display_name', 'ai_consent', 'is_admin', 'country', 'timezone', 'language', 'currency')}
+    for key in ('created_at', 'updated_at'):
+        value = getattr(user, key)
+        result[key] = utc(value).astimezone(timezone.utc).isoformat() if value else None
+    return result
 
 
 def issue_session(db, user, response):

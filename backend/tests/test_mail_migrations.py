@@ -45,6 +45,23 @@ def test_unconfigured_reset_is_explicit(client, monkeypatch):
     assert response.json()['error']['code'] == 'reset_unavailable'
 
 
+def test_screening_history_upgrade_preserves_legacy_assessment(client, auth):
+    from datetime import date
+    holding = client.post('/api/v1/portfolio/holdings', headers=auth, json={'symbol': 'OLD', 'name': 'Legacy fixture', 'currency': 'USD'}).json()
+    url = '/api/v1/portfolio/holdings/' + holding['id']
+    data = {'source': 'Legacy assessment A', 'assessed_on': date.today().isoformat()}
+    assert client.put(url + '/screening', headers=auth, json=data).status_code == 200
+    config = Config(str(Path(__file__).parents[1] / 'alembic.ini'))
+    command.downgrade(config, '2725283e7c2a')
+    command.upgrade(config, 'head')
+    history = client.get(url + '/screenings', headers=auth).json()
+    assert len(history) == 1 and history[0]['assessment']['source'] == 'Legacy assessment A'
+    data['source'] = 'New assessment B'
+    assert client.put(url + '/screening', headers=auth, json=data).status_code == 200
+    history = client.get(url + '/screenings', headers=auth).json()
+    assert {item['assessment']['source'] for item in history} == {'Legacy assessment A', 'New assessment B'}
+
+
 def test_migration_upgrade_downgrade_round_trip(db_setup):
     config = Config(str(Path(__file__).parents[1] / 'alembic.ini'))
     command.check(config)

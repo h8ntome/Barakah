@@ -52,7 +52,9 @@ def test_sadaqah_filters_summary_edit_delete_goals(client, auth, register):
     gift = client.post(B + '/sadaqah', headers=auth, json=data).json()
     assert client.get(B + '/sadaqah?category=education', headers=auth).json() == []
     assert client.get(B + '/sadaqah?start_date=2026-02-01', headers=auth).json() == []
-    assert client.get(B + '/sadaqah/summary?category=food', headers=auth).json() == [{'currency': 'USD', 'total': '10.00'}]
+    summary = client.get(B + '/sadaqah/summary?category=food', headers=auth).json()[0]
+    assert summary['currency'] == 'USD' and summary['total'] == '10.00'
+    assert summary['donation_count'] == 1 and summary['by_category'] == {'food': '10.00'}
     data['amount'] = '12.00'
     assert client.patch(B + '/sadaqah/' + gift['id'], headers=auth, json=data).status_code == 200
     goal = client.post(B + '/goals', headers=auth, json={'name': 'Giving target', 'currency': 'USD', 'target_amount': '100.00'}).json()

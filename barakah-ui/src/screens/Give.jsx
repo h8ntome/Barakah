@@ -218,7 +218,14 @@ export default function Give({ navigate, onChanged }) {
                 <strong>
                   Total recorded: {money(item.total, item.currency)}
                 </strong>
-                <p>All matching records, not just this page.</p>
+                <p>{item.donation_count} donations · Current month {money(item.monthly_total, item.currency)} · Current year {money(item.annual_total, item.currency)}</p>
+                <p>All matching records, not just this page. Date/category filters also apply to these totals.</p>
+                <details><summary>Distribution by recipient</summary>
+                  {Object.entries(item.by_recipient || {}).map(([recipient, amount]) => <p key={recipient}>{recipient}: {money(amount, item.currency)}</p>)}
+                </details>
+                <details><summary>Distribution by cause</summary>
+                  {Object.entries(item.by_category || {}).map(([category, amount]) => <p key={category}>{category}: {money(amount, item.currency)}</p>)}
+                </details>
               </>
             )}
           </RecordList>

@@ -1,5 +1,7 @@
 # Connected frontend validation
 
+**Final parent integration (2026-11-15):** 53 frontend tests pass, production build and npm audit pass, 29 real PostgreSQL-backed browser journey assertions and four reset assertions pass. A real sponsored impression/click was also persisted. Final custom screening validity, conversation selection and opt-in-context documentation fixes are included. See [final evidence](../docs/testing/test-results.md) and [screenshots](../docs/testing/integration-results.md). Sections below retain earlier worker checkpoint history, not the final status.
+
 ## Automated evidence
 
 - `npm ci`: passed; 0 audit vulnerabilities reported.

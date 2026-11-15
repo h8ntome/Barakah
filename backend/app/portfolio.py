@@ -1,4 +1,5 @@
 from collections import defaultdict
+from datetime import date
 from decimal import Decimal
 from uuid import UUID
 from fastapi import APIRouter, Depends
@@ -13,8 +14,10 @@ router = APIRouter(tags=['portfolio'])
 
 
 def holding_view(holding):
-    value = cents(holding.quantity * holding.quote_price) if holding.quote_price is not None else (cents(0) if not holding.quantity else None)
-    return {**public(holding), 'average_cost': str(six(holding.cost_basis / holding.quantity)) if holding.quantity else '0.000000', 'market_value': str(value) if value is not None else None, 'unrealized_gain': str(cents(value - holding.cost_basis)) if value is not None else None}
+    value = holding.quantity * holding.quote_price if holding.quote_price is not None else (Decimal(0) if not holding.quantity else None)
+    snapshot = holding.screening_assessment
+    stale = bool(snapshot and holding.screening_date and (date.today() - holding.screening_date).days > snapshot.get('max_age_days', 90))
+    return {**public(holding), 'needs_reevaluation': stale, 'screening_status': 'uncertain' if stale else holding.screening_status, 'average_cost': str(six(holding.cost_basis / holding.quantity)) if holding.quantity else '0.000000', 'market_value': str(cents(value)) if value is not None else None, 'unrealized_gain': str(cents(value - holding.cost_basis)) if value is not None else None}
 
 
 @router.get('/portfolios')
@@ -67,7 +70,21 @@ def portfolio_summary(portfolio_id: UUID | None = None, user=Depends(current_use
         if not value['valuation_complete']:
             value['market_value'] = value['unrealized_gain'] = None
         output.append({'currency': currency, **{k: str(cents(v)) if isinstance(v, Decimal) else v for k, v in value.items()}})
-    return {'holdings': [holding_view(item) for item in holdings], 'by_currency': output}
+    views = []
+    for holding in holdings:
+        view = holding_view(holding)
+        total = totals[holding.currency]
+        view['allocation_percent'] = str(cents(holding.quantity * holding.quote_price / total['market_value'] * 100)) if total['valuation_complete'] and total['market_value'] and holding.quote_price is not None else None
+        view['unrealized_return_percent'] = str(cents((holding.quantity * holding.quote_price - holding.cost_basis) / holding.cost_basis * 100)) if holding.cost_basis and holding.quote_price is not None else None
+        views.append(view)
+    purchases = defaultdict(Decimal)
+    currencies = {holding.id: holding.currency for holding in holdings}
+    for trade in db.scalars(select(m.Trade).where(m.Trade.user_id == user.id, m.Trade.side == 'buy', m.Trade.holding_id.in_([h.id for h in holdings]))):
+        currency = currencies[trade.holding_id]
+        purchases[currency] += trade.quantity * trade.price + trade.fees
+    for total in output:
+        total['total_purchases_including_fees'] = str(cents(purchases[total['currency']]))
+    return {'holdings': views, 'by_currency': output}
 
 
 @router.post('/portfolio/holdings', status_code=201)
@@ -133,7 +150,15 @@ def screening(holding_id: UUID, data: s.ScreeningUpdate, user=Depends(current_us
     holding.screening_status = assessment['status']
     holding.screening_source, holding.screening_date, holding.screening_notes = data.source, data.assessed_on, data.notes
     holding.screening_assessment = assessment
+    db.add(m.ScreeningRecord(user_id=user.id, holding_id=holding.id, assessment=assessment))
+    db.flush()
     return holding_view(holding)
+
+
+@router.get('/portfolio/holdings/{holding_id}/screenings')
+def screening_history(holding_id: UUID, page=Depends(pagination), user=Depends(current_user), db=Depends(get_db)):
+    owned(db, m.Holding, holding_id, user.id)
+    return [public(record) for record in rows(db, m.ScreeningRecord, user.id, page, m.ScreeningRecord.holding_id == str(holding_id))]
 
 
 @router.get('/education/investing')

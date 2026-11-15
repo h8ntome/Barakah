@@ -7,6 +7,7 @@
 **/dist
 **/*.db
 **/*.log
+**/outbox
 **/.env
 **/.env.*
 !**/.env.example

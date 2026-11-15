@@ -27,7 +27,7 @@ class Base(DeclarativeBase):
 
 
 def make_engine(url):
-    engine = create_engine(url, connect_args={'check_same_thread': False, 'timeout': 30} if url.startswith('sqlite') else {}, pool_pre_ping=True)
+    engine = create_engine(url, connect_args={'check_same_thread': False, 'timeout': 30} if url.startswith('sqlite') else {}, pool_pre_ping=True, hide_parameters=True)
     if url.startswith('sqlite'):
         @event.listens_for(engine, 'connect')
         def configure_sqlite(connection, _):

@@ -15,8 +15,8 @@ def send_reset_email(email, token):
     message['From'] = config.smtp_sender
     message['To'] = email
     message['Subject'] = 'Reset your Barakah password'
-    separator = '&' if '?' in config.reset_url else '?'
-    message.set_content('Use this one-time link within 30 minutes: ' + config.reset_url + separator + urlencode({'token': token}) + '\nIf you did not request a reset, ignore this email.')
+    # URL fragments never enter HTTP request targets or reverse-proxy access logs.
+    message.set_content('Use this one-time link within 30 minutes: ' + config.reset_url.split('#', 1)[0] + '#' + urlencode({'token': token}) + '\nIf you did not request a reset, ignore this email.')
     try:
         with smtplib.SMTP(config.smtp_host, config.smtp_port, timeout=10) as smtp:
             smtp.ehlo()

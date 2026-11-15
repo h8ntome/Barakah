@@ -134,10 +134,29 @@ def sadaqah(category: str | None = Query(None, max_length=80), start_date: date 
 
 @router.get('/sadaqah/summary')
 def sadaqah_summary(category: str | None = Query(None, max_length=80), start_date: date | None = None, end_date: date | None = None, user=Depends(current_user), db=Depends(get_db)):
-    totals = {}
+    from collections import defaultdict
+    today = date.today()
+    totals = defaultdict(lambda: {'total': Decimal(0), 'monthly_total': Decimal(0), 'annual_total': Decimal(0), 'donation_count': 0, 'by_recipient': defaultdict(Decimal), 'by_category': defaultdict(Decimal)})
     for item in db.scalars(select(m.Giving).where(m.Giving.user_id == user.id, *giving_conditions(category, start_date, end_date))):
-        totals[item.currency] = totals.get(item.currency, Decimal(0)) + item.amount
-    return [{'currency': currency, 'total': str(cents(amount))} for currency, amount in sorted(totals.items())]
+        summary = totals[item.currency]
+        summary['total'] += item.amount
+        summary['donation_count'] += 1
+        summary['by_recipient'][item.recipient] += item.amount
+        summary['by_category'][item.category] += item.amount
+        if item.paid_on.year == today.year:
+            summary['annual_total'] += item.amount
+            if item.paid_on.month == today.month:
+                summary['monthly_total'] += item.amount
+    result = []
+    for currency, summary in sorted(totals.items()):
+        item = {'currency': currency}
+        for key, value in summary.items():
+            if isinstance(value, dict):
+                item[key] = {name: str(cents(amount)) for name, amount in value.items()}
+            else:
+                item[key] = str(cents(value)) if isinstance(value, Decimal) else value
+        result.append(item)
+    return result
 
 
 @router.post('/sadaqah', status_code=201)

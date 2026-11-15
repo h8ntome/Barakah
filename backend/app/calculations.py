@@ -5,12 +5,12 @@ from .common import cents, six
 
 def zakat_estimate(profile):
     assets = profile['assets']
-    total = sum((Decimal(assets.get(key, '0')) for key in ('cash', 'investments', 'gold', 'silver', 'business')), Decimal(0))
+    total = sum((Decimal(assets.get(key, '0')) for key in ('cash', 'savings', 'investments', 'gold', 'silver', 'business', 'other')), Decimal(0))
     base = max(Decimal(0), total - Decimal(assets['liabilities']))
     method = profile['nisab_method']
-    nisab = Decimal(profile['manual_nisab']) if method == 'manual' else Decimal(profile[f'{method}_price_per_gram']) * (85 if method == 'gold' else 595)
+    nisab = Decimal(profile['manual_nisab']) if method == 'manual' else Decimal(profile[f'{method}_price_per_gram']) * Decimal(profile.get(f'{method}_nisab_grams', '85' if method == 'gold' else '595'))
     eligible = base >= nisab and profile['haul_complete']
-    return {'currency': profile['currency'], 'total_assets': str(cents(total)), 'eligible_base': str(cents(base)), 'nisab': format(nisab, 'f'), 'haul_complete': profile['haul_complete'], 'eligible': eligible, 'estimated_due': str(cents(base * Decimal(profile['rate'])) if eligible else cents(0)), 'methodology': 'manual-wealth-v1: declared deductible debt; 85g gold/595g silver or manual nisab; user-attested haul; educational estimate, not a ruling', 'valuation_date': profile['valuation_date'], 'price_source': profile['price_source']}
+    return {'currency': profile['currency'], 'total_assets': str(cents(total)), 'eligible_base': str(cents(base)), 'nisab': format(nisab, 'f'), 'haul_complete': profile['haul_complete'], 'eligible': eligible, 'estimated_due': str(cents(base * Decimal(profile['rate'])) if eligible else cents(0)), 'methodology': f"manual-wealth-v1: declared deductible debt; {profile.get('gold_nisab_grams', '85')}g gold/{profile.get('silver_nisab_grams', '595')}g silver or manual nisab; user-attested haul; educational estimate, not a ruling", 'valuation_date': profile['valuation_date'], 'price_source': profile['price_source']}
 
 
 def apply_trade(quantity, cost_basis, side, trade_quantity, price, fees):

@@ -1,0 +1,13 @@
+PASS: reset request remains generic
+PASS: password reset form succeeds
+PASS: new password signs in
+{
+  "passed": 4,
+  "failed": 0,
+  "checks": [
+    "reset request remains generic",
+    "fragment token consumed once and removed from URL",
+    "password reset form succeeds",
+    "new password signs in"
+  ]
+}

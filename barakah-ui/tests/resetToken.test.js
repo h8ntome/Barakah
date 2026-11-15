@@ -19,6 +19,12 @@ test("emailed reset link token is captured once and removed without changing oth
   assert.equal(consumeResetToken(location, history), "");
   assert.equal(calls.length, 1);
 });
+test("fragment reset tokens never need to be sent in a request URL", () => {
+  const paths = [];
+  const history = { state: null, replaceState: (_, __, path) => paths.push(path) };
+  assert.equal(consumeResetToken({ href: "https://barakah.example/reset-password?lang=en#token=private%2Btoken" }, history), "private+token");
+  assert.deepEqual(paths, ["/reset-password?lang=en"]);
+});
 test("all duplicate and blank token parameters are removed; absent token leaves URL untouched", () => {
   const calls = [];
   const history = { state: null, replaceState: (...args) => calls.push(args) };

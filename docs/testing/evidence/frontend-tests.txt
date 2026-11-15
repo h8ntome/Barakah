@@ -1,0 +1,65 @@
+
+> barakah-ui@1.0.0 test
+> node --test tests/*.test.js
+
+✔ mounted hidden/offscreen placements do not count; visible impression counts once (0.975917ms)
+✔ unsupported IntersectionObserver never reports an unverified impression (0.068542ms)
+✔ ledger and budget mutations use documented routes and preserve decimals (19.758334ms)
+✔ transaction and giving filters reach server and blank filters are omitted (0.556291ms)
+✔ zakat, quote and screening payloads remain server inputs, never browser arithmetic (0.5965ms)
+✔ portfolio creation, trades, chat persistence and ads use real API paths (1.209666ms)
+✔ production service selection contains no mock adapter or financial calculations (2.970291ms)
+✔ charitable goals CRUD and contribution history use exact documented payloads (0.379333ms)
+✔ payment history choices include all pages and remain independent of displayed history pagination (0.473375ms)
+✔ sponsored impressions and clicks use the event API without client financial targeting (0.206166ms)
+✔ screening history is scoped to the holding and paginated without transforming assessments (0.321167ms)
+✔ dashboard savings rate and category decimals remain authoritative, including null for no income (0.234875ms)
+✔ enhanced UI keeps missing-rate semantics, stale-screen warning and configurable weight inputs (0.839083ms)
+✔ deleteUser refreshes an expired access token and only clears after successful deletion (20.700542ms)
+✔ deleteUser with wrong password preserves session and never refreshes (2.292875ms)
+✔ active conversation remains explicitly selectable when history page changes (0.552458ms)
+✔ legacy mock default values match its Home and Zakat fixtures (1.3235ms)
+✔ liabilities reduce net worth and estimate without making the estimate negative (0.208667ms)
+✔ zero assets and fractional-cent zakat are handled in cents (1.155208ms)
+✔ asset trust boundary rejects missing, negative, nonfinite and overprecision values (0.349708ms)
+✔ gift validation has explicit upper/lower limits and cent precision (0.159292ms)
+✔ currency display is consistent for whole and fractional amounts (14.886333ms)
+✔ bearer token stays in memory; requests include cookies and exact decimal strings (18.16825ms)
+✔ concurrent unauthorized requests share one refresh and retry with new token (12.806042ms)
+✔ late 401 reuses already rotated token without another refresh (26.679291ms)
+✔ failed refresh ends session and does not loop or replay mutation (0.387583ms)
+✔ public login failure never refreshes and safe errors hide server internals (0.184167ms)
+✔ logout waits for rotation and only clears session after cookie revocation (12.806958ms)
+✔ query parameters encode filters, omit blanks and preserve false/zero (0.30775ms)
+✔ mutation CSRF header comes from current readable cookie and error envelope is shown (0.325666ms)
+✔ network failure leaves caller draft unmodified and does not retry financial writes (0.165792ms)
+✔ wrong confirmation password does not rotate or clear a valid session (0.197458ms)
+✔ delayed 200 from account A is rejected after signing into B without replay (0.234375ms)
+✔ delayed retry 200 cannot return data or clear a newer session (0.214125ms)
+✔ delayed 401 from account A is rejected after signing into B without replay (0.113833ms)
+✔ delayed retry 401 cannot return data or clear a newer session (0.1525ms)
+✔ requests are asynchronous and return isolated JSON-ready copies (4.930833ms)
+✔ saving updates profile and dashboard coherently (6.5235ms)
+✔ failed save preserves prior data and retry saves once (5.839083ms)
+✔ invalid saves cannot mutate data (5.493625ms)
+✔ cause search combines category with trimmed, case-insensitive query (5.4495ms)
+✔ empty states are deterministic and do not leak between adapters (2.759708ms)
+✔ donations are explicitly demo-only with validation (4.086125ms)
+✔ all three starter questions receive deterministic, relevant examples (11.939958ms)
+✔ portfolio allocation totals 100 and real securities are not certified (1.511833ms)
+✔ every operation supports a recoverable injected failure (16.014875ms)
+✔ emailed reset link token is captured once and removed without changing other URL state (0.589541ms)
+✔ fragment reset tokens never need to be sent in a request URL (0.094375ms)
+✔ all duplicate and blank token parameters are removed; absent token leaves URL untouched (0.082292ms)
+✔ loading and editing gold never changes a separate nonzero silver amount (0.380833ms)
+✔ missing or currency-mismatched payment history cannot silently be submitted (0.2585ms)
+✔ legacy zakat profiles gain independent savings/other and configurable nisab weight defaults (0.780166ms)
+✔ saved savings/other and six-decimal methodology weights survive draft initialization exactly (0.623709ms)
+ℹ tests 53
+ℹ suites 0
+ℹ pass 53
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 219.12225

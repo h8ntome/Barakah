@@ -119,6 +119,8 @@ class BudgetCreate(Input):
 
 class Assets(Input):
     cash: Money
+    savings: Money = Decimal('0.00')
+    other: Money = Decimal('0.00')
     investments: Money
     gold: Money
     silver: Money = Decimal('0.00')
@@ -131,6 +133,8 @@ class ZakatProfileInput(Input):
     assets: Assets
     nisab_method: Literal['manual', 'gold', 'silver']
     manual_nisab: PositiveMoney | None = None
+    gold_nisab_grams: Quantity = Decimal('85')
+    silver_nisab_grams: Quantity = Decimal('595')
     gold_price_per_gram: Quantity | None = None
     silver_price_per_gram: Quantity | None = None
     price_source: Annotated[str, Field(min_length=1, max_length=200)]
@@ -209,11 +213,13 @@ class QuoteUpdate(Input):
 
 
 class AdvisorMessage(Input):
+    include_financial_context: bool = False
     text: Annotated[str, Field(min_length=1, max_length=1000)]
     conversation_id: UUID | None = None
 
 
 class AdCreate(Input):
+    advertiser_name: Annotated[str, Field(max_length=120)] = ''
     title: Annotated[str, Field(min_length=1, max_length=120)]
     body: Annotated[str, Field(min_length=1, max_length=500)]
     url: Annotated[str, Field(min_length=9, max_length=1000)]
@@ -240,6 +246,7 @@ class AdCreate(Input):
 
 
 class AdUpdate(Input):
+    advertiser_name: Annotated[str, Field(max_length=120)] | None = None
     title: Annotated[str, Field(min_length=1, max_length=120)] | None = None
     body: Annotated[str, Field(min_length=1, max_length=500)] | None = None
     url: Annotated[str, Field(min_length=9, max_length=1000)] | None = None
@@ -274,4 +281,5 @@ class ScreeningUpdate(Input):
     source: Annotated[str, Field(min_length=1, max_length=200)]
     methodology_source: Annotated[str, Field(min_length=1, max_length=200)] = 'Illustrative configurable educational checks, not a scholarly standard'
     assessed_on: date
+    max_age_days: Annotated[int, Field(ge=1, le=3660)] = 90
     notes: Annotated[str, Field(max_length=1000)] = ''

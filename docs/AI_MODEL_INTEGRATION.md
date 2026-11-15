@@ -12,13 +12,19 @@ Do **not** infer runtime compatibility from the name “LFM3”. Before selectin
 
 No claim is made here that Ollama, vLLM, Transformers or a particular accelerator supports the pending checkpoint. If the selected runtime does not implement the configured HTTP contract, implement an adapter rather than changing API routes or browser components. Do not download weights merely to exercise the web application.
 
+## Implemented adapter contract
+
+`backend/app/ai.py` defines `AIProvider.generate(text, system_prompt)`, a deterministic `MockProvider`, and a `LocalProvider`. Routes call `generate_reply`; no runtime-specific loader lives in an API route. Set `AI_MODE=local`, `AI_LOCAL_URL=http://127.0.0.1:8080/chat`, `AI_MODEL_NAME` (informational pending-model label), and `AI_REQUEST_TIMEOUT_SECONDS` (default 10, total deadline). The local adapter sends `POST /chat` JSON `{text, system_prompt}` and expects `{text: "answer"}`. The serving wrapper must apply the supplied system prompt using its verified chat template. Health probes `GET /health` without buffering a response body. Redirects and proxy environment variables are disabled; only administrator-configured loopback HTTP URLs are allowed. A future remote adapter needs separate authenticated transport and explicit disclosure/consent; no external paid provider is bundled.
+
+The frontend's per-message financial-context checkbox defaults off. When selected and profile AI consent is enabled, only the current user's current-month currency/income/expenses/savings aggregates enter the prompt. Verified totals are also appended separately to the response, labeled as backend-calculated rather than generated arithmetic. No account names, category names, individual records or other users' information are sent. Conversations are capped at `AI_MAX_CONVERSATION_MESSAGES` (default 100); start a new conversation at the limit.
+
 ## Safe integration checklist
 
 1. Run the model server privately, preferably on loopback or a private network. Do not expose an unauthenticated inference server publicly.
 2. Configure the backend's local provider, endpoint, model identifier and finite timeout (see `backend/.env.example`). Keep API credentials on the backend, never in `VITE_*` variables.
 3. Run one short non-sensitive question directly against the serving endpoint and verify response shape, model identity and actual model availability.
 4. Check `/api/v1/ai/health`. Process liveness is not proof that a model is loaded; perform an authenticated chat smoke test as well.
-5. Register an isolated application test account, submit a message through `/api/v1/ai/chat`, then retrieve its stored conversation. Verify provider labeling is no longer mock.
+5. Register an isolated application test account, enable AI consent and submit a message through `/api/v1/advisor/messages`, then retrieve its stored conversation. Verify provider labeling is no longer mock.
 6. Stop the model server and repeat. The application must return a safe unavailable error, preserve the editable draft and never silently fall back to mock text.
 7. Verify timeout behavior and a malformed provider response. Review safe operational logs, not private prompts, tokens or full financial context.
 8. Rerun the application's AI tests and the browser conversation flow. Model quality/Islamic-finance evaluation is a separate gate owned by `benchmark/` and the model team.

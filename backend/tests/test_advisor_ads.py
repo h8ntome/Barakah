@@ -61,7 +61,8 @@ def test_local_http_adapter_only_current_text_failure_rollback(client, auth, loc
     response = client.post(B + '/advisor/messages', headers=auth, json={'text': 'hello'})
     assert response.status_code == 201
     assert response.json()['is_demo'] is False
-    assert state['requests'] == [{'text': 'hello'}]
+    from app.ai import SYSTEM_PROMPT
+    assert state['requests'] == [{'text': 'hello', 'system_prompt': SYSTEM_PROMPT}]
     state['fail'] = True
     failure = client.post(B + '/advisor/messages', headers=auth, json={'text': 'private text'})
     assert failure.status_code == 502 and 'private text' not in failure.text

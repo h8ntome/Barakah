@@ -34,4 +34,4 @@ Existing stack: React 18.3, JavaScript, Vite 7, lucide-react, plain CSS. Routing
 
 ## Evidence policy
 
-Results remain pending until commands run. Mock provider checks establish adapter behavior, not model quality. Missing live market/model services must return unavailable/uncertain, not invented data. Docker execution can only be claimed if Docker is present. See `test-results.md` for final counts and exceptions.
+Execution is complete for the native/local gates; results and explicit external/deployment exceptions are recorded in `test-results.md`. Mock provider checks establish adapter behavior, not model quality. Missing live market/model services must return unavailable/uncertain, not invented data. Docker execution can only be claimed if Docker is present. See `test-results.md` for final counts and exceptions.

@@ -24,6 +24,9 @@ class Owned(Identity):
 
 class User(Identity, Base):
     __tablename__ = 'users'
+    # Legacy creation dates are unknown; new users always get UTC timestamps.
+    created_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), default=now)
+    updated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), default=now, onupdate=now)
     email: Mapped[str] = mapped_column(String(254), unique=True)
     password_hash: Mapped[str] = mapped_column(Text)
     display_name: Mapped[str] = mapped_column(String(80))
@@ -162,6 +165,13 @@ class Holding(Owned, Base):
     screening_assessment: Mapped[dict | None] = mapped_column(JSON)
 
 
+class ScreeningRecord(Owned, Base):
+    __tablename__ = 'screening_records'
+    holding_id: Mapped[str] = mapped_column(ForeignKey('holdings.id', ondelete='CASCADE'), index=True)
+    assessment: Mapped[dict] = mapped_column(JSON)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=now)
+
+
 class Trade(Owned, Base):
     __tablename__ = 'trades'
     holding_id: Mapped[str] = mapped_column(ForeignKey('holdings.id', ondelete='CASCADE'))
@@ -189,6 +199,7 @@ class Message(Owned, Base):
 
 class Ad(Identity, Base):
     __tablename__ = 'ads'
+    advertiser_name: Mapped[str] = mapped_column(String(120), default='', server_default='')
     title: Mapped[str] = mapped_column(String(120))
     body: Mapped[str] = mapped_column(String(500))
     url: Mapped[str] = mapped_column(String(1000))
