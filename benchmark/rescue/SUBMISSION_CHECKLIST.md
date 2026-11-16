@@ -1,5 +1,7 @@
 # Submission readiness — 2026-11-15
 
+> **Provenance correction — 16 November 2026:** the actual training dataset, selected Hub split, base revision and stopped checkpoint/export chain are now verified. Earlier uncertainty below describes the historical investigation, not current knowledge. Read the [verified provenance and credits](../../docs/TRAINING_PROVENANCE_CORRECTION.md). Dataset/inherited licensing, held-out independence and expert advice quality remain unresolved; scores and raw evidence are unchanged.
+
 **This is a preparation checklist, not a submission receipt.** No form has been submitted. See [current release audit](../../docs/RELEASE_AUDIT.md). The final one-page PDF and current 115-second film are prepared in the ignored local `submissions/` handoff; the canonical write-up route is attaching that PDF to the live form. The current brief/form make video optional.
 
 ## Official requirements

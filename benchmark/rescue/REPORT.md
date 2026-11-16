@@ -1,5 +1,7 @@
 # Barakah — Fine-Tuning Evaluation and Personal Finance Domain Adaptation
 
+> **Provenance correction — 16 November 2026:** the actual training dataset, selected Hub split, base revision and stopped checkpoint/export chain are now verified. Earlier uncertainty below describes the historical investigation, not current knowledge. Read the [verified provenance and credits](../../docs/TRAINING_PROVENANCE_CORRECTION.md). Dataset/inherited licensing, held-out independence and expert advice quality remain unresolved; scores and raw evidence are unchanged.
+
 **Evaluation date: 2026-11-15 UTC. This project is a prototype and is not financial advice.**
 
 ## Executive summary

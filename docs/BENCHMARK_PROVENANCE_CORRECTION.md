@@ -15,7 +15,7 @@ These identities agree across the matched runs' raw rows, metadata fingerprints 
 
 - [New identity-v2 comparison export](evidence/benchmark-comparison-v2.json): separates `*_template_config` from `*_effective_run_settings`, records supporting identity fields and input/exporter hashes, and explicitly flags the candidate's differing template identity.
 - [Unmodified historical comparison](../benchmark/results/comparisons/20261115/comparison.json): retain it as evidence, but do not interpret its legacy `*_config` fields as effective model identity.
-- [Original artifact/weight provenance](../benchmark/reports/20261115/MODEL_PROVENANCE.md): unchanged; includes separate checkpoint hashes and unresolved lineage/license questions.
+- [Original artifact/weight provenance](../benchmark/reports/20261115/MODEL_PROVENANCE.md): preserved historical report; includes separate checkpoint hashes. Its former training-lineage uncertainty is superseded by the [verified training provenance correction](TRAINING_PROVENANCE_CORRECTION.md); licensing and held-out independence remain unresolved.
 
 The exporter rejects contradictory identities. Older raw records that omit a revision are explicitly marked `raw_rows_partial`; absence is not silently treated as raw-row verification. A missing fingerprint is never filled from template defaults.
 

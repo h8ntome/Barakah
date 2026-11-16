@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-11-16T01:43:13.325242+00:00",
+  "method": "Read-only Unsloth Studio persisted configs, cached dataset/schema, adapter/checkpoint/export hashes and unauthenticated pinned Hugging Face metadata. Independently corroborated by supervisor.",
+  "dataset": {
+    "id": "Azfarhashmi/adaption-personal-finance-advice-dialogues",
+    "revision": "3dd7f33149d6cbf4ab9115f76242851506929b9d",
+    "file": "data/train_0.jsonl",
+    "bytes": 354098432,
+    "sha256": "95f46af8ee1b4981aaa85a94fcb0701e51c27b987c2e6be1936bfc21fd103446",
+    "records": 27981,
+    "row_split_labels": {
+      "train": 7825,
+      "test": 1721,
+      "val": 1676,
+      "None": 16759
+    },
+    "mapped_column_types": {
+      "enhanced_prompt": {
+        "str": 27981
+      },
+      "enhanced_completion": {
+        "str": 27981
+      },
+      "original_context": {
+        "str": 11222,
+        "NoneType": 16759
+      }
+    },
+    "card_sha256": "82b5b4d86be33be1236a4ccd1e9cd02d4275c6bb4d952d106d4cac7bb87c071f",
+    "license": [],
+    "credit": "Azfarhashmi; remastered using Adaption's Adaptive Data platform per pinned card"
+  },
+  "runs": [
+    {
+      "id": "job_20261114_162104_f82cd483",
+      "status": "error",
+      "started_at": "2026-11-14T16:21:06.594017+00:00",
+      "ended_at": "2026-11-14T23:00:58.775694+00:00",
+      "final_step": 2037,
+      "total_steps": 6996,
+      "resumed_from_run_id": null,
+      "config": {
+        "hf_dataset": "Azfarhashmi/adaption-personal-finance-advice-dialogues",
+        "dataset_revision": "3dd7f33149d6cbf4ab9115f76242851506929b9d",
+        "model_revision": "1da06bec6a819da10b54c67e5c90972b46d81871",
+        "train_split": "train",
+        "eval_split": null,
+        "local_datasets": [],
+        "local_eval_datasets": [],
+        "subset": "default",
+        "dataset_slice_start": null,
+        "dataset_slice_end": null,
+        "custom_format_mapping": {
+          "enhanced_completion": "assistant",
+          "enhanced_prompt": "user",
+          "original_context": "system"
+        },
+        "format_type": "auto",
+        "train_on_completions": true,
+        "num_epochs": 2,
+        "resume_from_checkpoint": "checkpoint-222",
+        "max_seq_length": 8192,
+        "packing": false,
+        "random_seed": 3407,
+        "batch_size": 2,
+        "gradient_accumulation_steps": 4,
+        "learning_rate": "0.0002",
+        "lora_r": 16,
+        "lora_alpha": 16,
+        "load_in_4bit": false
+      }
+    },
+    {
+      "id": "job_20261115_040607_44b8296b",
+      "status": "stopped",
+      "started_at": "2026-11-15T04:06:08.881709+00:00",
+      "ended_at": "2026-11-15T04:09:29.229758+00:00",
+      "final_step": 2027,
+      "total_steps": 6996,
+      "resumed_from_run_id": "job_20261114_162104_f82cd483",
+      "config": {
+        "hf_dataset": "Azfarhashmi/adaption-personal-finance-advice-dialogues",
+        "dataset_revision": "3dd7f33149d6cbf4ab9115f76242851506929b9d",
+        "model_revision": "1da06bec6a819da10b54c67e5c90972b46d81871",
+        "train_split": "train",
+        "eval_split": null,
+        "local_datasets": [],
+        "local_eval_datasets": [],
+        "subset": "default",
+        "dataset_slice_start": null,
+        "dataset_slice_end": null,
+        "custom_format_mapping": {
+          "enhanced_completion": "assistant",
+          "enhanced_prompt": "user",
+          "original_context": "system"
+        },
+        "format_type": "auto",
+        "train_on_completions": true,
+        "num_epochs": 2,
+        "resume_from_checkpoint": "checkpoint-2010",
+        "max_seq_length": 8192,
+        "packing": false,
+        "random_seed": 3407,
+        "batch_size": 2,
+        "gradient_accumulation_steps": 4,
+        "learning_rate": "0.0002",
+        "lora_r": 16,
+        "lora_alpha": 16,
+        "load_in_4bit": false
+      }
+    },
+    {
+      "id": "job_20261115_041030_04d3466d",
+      "status": "error",
+      "started_at": "2026-11-15T04:10:34.095612+00:00",
+      "ended_at": "2026-11-15T11:46:14.371700+00:00",
+      "final_step": 2746,
+      "total_steps": 6996,
+      "resumed_from_run_id": "job_20261115_040607_44b8296b",
+      "config": {
+        "hf_dataset": "Azfarhashmi/adaption-personal-finance-advice-dialogues",
+        "dataset_revision": "3dd7f33149d6cbf4ab9115f76242851506929b9d",
+        "model_revision": "1da06bec6a819da10b54c67e5c90972b46d81871",
+        "train_split": "train",
+        "eval_split": null,
+        "local_datasets": [],
+        "local_eval_datasets": [],
+        "subset": "default",
+        "dataset_slice_start": null,
+        "dataset_slice_end": null,
+        "custom_format_mapping": {
+          "enhanced_completion": "assistant",
+          "enhanced_prompt": "user",
+          "original_context": "system"
+        },
+        "format_type": "auto",
+        "train_on_completions": true,
+        "num_epochs": 2,
+        "resume_from_checkpoint": "checkpoint-2027",
+        "max_seq_length": 8192,
+        "packing": false,
+        "random_seed": 3407,
+        "batch_size": 2,
+        "gradient_accumulation_steps": 4,
+        "learning_rate": "0.0002",
+        "lora_r": 16,
+        "lora_alpha": 16,
+        "load_in_4bit": false
+      }
+    },
+    {
+      "id": "job_20261115_114633_01105c08",
+      "status": "stopped",
+      "started_at": "2026-11-15T11:46:49.333333+00:00",
+      "ended_at": "2026-11-15T15:07:43.597119+00:00",
+      "final_step": 4413,
+      "total_steps": 6996,
+      "resumed_from_run_id": "job_20261115_041030_04d3466d",
+      "config": {
+        "hf_dataset": "Azfarhashmi/adaption-personal-finance-advice-dialogues",
+        "dataset_revision": "3dd7f33149d6cbf4ab9115f76242851506929b9d",
+        "model_revision": "1da06bec6a819da10b54c67e5c90972b46d81871",
+        "train_split": "train",
+        "eval_split": null,
+        "local_datasets": [],
+        "local_eval_datasets": [],
+        "subset": "default",
+        "dataset_slice_start": null,
+        "dataset_slice_end": null,
+        "custom_format_mapping": {
+          "enhanced_completion": "assistant",
+          "enhanced_prompt": "user",
+          "original_context": "system"
+        },
+        "format_type": "auto",
+        "train_on_completions": true,
+        "num_epochs": 2,
+        "resume_from_checkpoint": "checkpoint-2730",
+        "max_seq_length": 8192,
+        "packing": false,
+        "random_seed": 3407,
+        "batch_size": 2,
+        "gradient_accumulation_steps": 4,
+        "learning_rate": "0.0002",
+        "lora_r": 16,
+        "lora_alpha": 16,
+        "load_in_4bit": false
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "model.safetensors",
+      "bytes": 3457635448,
+      "sha256": "0d09d744e4ed20c7ecd73968dc127e909ae524d642967f772c09de65779bde22"
+    },
+    {
+      "file": "export_metadata.json",
+      "bytes": 144,
+      "sha256": "901ba272d2b0a3c68f9cbbb4adb39cf983667024f3928b43a402ee021935be4b",
+      "metadata": {
+        "base_model": "LiquidAI/LFM3-1.7B",
+        "source_checkpoint": "/opt/unsloth-studio/outputs/LiquidAI_LFM3-1.7B__project-homeiq-llm_1794669294"
+      }
+    },
+    {
+      "file": "adapter_model.safetensors",
+      "bytes": 54229296,
+      "sha256": "57ad6c1545c4614ca7c6be43f2fe0aa903fbfc8c54aa1975953c3af0f5a36ae3"
+    },
+    {
+      "file": "checkpoint-4413/adapter_model.safetensors",
+      "bytes": 54229296,
+      "sha256": "57ad6c1545c4614ca7c6be43f2fe0aa903fbfc8c54aa1975953c3af0f5a36ae3"
+    },
+    {
+      "file": "checkpoint-4413/trainer_state.json",
+      "bytes": 1344294,
+      "sha256": "50e353b1d586fbce22e9361bc1547d628a564c354e039cdbf98a7d10aa60a113",
+      "global_step": 4413,
+      "epoch": 1.2615967407619184,
+      "max_steps": 6996
+    },
+    {
+      "file": "adapter_config.json",
+      "bytes": 1553,
+      "sha256": "20bb76a61715f3fe154c9befb07e3e68507091889f4cd89e53aae79f6670c35b"
+    }
+  ],
+  "submitted_model": {
+    "id": "h8notme/barakah1",
+    "revision": "912a5697cf9d85adf065ee512f509cfa236459d4"
+  },
+  "verified_links": {
+    "dataset_snapshot_matches_pinned_hub_lfs": true,
+    "export_matches_submitted_pinned_hub_lfs": true,
+    "pinned_card_matches_cached_card": true,
+    "root_adapter_equals_checkpoint_4413": true
+  },
+  "public_primary_sources": [
+    {
+      "url": "https://huggingface.co/api/datasets/Azfarhashmi/adaption-personal-finance-advice-dialogues/revision/3dd7f33149d6cbf4ab9115f76242851506929b9d?blobs=true",
+      "status": 200,
+      "body_sha256": "2bacb224962569ab6c0e7eac51c85379a0e8bf8b67b394403a0c73ddf679648b"
+    },
+    {
+      "url": "https://huggingface.co/api/models/h8notme/barakah1/revision/912a5697cf9d85adf065ee512f509cfa236459d4?blobs=true",
+      "status": 200,
+      "body_sha256": "f662bfe1ecef24528f6c1fc2e3361a3b93924ac531c005f7708988c5903e012c"
+    },
+    {
+      "url": "https://huggingface.co/datasets/Azfarhashmi/adaption-personal-finance-advice-dialogues/raw/3dd7f33149d6cbf4ab9115f76242851506929b9d/README.md",
+      "status": 200,
+      "body_sha256": "82b5b4d86be33be1236a4ccd1e9cd02d4275c6bb4d952d106d4cac7bb87c071f"
+    }
+  ],
+  "limitations": [
+    "Dataset license unspecified; candidate Apache-2.0 card does not resolve inherited LFM Open License conditions.",
+    "Held-out independence, nonlexical contamination and expert financial/religious quality unresolved.",
+    "Configured input row count is not proof of unique examples consumed or completed training exposure.",
+    "Saved config is evidence of intended formatting/masking, not a complete row-by-row trace of processed tokens.",
+    "No new benchmark or inference; existing numerical regression and unreviewed conceptual answers remain unchanged."
+  ]
+}

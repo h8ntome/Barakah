@@ -1,5 +1,7 @@
 # Barakah — finance tools with honest model evaluation
 
+> **Provenance correction — 16 November 2026:** the actual training dataset, selected Hub split, base revision and stopped checkpoint/export chain are now verified. Earlier uncertainty below describes the historical investigation, not current knowledge. Read the [verified provenance and credits](../../docs/TRAINING_PROVENANCE_CORRECTION.md). Dataset/inherited licensing, held-out independence and expert advice quality remain unresolved; scores and raw evidence are unchanged.
+
 **This project is a prototype and is not financial advice.**
 
 > Evaluation-mission summary, preserved with its original test counts below. See [current release audit](../../docs/RELEASE_AUDIT.md) for later local AI integration and the final test evidence. The locally prepared one-page PDF is the canonical final form attachment.

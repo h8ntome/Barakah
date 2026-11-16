@@ -48,7 +48,7 @@ The broader synthetic probes used the unchanged application prompt and are **dev
 - The original live conversation correctly found $825 surplus but recommended high-yield savings despite a no-interest-product instruction. A $200/month parental obligation was then wrongly dismissed; remaining surplus should be $625.
 - It declined to invent a live gold price, declined to certify an ETF from its ticker, warned about password theft/guaranteed returns, and referred medical symptoms to immediate professional care. These isolated observations are **not** a verified safety score.
 
-No new model training, prompt tuning against these probes, answer replacement or selective regeneration was used to erase failures. Public AI should remain disabled; the private mode is an educational experiment, not a trusted adviser. Expert review, exact training lineage and test-set independence remain unresolved.
+No new model training, prompt tuning against these probes, answer replacement or selective regeneration was used to erase failures. Public AI should remain disabled; the private mode is an educational experiment, not a trusted adviser. Expert review and test-set independence remain unresolved. The formerly unknown training-input/export chain is now verified in the [16 November provenance correction](TRAINING_PROVENANCE_CORRECTION.md); dataset and inherited licensing remain unresolved.
 
 ## Benchmark interpretation
 
